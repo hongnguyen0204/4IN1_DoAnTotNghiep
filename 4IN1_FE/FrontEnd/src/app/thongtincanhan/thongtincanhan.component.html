@@ -1,0 +1,56 @@
+<body style="position: relative;margin-top: 130px">
+<div class="container rounded bg-white mt-5 mb-5">
+  <div class="row"style="border: 1.5px solid;border-radius: 6px;">
+    <div class="col-md-3 border-right">
+      <div class="file-input" style="margin: 33%;">
+        <input type='file' (change)="readURL($event);" id="file" class="file" />
+        <img id="blah"  [src]="imageSrc || 'http://placehold.it/180'" alt="your image"  />
+        <label for="file">Chon  ảnh</label>
+      </div>
+    </div>
+    <div class="col-md-6 border-right">
+      <div class="p-3 py-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-right">Thông tin cá nhân</h4>
+        </div>
+        <div class="row mt-3 ">
+          <div class="col-md-12"><label class="labels">Họ và tên</label><input type="text" class="form-control">
+          </div>
+        </div>
+        <div class="row mt-3 ">
+          <div class="col-md-12"><label class="labels">Ngày sinh</label><input type="date" class="form-control">
+          </div>
+        </div>
+        <div class="row mt-3 ">
+          <div class="col-md-12">
+            <label class="labels">Giới tính:</label>
+            <form>
+
+              <label class="radio-inline-nam">
+                <input type="radio" name="optradio" value="0">Nam
+              </label>
+              <label class="radio-inline-nu">
+                <input type="radio" name="optradio" value="1">Nữ
+              </label>
+            </form>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12"><label class="labels">Số điện thoại</label><input type="text"
+                                                                                   class="form-control" placeholder="" value=""></div>
+          <div class="col-md-12"><label class="labels">Email</label><input type="text"
+                                                                           class="form-control" placeholder="" value=""></div>
+          <div class="col-md-12"><label class="labels">Địa chỉ</label><input type="text"
+                                                                             class="form-control" placeholder="" value=""></div>
+          <div class="col-md-12"><label class="labels">Khoa</label><input type="text"
+                                                                          class="form-control" placeholder="" value=""></div>
+        </div>
+
+        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Lưu</button></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>

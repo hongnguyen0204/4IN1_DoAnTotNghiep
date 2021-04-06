@@ -1,0 +1,133 @@
+<head>
+  <title>Đăng kí tổ chức sự kiện</title>
+</head>
+
+<div class="testbox" style="position: relative;margin-top: 130px">
+  <form action="/">
+    <div class="banner">
+      <h1 style="color: black;">Đăng kí tổ chức sự kiện</h1>
+    </div>
+    <div class="item">
+      <p>Tên sự kiện<span class="required">*</span></p>
+      <input type="text" name="name" placeholder="Tên sự kiện" required/>
+    </div>
+    <div class="contact-item">
+      <div class="item">
+        <p>Số điện thoại<span class="required">*</span></p>
+        <input type="text" name="name" placeholder="Số điện thoại" required/>
+      </div>
+      <div class="item">
+        <p>Email<span class="required">*</span></p>
+        <input type="text" name="name" placeholder="Email" required/>
+      </div>
+    </div>
+    <div class="position-item">
+      <div class="item">
+        <p>Địa điểm tổ chức<span class="required">*</span></p>
+        <select required>
+          <option value="0" selected>Chọn địa điểm</option>
+          <option value="1">P-603 Quang Trung</option>
+          <option value="2">Hòa Khách Nam</option>
+          <option value="3">Phan Thanh</option>
+        </select>
+      </div>
+      <div class="item">
+        <p>Ngày tổ chức<span class="required">*</span></p>
+        <input type="datetime-local" name="bdate" required/>
+      </div>
+    </div>
+    <div class="position-item">
+      <div class="item">
+        <p>Khoa<span class="required">*</span></p>
+        <select required>
+          <option value="0" selected>Chọn Khoa</option>
+          <option value="1">Công nghệ thông tin</option>
+          <option value="2">Du lịch</option>
+          <option value="3">Kiến trúc</option>
+          <option value="4">Ngôn Ngữ Anh</option>
+          <option value="5">Kế Toán</option>
+          <option value="6">Y</option>
+        </select>
+      </div>
+      <div class="item">
+        <p>Số người tham gia (dự kiến)<span class="required">*</span></p>
+        <input type="number" name="name" placeholder="Số người tham gia" required/>
+      </div>
+    </div>
+
+    <div class="item">
+      <p>Mô tả</p>
+      <textarea id="instructions" rows="3"></textarea>
+      <p>Nội dung</p>
+      <ckeditor name="ckeditor" id="txtckeditor"></ckeditor>
+      <br>
+      <p>Bảng kế hoạch</p>
+      <input type="file" name="file" accept="file/*">
+    </div>
+    <div class="question">
+      <p>Bạn có muốn tuyển cộng tác viên không?<span class="required">*</span></p>
+      <div class="question-answer" (change)="kiemtra()">
+        <div>
+          <input type="radio" value="none" id="radio_1" name="status" required/>
+          <label for="radio_1" class="radio"><span>Có</span></label>
+        </div>
+        <div>
+          <input type="radio" value="none" id="radio_2" name="status" checked required/>
+          <label for="radio_2" class="radio"><span>Không</span></label>
+        </div>
+      </div>
+    </div>
+    <div id="congtac" style="display:none" >
+      <div class="item">
+        <p>Số lượng<span class="required">*</span></p>
+        <input type="number" name="name" placeholder="5" />
+      </div>
+      <div class="item">
+        <p>Tiêu chí</p>
+        <textarea id="tieuchi" rows="2"></textarea>
+      </div>
+    </div>
+    <div class="btn-block">
+      <button type="submit" href="/">Submit</button>
+      <button class="btn-danger" type="submit" href="/">Hủy</button>
+    </div>
+</form>
+</div>
+
+<style>
+  .btn-block {
+    margin-top: 10px;
+    text-align: center;
+  }
+  button{
+    width: 120px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background:  #03a9f4;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+  }
+  button:hover {
+    background:  #102baf;
+  }
+  .btn-danger {
+    margin-top: 10px;
+    text-align: center;
+    margin-left: 20px;
+  }
+  .btn-danger{
+    width: 120px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background:  #b21f2d;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+  }
+  .btn-danger:hover {
+    background:  #a71d2a;
+  }
+</style>
