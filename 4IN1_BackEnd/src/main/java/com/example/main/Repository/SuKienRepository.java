@@ -1,4 +1,7 @@
 package com.example.main.Repository;
 
-public interface SuKienRepository {
+import com.example.main.Entity.SuKien;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
 }
