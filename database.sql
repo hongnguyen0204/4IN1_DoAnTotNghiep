@@ -1,5 +1,6 @@
--- create database quanlysukien;
--- use quanlysukien;
+ -- create database quanlysukien;
+--  use quanlysukien;
+
 create table account_information(
 	ID int,
     username varchar(50),
@@ -9,7 +10,8 @@ create table account_information(
     faculty nvarchar(50),
 	day_of_birth date,
     phone_number varchar(10),
-    role_acc bit,
+    role_acc boolean null default 0,
+    status_acc boolean null default 0,
 	primary key(ID)
 );
 
