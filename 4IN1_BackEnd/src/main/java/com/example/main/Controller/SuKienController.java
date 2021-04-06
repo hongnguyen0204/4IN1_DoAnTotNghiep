@@ -1,6 +1,4 @@
 package com.example.main.Controller;
-
-
 import com.example.main.Entity.SuKien;
 import com.example.main.Repository.SuKienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +14,8 @@ public class SuKienController {
    @Autowired
    private SuKienRepository suKienRepository;
 
-   @GetMapping("/sukien")
+    @GetMapping("/sukien")
     public List<SuKien> getSuKiens() {
-    return suKienRepository.findAll();
+        return suKienRepository.findAll();
+    }
    }
-}
