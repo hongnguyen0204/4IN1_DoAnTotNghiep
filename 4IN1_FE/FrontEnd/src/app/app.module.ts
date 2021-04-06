@@ -16,6 +16,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import {FormsModule} from '@angular/forms';
 import {AdminModule} from './admin/admin.module';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -37,9 +38,9 @@ import {AdminModule} from './admin/admin.module';
         AppRoutingModule,
         CKEditorModule,
         FormsModule,
-        AdminModule
+        AdminModule,
+        HttpClientModule
     ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

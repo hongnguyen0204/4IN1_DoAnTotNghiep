@@ -11,6 +11,9 @@ import {Sukien} from '../Model/sukien';
 export class DangkithamgiasukienComponent implements OnInit {
   // @ts-ignore
   sukiens: Sukien[];
+  // @ts-ignore
+  sukien: Sukien;
+
   constructor(private sukienService: SukienService ) { }
 
   ngOnInit(): void {
@@ -18,7 +21,7 @@ export class DangkithamgiasukienComponent implements OnInit {
     this.reloadData();
   }
 
-  reloadDate(){
+  reloadData(){
     this.sukienService.findAll().subscribe(data=>{
       this.sukiens = data;
     })

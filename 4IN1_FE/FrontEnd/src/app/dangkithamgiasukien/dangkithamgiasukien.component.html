@@ -1,20 +1,22 @@
-<head>
-  <title>Đăng kí tham gia sự kiện</title>
-</head>
+
 <body  style="position: relative;margin-top: 130px">
+<div *ngFor="let sk of sukiens">
+  <div *ngIf="sk.ID == 1">
+  </div>
+  <ng-template #old>
   <div class="container" style="width: 70%;margin: auto;position: sticky;">
     <div class="row">
       <div class="col-lg-12">
         <div class="row justify-content-center">
           <div class="col-lg-8 button-join-event">
             <div class="content-event">
-              <h1 class="title" style="margin-top:50px; text-align:center;">Chào đón tân sinh viên K23</h1>
+              <h1 class="title" style="margin-top:50px; text-align:center;">{{sk.event_name}}</h1>
               <br>
-              <h5 class="summary">Lễ khai giảng "Khát Vọng Duy Tân: Top 300 Đại Học Châu Á": 7h00 Thứ Năm ngày 14/09/2017 tại Nhà hát Trương Vương. Danh sách sinh viên tham dự Lễ  sẽ được các Khoa sẽ gửi thư mời riêng.</h5>
+              <h5 class="summary">{{sk.describe_of_event}}</h5>
               <br>
-              <img src="assets/images/sukien1.jpg">
+
               <br>
-              <h6 class="content">Lễ Đón tân sinh viên K23: cả ngày chủ Nhật - 17/09/2017 tại sân trường số 03 Quang Trung. Thành phần: mời tất cả tân sinh viên K23 tham dự. Sẽ có rất nhiều hoạt động giao lưu văn nghệ, các cuộc thi hấp dẫn dành cho các bạn. Nhớ đến tham gia nhé.</h6>
+              <h6 class="content">{{sk.describe_of_event}}</h6>
               <br>
               <img src="assets/images/sukien2.png">
               <br>
@@ -29,4 +31,11 @@
       </div>
     </div> <!-- row -->
   </div> <!-- container -->
+  </ng-template>
+<ng-template #elseBlock>
+  <h6>Rỗng</h6>
+</ng-template>
+</div>
   </body>
+
+
