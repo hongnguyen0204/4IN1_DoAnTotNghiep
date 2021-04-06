@@ -1,15 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import {SukienService} from '../Service/sukien.service';
+import {Sukien} from '../Model/sukien';
 
 @Component({
   selector: 'app-dangkithamgiasukien',
   templateUrl: './dangkithamgiasukien.component.html',
-  styleUrls: ['./dangkithamgiasukien.component.scss']
+  styleUrls: ['./dangkithamgiasukien.component.scss'],
+  providers: [SukienService]
 })
 export class DangkithamgiasukienComponent implements OnInit {
-
-  constructor() { }
+  // @ts-ignore
+  sukiens: Sukien[];
+  constructor(private sukienService: SukienService ) { }
 
   ngOnInit(): void {
+    // @ts-ignore
+    this.reloadData();
+  }
+
+  reloadDate(){
+    this.sukienService.findAll().subscribe(data=>{
+      this.sukiens = data;
+    })
   }
 
 }
