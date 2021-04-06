@@ -1,4 +1,4 @@
 package com.example.main.Controller;
 
-public class LoginController {
+public class DangNhapController {
 }
