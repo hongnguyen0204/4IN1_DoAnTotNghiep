@@ -19,7 +19,11 @@ public class SuKien {
 
     private String place;
 
+    private String faculty;
+
     private String describe_of_event;
+
+    private String content;
 
     private String img;
 
@@ -36,6 +40,22 @@ public class SuKien {
     private int owner_event_id;
 
     private boolean hot;
+
+    public String getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     public int getID() {
         return ID;
@@ -152,13 +172,15 @@ public class SuKien {
     public SuKien() {
     }
 
-    public SuKien(int ID, String event_name, String organizer, Date time_of_event, String place, String describe_of_event, String img, String plan_file, int number_of_collaborators, String criteria, Date end_day, String status_of_event, int owner_event_id, boolean hot) {
+    public SuKien(int ID, String event_name, String organizer, Date time_of_event, String place, String faculty, String describe_of_event, String content, String img, String plan_file, int number_of_collaborators, String criteria, Date end_day, String status_of_event, int owner_event_id, boolean hot) {
         this.ID = ID;
         this.event_name = event_name;
         this.organizer = organizer;
         this.time_of_event = time_of_event;
         this.place = place;
+        this.faculty = faculty;
         this.describe_of_event = describe_of_event;
+        this.content = content;
         this.img = img;
         this.plan_file = plan_file;
         this.number_of_collaborators = number_of_collaborators;
