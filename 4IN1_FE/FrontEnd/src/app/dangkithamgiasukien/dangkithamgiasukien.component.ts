@@ -12,7 +12,7 @@ export class DangkithamgiasukienComponent implements OnInit {
   // @ts-ignore
   sukiens: Sukien[];
   // @ts-ignore
-  sukien: Sukien;
+  sosanh: number;
 
   constructor(private sukienService: SukienService ) { }
 
@@ -26,5 +26,4 @@ export class DangkithamgiasukienComponent implements OnInit {
       this.sukiens = data;
     })
   }
-
 }

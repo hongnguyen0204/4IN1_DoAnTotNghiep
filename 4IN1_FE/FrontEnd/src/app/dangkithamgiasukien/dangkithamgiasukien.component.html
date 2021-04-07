@@ -1,9 +1,7 @@
 
 <body  style="position: relative;margin-top: 130px">
-<!--<div *ngFor="let sk of sukiens">-->
-<!--  <div *ngIf="sk.ID == 1">-->
-<!--  </div>-->
-  <ng-template #old>
+<div *ngFor="let sk of sukiens;">
+  <div *ngIf="sk.id == 2">
   <div class="container" style="width: 70%;margin: auto;position: sticky;">
     <div class="row">
       <div class="col-lg-12">
@@ -14,7 +12,6 @@
               <br>
               <h5 class="summary">{{sk.describe_of_event}}</h5>
               <br>
-
               <br>
               <h6 class="content">{{sk.describe_of_event}}</h6>
               <br>
@@ -31,10 +28,7 @@
       </div>
     </div> <!-- row -->
   </div> <!-- container -->
-  </ng-template>
-<ng-template #elseBlock>
-  <h6>Rỗng</h6>
-</ng-template>
+</div>
 </div>
   </body>
 

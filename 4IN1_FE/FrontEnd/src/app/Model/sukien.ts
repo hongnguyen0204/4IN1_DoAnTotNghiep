@@ -1,12 +1,12 @@
 export class Sukien {
   // @ts-ignore
-  ID: string;
+  id: number;
   // @ts-ignore
   event_name: string;
   // @ts-ignore
   organizer: string;
   // @ts-ignore
-  Date: Date;
+  time_of_event: Date;
   // @ts-ignore
   place: string;
   // @ts-ignore
