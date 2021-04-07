@@ -24,8 +24,7 @@ const routes: Routes = [
   {path: 'quenmatkhau', component: QuenmatkhauComponent},
   {path: 'quanlycongtacvien', component: QuanlycongtacvienComponent},
   {path: 'add', component: DangkyComponent},
-  {path: '', redirectTo: '/trangchu', pathMatch: 'full' },
-  {path: '', redirectTo: 'dangkithamgiasukien', pathMatch:'full' }
+  {path: '', redirectTo: '/trangchu', pathMatch: 'full' }
   ];
 
 @NgModule({
