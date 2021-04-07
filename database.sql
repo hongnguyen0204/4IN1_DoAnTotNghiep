@@ -2,7 +2,7 @@
 --  use quanlysukien;
 
 create table account_information(
-	ID int,
+	ID int AUTO_INCREMENT,
     username varchar(50),
     pwd nvarchar(50),
     email varchar(50),
@@ -16,7 +16,7 @@ create table account_information(
 );
 
 create table event_information(
-	ID int,
+	ID int AUTO_INCREMENT,
     event_name nvarchar(100),
     organizer nvarchar(50),
     time_of_event	datetime,
@@ -41,14 +41,14 @@ create table join_register(
 	constraint fk_IDSKDK foreign key(event_ID) references event_information(ID)
 );
 create table collaborator(
-	user_ID int,
+	user_ID int ,
     event_ID int,
 	constraint fk_IDNDCTV foreign key(user_ID) references account_information(ID),
 	constraint fk_IDSKCTV foreign key(event_ID) references event_information(ID)
 );
 
 create table news(
-	ID int,
+	ID int AUTO_INCREMENT,
     title nvarchar(100),
     describe_of_news nvarchar(500),
     content text,
