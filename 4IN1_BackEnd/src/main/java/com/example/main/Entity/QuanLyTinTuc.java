@@ -7,7 +7,6 @@ import java.util.Date;
 @Table(name = "news")
 public class QuanLyTinTuc {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private  String title;
     private  String describe_of_news;
