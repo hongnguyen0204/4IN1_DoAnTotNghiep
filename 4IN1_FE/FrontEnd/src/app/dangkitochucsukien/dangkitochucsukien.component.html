@@ -1,7 +1,6 @@
 <head>
   <title>Đăng kí tổ chức sự kiện</title>
 </head>
-
 <div class="testbox" style="position: relative;margin-top: 130px">
   <form action="/">
     <div class="banner">
@@ -9,44 +8,44 @@
     </div>
     <div class="item">
       <p>Tên sự kiện<span class="required">*</span></p>
-      <input type="text" name="name" placeholder="Tên sự kiện" required/>
+      <input type="text" name="event_name" [(ngModel)]="sukien.event_name" placeholder="Tên sự kiện" required/>
     </div>
     <div class="contact-item">
       <div class="item">
         <p>Số điện thoại<span class="required">*</span></p>
-        <input type="text" name="name" placeholder="Số điện thoại" required/>
+        <input type="text" name="phone"  placeholder="Số điện thoại" required/>
       </div>
       <div class="item">
         <p>Email<span class="required">*</span></p>
-        <input type="text" name="name" placeholder="Email" required/>
+        <input type="text" name="email" placeholder="Email" required/>
       </div>
     </div>
     <div class="position-item">
       <div class="item">
         <p>Địa điểm tổ chức<span class="required">*</span></p>
-        <select required>
+        <select name="place" [(ngModel)]="sukien.place" required>
           <option value="0" selected>Chọn địa điểm</option>
-          <option value="1">P-603 Quang Trung</option>
-          <option value="2">Hòa Khách Nam</option>
-          <option value="3">Phan Thanh</option>
+          <option value="P-603 Quang Trung">P-603 Quang Trung</option>
+          <option value="Hòa Khách Nam">Hòa Khách Nam</option>
+          <option value="Phan Thanh">Phan Thanh</option>
         </select>
       </div>
       <div class="item">
         <p>Ngày tổ chức<span class="required">*</span></p>
-        <input type="datetime-local" name="bdate" required/>
+        <input [(ngModel)]="sukien.time_of_event" type="datetime-local" name="date_start" required/>
       </div>
     </div>
     <div class="position-item">
       <div class="item">
         <p>Khoa<span class="required">*</span></p>
-        <select required>
+        <select name="khoa" [(ngModel)]="sukien.faculty" required>
           <option value="0" selected>Chọn Khoa</option>
-          <option value="1">Công nghệ thông tin</option>
-          <option value="2">Du lịch</option>
-          <option value="3">Kiến trúc</option>
-          <option value="4">Ngôn Ngữ Anh</option>
-          <option value="5">Kế Toán</option>
-          <option value="6">Y</option>
+          <option value="Công nghệ thông tin">Công nghệ thông tin</option>
+          <option value="Du lịch">Du lịch</option>
+          <option value="Kiến trúc">Kiến trúc</option>
+          <option value="Ngôn Ngữ Anh">Ngôn Ngữ Anh</option>
+          <option value="Kế Toán">Kế Toán</option>
+          <option value="Y">Y</option>
         </select>
       </div>
       <div class="item">
@@ -57,12 +56,12 @@
 
     <div class="item">
       <p>Mô tả</p>
-      <textarea id="instructions" rows="3"></textarea>
+      <textarea  name="describle" [(ngModel)]="sukien.describe_of_event" id="instructions" rows="3"></textarea>
       <p>Nội dung</p>
-      <ckeditor name="ckeditor" id="txtckeditor"></ckeditor>
+      <ckeditor name="ckeditor" [(ngModel)]="sukien.content" id="txtckeditor"></ckeditor>
       <br>
       <p>Bảng kế hoạch</p>
-      <input type="file" name="file" accept="file/*">
+      <input type="file" (change)="save($event)" name="file" >
     </div>
     <div class="question">
       <p>Bạn có muốn tuyển cộng tác viên không?<span class="required">*</span></p>
@@ -80,16 +79,16 @@
     <div id="congtac" style="display:none" >
       <div class="item">
         <p>Số lượng<span class="required">*</span></p>
-        <input type="number" name="name" placeholder="5" />
+        <input type="number" [(ngModel)]="sukien.number_of_collaborators" name="name" placeholder="5" />
       </div>
       <div class="item">
         <p>Tiêu chí</p>
-        <textarea id="tieuchi" rows="2"></textarea>
+        <textarea name="tieuchi" [(ngModel)]="sukien.criteria" id="tieuchi"rows="2"></textarea>
       </div>
     </div>
     <div class="btn-block">
-      <button type="submit" href="/">Submit</button>
-      <button class="btn-danger" type="submit" href="/">Hủy</button>
+      <button (click)="add()">Submit</button>
+      <button class="btn-danger" >Hủy</button>
     </div>
 </form>
 </div>

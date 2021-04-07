@@ -17,6 +17,9 @@ import { FooterComponent } from './footer/footer.component';
 import {FormsModule} from '@angular/forms';
 import {AdminModule} from './admin/admin.module';
 import {HttpClientModule} from '@angular/common/http';
+import {AngularClassDecorators} from 'codelyzer/util/utils';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import {HttpClientModule} from '@angular/common/http';
         CKEditorModule,
         FormsModule,
         AdminModule,
-        HttpClientModule
+        HttpClientModule,
+      AngularFireModule.initializeApp(environment.firebaseConfig)
     ],
   bootstrap: [AppComponent]
 })

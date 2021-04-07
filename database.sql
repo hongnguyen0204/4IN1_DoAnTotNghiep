@@ -1,5 +1,6 @@
- -- create database quanlysukien;
---  use quanlysukien;
+-- drop database quanlysukien;
+--  create database quanlysukien;
+-- use quanlysukien;
 
 create table account_information(
 	ID int AUTO_INCREMENT,
@@ -21,7 +22,9 @@ create table event_information(
     organizer nvarchar(50),
     time_of_event	datetime,
     place	nvarchar(100),
+    faculty nvarchar(50),
     describe_of_event nvarchar(1000),
+    content nvarchar(10000),
     img nvarchar(200),
     planfile nvarchar(200),
     number_of_collaborators int,
