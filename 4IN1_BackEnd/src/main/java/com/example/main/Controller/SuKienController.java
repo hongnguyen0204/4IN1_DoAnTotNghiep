@@ -9,19 +9,18 @@ import java.util.Random;
 
 @RestController
 @CrossOrigin (origins = "http://localhost:4200")
+@RequestMapping(value = "/student")
 public class SuKienController {
    @Autowired
    private SuKienRepository suKienRepository;
 
-   @GetMapping("/sukien")
+   @GetMapping("/all")
     public List<SuKien> getSuKiens() {
         return suKienRepository.findAll();
     }
 
     @PostMapping("/add")
     public SuKien addSuKien(SuKien suKien){
-       Random generator = new Random();
-       suKien.setID(generator.nextInt(1000000));
        return suKienRepository.save(suKien);
     }
 

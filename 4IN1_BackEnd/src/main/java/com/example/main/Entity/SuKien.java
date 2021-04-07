@@ -1,13 +1,14 @@
 package com.example.main.Entity;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.GeneratorType;
+
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
 @Table(name = "event_information")
 public class SuKien {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
 
     private String event_name;
