@@ -1,6 +1,6 @@
 export class Sukien {
   // @ts-ignore
-  ID: number;
+  ID: string;
   // @ts-ignore
   event_name: string;
   // @ts-ignore
