@@ -179,30 +179,30 @@
           <div class="event-tab mt-60">
             <ul class="nav justify-content-between align-items-center" id="myTab" role="tablist">
               <li class="nav-item">
-                <a class="active" id="day-1-tab" data-toggle="tab" href="#day-1" role="tab" aria-controls="day-1"
+                <a class="active" id="day-1-tab" (click)="dataMonth(month)" data-toggle="tab" href="#day-1" role="tab" aria-controls="day-1"
                    aria-selected="true">
-                  <h4 class="nav-title">Tháng {{m}}</h4>
+                  <h4 class="nav-title">Tháng {{month}}</h4>
                   <span> </span>
                 </a>
               </li>
               <li class="nav-item">
-                <a id="day-2-tab" data-toggle="tab" href="#day-2" role="tab" aria-controls="day-2"
+                <a id="day-2-tab" data-toggle="tab" (click)="dataMonth(month + 1)" href="#day-2" role="tab" aria-controls="day-2"
                    aria-selected="false">
-                  <h4 class="nav-title">Tháng {{m + 1}}</h4>
+                  <h4 class="nav-title">Tháng {{month + 1}}</h4>
                   <span> </span>
                 </a>
               </li>
               <li class="nav-item">
-                <a id="day-3-tab" data-toggle="tab" href="#day-3" role="tab" aria-controls="day-3"
+                <a id="day-3-tab" data-toggle="tab" (click)="dataMonth(month + 2)" href="#day-3" role="tab" aria-controls="day-3"
                    aria-selected="false">
-                  <h4 class="nav-title">Tháng {{m + 2}}</h4>
+                  <h4 class="nav-title">Tháng {{month + 2}}</h4>
                   <span> </span>
                 </a>
               </li>
               <li class="nav-item">
-                <a id="day-4-tab" data-toggle="tab" href="#day-4" role="tab" aria-controls="day-4"
+                <a id="day-4-tab" data-toggle="tab" (click)="dataMonth(month + 3)" href="#day-4" role="tab" aria-controls="day-4"
                    aria-selected="false">
-                  <h4 class="nav-title">Tháng {{m + 3}}</h4>
+                  <h4 class="nav-title">Tháng {{month + 3}}</h4>
                   <span> </span>
                 </a>
               </li>
@@ -211,8 +211,7 @@
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="day-1" role="tabpanel" aria-labelledby="day-1-tab">
                 <div class="event-content pt-40">
-                  <div *ngFor="let sk of sukiens;">
-                    <div *ngIf="sk.time_of_event.getMonth() == m">
+                  <div *ngFor="let sk of sukien">
                       <div class="single-event d-md-flex mt-30">
                         <div class="event-image">
                           <img src="assets/images/event-1.jpg" alt="Event">
@@ -221,22 +220,18 @@
                           <h4 class="event-title">{{sk.event_name}}</h4>
                           <p class="text">{{sk.describe_of_event}}</p>
                           <ul class="event-meta">
-                            <li>Ngày tổ chức: {{sk.time_of_event.getDay()}}/{{sk.time_of_event.getMonth()}}/{{sk.time_of_event.getFullYear()}}</li>
-                            <li>Start: {{sk.time_of_event.getHours()}}:{{sk.time_of_event.getMinutes()}}</li>
+                            <li>Start: {{sk.time_of_event}}</li>
                             <li>End: {{sk.end_day}} </li>
                             <li>Địa điểm: {{sk.place}}</li>
                           </ul>
                         </div>
                       </div>
-                    </div>
                   </div><!-- single event -->
-
                 </div> <!-- event content -->
               </div>
               <div class="tab-pane fade" id="day-2" role="tabpanel" aria-labelledby="day-2-tab">
                 <div class="event-content pt-40">
-                  <div *ngFor="let sk of sukiens;">
-                    <div *ngIf="sk.time_of_event.getMonth() == m+1">
+                  <div *ngFor="let sk of sukien">
                       <div class="single-event d-md-flex mt-30">
                         <div class="event-image">
                           <img src="assets/images/event-1.jpg" alt="Event">
@@ -245,22 +240,18 @@
                           <h4 class="event-title">{{sk.event_name}}</h4>
                           <p class="text">{{sk.describe_of_event}}</p>
                           <ul class="event-meta">
-                            <li>Ngày tổ chức: {{sk.time_of_event.getDay()}}/{{sk.time_of_event.getMonth()}}/{{sk.time_of_event.getFullYear()}}</li>
-                            <li>Start: {{sk.time_of_event.getHours()}}:{{sk.time_of_event.getMinutes()}}</li>
+                            <li>Start: {{sk.time_of_event}}</li>
                             <li>End: {{sk.end_day}} </li>
                             <li>Địa điểm: {{sk.place}}</li>
                           </ul>
                         </div>
                       </div>
-                    </div>
                   </div> <!-- single event -->
-
                 </div> <!-- event content -->
               </div>
               <div class="tab-pane fade" id="day-3" role="tabpanel" aria-labelledby="day-3-tab">
                 <div class="event-content pt-40">
-                  <div *ngFor="let sk of sukiens;">
-                    <div *ngIf="sk.time_of_event.getMonth() == m+2">
+                  <div *ngFor="let sk of sukien">
                       <div class="single-event d-md-flex mt-30">
                         <div class="event-image">
                           <img src="assets/images/event-1.jpg" alt="Event">
@@ -269,22 +260,19 @@
                           <h4 class="event-title">{{sk.event_name}}</h4>
                           <p class="text">{{sk.describe_of_event}}</p>
                           <ul class="event-meta">
-                            <li>Ngày tổ chức: {{sk.time_of_event.getDay()}}/{{sk.time_of_event.getMonth()}}/{{sk.time_of_event.getFullYear()}}</li>
-                            <li>Start: {{sk.time_of_event.getHours()}}:{{sk.time_of_event.getMinutes()}}</li>
+                            <li>Start: {{sk.time_of_event}}</li>
                             <li>End: {{sk.end_day}} </li>
                             <li>Địa điểm: {{sk.place}}</li>
                           </ul>
                         </div>
                       </div>
-                    </div>
                   </div> <!-- single event -->
 
                 </div> <!-- event content -->
               </div>
               <div class="tab-pane fade" id="day-4" role="tabpanel" aria-labelledby="day-4-tab">
                 <div class="event-content pt-40">
-                  <div *ngFor="let sk of sukiens;">
-                    <div *ngIf="sk.time_of_event.getMonth() == m+3">
+                  <div *ngFor="let sk of sukien">
                       <div class="single-event d-md-flex mt-30">
                         <div class="event-image">
                           <img src="assets/images/event-1.jpg" alt="Event">
@@ -293,8 +281,7 @@
                           <h4 class="event-title">{{sk.event_name}}</h4>
                           <p class="text">{{sk.describe_of_event}}</p>
                           <ul class="event-meta">
-                            <li>Ngày tổ chức: {{sk.time_of_event.getDay()}}/{{sk.time_of_event.getMonth()}}/{{sk.time_of_event.getFullYear()}}</li>
-                            <li>Start: {{sk.time_of_event.getHours()}}:{{sk.time_of_event.getMinutes()}}</li>
+                            <li>Start: {{sk.time_of_event}}</li>
                             <li>End: {{sk.end_day}} </li>
                             <li>Địa điểm: {{sk.place}}</li>
                           </ul>
@@ -302,13 +289,11 @@
                       </div>
                     </div>
                   </div> <!-- single event -->
-
                 </div> <!-- event content -->
               </div>
             </div>
           </div>
         </div> <!-- event tab -->
-      </div>
     </div> <!-- row -->
     <!-- container -->
 <div class="container">

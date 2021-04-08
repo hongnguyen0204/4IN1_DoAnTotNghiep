@@ -38,4 +38,10 @@ public class SuKienController {
         sk.setStatus_of_event("Từ chối");
         suKienRepository.save(sk);
     }
+
+    @GetMapping("/theothang/{thang}")
+    public List<SuKien> getSK(@PathVariable Integer thang){
+       return suKienRepository.findByMonth(thang);
+    }
+
    }

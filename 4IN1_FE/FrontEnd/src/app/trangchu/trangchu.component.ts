@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Sukien} from '../Model/sukien';
 import {SukienService} from '../Service/sukien.service';
+import {getLocaleMonthNames} from '@angular/common';
 
 @Component({
   selector: 'app-trangchu',
@@ -10,17 +11,25 @@ import {SukienService} from '../Service/sukien.service';
 })
 export class TrangchuComponent implements OnInit {
   // @ts-ignore
-  sukiens: Sukien[];
+  sukien: Sukien[];
   // @ts-ignore
-  m :number; //Biến lấy tháng hiện tại
-
+  m: Date = new Date();
+  // @ts-ignore
+  month:number = this.m.getMonth() + 1;
+  // @ts-ignore
+  sukiens: Sukien[];
   constructor(private sukienService: SukienService) {
   }
 
   ngOnInit(): void {
-    this.reloadData();
-    var d = new Date();
-    this.m = d.getMonth() + 1;
+    this.month;
+    this.dataMonth(this.month);
+  }
+
+  dataMonth(id:number){
+    this.sukienService.findByMonth(id).subscribe(data=>{
+      this.sukien=data;
+    })
   }
 
   reloadData() {
