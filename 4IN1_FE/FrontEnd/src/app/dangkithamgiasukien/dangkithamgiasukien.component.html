@@ -1,22 +1,27 @@
 
 <body  style="position: relative;margin-top: 130px">
-<!--<div *ngFor="let sk of sukiens">-->
-<!--  <div *ngIf="sk.ID == 1">-->
-<!--  </div>-->
-  <ng-template #old>
+<div *ngFor="let sk of sukiens">
+  <div *ngIf="sk.id == 25">
+
   <div class="container" style="width: 70%;margin: auto;position: sticky;">
     <div class="row">
       <div class="col-lg-12">
         <div class="row justify-content-center">
           <div class="col-lg-8 button-join-event">
             <div class="content-event">
-              <h1 class="title" style="margin-top:50px; text-align:center;">{{sk.event_name}}</h1>
+              <h1 class="title" style="margin-top:50px; text-align:center;"></h1>
               <br>
-              <h5 class="summary">{{sk.describe_of_event}}</h5>
+              <h5 class="summary"></h5>
               <br>
 
               <br>
-              <h6 class="content">{{sk.describe_of_event}}</h6>
+
+
+              <div class="panel-body" [innerHtml]='sk.content'>
+
+              </div>
+
+
               <br>
               <img src="assets/images/sukien2.png">
               <br>
@@ -31,11 +36,7 @@
       </div>
     </div> <!-- row -->
   </div> <!-- container -->
-  </ng-template>
-<ng-template #elseBlock>
-  <h6>Rỗng</h6>
-</ng-template>
+
+
+  </div>
 </div>
-  </body>
-
-
