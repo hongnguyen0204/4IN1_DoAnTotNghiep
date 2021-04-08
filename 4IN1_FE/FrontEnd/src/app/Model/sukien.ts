@@ -10,7 +10,11 @@ export class Sukien {
   // @ts-ignore
   place: string;
   // @ts-ignore
+  faculty: string;
+  // @ts-ignore
   describe_of_event: string;
+  // @ts-ignore
+  content: string;
   // @ts-ignore
   img: string;
   // @ts-ignore
@@ -18,7 +22,7 @@ export class Sukien {
   // @ts-ignore
   number_of_collaborators: number;
   // @ts-ignore
-  riteria: string;
+  criteria: string;
   // @ts-ignore
   end_day: Date;
   // @ts-ignore
