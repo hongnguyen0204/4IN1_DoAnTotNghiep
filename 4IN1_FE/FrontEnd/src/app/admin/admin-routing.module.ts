@@ -6,7 +6,7 @@ import {ThongkeComponent} from './chitietsukien/thongke.component';
 import {SukienComponent} from './sukien/sukien.component';
 import {TintucComponent} from './tintuc/tintuc.component';
 import {ThemmoitintucComponent} from './themmoitintuc/themmoitintuc.component';
-import {SuatintucComponent} from './suatintuc/suatintuc.component';
+import {SuatintucComponent} from "./suatintuc/suatintuc.component";
 
 
 const routes: Routes = [
@@ -16,7 +16,8 @@ const routes: Routes = [
   {path: 'admin/sukien', component: SukienComponent },
   {path: 'admin/tintuc', component: TintucComponent },
   {path: 'admin/themmoitintuc', component: ThemmoitintucComponent },
-  {path: 'admin/suatintuc', component: SuatintucComponent }
+  {path: 'admin/suatintuc', component: SuatintucComponent },
+
 ];
 
 @NgModule({
