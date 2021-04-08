@@ -4,13 +4,15 @@ import {QuanlytintucserviceService} from "../../Service/quanlytintucservice.serv
 import {Quanlytintuc} from "../../Model/quanlytintuc";
 // @ts-ignore
 import {ActivatedRoute, Router} from '@angular/router';
+import {DatePipe} from "@angular/common";
+
 
 // @ts-ignore
 @Component({
   selector: 'app-tintuc',
   templateUrl: './tintuc.component.html',
   styleUrls: ['./tintuc.component.scss'],
-  providers:[QuanlytintucserviceService]
+  providers:[QuanlytintucserviceService, DatePipe]
 })
 export class TintucComponent implements OnInit {
   // @ts-ignore
@@ -18,8 +20,12 @@ export class TintucComponent implements OnInit {
   // @ts-ignore
   quanlytintucs: Quanlytintuc[];
   // @ts-ignore
+
+
   constructor(private quanLyTinTucService: QuanlytintucserviceService,private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,public datepipe: DatePipe, ) {
+
+  }
 
   ngOnInit(): void {
     this.reloadData();
@@ -46,7 +52,7 @@ export class TintucComponent implements OnInit {
   }
 
   updateTinTuc(id: number){
-    this.router.navigate(['/admin/suatintuc',id])
+    this.router.navigate(['/admin/suatintuc',id]);
   }
 
 }
