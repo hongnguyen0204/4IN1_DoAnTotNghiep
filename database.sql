@@ -30,7 +30,7 @@ create table event_information(
     number_of_collaborators int,
     criteria nvarchar(1000),
     end_day date,
-    status_of_event nvarchar(20),
+    status_of_event nvarchar(20) null default 'Đang chờ',
     owner_event_id int,
     hot boolean,
 	constraint fk_evid foreign key(owner_event_id) references account_information(ID),
