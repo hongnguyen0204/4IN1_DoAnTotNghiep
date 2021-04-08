@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Random;
+
 
 @RestController
 @CrossOrigin (origins = "http://localhost:4200")
@@ -23,10 +23,12 @@ public class QuanLyTinTucController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public QuanLyTinTuc add(@RequestBody QuanLyTinTuc quanLyTinTuc){
-        Random generato = new Random();
-        quanLyTinTuc.setId(generato.nextInt(10000000));
-        return quanLyTInTucRepository.save(quanLyTinTuc);
+    public void add(@RequestBody QuanLyTinTuc quanLyTinTuc){
+        long millis=System.currentTimeMillis();
+        java.sql.Date date=new java.sql.Date(millis);
+        quanLyTinTuc.setPostday(date);
+        quanLyTinTuc.setID_admin(1);
+         quanLyTInTucRepository.save(quanLyTinTuc);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -41,7 +43,9 @@ public class QuanLyTinTucController {
             quanLyTinTuc.setTitle(st.getTitle());
             quanLyTinTuc.setDescribe_of_news(st.getDescribe_of_news());
             quanLyTinTuc.setContent(st.getContent());
+            if(quanLyTinTuc.getImg()!=null){
             quanLyTinTuc.setImg(st.getImg());
+            }
             quanLyTinTuc.setPostday(st.getPostday());
             quanLyTInTucRepository.save(quanLyTinTuc);
             return new ResponseEntity<>(HttpStatus.OK);
