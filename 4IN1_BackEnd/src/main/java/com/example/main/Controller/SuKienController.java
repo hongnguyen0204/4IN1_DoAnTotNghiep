@@ -26,14 +26,16 @@ public class SuKienController {
     }
 
     @PutMapping("/duyet/{id}")
-    public SuKien duyetSuKien(SuKien suKien){
-        suKien.setStatus_of_event("Đồng ý");
-        return suKienRepository.save(suKien);
+    public void duyetSuKien(@PathVariable Integer id){
+        SuKien sk =suKienRepository.findById(id).get();
+        sk.setStatus_of_event("Đồng ý");
+         suKienRepository.save(sk);
     }
 
     @PutMapping("/tuchoiduyet/{id}")
-    public SuKien tuChoiDuyetSuKien(SuKien suKien){
-        suKien.setStatus_of_event("Từ chối");
-        return suKienRepository.save(suKien);
+    public void tuChoiDuyetSuKien(@PathVariable Integer id){
+        SuKien sk =suKienRepository.findById(id).get();
+        sk.setStatus_of_event("Từ chối");
+        suKienRepository.save(sk);
     }
    }
