@@ -41,7 +41,9 @@ public class QuanLyTinTucController {
             quanLyTinTuc.setTitle(st.getTitle());
             quanLyTinTuc.setDescribe_of_news(st.getDescribe_of_news());
             quanLyTinTuc.setContent(st.getContent());
+            if(quanLyTinTuc.getImg()!=null){
             quanLyTinTuc.setImg(st.getImg());
+            }
             quanLyTinTuc.setPostday(st.getPostday());
             quanLyTInTucRepository.save(quanLyTinTuc);
             return new ResponseEntity<>(HttpStatus.OK);
