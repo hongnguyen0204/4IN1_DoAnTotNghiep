@@ -11,6 +11,7 @@ import java.util.NoSuchElementException;
 import java.util.Random;
 
 @RestController
+@CrossOrigin (origins = "http://localhost:4200")
 @RequestMapping(value = "/quanlytintuc")
 public class QuanLyTinTucController {
     @Autowired

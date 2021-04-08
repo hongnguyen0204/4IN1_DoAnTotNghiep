@@ -124,9 +124,8 @@
                 <div class="table-responsive">
                   <table datatable [dtOptions]="dtOptions" style="table-layout: fixed;" class="row-border hover" style="width:100%">
                     <thead>
-                    <tr>
+                    <tr >
                       <th>STT</th>
-                      <th>Mã Tin Tức</th>
                       <th>Tên Tin Tức</th>
                       <th>Mô Tả Tin Tức</th>
                       <th>Ngày Đăng Tin</th>
@@ -134,81 +133,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>TT02</td>
-                      <td>Chào đón tân sinh viên 2021</td>
-                      <td>Là sự kiện chào đón tân sinh viên</td>
-                      <td>20/11/202</td>
-                      <td> <a class="btn btn-success" href="admin/suatintuc">Sửa</a>
-                        <a class="btn btn-danger" href="">Xóa</a>
+                    <tr *ngFor="let quanlytintuc of quanlytintucs;let i=index">
+                      <td>{{i+1}}</td>
+                      <td>{{quanlytintuc.title}}</td>
+                      <td>{{quanlytintuc.describe_of_news}}</td>
+                      <td>{{quanlytintuc.postday}}</td>
+                      <td> <a class="btn btn-success" href="admin/suatintuc" >Sửa</a>
+                        <a class="btn btn-danger" (click)="delete(quanlytintuc.id)" >Xóa</a>
                       </td>
-
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>TT02</td>
-                      <td>Chào đón tân sinh viên 2021</td>
-                      <td>Là sự kiện chào đón tân sinh viên</td>
-                      <td>20/11/202</td>
-                      <td> <a class="btn btn-success" href="admin/suatintuc">Sửa</a>
-                        <a class="btn btn-danger" href="">Xóa</a>
-                      </td>
-
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>TT03</td>
-                      <td>Chào đón tân sinh viên 2021</td>
-                      <td>Là sự kiện chào đón tân sinh viên</td>
-                      <td>20/11/202</td>
-                      <td> <a class="btn btn-success" href="admin/suatintuc">Sửa</a>
-                        <a class="btn btn-danger" href="">Xóa</a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>TT03</td>
-                      <td>Chào đón tân sinh viên 2021</td>
-                      <td> Là sự kiện chào đón tân sinh viên</td>
-                      <td>20/11/202</td>
-                      <td> <a class="btn btn-success" href="">Sửa</a>
-                        <a class="btn btn-danger" href="">Xóa</a>
-                      </td>
-
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>TT04</td>
-                      <td>Chào đón tân sinh viên 2021</td>
-                      <td>Là sự kiện chào đón tân sinh viên</td>
-                      <td>20/11/202</td>
-                      <td> <a class="btn btn-success" href="">Sửa</a>
-                        <a class="btn btn-danger" href="">Xóa</a>
-                      </td>
-
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>TT05</td>
-                      <td>Chào đón tân sinh viên 2021</td>
-                      <td>Là sự kiện chào đón tân sinh viên</td>
-                      <td>20/11/202</td>
-                      <td> <a class="btn btn-success" href="">Sửa</a>
-                        <a class="btn btn-danger" href="">Xóa</a>
-                      </td>
-
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>TT06</td>
-                      <td>Chào đón tân sinh viên 2021</td>
-                      <td>Là sự kiện chào đón tân sinh viên</td>
-                      <td>20/11/202</td>
-                      <td> <a class="btn btn-success" href="">Sửa</a>
-                        <a class="btn btn-danger" href="">Xóa</a>
-                      </td>
-
                     </tr>
                     </tbody>
                   </table>
