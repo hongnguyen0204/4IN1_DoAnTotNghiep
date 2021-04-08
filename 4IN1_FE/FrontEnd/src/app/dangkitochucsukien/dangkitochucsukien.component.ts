@@ -15,10 +15,16 @@ import {finalize} from 'rxjs/operators';
 export class DangkitochucsukienComponent implements OnInit {
 
   selectedImage: any = null;
+  selectedFile: any = null;
   // @ts-ignore
   id:string;
   // @ts-ignore
+  idIMG:string;
+  // @ts-ignore
   sukien : Sukien;
+  // @ts-ignore
+  imageSrc: string;
+
 
   constructor(private sukienService: SukienService, private router: Router,
               @Inject(AngularFireStorage) private storage: AngularFireStorage
@@ -28,26 +34,33 @@ export class DangkitochucsukienComponent implements OnInit {
     this.sukien = new Sukien();
   }
 
-  preview(event:any){
-    this.selectedImage = event.target.files[0];
-  }
-
   save(event:any) {
-    this.selectedImage = event.target.files[0];
-    const name = this.selectedImage.name;
+    this.selectedFile = event.target.files[0];
+    const name = this.selectedFile.name;
     const fileRef = this.storage.ref(name);
-    this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
+    this.storage.upload(name, this.selectedFile).snapshotChanges().pipe(
       finalize(() => {
         fileRef.getDownloadURL().subscribe((url) => {
           this.id = url;
-          console.log(this.id);
         });
       })).subscribe();
-
   }
+
+  saveimg(event:any) {
+    this.selectedImage = event.target.files[0];
+    const nameimg = this.selectedImage.name;
+    const fileRef = this.storage.ref(nameimg);
+    this.storage.upload(nameimg, this.selectedImage).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe((url) => {
+          this.idIMG = url;
+        });
+      })).subscribe();
+  }
+
   add(){
-    console.log(this.id);
     this.sukien.plan_file=this.id;
+    this.sukien.img=this.idIMG;
     if(confirm("Bạn chắc chắn muốn đăng kí hay không?")){
       this.sukienService.create(this.sukien).subscribe(data=>{
         this.sukien = data;
@@ -57,7 +70,18 @@ export class DangkitochucsukienComponent implements OnInit {
     }
   }
 
+  readURL(event: any): void {
+    // @ts-ignore
+    if (event.target.files && event.target.files[0]) {
+      // @ts-ignore
+      this.selectedImage = event.target.files[0];
 
+      const reader = new FileReader();
+      // @ts-ignore
+      reader.onload = e => this.imageSrc = reader.result;
+      reader.readAsDataURL(this.selectedImage);
+    }
+  }
 
 
   //Xem bạn có muốn tuyển cộng tác viên hay không

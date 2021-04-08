@@ -9,7 +9,7 @@
     Tin tức
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-
+  <base href="/">
   <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -137,8 +137,8 @@
                       <td>{{i+1}}</td>
                       <td>{{quanlytintuc.title}}</td>
                       <td>{{quanlytintuc.describe_of_news}}</td>
-                      <td>{{quanlytintuc.postday}}</td>
-                      <td> <a class="btn btn-success" href="admin/suatintuc" >Sửa</a>
+                      <td><img [src]="quanlytintuc.img"></td>
+                      <td> <a class="btn btn-success" (click)="updateTinTuc(quanlytintuc.id)">Sửa</a>
                         <a class="btn btn-danger" (click)="delete(quanlytintuc.id)" >Xóa</a>
                       </td>
                     </tr>

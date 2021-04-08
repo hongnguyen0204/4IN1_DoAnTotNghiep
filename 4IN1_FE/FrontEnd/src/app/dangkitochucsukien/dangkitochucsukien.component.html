@@ -60,8 +60,14 @@
       <p>Nội dung</p>
       <ckeditor name="ckeditor" [(ngModel)]="sukien.content" id="txtckeditor"></ckeditor>
       <br>
+      <p>Hình ảnh</p>
+      <div class="file-input" style="">
+        <input type='file' (change)="readURL($event);saveimg($event)" id="file" class="file" />
+        <img id="blah" [src]="imageSrc ||'http://placehold.it/180'" alt="your image"  />
+      </div>
+      <br>
       <p>Bảng kế hoạch</p>
-      <input type="file" (change)="save($event)" name="file" >
+      <input type="file" (change)="save($event)" name="file">
     </div>
     <div class="question">
       <p>Bạn có muốn tuyển cộng tác viên không?<span class="required">*</span></p>

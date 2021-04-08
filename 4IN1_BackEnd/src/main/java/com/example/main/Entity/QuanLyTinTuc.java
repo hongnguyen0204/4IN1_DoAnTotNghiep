@@ -7,31 +7,42 @@ import java.util.Date;
 @Table(name = "news")
 public class QuanLyTinTuc {
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int ID;
     private  String title;
     private  String describe_of_news;
     private  String content;
     private  String img;
     private Date postday;
+    private int ID_admin;
 
     public QuanLyTinTuc() {
     }
 
-    public QuanLyTinTuc(Integer id, String title, String describe_of_news, String content, String img, Date postday) {
-        this.id = id;
+    public QuanLyTinTuc(Integer ID, String title, String describe_of_news, String content, String img, Date postday,int ID_admin) {
+        this.ID = ID;
         this.title = title;
         this.describe_of_news = describe_of_news;
         this.content = content;
         this.img = img;
         this.postday = postday;
+        this.ID_admin=ID_admin;
     }
 
-    public Integer getId() {
-        return id;
+    public int getID_admin() {
+        return ID_admin;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setID_admin(int ID_admin) {
+        this.ID_admin = ID_admin;
+    }
+
+    public Integer getID() {
+        return ID;
+    }
+
+    public void setID(Integer ID) {
+        this.ID = ID;
     }
 
     public String getTitle() {
@@ -73,4 +84,5 @@ public class QuanLyTinTuc {
     public void setPostday(Date postday) {
         this.postday = postday;
     }
+
 }

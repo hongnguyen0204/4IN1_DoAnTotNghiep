@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'admin/sukien', component: SukienComponent },
   {path: 'admin/tintuc', component: TintucComponent },
   {path: 'admin/themmoitintuc', component: ThemmoitintucComponent },
-  {path: 'admin/suatintuc', component: SuatintucComponent }
+  {path: 'admin/suatintuc/:id', component: SuatintucComponent }
 ];
 
 @NgModule({

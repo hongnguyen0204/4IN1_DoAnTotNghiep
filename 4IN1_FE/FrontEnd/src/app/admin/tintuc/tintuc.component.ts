@@ -45,4 +45,8 @@ export class TintucComponent implements OnInit {
         error => console.log(error));
   }
 
+  updateTinTuc(id: number){
+    this.router.navigate(['/admin/suatintuc',id])
+  }
+
 }
