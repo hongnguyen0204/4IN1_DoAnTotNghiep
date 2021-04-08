@@ -28,10 +28,6 @@ export class DangkitochucsukienComponent implements OnInit {
     this.sukien = new Sukien();
   }
 
-  preview(event:any){
-    this.selectedImage = event.target.files[0];
-  }
-
   save(event:any) {
     this.selectedImage = event.target.files[0];
     const name = this.selectedImage.name;
@@ -43,8 +39,8 @@ export class DangkitochucsukienComponent implements OnInit {
           console.log(this.id);
         });
       })).subscribe();
-
   }
+
   add(){
     console.log(this.id);
     this.sukien.plan_file=this.id;

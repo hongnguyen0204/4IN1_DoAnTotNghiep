@@ -9,7 +9,7 @@
     Tin tức
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-
+  <base href="/">
   <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -120,7 +120,7 @@
         </div>
         <div class="row">
           <div class="container">
-            <form (ngSubmit)="save()">
+            <form>
               <div class="row">
               </div>
               <div class="row">
@@ -145,11 +145,11 @@
               <div class="file-input" style=" ">
                 <input type='file' (change)="readURL($event);" id="file" class="file" />
                 <img id="blah"  [src]="imageSrc || 'http://placehold.it/180'" alt="your image"  />
-                <label for="file">Chọn ảnh</label>
+                <label for="file">Chọn và lưu ảnh</label>
               </div>
               <br>
               <div style="width: 30%;margin: 20px auto" class="row">
-                <input type="submit" value="Thêm">
+                <button class="submit" (click)="save($event)" value="Thêm">Thêm</button>
               </div>
             </form>
           </div>
@@ -211,7 +211,7 @@
     display: inline-block;
   }
 
-  input[type=submit] {
+  .submit {
     background-color: #1E90FF;
     color: white;
     padding: 12px 20px;
@@ -224,7 +224,7 @@
 
   }
 
-  input[type=submit]:hover {
+  .submit:hover {
     background-color: #1874CD;
   }
 

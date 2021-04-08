@@ -27,6 +27,7 @@ public class QuanLyTinTucController {
         long millis=System.currentTimeMillis();
         java.sql.Date date=new java.sql.Date(millis);
         quanLyTinTuc.setPostday(date);
+        quanLyTinTuc.setID_admin(1);
          quanLyTInTucRepository.save(quanLyTinTuc);
     }
 
@@ -42,7 +43,9 @@ public class QuanLyTinTucController {
             quanLyTinTuc.setTitle(st.getTitle());
             quanLyTinTuc.setDescribe_of_news(st.getDescribe_of_news());
             quanLyTinTuc.setContent(st.getContent());
-            quanLyTinTuc.setImg(st.getImg());
+            if (quanLyTinTuc.getImg()!=null){
+                quanLyTinTuc.setImg(st.getImg());
+            }
             quanLyTinTuc.setPostday(st.getPostday());
             quanLyTInTucRepository.save(quanLyTinTuc);
             return new ResponseEntity<>(HttpStatus.OK);

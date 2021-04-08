@@ -21,7 +21,7 @@ export class ThemmoitintucComponent implements OnInit {
   // @ts-ignore
   id: string;
 
-  constructor(private quanLyTinTucService: QuanlytintucserviceService,private route: ActivatedRoute,
+  constructor(private quanLyTinTucService: QuanlytintucserviceService,
               @Inject(AngularFireStorage) private storage: AngularFireStorage,
               private router: Router) { }
 
@@ -29,47 +29,47 @@ export class ThemmoitintucComponent implements OnInit {
     this.tintuc = new Quanlytintuc();
   }
 
-  save() {
-    const name = this.selectedImage;
+  save(event:any) {
+    const name = this.selectedImage.name;
     const fileRef = this.storage.ref(name);
     this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
       finalize(() => {
         fileRef.getDownloadURL().subscribe((url) => {
           this.id = url;
           this.tintuc.img = this.id;
-          if (confirm("Bạn chắc chắn muốn đăng kí hay không?")) {
-            this.quanLyTinTucService.create(this.tintuc);
+          if (confirm("Bạn chắc chắn muốn thêm hay không?")) {
+            this.quanLyTinTucService.create(this.tintuc).subscribe(data => {
+              this.tintuc = data;
               alert("Thêm thành công");
-              this.router.navigate(['/tintuc']);
+            });
           }
         });
       })).subscribe();
+    this.router.navigate(['/admin/tintuc']);
   }
 
-  add() {
-    console.log(this.id);
-    this.tintuc.img = this.id;
-    if (confirm("Bạn chắc chắn muốn đăng kí hay không?")) {
-      this.quanLyTinTucService.create(this.tintuc).subscribe(data => {
-        this.tintuc = data;
-        alert("Thêm thành công");
-        this.router.navigate(['/tintuc']);
-      });
-    }
-  }
+  // add() {
+  //   this.tintuc.img = this.id;
+  //   if (confirm("Bạn chắc chắn muốn thêm hay không?")) {
+  //     this.quanLyTinTucService.create(this.tintuc).subscribe(data => {
+  //       this.tintuc = data;
+  //       alert("Thêm thành công");
+  //     });
+  //   }
+  //   this.router.navigate(['/admin/tintuc']);
+  // }
+
   // tslint:disable-next-line:typedef
-  readURL(event: Event): void {
+  readURL(event: any): void {
     // @ts-ignore
     if (event.target.files && event.target.files[0]) {
       // @ts-ignore
-      const file = event.target.files[0];
-      this.selectedImage = file.name;
-      console.log(this.selectedImage);
+      this.selectedImage = event.target.files[0];
+
       const reader = new FileReader();
       // @ts-ignore
       reader.onload = e => this.imageSrc = reader.result;
-
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(this.selectedImage);
     }
   }
 }

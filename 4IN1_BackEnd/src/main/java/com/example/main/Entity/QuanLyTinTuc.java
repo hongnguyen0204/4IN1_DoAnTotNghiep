@@ -8,23 +8,33 @@ import java.util.Date;
 public class QuanLyTinTuc {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer ID;
+    private int ID;
     private  String title;
     private  String describe_of_news;
     private  String content;
     private  String img;
     private Date postday;
+    private int ID_admin;
 
     public QuanLyTinTuc() {
     }
-    
-    public QuanLyTinTuc(Integer ID, String title, String describe_of_news, String content, String img, Date postday) {
+
+    public QuanLyTinTuc(Integer ID, String title, String describe_of_news, String content, String img, Date postday,int ID_admin) {
         this.ID = ID;
         this.title = title;
         this.describe_of_news = describe_of_news;
         this.content = content;
         this.img = img;
         this.postday = postday;
+        this.ID_admin=ID_admin;
+    }
+
+    public int getID_admin() {
+        return ID_admin;
+    }
+
+    public void setID_admin(int ID_admin) {
+        this.ID_admin = ID_admin;
     }
 
     public Integer getID() {
