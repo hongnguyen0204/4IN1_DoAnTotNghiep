@@ -131,7 +131,6 @@ The above copyright notice and this permission notice shall be included in all c
                   <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">
                     <thead>
                     <tr>
-                      <th>ID</th>
                       <th>Tên sự kiện</th>
                       <th>Người phụ trách</th>
                       <th>Địa điểm tổ chức</th>
@@ -140,24 +139,13 @@ The above copyright notice and this permission notice shall be included in all c
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                      <td>SK-0010</td>
-                      <td>Tân sinh viên</td>
-                      <td>Nguyễn Văn A</td>
-                      <td>Hòa Khánh Nam</td>
-                      <td>7:00 AM 25/5/2021 </td>
+                    <tr *ngFor="let sk of sukien">
+                      <td>{{sk.event_name}}</td>
+                      <td>{{sk.organizer}}</td>
+                      <td>{{sk.place}}</td>
+                      <td>{{sk.time_of_event}}</td>
                       <td>
-                        <a class="text-primary" href="admin/chitietsukien" style="cursor: pointer;">Đang chờ</a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>SK-0011</td>
-                      <td>Seminar-Rikkei</td>
-                      <td>Trần Thị Thúy Trinh</td>
-                      <td>P504 Quang Trung</td>
-                      <td>8:00 AM 01/04/2021 </td>
-                      <td>
-                        <a class="text-primary" href="admin/chitietsukien" style="cursor: pointer;">Đang chờ</a>
+                        <a class="text-primary" (click)="details(sk.id)" style="cursor: pointer;">Đang chờ</a>
                       </td>
                     </tr>
                     </tbody>
