@@ -137,7 +137,7 @@
                       <td>{{i+1}}</td>
                       <td>{{quanlytintuc.title}}</td>
                       <td>{{quanlytintuc.describe_of_news}}</td>
-                      <td>{{quanlytintuc.postday}}</td>
+                      <td><img [src]="quanlytintuc.img"></td>
                       <td> <a class="btn btn-success" (click)="updateTinTuc(quanlytintuc.id)">Sửa</a>
                         <a class="btn btn-danger" (click)="delete(quanlytintuc.id)" >Xóa</a>
                       </td>

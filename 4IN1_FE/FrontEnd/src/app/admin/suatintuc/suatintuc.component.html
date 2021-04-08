@@ -129,7 +129,7 @@
                   <label for="ftentintuc">Tên Tin Tức</label>
                 </div>
                 <div class="col-75">
-                  <input type="text" name="tentintuc" placeholder="" id="ftentintuc">
+                  <input type="text" [(ngModel)]="tintuc.title" name="tentintuc" placeholder="" id="ftentintuc">
                 </div>
               </div>
               <div class="row">
@@ -137,20 +137,20 @@
                   <label for="fmota">Mô Tả</label>
                 </div>
                 <div class="col-75">
-                  <textarea id="fmota" name="mota" placeholder="" style="height:200px"></textarea>
+                  <textarea id="fmota" [(ngModel)]="tintuc.describe_of_news" name="mota" placeholder="" style="height:200px"></textarea>
                 </div>
               </div>
               <label class="lb">Tin tức</label>
-              <ckeditor name="ckeditor" id="txtckeditor"></ckeditor>
+              <ckeditor [(ngModel)]="tintuc.content" name="ckeditor" id="txtckeditor"></ckeditor>
               <label class="lb">Hình ảnh</label>
               <div class="file-input" style=" ">
                 <input type='file' (change)="readURL($event);" id="file" class="file" />
-                <img id="blah"  [src]="imageSrc || 'http://placehold.it/180'" alt="your image"  />
+                <img id="blah"  [src]="imageSrc || 'http://placehold.it/180' " alt="your image"  />
                 <label for="file">Chọn ảnh</label>
               </div>
               <br>
               <div style="width: 30%;margin: 20px auto" class="row">
-                <input type="submit"  value="Sửa" >
+                <button class="submit" (click)="save($event)" value="Thêm">Sửa</button>
               </div>
             </form>
           </div>
@@ -212,7 +212,7 @@
     display: inline-block;
   }
 
-  input[type=submit] {
+  .submit {
     background-color: #1c7430;
     color: white;
     padding: 12px 20px;
@@ -225,7 +225,7 @@
 
   }
 
-  input[type=submit]:hover {
+  .submit:hover {
     background-color: #3d8b40;
   }
 
