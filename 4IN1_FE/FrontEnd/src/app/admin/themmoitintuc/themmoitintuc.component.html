@@ -120,30 +120,27 @@
         </div>
         <div class="row">
           <div class="container">
-            <form action="">
+            <form (ngSubmit)="save()">
               <div class="row">
               </div>
               <div class="row">
                 <div class="col-25">
                   <label for="ftentintuc">Tên Tin Tức</label>
-                  <input type="text" class="form-control" [(ngModel)]="tintuc.title" name="name" placeholder="Name">
                 </div>
                 <div class="col-75">
-                  <input type="text" name="tentintuc" placeholder="" id="ftentintuc">
+                  <input type="text" name="tentintuc" [(ngModel)]="tintuc.title" placeholder="" id="ftentintuc">
                 </div>
               </div>
               <div class="row">
                 <div class="col-25">
                   <label for="fmota">Mô Tả</label>
-                  <input type="text" class="form-control" [(ngModel)]="tintuc.describe_of_news" name="name" placeholder="Name">
                 </div>
                 <div class="col-75">
-                  <textarea id="fmota" name="mota" placeholder="" style="height:200px"></textarea>
+                  <textarea id="fmota" [(ngModel)]="tintuc.describe_of_news" name="mota" placeholder="" style="height:200px"></textarea>
                 </div>
               </div>
               <label class="lb">Thông tin</label>
-              <ckeditor name="ckeditor" id="txtckeditor"></ckeditor>
-              <ckeditor  [(ngModel)]="tintuc.content"> </ckeditor>
+              <ckeditor [(ngModel)]="tintuc.content" name="ckeditor" id="txtckeditor"></ckeditor>
               <label class="lb">Hình ảnh</label>
               <div class="file-input" style=" ">
                 <input type='file' (change)="readURL($event);" id="file" class="file" />
