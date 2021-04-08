@@ -12,7 +12,10 @@ export class SukienService {
 
   constructor(private http: HttpClient) { }
 
-
+// @ts-ignore
+  findByMonth(thang): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theothang'}/${thang}`);
+  }
 
   // @ts-ignore
   findAll(): Observable<Sukien[]>{

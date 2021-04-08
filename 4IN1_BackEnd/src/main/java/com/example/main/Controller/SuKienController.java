@@ -40,9 +40,16 @@ public class SuKienController {
         suKienRepository.save(sk);
     }
 
+
     @GetMapping("/{id}")
     public SuKien get(@PathVariable Integer id) {
         SuKien sk = suKienRepository.findById(id).get();
         return sk;
     }
+
+    @GetMapping("/theothang/{thang}")
+    public List<SuKien> getSK(@PathVariable Integer thang){
+       return suKienRepository.findByMonth(thang);
+    }
+
    }
