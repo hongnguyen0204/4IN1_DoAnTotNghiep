@@ -11,6 +11,8 @@ import {Sukien} from '../Model/sukien';
 export class DangkithamgiasukienComponent implements OnInit {
   // @ts-ignore
   sukiens: Sukien[];
+  // @ts-ignore
+  sosanh: number;
 
   constructor(private sukienService: SukienService ) { }
 
@@ -24,5 +26,4 @@ export class DangkithamgiasukienComponent implements OnInit {
       this.sukiens = data;
     })
   }
-
 }
