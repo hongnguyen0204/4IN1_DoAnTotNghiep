@@ -1,9 +1,13 @@
+// @ts-ignore
 import { Injectable } from '@angular/core';
+// @ts-ignore
 import {HttpClient} from '@angular/common/http';
+// @ts-ignore
 import {Observable} from 'rxjs';
 import {Sukien} from '../Model/sukien';
 
 
+// @ts-ignore
 @Injectable()
 export class SukienService {
 
