@@ -15,7 +15,17 @@ public class QuanLyTinTuc {
     private  String img;
     private Date postday;
 
-
+    public QuanLyTinTuc() {
+    }
+    
+    public QuanLyTinTuc(Integer ID, String title, String describe_of_news, String content, String img, Date postday) {
+        this.ID = ID;
+        this.title = title;
+        this.describe_of_news = describe_of_news;
+        this.content = content;
+        this.img = img;
+        this.postday = postday;
+    }
 
     public Integer getID() {
         return ID;
