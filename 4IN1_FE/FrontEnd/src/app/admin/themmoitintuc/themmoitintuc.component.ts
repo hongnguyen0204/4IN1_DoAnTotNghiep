@@ -12,7 +12,7 @@ import {finalize} from "rxjs/operators";
   providers:[QuanlytintucserviceService]
 })
 export class ThemmoitintucComponent implements OnInit {
-// @ts-ignore
+  // @ts-ignore
   selectedImage: any = null;
   // @ts-ignore
   tintuc :Quanlytintuc;
@@ -41,11 +41,11 @@ export class ThemmoitintucComponent implements OnInit {
             this.quanLyTinTucService.create(this.tintuc).subscribe(data => {
               this.tintuc = data;
               alert("Thêm thành công");
+              this.router.navigate(['/admin/tintuc']);
             });
           }
         });
       })).subscribe();
-    this.router.navigate(['/admin/tintuc']);
   }
 
   // add() {
