@@ -37,7 +37,6 @@ export class ThemmoitintucComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
       // @ts-ignore
       const file = event.target.files[0];
-
       const reader = new FileReader();
       // @ts-ignore
       reader.onload = e => this.imageSrc = reader.result;
