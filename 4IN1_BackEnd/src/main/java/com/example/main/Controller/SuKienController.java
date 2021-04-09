@@ -22,6 +22,7 @@ public class SuKienController {
     @PostMapping("/add")
     public void addSuKien(@RequestBody SuKien suKien){
        suKien.setOwner_event_id(1);
+       suKien.setStatus_of_event("Đang chờ");
        suKienRepository.save(suKien);
     }
 
@@ -29,7 +30,7 @@ public class SuKienController {
     public void duyetSuKien(@PathVariable Integer id){
         SuKien sk =suKienRepository.findById(id).get();
         sk.setStatus_of_event("Đồng ý");
-         suKienRepository.save(sk);
+        suKienRepository.save(sk);
     }
 
     @PutMapping("/tuchoiduyet/{id}")
@@ -38,4 +39,17 @@ public class SuKienController {
         sk.setStatus_of_event("Từ chối");
         suKienRepository.save(sk);
     }
+
+
+    @GetMapping("/{id}")
+    public SuKien get(@PathVariable Integer id) {
+        SuKien sk = suKienRepository.findById(id).get();
+        return sk;
+    }
+
+    @GetMapping("/theothang/{thang}")
+    public List<SuKien> getSK(@PathVariable Integer thang){
+       return suKienRepository.findByMonth(thang);
+    }
+
    }

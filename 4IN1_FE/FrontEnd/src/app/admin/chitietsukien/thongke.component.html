@@ -116,34 +116,34 @@
           <div class="card-body">
             <div id="typography">
               <div class="card-title">
-                <h2>Sự kiện A</h2>
+                <h2>{{sukien.event_name}}</h2>
               </div>
               <form style="border:solid; box-shadow: none; " action="#">
                 <div class="item">
-                  <p>Tên sự kiện: Bóng đá khoa IT</p>
+                  <p>Tên sự kiện: {{sukien.event_name}}</p>
                 </div>
 
                 <div class="item">
-                  <p>Người tổ chức: Nguyễn Văn A</p>
+                  <p>Người tổ chức: {{sukien.organizer}}</p>
                 </div>
 
                 <div class="item">
-                  <p>Thời gian: 18:00 PM 14/03/2021</p>
+                  <p>Thời gian: {{sukien.time_of_event}}</p>
                 </div>
                 <div class="item">
-                  <p>Địa điểm: Hòa Khánh Nam</p>
+                  <p>Địa điểm: {{sukien.place}}</p>
                 </div>
                 <div class="item">
-                  <p>Mô tả: Giải bóng đá toàn khoa CNTT được tổ chức hàng năm với hơn 32 đội bóng từ các lớp tham gia</p>
+                  <p>Mô tả: {{sukien.describe_of_event}}</p>
                 </div>
                 <div class="item">
                   <p>Bản kế hoạch:</p>
                   <br>
-                  <iframe src="https://drive.google.com/file/d/1mooMcICCNXedPERx0zKLCxic_b4TrVHS/preview" width="640" height="480"></iframe>
+                  <a href="{{sukien.plan_file}}">Tải bản kế hoạch tại đây</a>
                 </div>
                 <div class="btn-block">
-                  <button type="submit" href="#">Duyệt</button>
-                  <button class="cancel" type="submit" href="#">Cancel</button>
+                  <button (click)="updateStudent()" href="#">Duyệt</button>
+                  <button class="cancel" (click)="cancelStudent()" href="#">Cancel</button>
                 </div>
               </form>
             </div>
