@@ -27,5 +27,19 @@ export class SukienService {
     return this.http.post<Sukien>('http://localhost:8080/sukien/add', data);
   }
 
+  // @ts-ignore
+  get(id): Observable<any> {
+    return this.http.get(`${'http://localhost:8080/sukien/'}/${id}`);
+  }
+  // @ts-ignore
+  update(id, data): Observable<any> {
+    return this.http.put(`${'http://localhost:8080/sukien/duyet'}/${id}`, data);
+  }
+
+  // @ts-ignore
+  cancel(id, data): Observable<any> {
+    return this.http.put(`${'http://localhost:8080/sukien/tuchoiduyet'}/${id}`, data);
+  }
+
 }
 

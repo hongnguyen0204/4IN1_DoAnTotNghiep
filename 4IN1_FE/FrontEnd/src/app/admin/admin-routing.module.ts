@@ -12,7 +12,7 @@ import {SuatintucComponent} from './suatintuc/suatintuc.component';
 const routes: Routes = [
   {path: 'admin/dashboard', component: DashboardComponent },
   {path: 'admin/login', component: LoginComponent },
-  {path: 'admin/chitietsukien', component: ThongkeComponent },
+  {path: 'admin/chitietsukien/:id', component: ThongkeComponent },
   {path: 'admin/sukien', component: SukienComponent },
   {path: 'admin/tintuc', component: TintucComponent },
   {path: 'admin/themmoitintuc', component: ThemmoitintucComponent },

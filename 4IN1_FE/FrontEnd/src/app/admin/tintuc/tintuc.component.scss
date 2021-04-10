@@ -159,13 +159,16 @@ sub {
   background-color: #1E90FF;
   border: 4px solid #1E90FF;
   border-radius: 3px;
-  margin-right: 5px
-;
+  margin-right: 5px;
+  padding: 5px 15px;
+  color:  black;
+  font-weight: 10px;
 }
 .btn-themmoi:hover{
   background-color: #1874CD;
   border: 4px solid #1874CD;
   cursor: pointer;
+  color:  black;
 }
 .btn-sua:hover{
   background-color: #C2C2C2;
