@@ -25,6 +25,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AngularClassDecorators} from 'codelyzer/util/utils';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
+import {DataTablesModule} from 'angular-datatables';
 
 // @ts-ignore
 @NgModule({
@@ -49,7 +50,8 @@ import {environment} from '../environments/environment';
         FormsModule,
         AdminModule,
         HttpClientModule,
-      AngularFireModule.initializeApp(environment.firebaseConfig)
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        DataTablesModule
     ],
   bootstrap: [AppComponent]
 })

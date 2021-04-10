@@ -13,7 +13,10 @@ import java.util.NoSuchElementException;
 @RestController
 @CrossOrigin (origins = "http://localhost:4200")
 @RequestMapping(value = "/quanlytintuc")
+
+
 public class QuanLyTinTucController {
+
     @Autowired
     private QuanLyTInTucRepository quanLyTInTucRepository;
 

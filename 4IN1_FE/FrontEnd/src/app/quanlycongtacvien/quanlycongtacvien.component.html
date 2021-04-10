@@ -2,7 +2,7 @@
 <div class="container-table100">
 
 <div class="container-table100" style="position: relative;margin-top: 130px">
-  <form action="#" method="post">
+  <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">
     <div class="wrap-table100" >
       <ul class="nav justify-content-between align-items-center" id="myTab" role="tablist">
         <li class="nav-item">
@@ -35,15 +35,15 @@
           </div>
         </div>
 
-        <div class="row">
+        <div *ngFor="let ctv of thongtintaikhoans, let i = index" class="row">
           <div class="cell" data-title="STT">
-            1
+            {{i+1}}
           </div>
           <div class="cell" data-title="Họ & Tên">
-            Lê Thị A
+            {{ctv.fullname}}
           </div>
           <div class="cell" data-title="Mail">
-            Lethia@gmail.com
+            {{ctv.email}}
           </div>
           <div class="cell" data-title="Điểm mạnh">
             Năng nổ, nhiệt tình, ngoại giao tốt
@@ -61,7 +61,7 @@
         <button style="color: white; border-radius: 5px; margin-top: 5px; background-color: #102baf; width: 100px; height: 40px;" id="button">Lưu</button>
       </div>
     </div>
-  </form>
+  </table>
 </div>
 </div>
 <app-footer></app-footer>

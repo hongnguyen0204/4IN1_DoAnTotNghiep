@@ -1,45 +1,52 @@
 package com.example.main.Entity;
 
+import org.springframework.data.annotation.Id;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="join_register")
 public class Congtacvien {
-    private int acc_ID;
-    private int event_ID;
-    private string event_name;
+    @javax.persistence.Id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private int userId;
+    private int eventId;
+    private boolean status_col;
 
-    public Congtacvien(int acc_ID, int event_ID, string event_name) {
-        this.acc_ID = acc_ID;
-        this.event_ID = event_ID;
-        this.event_name = event_name;
+    public int getId() {
+        return id;
     }
 
-    public Congtacvien() {
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getAcc_ID() {
-        return acc_ID;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setAcc_ID(int acc_ID) {
-        this.acc_ID = acc_ID;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public int getEvent_ID() {
-        return event_ID;
+    public int getEventId() {
+        return eventId;
     }
 
-    public void setEvent_ID(int event_ID) {
-        this.event_ID = event_ID;
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
     }
 
-    public string getEvent_name() {
-        return event_name;
+    public boolean isStatus_col() {
+        return status_col;
     }
 
-    public void setEvent_name(string event_name) {
-        this.event_name = event_name;
+    public void setStatus_col(boolean status_col) {
+        this.status_col = status_col;
     }
 }
