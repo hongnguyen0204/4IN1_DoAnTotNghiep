@@ -13,6 +13,7 @@ create table account_information(
     phone_number varchar(10),
     img nvarchar(200),
     gender boolean,
+    andvantages varchar(200),
     status_acc boolean null default 0,
 	primary key(ID)
 );
