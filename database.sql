@@ -13,9 +13,20 @@ create table account_information(
     phone_number varchar(10),
     img nvarchar(200),
     gender boolean,
-    role_acc boolean null default 0,
     status_acc boolean null default 0,
 	primary key(ID)
+);
+
+create table roles(
+	ID int AUTO_INCREMENT,
+	name varchar(20),
+    primary key(ID)
+);
+
+create table user_roles(
+	acc_id int,
+    role_id int,
+    primary key(acc_id,role_id)
 );
 
 create table event_information(
@@ -51,6 +62,7 @@ create table collaborator(
 	ID int AUTO_INCREMENT,
 	user_ID int ,
     event_ID int,
+    status_col boolean,
     primary key(ID),
 	constraint fk_IDNDCTV foreign key(user_ID) references account_information(ID),
 	constraint fk_IDSKCTV foreign key(event_ID) references event_information(ID)
