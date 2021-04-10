@@ -11,6 +11,8 @@ create table account_information(
     faculty nvarchar(50),
 	day_of_birth date,
     phone_number varchar(10),
+    img nvarchar(200),
+    gender boolean,
     role_acc boolean null default 0,
     status_acc boolean null default 0,
 	primary key(ID)
