@@ -62,7 +62,7 @@ create table collaborator(
 	ID int AUTO_INCREMENT,
 	user_ID int ,
     event_ID int,
-    status varchar(20),
+    status_col boolean,
     primary key(ID),
 	constraint fk_IDNDCTV foreign key(user_ID) references account_information(ID),
 	constraint fk_IDSKCTV foreign key(event_ID) references event_information(ID)
