@@ -34,7 +34,9 @@ export class DangkithamgiasukienComponent implements OnInit {
   this.dK.acc_ID=id;
   this.dK.event_ID=idSK;
   this.sukienService.dangKi(this.dK).subscribe();
-  this.router.navigate(['quanlysukien']);
+  this.router.navigate(['quanlysukien']).then(() => {
+    window.location.reload();
+  });;
   }
 
 }

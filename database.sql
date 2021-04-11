@@ -5,7 +5,7 @@
 create table account_information(
 	ID int AUTO_INCREMENT,
     username varchar(50),
-    pwd nvarchar(50),
+    password nvarchar(200),
     email varchar(50),
 	fullname nvarchar(50),
     faculty nvarchar(50),
@@ -14,7 +14,6 @@ create table account_information(
     advantages nvarchar(200),
     img nvarchar(200),
     gender boolean null default 0,
-    role_acc boolean null default 0,
     status_acc boolean null default 0,
 	primary key(ID)
 );
