@@ -1,19 +1,19 @@
 
 <body  style="position: relative;margin-top: 130px">
-<div *ngFor="let sk of sukiens;">
-  <div *ngIf="sk.id == 2">
+<div>
+<!--  <div *ngIf="sk.id == 2">-->
   <div class="container" style="width: 70%;margin: auto;position: sticky;">
     <div class="row">
       <div class="col-lg-12">
         <div class="row justify-content-center">
           <div class="col-lg-8 button-join-event">
             <div class="content-event">
-              <h1 class="title" style="margin-top:50px; text-align:center;"></h1>
+              <h1 class="title" style="margin-top:50px; text-align:center;">{{sukien.event_name}}</h1>
               <br>
-              <h5 class="summary"></h5>
+              <h5 class="summary">{{sukien.id}}</h5>
               <br>
               <br>
-              <div class="panel-body" [innerHtml]='sk.content'>
+              <div class="panel-body" [innerHtml]='sukien.content'>
               </div>
               <br>
               <img src="assets/images/sukien2.png">
@@ -22,7 +22,7 @@
             <div style="height:30px"></div>
             <div class="text-center">
               <!-- Animated button -->
-              <a class="animated-btn text-white" style="margin-bottom: 50px;" href="#">Tham gia ngay</a>
+              <a class="animated-btn text-white" style="margin-bottom: 50px;cursor: pointer" (click)="dangKi(2,sukien.id)" >Tham gia ngay</a>
             </div>
           </div>
         </div> <!-- row -->
@@ -30,6 +30,6 @@
     </div> <!-- row -->
   </div> <!-- container -->
   </div>
-</div>
+<!--</div>-->
 </body>
 

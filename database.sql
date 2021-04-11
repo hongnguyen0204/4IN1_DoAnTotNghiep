@@ -13,7 +13,7 @@ create table account_information(
     phone_number varchar(10),
     advantages nvarchar(200),
     img nvarchar(200),
-    gender boolean,
+    gender boolean null default 0,
     role_acc boolean null default 0,
     status_acc boolean null default 0,
 	primary key(ID)
@@ -30,7 +30,7 @@ create table event_information(
     content nvarchar(10000),
     img nvarchar(200),
     planfile nvarchar(200),
-    number_of_collaborators int,
+    number_of_collaborators int null default 0,
     criteria nvarchar(1000),
     end_day date,
     status_of_event nvarchar(20) null default "Đang chờ",
@@ -45,7 +45,7 @@ create table join_register(
     event_ID int,
     event_name nvarchar(100),
     primary key(ID),
-	constraint fk_IDACDK foreign key(acc_ID) references account_information(ID),
+	constraint fk_IDACDK foreign key(acc_ID) references accouevent_informationnt_information(ID),
 	constraint fk_IDSKDK foreign key(event_ID) references event_information(ID)
 );
 create table collaborator(
