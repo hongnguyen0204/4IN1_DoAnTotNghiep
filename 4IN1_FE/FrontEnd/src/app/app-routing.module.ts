@@ -13,6 +13,8 @@ import {DangnhapComponent} from './dangnhap/dangnhap.component';
 import {DangkyComponent} from './dangky/dangky.component';
 import {QuanlycongtacvienComponent} from './quanlycongtacvien/quanlycongtacvien.component';
 import {QuenmatkhauComponent} from './quenmatkhau/quenmatkhau.component';
+import {QuanlysukienComponent} from './quanlysukien/quanlysukien.component';
+import {SukiencuatoiComponent} from './sukiencuatoi/sukiencuatoi.component';
 
 const routes: Routes = [
   {path: 'dangkitochuc', component: DangkitochucsukienComponent},
@@ -23,8 +25,11 @@ const routes: Routes = [
   {path: 'sukien', component: SukienComponent},
   {path: 'timkiemsukien', component: TimkiemsukienComponent},
   {path: 'dangnhap', component: DangnhapComponent},
+  {path: 'dangky', component: DangkyComponent},
   {path: 'quenmatkhau', component: QuenmatkhauComponent},
   {path: 'quanlycongtacvien', component: QuanlycongtacvienComponent},
+  {path: 'quanlysukien', component: QuanlysukienComponent},
+  {path: 'sukiencuatoi', component: SukiencuatoiComponent},
   {path: 'add', component: DangkyComponent},
   {path: '', redirectTo: '/trangchu', pathMatch: 'full' }
   ];
