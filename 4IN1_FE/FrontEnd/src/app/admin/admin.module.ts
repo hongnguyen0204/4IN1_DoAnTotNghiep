@@ -8,9 +8,9 @@ import { SukienComponent } from './sukien/sukien.component';
 import {DataTablesModule} from 'angular-datatables';
 import { TintucComponent } from './tintuc/tintuc.component';
 import { ThemmoitintucComponent } from './themmoitintuc/themmoitintuc.component';
-import { SuatintucComponent } from './suatintuc/suatintuc.component';
 import {CKEditorModule} from 'ckeditor4-angular';
 import {FormsModule} from '@angular/forms';
+import { SuatintucComponent } from './suatintuc/suatintuc.component';
 @NgModule({
 
   declarations: [
@@ -20,7 +20,8 @@ import {FormsModule} from '@angular/forms';
     SukienComponent,
     TintucComponent,
     ThemmoitintucComponent,
-    SuatintucComponent
+    SuatintucComponent,
+
   ],
     imports: [
         CommonModule,

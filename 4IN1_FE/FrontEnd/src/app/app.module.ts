@@ -1,8 +1,11 @@
+// @ts-ignore
 import { NgModule } from '@angular/core';
+// @ts-ignore
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DangkitochucsukienComponent } from './dangkitochucsukien/dangkitochucsukien.component';
+// @ts-ignore
 import {CKEditorModule} from 'ckeditor4-angular';
 import { DangkithamgiasukienComponent } from './dangkithamgiasukien/dangkithamgiasukien.component';
 import { TrangchuComponent } from './trangchu/trangchu.component';
@@ -14,9 +17,16 @@ import { DangkyComponent } from './dangky/dangky.component';
 import { QuanlycongtacvienComponent } from './quanlycongtacvien/quanlycongtacvien.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+// @ts-ignore
 import {FormsModule} from '@angular/forms';
 import {AdminModule} from './admin/admin.module';
+// @ts-ignore
+import {HttpClientModule} from '@angular/common/http';
+import {AngularClassDecorators} from 'codelyzer/util/utils';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
 
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,9 +47,10 @@ import {AdminModule} from './admin/admin.module';
         AppRoutingModule,
         CKEditorModule,
         FormsModule,
-        AdminModule
+        AdminModule,
+        HttpClientModule,
+      AngularFireModule.initializeApp(environment.firebaseConfig)
     ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

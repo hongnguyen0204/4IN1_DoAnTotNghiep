@@ -114,7 +114,7 @@
           <div class="col-md-12">
             <div class="card card-plain">
               <div class="card-header card-header-primary">
-                <h4 class="card-title mt-0"> Sửa Thông Tin</h4>
+                <h4 class="card-title mt-0"> Sửa Tin Tức</h4>
               </div>
             </div>
           </div>
@@ -129,39 +129,28 @@
                   <label for="ftentintuc">Tên Tin Tức</label>
                 </div>
                 <div class="col-75">
-                  <input type="text" name="tentintuc" placeholder="" id="ftentintuc">
+                  <input type="text" [(ngModel)]="tintuc.title" name="tentintuc" placeholder="" id="ftentintuc">
                 </div>
               </div>
-
-              <div class="row">
-                <div class="col-25">
-                  <label for="tacgia">Tác giả</label>
-                </div>
-                <div class="col-75">
-                  <input type="text" name="tacgia" placeholder="" id="tacgia">
-                </div>
-              </div>
-
-
               <div class="row">
                 <div class="col-25">
                   <label for="fmota">Mô Tả</label>
                 </div>
                 <div class="col-75">
-                  <textarea id="fmota" name="mota" placeholder="" style="height:200px"></textarea>
+                  <textarea id="fmota" [(ngModel)]="tintuc.describe_of_news" name="mota" placeholder="" style="height:200px"></textarea>
                 </div>
               </div>
-              <label class="lb">Thông tin</label>
-              <ckeditor name="ckeditor" id="txtckeditor"></ckeditor>
+              <label class="lb">Tin tức</label>
+              <ckeditor [(ngModel)]="tintuc.content" name="ckeditor" id="txtckeditor"></ckeditor>
               <label class="lb">Hình ảnh</label>
               <div class="file-input" style=" ">
                 <input type='file' (change)="readURL($event);" id="file" class="file" />
-                <img id="blah"  [src]="imageSrc || 'http://placehold.it/180'" alt="your image"  />
+                <img id="blah"  [src]="imageSrc || 'http://placehold.it/180' " alt="your image"  />
                 <label for="file">Chọn ảnh</label>
               </div>
               <br>
               <div style="width: 30%;margin: 20px auto" class="row">
-                <input type="submit" value="Sửa">
+                <button class="submit" (click)="save($event)" value="Thêm">Sửa</button>
               </div>
             </form>
           </div>
@@ -223,7 +212,7 @@
     display: inline-block;
   }
 
-  input[type=submit] {
+  .submit {
     background-color: #1c7430;
     color: white;
     padding: 12px 20px;
@@ -236,7 +225,7 @@
 
   }
 
-  input[type=submit]:hover {
+  .submit:hover {
     background-color: #3d8b40;
   }
 
