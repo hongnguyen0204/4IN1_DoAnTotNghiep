@@ -11,23 +11,12 @@ create table account_information(
     faculty nvarchar(50),
 	day_of_birth date,
     phone_number varchar(10),
+    advantages nvarchar(200),
     img nvarchar(200),
     gender boolean,
-    andvantages varchar(200),
+    role_acc boolean null default 0,
     status_acc boolean null default 0,
 	primary key(ID)
-);
-
-create table roles(
-	ID int AUTO_INCREMENT,
-	name varchar(20),
-    primary key(ID)
-);
-
-create table user_roles(
-	acc_id int,
-    role_id int,
-    primary key(acc_id,role_id)
 );
 
 create table event_information(

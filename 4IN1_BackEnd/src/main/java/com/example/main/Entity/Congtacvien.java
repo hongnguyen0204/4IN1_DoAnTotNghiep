@@ -8,45 +8,55 @@ import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="join_register")
+@Table(name="collaborator")
 public class Congtacvien {
     @javax.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private int userId;
-    private int eventId;
-    private boolean status_col;
+    private int ID;
+    private int user_ID;
+    private int event_ID;
+    private int status_col;
 
-    public int getId() {
-        return id;
+    public Congtacvien() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Congtacvien(int ID, int user_ID, int event_ID, int status_col) {
+        this.ID = ID;
+        this.user_ID = user_ID;
+        this.event_ID = event_ID;
+        this.status_col = status_col;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getID() {
+        return ID;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
-    public int getEventId() {
-        return eventId;
+    public int getUser_ID() {
+        return user_ID;
     }
 
-    public void setEventId(int eventId) {
-        this.eventId = eventId;
+    public void setUser_ID(int user_ID) {
+        this.user_ID = user_ID;
     }
 
-    public boolean isStatus_col() {
+    public int getEvent_ID() {
+        return event_ID;
+    }
+
+    public void setEvent_ID(int event_ID) {
+        this.event_ID = event_ID;
+    }
+
+    public int getStatus_col() {
         return status_col;
     }
 
-    public void setStatus_col(boolean status_col) {
+    public void setStatus_col(int status_col) {
         this.status_col = status_col;
     }
 }
