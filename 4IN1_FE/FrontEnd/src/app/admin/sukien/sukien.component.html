@@ -140,13 +140,16 @@ The above copyright notice and this permission notice shall be included in all c
                     </thead>
                     <tbody>
                     <tr *ngFor="let sk of sukien">
-                      <td>{{sk.event_name}}</td>
-                      <td>{{sk.organizer}}</td>
-                      <td>{{sk.place}}</td>
-                      <td>{{sk.time_of_event}}</td>
-                      <td>
-                        <a class="text-primary" (click)="details(sk.id)" style="cursor: pointer;">Đang chờ</a>
-                      </td>
+                      <div *ngIf="sk.status_of_event==='Đang chờ'">
+                        <td>{{sk.event_name}}</td>
+                        <td>{{sk.organizer}}</td>
+                        <td>{{sk.place}}</td>
+                        <td>{{sk.time_of_event}}</td>
+                        <td>
+                          <a class="text-primary" (click)="details(sk.id)" style="cursor: pointer;">Đang chờ</a>
+                        </td>
+                      </div>
+
                     </tr>
                     </tbody>
                   </table>

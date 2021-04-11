@@ -37,8 +37,7 @@ body {
   box-sizing: border-box; }
 
 img {
-  max-width: 180px;
-max-height: 180px
+  max-width: 100%;
 }
 
 a:focus,
