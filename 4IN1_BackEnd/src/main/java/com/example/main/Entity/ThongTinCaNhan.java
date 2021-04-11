@@ -5,27 +5,28 @@ import java.util.Date;
 
 @Entity
 @Table(name = "account_information")
-public class ThongTinTaiKhoan {
+public class ThongTinCaNhan {
 
     @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int ID;
 
-    private  int ID;
-   private  String username;
-   private String pwd;
-   private  String email;
-   private  String fullname;
-   private String   faculty;
-   private Date day_of_birth;
-   private String phone_number;
-   private boolean role_acc;
-   private  boolean status_acc;
-   private  boolean gender;
+    private String username;
+    private String pwd;
+    private String email;
+    private String fullname;
+    private String faculty;
+    private Date day_of_birth;
+    private String phone_number;
+    private boolean role_acc;
+    private boolean status_acc;
+    private boolean gender;
+    private String img;
 
-    public ThongTinTaiKhoan() {
+    public ThongTinCaNhan() {
     }
 
-    public ThongTinTaiKhoan(int ID, String username, String pwd, String email, String fullname, String faculty, Date day_of_birth, String phone_number, Boolean role_acc, Boolean status_acc,Boolean gender) {
+    public ThongTinCaNhan(int ID, String username, String pwd, String email, String fullname, String faculty, Date day_of_birth, String phone_number, Boolean role_acc, Boolean status_acc, Boolean gender, String img) {
         this.ID = ID;
         this.username = username;
         this.pwd = pwd;
@@ -37,7 +38,9 @@ public class ThongTinTaiKhoan {
         this.role_acc = role_acc;
         this.status_acc = status_acc;
         this.gender = gender;
+        this.img = img;
     }
+
     public int getID() {
         return ID;
     }
@@ -124,5 +127,13 @@ public class ThongTinTaiKhoan {
 
     public void setGender(boolean gender) {
         this.gender = gender;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

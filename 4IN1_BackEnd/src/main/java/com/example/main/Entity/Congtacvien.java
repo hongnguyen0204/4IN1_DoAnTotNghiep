@@ -1,16 +1,18 @@
 package com.example.main.Entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="join_register")
 public class Congtacvien {
+    @Id
     private int acc_ID;
     private int event_ID;
-    private string event_name;
+    private String event_name;
 
-    public Congtacvien(int acc_ID, int event_ID, string event_name) {
+    public Congtacvien(int acc_ID, int event_ID, String event_name) {
         this.acc_ID = acc_ID;
         this.event_ID = event_ID;
         this.event_name = event_name;
@@ -35,11 +37,11 @@ public class Congtacvien {
         this.event_ID = event_ID;
     }
 
-    public string getEvent_name() {
+    public String getEvent_name() {
         return event_name;
     }
 
-    public void setEvent_name(string event_name) {
+    public void setEvent_name(String event_name) {
         this.event_name = event_name;
     }
 }

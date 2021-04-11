@@ -1,20 +1,22 @@
-export class Thongtintaikhoan {
+export class Thongtincanhan {
   // @ts-ignore
   id: number;
   // @ts-ignore
-  username: string;
+  username: String;
   // @ts-ignore
-  pwd: string;
+  pwd: String;
   // @ts-ignore
-  email: string;
+  email: String;
   // @ts-ignore
-  fullname: string;
+  fullname: String;
   // @ts-ignore
-  faculty: string;
+  faculty: String;
   // @ts-ignore
   day_of_birth: Date;
   // @ts-ignore
-  phone_number: string;
+  phone_number: String;
   // @ts-ignore
   role_acc: boolean;
+  // @ts-ignore
+  img: String;
 }
