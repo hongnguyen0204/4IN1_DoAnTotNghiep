@@ -5,6 +5,7 @@ import {SukienService} from '../Service/sukien.service';
 import {Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import {TokenStorageService} from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-dangkitochucsukien',
@@ -14,6 +15,7 @@ import {finalize} from 'rxjs/operators';
 })
 export class DangkitochucsukienComponent implements OnInit {
 
+  currentUser: any;
   selectedImage: any = null;
   selectedFile: any = null;
   // @ts-ignore
@@ -27,11 +29,12 @@ export class DangkitochucsukienComponent implements OnInit {
 
 
   constructor(private sukienService: SukienService, private router: Router,
-              @Inject(AngularFireStorage) private storage: AngularFireStorage
-               ) { }
+              @Inject(AngularFireStorage) private storage: AngularFireStorage,
+              private token: TokenStorageService) { }
 
   ngOnInit(): void {
     this.sukien = new Sukien();
+    this.currentUser = this.token.getUser();
   }
 
   save(event:any) {
@@ -95,6 +98,9 @@ export class DangkitochucsukienComponent implements OnInit {
     }
   }
 
+  chuaDangNhap(){
+    this.router.navigate(['dangnhap']);
+  }
 
 }
 

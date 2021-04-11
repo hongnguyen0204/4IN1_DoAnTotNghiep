@@ -28,6 +28,7 @@ import {environment} from '../environments/environment';
 import { QuanlysukienComponent } from './quanlysukien/quanlysukien.component';
 import { SukiencuatoiComponent } from './sukiencuatoi/sukiencuatoi.component';
 import {DataTablesModule} from 'angular-datatables';
+import {AuthInterceptor} from './-helpers/auth.interceptor';
 
 // @ts-ignore
 @NgModule({
@@ -57,6 +58,7 @@ import {DataTablesModule} from 'angular-datatables';
         AngularFireModule.initializeApp(environment.firebaseConfig),
         DataTablesModule
     ],
+  providers: [AuthInterceptor],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
