@@ -18,7 +18,7 @@ import {SukiencuatoiComponent} from './sukiencuatoi/sukiencuatoi.component';
 
 const routes: Routes = [
   {path: 'dangkitochuc', component: DangkitochucsukienComponent},
-  {path: 'dangkithamgia', component: DangkithamgiasukienComponent},
+  {path: 'dangkithamgia/:id', component: DangkithamgiasukienComponent},
   {path: 'trangchu', component: TrangchuComponent},
   {path: 'dangkicongtacvien', component: DangkilamcongtacvienComponent},
   {path: 'thongtincanhan', component: ThongtincanhanComponent},

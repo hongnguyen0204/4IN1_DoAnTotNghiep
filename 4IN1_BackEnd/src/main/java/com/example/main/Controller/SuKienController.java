@@ -19,6 +19,21 @@ public class SuKienController {
         return suKienRepository.findAll();
     }
 
+    @GetMapping("/sukiendangcho")
+    public List<SuKien> SKDC() {
+        return suKienRepository.SKDangCho();
+    }
+
+    @GetMapping("/sukiendaduyet")
+    public List<SuKien> SKDD() {
+        return suKienRepository.SKDaDuyet();
+    }
+
+    @GetMapping("/sukiendahuy")
+    public List<SuKien> SKDH() {
+        return suKienRepository.SKDaHuy();
+    }
+
     @PostMapping("/add")
     public void addSuKien(@RequestBody SuKien suKien){
        suKien.setOwner_event_id(1);

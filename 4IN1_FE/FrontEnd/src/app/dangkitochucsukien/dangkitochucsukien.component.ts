@@ -65,6 +65,7 @@ export class DangkitochucsukienComponent implements OnInit {
       this.sukienService.create(this.sukien).subscribe(data=>{
         this.sukien = data;
         alert("Đăng kí thành công");
+        this.sukien = new Sukien();
         this.router.navigate(['/dangkitochuc']);
       });
     }

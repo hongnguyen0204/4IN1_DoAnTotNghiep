@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 // @ts-ignore
 import {Observable} from 'rxjs';
 import {Sukien} from '../Model/sukien';
+import {Dangkithamgia} from '../Model/dangkithamgia';
 
 
 // @ts-ignore
@@ -19,7 +20,15 @@ export class SukienService {
 
   // @ts-ignore
   findAll(): Observable<Sukien[]>{
-      return this.http.get<Sukien[]>('http://localhost:8080/sukien/all');
+      return this.http.get<Sukien[]>('http://localhost:8080/sukien/sukiendangcho');
+  }
+
+  findSKDD(): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>('http://localhost:8080/sukien/sukiendaduyet');
+  }
+
+  findSKDH(): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>('http://localhost:8080/sukien/sukiendahuy');
   }
 
   // @ts-ignore
@@ -29,7 +38,7 @@ export class SukienService {
 
   // @ts-ignore
   get(id): Observable<any> {
-    return this.http.get(`${'http://localhost:8080/sukien/'}/${id}`);
+    return this.http.get(`${'http://localhost:8080/sukien'}/${id}`);
   }
   // @ts-ignore
   update(id, data): Observable<any> {
@@ -41,5 +50,14 @@ export class SukienService {
     return this.http.put(`${'http://localhost:8080/sukien/tuchoiduyet'}/${id}`, data);
   }
 
+  // @ts-ignore
+  dangKi(data):Observable<any>{
+    return this.http.post<Dangkithamgia>('http://localhost:8080/nguoithamgia/dangki', data);
+  }
+
+  // @ts-ignore
+  find(id): Observable<Dangkithamgia[]>{
+    return this.http.get<Dangkithamgia[]>(`${'http://localhost:8080/nguoithamgia'}/${id}`);
+  }
 }
 

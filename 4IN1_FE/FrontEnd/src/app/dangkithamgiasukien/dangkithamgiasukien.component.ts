@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {SukienService} from '../Service/sukien.service';
 import {Sukien} from '../Model/sukien';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Dangkithamgia} from '../Model/dangkithamgia';
 
 @Component({
   selector: 'app-dangkithamgiasukien',
@@ -10,20 +12,29 @@ import {Sukien} from '../Model/sukien';
 })
 export class DangkithamgiasukienComponent implements OnInit {
   // @ts-ignore
-  sukiens: Sukien[];
-  // @ts-ignore
-  sosanh: number;
+  sukien: Sukien=new Sukien();
 
-  constructor(private sukienService: SukienService ) { }
+  // @ts-ignore
+  dK:Dangkithamgia=new Dangkithamgia();
+  // @ts-ignore
+  id:number;
+  constructor(private sukienService: SukienService,private route: ActivatedRoute,
+              private router: Router ) { }
 
   ngOnInit(): void {
-    // @ts-ignore
-    this.reloadData();
+    this.id=this.route.snapshot.params['id'];
+    this.sukienService.get(this.id).subscribe(data=>{
+      this.sukien=data;
+    },error => console.log(error));
+
   }
 
-  reloadData(){
-    this.sukienService.findAll().subscribe(data=>{
-      this.sukiens = data;
-    })
+  // @ts-ignore
+  dangKi(id:number,idSK:number){
+  this.dK.acc_ID=id;
+  this.dK.event_ID=idSK;
+  this.sukienService.dangKi(this.dK).subscribe();
+  this.router.navigate(['quanlysukien']);
   }
+
 }

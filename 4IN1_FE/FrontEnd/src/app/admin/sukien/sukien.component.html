@@ -139,8 +139,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let sk of sukien">
-                      <div *ngIf="sk.status_of_event==='Đang chờ'">
+                      <tr *ngFor="let sk of sukien">
                         <td>{{sk.event_name}}</td>
                         <td>{{sk.organizer}}</td>
                         <td>{{sk.place}}</td>
@@ -148,8 +147,40 @@ The above copyright notice and this permission notice shall be included in all c
                         <td>
                           <a class="text-primary" (click)="details(sk.id)" style="cursor: pointer;">Đang chờ</a>
                         </td>
-                      </div>
-
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title ">Sự kiện đã duyệt</h4>
+                <p class="card-category"></p>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">
+                    <thead>
+                    <tr>
+                      <th>Tên sự kiện</th>
+                      <th>Người phụ trách</th>
+                      <th>Địa điểm tổ chức</th>
+                      <th>Thời gian</th>
+                      <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let sk of sukienDD">
+                      <td>{{sk.event_name}}</td>
+                      <td>{{sk.organizer}}</td>
+                      <td>{{sk.place}}</td>
+                      <td>{{sk.time_of_event}}</td>
+                      <td>
+                        <a>Đã duyệt</a>
+                      </td>
                     </tr>
                     </tbody>
                   </table>
@@ -158,60 +189,32 @@ The above copyright notice and this permission notice shall be included in all c
             </div>
           </div>
           <div class="col-md-12">
-            <div class="card card-plain">
+            <div class="card">
               <div class="card-header card-header-primary">
-                <h4 class="card-title mt-0"> Sự kiện đã duyệt</h4>
+                <h4 class="card-title ">Sự kiện đã hủy</h4>
+                <p class="card-category"></p>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table table-hover">
-                    <thead class="">
-                    <th>ID</th>
-                    <th>Tên sự kiện</th>
-                    <th>Người phụ trách</th>
-                    <th>Địa điểm tổ chức</th>
-                    <th>Thời gian</th>
-                    <th>Status</th>
-                    </thead>
-                    <tbody>
+                  <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">
+                    <thead>
                     <tr>
-                      <td>SK-0001</td>
-                      <td>Bóng đá khoa IT</td>
-                      <td>Nguyễn Văn A</td>
-                      <td>Hòa Khánh Nam</td>
-                      <td>18:00 PM 14/03/2021 </td>
-                      <td>Đã duyệt</td>
+                      <th>Tên sự kiện</th>
+                      <th>Người phụ trách</th>
+                      <th>Địa điểm tổ chức</th>
+                      <th>Thời gian</th>
+                      <th>Status</th>
                     </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="card card-plain">
-              <div class="card-header card-header-primary">
-                <h4 class="card-title mt-0"> Sự kiện đã bị hủy</h4>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-hover">
-                    <thead class="">
-                    <th>ID</th>
-                    <th>Tên sự kiện</th>
-                    <th>Người phụ trách</th>
-                    <th>Địa điểm tổ chức</th>
-                    <th>Thời gian</th>
-                    <th>Status</th>
                     </thead>
                     <tbody>
-                    <tr>
-                      <td>SK-0002</td>
-                      <td>Tụ tập Bar</td>
-                      <td>Nguyễn Văn B</td>
-                      <td>Quang Trung</td>
-                      <td>18:00 PM 14/02/2021 </td>
-                      <td>Đã hủy</td>
+                    <tr *ngFor="let sk of sukienDH">
+                      <td>{{sk.event_name}}</td>
+                      <td>{{sk.organizer}}</td>
+                      <td>{{sk.place}}</td>
+                      <td>{{sk.time_of_event}}</td>
+                      <td>
+                        <a>Đã hủy</a>
+                      </td>
                     </tr>
                     </tbody>
                   </table>
@@ -280,22 +283,22 @@ The above copyright notice and this permission notice shall be included in all c
       <li class="header-title">Images</li>
       <li class="active">
         <a class="img-holder switch-trigger" href="javascript:void(0)">
-          <img src="content/img/sidebar-1.jpg" alt="">
+<!--          <img src="content/img/sidebar-1.jpg" alt="">-->
         </a>
       </li>
       <li>
         <a class="img-holder switch-trigger" href="javascript:void(0)">
-          <img src="content/img/sidebar-2.jpg" alt="">
+<!--          <img src="content/img/sidebar-2.jpg" alt="">-->
         </a>
       </li>
       <li>
         <a class="img-holder switch-trigger" href="javascript:void(0)">
-          <img src="content/img/sidebar-3.jpg" alt="">
+<!--          <img src="content/img/sidebar-3.jpg" alt="">-->
         </a>
       </li>
       <li>
         <a class="img-holder switch-trigger" href="javascript:void(0)">
-          <img src="content/img/sidebar-4.jpg" alt="">
+<!--          <img src="content/img/sidebar-4.jpg" alt="">-->
         </a>
       </li>
 
