@@ -50,7 +50,9 @@ export class SuatintucComponent implements OnInit {
               this.quanLyTinTucService.update(this.id, this.tintuc).subscribe(data => {
                 this.tintuc = data;
                 alert("Sửa thành công");
-                this.router.navigate(['/admin/tintuc']);
+                this.router.navigate(['/admin/tintuc']).then(() => {
+                  window.location.reload();
+                });
               });
             }
           });
@@ -60,7 +62,9 @@ export class SuatintucComponent implements OnInit {
         this.quanLyTinTucService.update(this.id, this.tintuc).subscribe(data => {
           this.tintuc = data;
           alert("Sửa thành công");
-          this.router.navigate(['/admin/tintuc']);
+          this.router.navigate(['/admin/tintuc']).then(() => {
+            window.location.reload();
+          });
         });
       }
     }
