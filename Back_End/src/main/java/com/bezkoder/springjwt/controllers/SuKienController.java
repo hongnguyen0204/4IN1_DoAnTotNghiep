@@ -37,7 +37,6 @@ public class SuKienController {
 
     @PostMapping("/add")
     public void addSuKien(@RequestBody SuKien suKien){
-       suKien.setOwner_event_id(1);
        suKien.setStatus_of_event("Đang chờ");
        suKienRepository.save(suKien);
     }
@@ -68,4 +67,24 @@ public class SuKienController {
        return suKienRepository.findByMonth(thang);
     }
 
-   }
+    @GetMapping("/tongSuKienDaToChuc")
+    public Integer SKDTC(){
+       return suKienRepository.SKDaToChuc();
+    }
+
+    @GetMapping("/tongSuKienDaDuyet")
+    public Integer SuKienDaDuyet(){
+        return suKienRepository.SuKienDaDuyet();
+    }
+
+    @GetMapping("/tongSuKien")
+    public long TongSuKien(){
+        return suKienRepository.count();
+    }
+
+    @GetMapping("/tongSuKienBiHuy")
+    public Integer SuKienBiHuy(){
+        return suKienRepository.TongSKDaHuy();
+    }
+
+}
