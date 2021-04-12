@@ -13,30 +13,28 @@ export class TimkiemsukienComponent implements OnInit {
 // @ts-ignore
   sukien: Sukien[];
   // @ts-ignore
-  m: Date = new Date();
+  namevent: any;
   // @ts-ignore
-  month:number = this.m.getMonth() + 1;
-  // @ts-ignore
-  constructor(private sukienService: SukienService,private router:Router) {
+  constructor(private sukienService: SukienService,private router:Router, public rs: RestService) {
   }
 
   ngOnInit(): void {
-    this.month;
-    this.dataMonth(this.month);
+    // @ts-ignore
+    this.rs.findAll().subscribe((response) =>{
+      this.sukien = response;
+    });
   }
 
-  detailSK(id:number){
-    this.router.navigate(['dangkithamgia',id]);
+  Search(){
+    if(this.namevent == ""){
+      this.ngOnInit();
+    }else{
+      this.sukien = this.sukien.filter(res =>{
+        // @ts-ignore
+        return res.namevent.toLocaleLowerCase().match(this.namevent.toLocaleLowerCase());
+      });
+    }
   }
 
-  dataMonth(id:number){
-    this.sukienService.findByMonth(id).subscribe(data=>{
-      this.sukien=data;
-    })
-  }
 
-  // reloadData() {
-  //   this.sukienService.findAll().subscribe(data => {
-  //     this.sukiens = data;
-  //   })
 }

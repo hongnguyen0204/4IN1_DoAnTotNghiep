@@ -1,8 +1,9 @@
+
 <div class="container" style="position: relative;margin-top: 130px">
   <div class="row">
     <div class="col-lg-12">
       <div class="event-tab mt-60">
-        <input style=" height:40px; width: 855px;" placeholder="  Nhập tên sự kiện cần tìm kiếm">
+        <input class="form-control" type="text" name="nameeven" [(ngModel)]="namevent" (ngModelChange)="Search()" style=" height:40px; width: 855px;" placeholder="  Nhập tên sự kiện cần tìm kiếm">
         <button style="border: none; color: white; border-radius: 5px; margin-top: 5px; background-color: #1863ff; width: 100px; height: 40px;margin-left: 5px;" id="button-search">Tìm kiếm</button>
         <br>
         <br>

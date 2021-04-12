@@ -28,6 +28,8 @@
     "datatables.net-dt": "^1.10.20",
     "firebase": "^8.3.2",
     "jquery": "^3.6.0",
+    "ng2-order-pipe": "^0.1.5",
+    "ngx-pagination": "^5.0.0",
     "rxjs": "~6.6.0",
     "save": "^2.4.0",
     "tslib": "^2.0.0",

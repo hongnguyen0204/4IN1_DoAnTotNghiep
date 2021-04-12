@@ -45,7 +45,7 @@
                   <a href="dangky" class="log-out">Đăng Ký</a>
                 </div>
                 <div class="login" style="margin-left: 20px" *ngIf="isLoggedIn">
-                  <a href="thongtincanhan" class="log-in">{{username}}</a>
+                  <a href="thongtincanhan" class="log-in">{{users.fullname}}</a>
                   <span style="color: white"> | </span>
                   <a class="log-out" (click)="logout()">Đăng xuất</a>
                 </div>

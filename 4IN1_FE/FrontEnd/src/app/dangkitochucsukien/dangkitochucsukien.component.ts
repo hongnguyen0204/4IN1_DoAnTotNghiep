@@ -6,12 +6,14 @@ import {Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 import {TokenStorageService} from '../_services/token-storage.service';
+import {AccountService} from '../Service/account.service';
+import {Thongtincanhan} from '../Model/thongtincanhan';
 
 @Component({
   selector: 'app-dangkitochucsukien',
   templateUrl: './dangkitochucsukien.component.html',
   styleUrls: ['./dangkitochucsukien.component.scss'],
-  providers: [SukienService]
+  providers: [SukienService,AccountService]
 })
 export class DangkitochucsukienComponent implements OnInit {
 
@@ -26,15 +28,21 @@ export class DangkitochucsukienComponent implements OnInit {
   sukien : Sukien;
   // @ts-ignore
   imageSrc: string;
+  // @ts-ignore
+  users:Thongtincanhan;
 
-
-  constructor(private sukienService: SukienService, private router: Router,
+  constructor(private sukienService: SukienService,
+              private router: Router,
               @Inject(AngularFireStorage) private storage: AngularFireStorage,
-              private token: TokenStorageService) { }
+              private token: TokenStorageService,
+              private accountService:AccountService) { }
 
   ngOnInit(): void {
     this.sukien = new Sukien();
     this.currentUser = this.token.getUser();
+    this.accountService.findUser(this.currentUser.username).subscribe(data=>{
+      this.users=data;
+    })
   }
 
   save(event:any) {
@@ -64,6 +72,7 @@ export class DangkitochucsukienComponent implements OnInit {
   add(){
     this.sukien.plan_file=this.id;
     this.sukien.img=this.idIMG;
+    this.sukien.id=this.users.id;
     if(confirm("Bạn chắc chắn muốn đăng kí hay không?")){
       this.sukienService.create(this.sukien).subscribe(data=>{
         this.sukien = data;

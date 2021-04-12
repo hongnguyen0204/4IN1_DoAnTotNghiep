@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenStorageService} from '../_services/token-storage.service';
+import {AccountService} from '../Service/account.service';
+import {Thongtincanhan} from '../Model/thongtincanhan';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  providers:[AccountService]
 })
 export class HeaderComponent implements OnInit {
   // @ts-ignore
@@ -14,7 +17,10 @@ export class HeaderComponent implements OnInit {
   // @ts-ignore
   username: string;
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+  // @ts-ignore
+  users:Thongtincanhan;
+
+  constructor(private tokenStorageService: TokenStorageService,private accService:AccountService) { }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
@@ -26,6 +32,10 @@ export class HeaderComponent implements OnInit {
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.username = user.username;
     }
+    this.accService.findUser(this.username).subscribe(data=>{
+      this.users=data;
+    })
+
   }
 
   logout(): void {

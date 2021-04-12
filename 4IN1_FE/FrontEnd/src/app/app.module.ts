@@ -32,6 +32,8 @@ import {AuthInterceptor} from './-helpers/auth.interceptor';
 import {CommonModule} from '@angular/common';
 import {SukienService} from './Service/sukien.service';
 import { TimkiemsukienComponent } from './timkiemsukien/timkiemsukien.component';
+import {Ng2OrderModule} from 'ng2-order-pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 // @ts-ignore
 @NgModule({
@@ -60,7 +62,9 @@ import { TimkiemsukienComponent } from './timkiemsukien/timkiemsukien.component'
         AdminModule,
         HttpClientModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
-        DataTablesModule
+        DataTablesModule,
+        Ng2OrderModule,
+        NgxPaginationModule
     ],
   providers: [AuthInterceptor,SukienService],
   bootstrap: [AppComponent]

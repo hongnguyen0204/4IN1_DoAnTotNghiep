@@ -1,34 +1,38 @@
 export class Sukien {
   // @ts-ignore
-  id: number;
+  private _id: number;
   // @ts-ignore
-  event_name: string;
+  private _event_name: string;
   // @ts-ignore
-  organizer: string;
+  private _organizer: string;
   // @ts-ignore
-  time_of_event: Date;
+  private _time_of_event: Date;
   // @ts-ignore
-  place: string;
+  private _place: string;
   // @ts-ignore
-  faculty: string;
+  private _faculty: string;
   // @ts-ignore
-  describe_of_event: string;
+  private _describe_of_event: string;
   // @ts-ignore
-  content: string;
+  private _content: string;
   // @ts-ignore
-  img: string;
+  private _img: string;
   // @ts-ignore
-  plan_file: string;
+  private _plan_file: string;
   // @ts-ignore
-  number_of_collaborators: number;
+  private _number_of_collaborators: number;
   // @ts-ignore
-  criteria: string;
+  private _criteria: string;
   // @ts-ignore
-  end_day: Date;
+  private _end_day: Date;
   // @ts-ignore
-  status_of_event: string;
+  private _status_of_event: string;
   // @ts-ignore
-  owner_event_id: number;
+  private _owner_event_id: number;
   // @ts-ignore
-  hot: boolean;
+  private _hot: boolean;
+
+
+
+
 }
