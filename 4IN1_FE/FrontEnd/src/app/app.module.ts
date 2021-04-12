@@ -29,6 +29,9 @@ import { QuanlysukienComponent } from './quanlysukien/quanlysukien.component';
 import { SukiencuatoiComponent } from './sukiencuatoi/sukiencuatoi.component';
 import {DataTablesModule} from 'angular-datatables';
 import {AuthInterceptor} from './-helpers/auth.interceptor';
+import {CommonModule} from '@angular/common';
+import {SukienService} from './Service/sukien.service';
+import { TimkiemsukienComponent } from './timkiemsukien/timkiemsukien.component';
 
 // @ts-ignore
 @NgModule({
@@ -46,7 +49,8 @@ import {AuthInterceptor} from './-helpers/auth.interceptor';
     HeaderComponent,
     FooterComponent,
     QuanlysukienComponent,
-    SukiencuatoiComponent
+    SukiencuatoiComponent,
+    TimkiemsukienComponent
   ],
     imports: [
         BrowserModule,
@@ -58,7 +62,7 @@ import {AuthInterceptor} from './-helpers/auth.interceptor';
         AngularFireModule.initializeApp(environment.firebaseConfig),
         DataTablesModule
     ],
-  providers: [AuthInterceptor],
+  providers: [AuthInterceptor,SukienService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

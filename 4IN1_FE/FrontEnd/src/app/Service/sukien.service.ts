@@ -22,6 +22,9 @@ export class SukienService {
   findAll(): Observable<Sukien[]>{
       return this.http.get<Sukien[]>('http://localhost:8080/sukien/sukiendangcho');
   }
+  findAllsk(): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>('http://localhost:8080/sukien/all');
+  }
 
   findSKDD(): Observable<Sukien[]>{
     return this.http.get<Sukien[]>('http://localhost:8080/sukien/sukiendaduyet');

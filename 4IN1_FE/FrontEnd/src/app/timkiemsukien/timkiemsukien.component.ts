@@ -1,16 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {Sukien} from '../Model/sukien';
 import {SukienService} from '../Service/sukien.service';
-import {Router} from '@angular/router';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-trangchu',
-  templateUrl: './trangchu.component.html',
-  styleUrls: ['./trangchu.component.scss'],
+  selector: 'app-timkiemsukien',
+  templateUrl: './timkiemsukien.component.html',
+  styleUrls: ['./timkiemsukien.component.scss'],
   providers: [SukienService]
 })
-export class TrangchuComponent implements OnInit {
-  // @ts-ignore
+export class TimkiemsukienComponent implements OnInit {
+// @ts-ignore
   sukien: Sukien[];
   // @ts-ignore
   m: Date = new Date();
@@ -39,5 +37,4 @@ export class TrangchuComponent implements OnInit {
   //   this.sukienService.findAll().subscribe(data => {
   //     this.sukiens = data;
   //   })
-  }
-
+}
