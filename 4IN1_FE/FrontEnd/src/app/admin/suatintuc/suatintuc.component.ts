@@ -22,7 +22,8 @@ export class SuatintucComponent implements OnInit {
   id: number;
 
   constructor(private quanLyTinTucService: QuanlytintucserviceService,
-              @Inject(AngularFireStorage) private storage: AngularFireStorage,
+              @Inject(AngularFireStorage)
+              private storage: AngularFireStorage,
               private router: Router,
               private route: ActivatedRoute) {
   }
@@ -69,9 +70,6 @@ export class SuatintucComponent implements OnInit {
       }
     }
   }
-
-
-
   // tslint:disable-next-line:typedef
   readURL(event: any): void {
     // @ts-ignore

@@ -7,7 +7,7 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {AccountService} from '../Service/account.service';
-import {Thongtintaikhoan} from '../Model/thongtintaikhoan';
+import {Thongtincanhan} from '../Model/thongtincanhan';
 
 @Component({
   selector: 'app-dangkitochucsukien',
@@ -29,7 +29,7 @@ export class DangkitochucsukienComponent implements OnInit {
   // @ts-ignore
   imageSrc: string;
   // @ts-ignore
-  users:Thongtintaikhoan;
+  users:Thongtincanhan;
 
   constructor(private sukienService: SukienService, private router: Router,
               @Inject(AngularFireStorage) private storage: AngularFireStorage,
