@@ -13,11 +13,11 @@
     <div class="contact-item">
       <div class="item">
         <p>Số điện thoại<span class="required">*</span></p>
-        <input type="text" name="phone"  placeholder="Số điện thoại" required/>
+        <input type="text" name="phone" [(ngModel)]="users.phone_number" placeholder="Số điện thoại" disabled/>
       </div>
       <div class="item">
         <p>Email<span class="required">*</span></p>
-        <input type="text" name="email" placeholder="Email" required/>
+        <input type="text" name="email" [(ngModel)]="users.email" placeholder="Email" disabled/>
       </div>
     </div>
     <div class="position-item">
