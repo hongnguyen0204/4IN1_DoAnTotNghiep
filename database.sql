@@ -44,7 +44,7 @@ create table join_register(
     event_ID int,
     event_name nvarchar(100),
     primary key(ID),
-	constraint fk_IDACDK foreign key(acc_ID) references accouevent_informationnt_information(ID),
+	constraint fk_IDACDK foreign key(acc_ID) references account_information(ID),
 	constraint fk_IDSKDK foreign key(event_ID) references event_information(ID)
 );
 create table collaborator(
@@ -77,5 +77,21 @@ create table history(
     primary key(ID),
     constraint fk_IDnews foreign key(ID_news) references news(ID),
     constraint fk_IDADMINLS foreign key(ID_acc) references account_information(ID)
+);
+create table roles
+(
+    ID   int auto_increment
+        primary key,
+    name varchar(20) null
+);
+create table user_roles
+(
+    acc_id  int not null,
+    role_id int not null,
+    primary key (acc_id, role_id),
+    constraint FK2w8pmf29beeop8352ql66ffm0
+        foreign key (acc_id) references account_information (ID),
+    constraint FKh8ciramu9cc9q3qcqiv4ue8a6
+        foreign key (role_id) references roles (ID)
 );
 
