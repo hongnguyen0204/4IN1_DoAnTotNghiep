@@ -7,7 +7,7 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {AccountService} from '../Service/account.service';
-import {Thongtintaikhoan} from '../Model/thongtintaikhoan';
+import {Thongtincanhan} from '../Model/thongtincanhan';
 
 @Component({
   selector: 'app-dangkitochucsukien',
@@ -29,9 +29,10 @@ export class DangkitochucsukienComponent implements OnInit {
   // @ts-ignore
   imageSrc: string;
   // @ts-ignore
-  users:Thongtintaikhoan;
+  users:Thongtincanhan;
 
-  constructor(private sukienService: SukienService, private router: Router,
+  constructor(private sukienService: SukienService,
+              private router: Router,
               @Inject(AngularFireStorage) private storage: AngularFireStorage,
               private token: TokenStorageService,
               private accountService:AccountService) { }
@@ -71,7 +72,7 @@ export class DangkitochucsukienComponent implements OnInit {
   add(){
     this.sukien.plan_file=this.id;
     this.sukien.img=this.idIMG;
-    this.sukien.id=this.users.id;
+    this.sukien.owner_event_id=this.users.id;
     if(confirm("Bạn chắc chắn muốn đăng kí hay không?")){
       this.sukienService.create(this.sukien).subscribe(data=>{
         this.sukien = data;

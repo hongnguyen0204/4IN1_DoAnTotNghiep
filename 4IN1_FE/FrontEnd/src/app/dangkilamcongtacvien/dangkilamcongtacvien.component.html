@@ -1,23 +1,29 @@
-
-<div class="contact1" style="position: relative;margin-top: 130px">
+<head>
+  <title>Đăng ki làm CTV</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="contact1" *ngIf="currentUser; else loggedOut" style="position: relative;margin-top: 140px">
   <div class="container-contact1">
     <div class="contact1-pic js-tilt" data-tilt>
-      <img src="../../assets/images/unnamed.png" alt="IMG">
+      <img src="assets/images/unnamed.png" alt="IMG">
     </div>
-
-    <form class="contact1-form validate-form">
+    <form (ngSubmit)="gui()" class="contact1-form validate-form">
 				<span class="contact1-form-title">
 					Đăng Kí Làm Cộng Tác Viên
 				</span>
-
-      <div class="wrap-input1 validate-input" data-validate = "Name is required">
-        <input class="input1" type="text" name="name" placeholder="Name">
-        <span class="shadow-input1"></span>
+      <div class="wrap-input1 validate-input" data-validate="Name is required">
+        <input class="input1" [(ngModel)]="users.fullname" type="text" name="fullname" placeholder="Name" disabled>
       </div>
-
-      <div class="wrap-input1 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-        <input class="input1" type="text" name="email" placeholder="Email">
-        <span class="shadow-input1"></span>
+      <div class="wrap-input1 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+        <input class="input1" [(ngModel)]="users.email" type="text" name="email" placeholder="Email" disabled>
+      </div>
+      <div class="wrap-input1 validate-input" data-validate="Valid Phone number is required: ex@abc.xyz">
+        <input class="input1" [(ngModel)]="users.phone_number" type="text" name="Phone number" placeholder="Phone number" disabled>
+      </div>
+      <div class="wrap-input1 validate-input" data-validate="Valid Faculty is required: ex@abc.xyz">
+        <input class="input1" [(ngModel)]="users.faculty" type="text" name="Faculty" placeholder="Faculty" disabled>
       </div>
       <div class="container">
         <div class="row">
@@ -25,65 +31,41 @@
             <table class="table table-bordered">
               <thead>
               <tr>
-                <th scope="col"></th>
                 <th scope="col">Tên Sự Kiện</th>
                 <th scope="col">Tiêu Chí Đánh Giá</th>
               </tr>
               </thead>
               <tbody>
               <tr>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
-                    <label class="custom-control-label" for="customCheck1">1</label>
-                  </div>
-                </td>
-                <td>Sự Kiện đá bóng</td>
-                <td>Năng động, hoạt bát</td>
-
-              </tr>
-              <tr>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck2">
-                    <label class="custom-control-label" for="customCheck2">2</label>
-                  </div>
-                </td>
-                <td>Sự kiện ca nhạc</td>
-                <td>Năng động, hoạt bát, nhanh nhẹn</td>
-
-              </tr>
-              <tr>
-                <td>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck3">
-                    <label class="custom-control-label" for="customCheck3">3</label>
-                  </div>
-                </td>
-                <td>Sự kiện chào đón tân sinh viên</td>
-                <td>Năng nổ, nhanh nhẹn hoạt bát, tự tin</td>
-
+                <td style="max-width: 70px">Sự Kiện đá bóng</td>
+                <td style="max-width: 80px">Năng động, hoạt bát</td>
               </tr>
               </tbody>
             </table>
           </div>
         </div>
       </div>
-
-
-      <div class="wrap-input1 validate-input" data-validate = "Message is required">
+      <div class="wrap-input1 validate-input" data-validate="Message is required">
         <textarea class="input1" name="message" placeholder="Message"></textarea>
-        <span class="shadow-input1"></span>
       </div>
 
       <div class="container-contact1-form-btn">
         <button class="contact1-form-btn">
 						<span>
 							Gửi yêu cầu
-							<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+							<button class="fa fa-long-arrow-right" type="submit" aria-hidden="true"></button>
 						</span>
         </button>
       </div>
     </form>
   </div>
 </div>
+<ng-template #loggedOut>
+  <div style="position: relative;margin-top: 140px;margin-bottom: 20px">
+    <form style="margin:auto;text-align: center" >
+        <h1 style="color: black;">Bạn cần đăng nhập để thực hiện điều này!</h1>
+    </form>
+  </div>
+</ng-template>
+</body>
+

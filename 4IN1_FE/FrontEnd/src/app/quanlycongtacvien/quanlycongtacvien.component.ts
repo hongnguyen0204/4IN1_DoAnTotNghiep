@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {CongtacvienService} from '../Service/congtacvien.service';
 import {Congtacvien} from '../Model/congtacvien';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Thongtintaikhoan} from '../Model/thongtintaikhoan';
 import * as $ from 'jquery';
 import {Qlcongtacvien} from '../Model/qlcongtacvien';
 import {dashCaseToCamelCase} from '@angular/compiler/src/util';

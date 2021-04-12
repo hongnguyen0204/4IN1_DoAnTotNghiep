@@ -1,42 +1,44 @@
-package com.bezkoder.springjwt.models;
+package com.example.main.Entity;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name ="account_information")
-public class Thongtintaikhoan {
+@Table(name = "account_information")
+public class ThongTinCaNhan {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
+
     private String username;
     private String pwd;
+    private String email;
     private String fullname;
     private String faculty;
-    private Date date_of_birth;
+    private Date day_of_birth;
     private String phone_number;
-    private String advantages;
-    private String img;
-    private boolean gender;
     private boolean role_acc;
     private boolean status_acc;
+    private boolean gender;
+    private String img;
 
-    public Thongtintaikhoan() {
+    public ThongTinCaNhan() {
     }
 
-    public Thongtintaikhoan(int ID, String username, String pwd, String fullname, String faculty, Date date_of_birth, String phone_number, String advantages, String img, boolean gender, boolean role_acc, boolean status_acc) {
+    public ThongTinCaNhan(int ID, String username, String pwd, String email, String fullname, String faculty, Date day_of_birth, String phone_number, Boolean role_acc, Boolean status_acc, Boolean gender, String img) {
         this.ID = ID;
         this.username = username;
         this.pwd = pwd;
+        this.email = email;
         this.fullname = fullname;
         this.faculty = faculty;
-        this.date_of_birth = date_of_birth;
+        this.day_of_birth = day_of_birth;
         this.phone_number = phone_number;
-        this.advantages = advantages;
-        this.img = img;
-        this.gender = gender;
         this.role_acc = role_acc;
         this.status_acc = status_acc;
+        this.gender = gender;
+        this.img = img;
     }
 
     public int getID() {
@@ -63,6 +65,14 @@ public class Thongtintaikhoan {
         this.pwd = pwd;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getFullname() {
         return fullname;
     }
@@ -79,12 +89,12 @@ public class Thongtintaikhoan {
         this.faculty = faculty;
     }
 
-    public Date getDate_of_birth() {
-        return date_of_birth;
+    public Date getDay_of_birth() {
+        return day_of_birth;
     }
 
-    public void setDate_of_birth(Date date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setDay_of_birth(Date day_of_birth) {
+        this.day_of_birth = day_of_birth;
     }
 
     public String getPhone_number() {
@@ -93,30 +103,6 @@ public class Thongtintaikhoan {
 
     public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
-    }
-
-    public String getAdvantages() {
-        return advantages;
-    }
-
-    public void setAdvantages(String advantages) {
-        this.advantages = advantages;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    public boolean isGender() {
-        return gender;
-    }
-
-    public void setGender(boolean gender) {
-        this.gender = gender;
     }
 
     public boolean isRole_acc() {
@@ -133,5 +119,21 @@ public class Thongtintaikhoan {
 
     public void setStatus_acc(boolean status_acc) {
         this.status_acc = status_acc;
+    }
+
+    public boolean isGender() {
+        return gender;
+    }
+
+    public void setGender(boolean gender) {
+        this.gender = gender;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }
