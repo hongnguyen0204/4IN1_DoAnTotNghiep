@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenStorageService} from '../_services/token-storage.service';
-import {Thongtintaikhoan} from '../Model/thongtintaikhoan';
 import {AccountService} from '../Service/account.service';
+import {Thongtincanhan} from '../Model/thongtincanhan';
 
 @Component({
   selector: 'app-header',
@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   username: string;
 
   // @ts-ignore
-  users:Thongtintaikhoan;
+  users:Thongtincanhan;
 
   constructor(private tokenStorageService: TokenStorageService,private accService:AccountService) { }
 
