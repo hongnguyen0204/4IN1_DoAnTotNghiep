@@ -44,7 +44,7 @@ create table join_register(
     event_ID int,
     event_name nvarchar(100),
     primary key(ID),
-	constraint fk_IDACDK foreign key(acc_ID) references accouevent_informationnt_information(ID),
+	constraint fk_IDACDK foreign key(acc_ID) references account_information(ID),
 	constraint fk_IDSKDK foreign key(event_ID) references event_information(ID)
 );
 create table collaborator(
