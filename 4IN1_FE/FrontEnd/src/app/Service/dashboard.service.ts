@@ -25,4 +25,11 @@ export class DashboardService {
     return this.http.get<number>('http://localhost:8080/sukien/tongSuKienBiHuy');
   }
 
+  TSKSDR():Observable<number>{
+    return this.http.get<number>('http://localhost:8080/sukien/tongSuKienDangCho');
+  }
+
+  TongNguoi():Observable<number>{
+    return this.http.get<number>('http://localhost:8080/sukien/tongNguoiThamGia');
+  }
 }

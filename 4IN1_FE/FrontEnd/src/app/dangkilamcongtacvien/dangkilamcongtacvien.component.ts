@@ -23,7 +23,6 @@ export class DangkilamcongtacvienComponent implements OnInit {
               @Inject(AngularFireStorage) private storage: AngularFireStorage,
               private token: TokenStorageService,
               private accountService:AccountService) { }
-
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
     this.accountService.findUser(this.currentUser.username).subscribe(data=>{

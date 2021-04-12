@@ -19,7 +19,10 @@ export class DashboardComponent implements OnInit {
   tskdd:number;
   // @ts-ignore
   tskdh:number;
-
+  // @ts-ignore
+  tsksdr:number;
+  // @ts-ignore
+  tongNguoi:number;
   constructor(private dashboardService:DashboardService) { }
 
   ngOnInit(): void {
@@ -38,6 +41,12 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.TSKDH().subscribe(data=>{
       this.tskdh=data;
     });
+    this.dashboardService.TSKSDR().subscribe(data=>{
+      this.tsksdr=data;
+    });
+    this.dashboardService.TongNguoi().subscribe(data=>{
+      this.tongNguoi=data;
+    })
   }
 
 }
