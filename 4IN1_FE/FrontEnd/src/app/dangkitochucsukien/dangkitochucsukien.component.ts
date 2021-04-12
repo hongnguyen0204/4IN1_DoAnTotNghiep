@@ -31,7 +31,8 @@ export class DangkitochucsukienComponent implements OnInit {
   // @ts-ignore
   users:Thongtincanhan;
 
-  constructor(private sukienService: SukienService, private router: Router,
+  constructor(private sukienService: SukienService,
+              private router: Router,
               @Inject(AngularFireStorage) private storage: AngularFireStorage,
               private token: TokenStorageService,
               private accountService:AccountService) { }

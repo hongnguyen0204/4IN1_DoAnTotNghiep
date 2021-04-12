@@ -6,12 +6,14 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {finalize} from 'rxjs/operators';
 import {Quanlytintuc} from "../Model/quanlytintuc";
 import {QuanlytintucserviceService} from "../Service/quanlytintucservice.service";
+import {AccountService} from '../Service/account.service';
+import {TokenStorageService} from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-thongtincanhan',
   templateUrl: './thongtincanhan.component.html',
   styleUrls: ['./thongtincanhan.component.scss'],
-  providers:[ThongtincanhanService]
+  providers:[ThongtincanhanService,AccountService]
 })
 export class ThongtincanhanComponent implements OnInit {
 // @ts-ignore
@@ -22,18 +24,25 @@ export class ThongtincanhanComponent implements OnInit {
   imageSrc: string;
   // @ts-ignore
   id: number;
+  currentUser: any;
+  // @ts-ignore
+  users:Thongtincanhan;
 
   constructor(private thongtincanhanService: ThongtincanhanService,
               @Inject(AngularFireStorage)
               private storage: AngularFireStorage,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private accountService:AccountService,
+              private token: TokenStorageService) {
   }
 
   ngOnInit(): void {
-    // this.id = this.route.snapshot.params['id'];
-    this.id=1;
-    this.thongtincanhanService.get(this.id).subscribe(data => {
+    this.currentUser = this.token.getUser();
+    this.accountService.findUser(this.currentUser.username).subscribe(data=>{
+      this.users=data;
+    })
+    this.thongtincanhanService.get(this.users.id).subscribe(data => {
       this.ttcn = data;
       // @ts-ignore
       this.imageSrc = this.ttcn.img;
