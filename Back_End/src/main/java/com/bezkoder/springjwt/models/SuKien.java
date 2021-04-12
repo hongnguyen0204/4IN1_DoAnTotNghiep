@@ -30,6 +30,8 @@ public class SuKien {
 
     private int number_of_collaborators;
 
+    private int number_of_peoples;
+
     private String criteria;
 
     private Date end_day;
@@ -39,6 +41,14 @@ public class SuKien {
     private int owner_event_id;
 
     private boolean hot;
+
+    public int getNumber_of_peoples() {
+        return number_of_peoples;
+    }
+
+    public void setNumber_of_peoples(int number_of_peoples) {
+        this.number_of_peoples = number_of_peoples;
+    }
 
     public String getFaculty() {
         return faculty;
@@ -171,7 +181,7 @@ public class SuKien {
     public SuKien() {
     }
 
-    public SuKien(int ID, String event_name, String organizer, Date time_of_event, String place, String faculty, String describe_of_event, String content, String img, String plan_file, int number_of_collaborators, String criteria, Date end_day, String status_of_event, int owner_event_id, boolean hot) {
+    public SuKien(int ID, String event_name, String organizer, Date time_of_event, String place, String faculty, String describe_of_event, String content, String img, String plan_file, int number_of_collaborators, int number_of_peoples, String criteria, Date end_day, String status_of_event, int owner_event_id, boolean hot) {
         this.ID = ID;
         this.event_name = event_name;
         this.organizer = organizer;
@@ -183,6 +193,7 @@ public class SuKien {
         this.img = img;
         this.plan_file = plan_file;
         this.number_of_collaborators = number_of_collaborators;
+        this.number_of_peoples = number_of_peoples;
         this.criteria = criteria;
         this.end_day = end_day;
         this.status_of_event = status_of_event;

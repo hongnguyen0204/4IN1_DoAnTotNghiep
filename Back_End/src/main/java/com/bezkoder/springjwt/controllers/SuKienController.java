@@ -82,4 +82,9 @@ public class SuKienController {
         return suKienRepository.count();
     }
 
+    @GetMapping("/tongSuKienBiHuy")
+    public Integer SuKienBiHuy(){
+        return suKienRepository.TongSKDaHuy();
+    }
+
 }

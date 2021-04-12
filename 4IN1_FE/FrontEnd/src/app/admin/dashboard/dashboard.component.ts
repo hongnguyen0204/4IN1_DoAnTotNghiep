@@ -17,6 +17,8 @@ export class DashboardComponent implements OnInit {
   tsk:number;
   // @ts-ignore
   tskdd:number;
+  // @ts-ignore
+  tskdh:number;
 
   constructor(private dashboardService:DashboardService) { }
 
@@ -31,8 +33,11 @@ export class DashboardComponent implements OnInit {
       this.tsk=data;
     });
     this.dashboardService.TSKDD().subscribe(data=>{
-      this.tskdd.
-    })
+      this.tskdd=data;
+    });
+    this.dashboardService.TSKDH().subscribe(data=>{
+      this.tskdh=data;
+    });
   }
 
 }
