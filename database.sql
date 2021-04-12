@@ -9,7 +9,7 @@ create table account_information(
     email varchar(50),
 	fullname nvarchar(50),
     faculty nvarchar(50),
-	day_of_birth date,
+	day_of_birth datetime,
     phone_number varchar(10),
     advantages nvarchar(200),
     img nvarchar(200),
