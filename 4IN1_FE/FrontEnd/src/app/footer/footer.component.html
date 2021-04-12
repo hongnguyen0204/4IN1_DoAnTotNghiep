@@ -1,4 +1,7 @@
 <!--Footer dành cho người dùng-->
+<div *ngIf="showAdminBoard;else user">
+</div>
+<ng-template #user>
 <div style="display: block">
   <section  id="footer" class="footer-area bg_cover" style="background-image: url(assets/images/footer.jpg)">
     <div  class="footer-widget">
@@ -42,7 +45,7 @@
     </div> <!-- container -->
   </section>
 </div>
-
+</ng-template>
 <!--End Footer dành cho người dùng-->
 
 <!--Footer dành cho admin-->

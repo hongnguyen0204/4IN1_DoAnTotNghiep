@@ -1,7 +1,7 @@
 <head>
   <title>Đăng kí tổ chức sự kiện</title>
 </head>
-<div class="testbox" style="position: relative;margin-top: 130px">
+<div class="testbox" *ngIf="currentUser; else loggedOut" style="position: relative;margin-top: 130px">
   <form action="/">
     <div class="banner">
       <h1 style="color: black;">Đăng kí tổ chức sự kiện</h1>
@@ -13,11 +13,11 @@
     <div class="contact-item">
       <div class="item">
         <p>Số điện thoại<span class="required">*</span></p>
-        <input type="text" name="phone"  placeholder="Số điện thoại" required/>
+        <input type="text" name="phone" [(ngModel)]="users.phone_number" placeholder="Số điện thoại" disabled/>
       </div>
       <div class="item">
         <p>Email<span class="required">*</span></p>
-        <input type="text" name="email" placeholder="Email" required/>
+        <input type="text" name="email" [(ngModel)]="users.email" placeholder="Email" disabled/>
       </div>
     </div>
     <div class="position-item">
@@ -98,7 +98,16 @@
     </div>
 </form>
 </div>
-
+<ng-template #loggedOut>
+  <div style="position: relative;margin-top: 140px;">
+    <form style="margin:auto">
+      <div class="banner" >
+        <h1 style="color: black;">Bạn cần đăng nhập để thực hiện điều này!</h1>
+      </div>
+    </form>
+   <
+  </div>
+</ng-template>
 <style>
   .btn-block {
     margin-top: 10px;

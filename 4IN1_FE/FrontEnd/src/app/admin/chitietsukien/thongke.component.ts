@@ -25,13 +25,17 @@ export class ThongkeComponent implements OnInit {
   updateStudent(){
     this.skService.update(this.id,this.sukien).subscribe(data=>{
       console.log(data);
-      this.router.navigate(['admin/sukien']);
+      this.router.navigate(['admin/sukien']) .then(() => {
+        window.location.reload();
+      });
     },error => console.log(error));
   }
   cancelStudent(){
     this.skService.cancel(this.id,this.sukien).subscribe(data=>{
       console.log(data);
-      this.router.navigate(['admin/sukien']);
+      this.router.navigate(['admin/sukien']) .then(() => {
+        window.location.reload();
+      });
     },error => console.log(error));
   }
 }

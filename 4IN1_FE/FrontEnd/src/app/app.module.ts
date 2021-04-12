@@ -25,6 +25,10 @@ import {HttpClientModule} from '@angular/common/http';
 import {AngularClassDecorators} from 'codelyzer/util/utils';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
+import { QuanlysukienComponent } from './quanlysukien/quanlysukien.component';
+import { SukiencuatoiComponent } from './sukiencuatoi/sukiencuatoi.component';
+import {DataTablesModule} from 'angular-datatables';
+import {AuthInterceptor} from './-helpers/auth.interceptor';
 
 // @ts-ignore
 @NgModule({
@@ -40,7 +44,9 @@ import {environment} from '../environments/environment';
     DangkyComponent,
     QuanlycongtacvienComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    QuanlysukienComponent,
+    SukiencuatoiComponent
   ],
     imports: [
         BrowserModule,
@@ -49,8 +55,10 @@ import {environment} from '../environments/environment';
         FormsModule,
         AdminModule,
         HttpClientModule,
-      AngularFireModule.initializeApp(environment.firebaseConfig)
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        DataTablesModule
     ],
+  providers: [AuthInterceptor],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

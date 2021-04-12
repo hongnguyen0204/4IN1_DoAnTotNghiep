@@ -1,8 +1,10 @@
 export class Dangkithamgia {
   // @ts-ignore
-  acc_id: number;
+  id:number
   // @ts-ignore
-  event_id: number;
+  acc_ID: number;
+  // @ts-ignore
+  event_ID: number;
   // @ts-ignore
   event_name: string;
 }
