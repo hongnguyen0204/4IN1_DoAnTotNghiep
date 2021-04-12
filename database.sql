@@ -5,29 +5,17 @@
 create table account_information(
 	ID int AUTO_INCREMENT,
     username varchar(50),
-    pwd nvarchar(50),
+    password nvarchar(200),
     email varchar(50),
 	fullname nvarchar(50),
     faculty nvarchar(50),
-	day_of_birth date,
+	day_of_birth datetime,
     phone_number varchar(10),
+    advantages nvarchar(200),
     img nvarchar(200),
-    gender boolean,
-    andvantages varchar(200),
+    gender boolean null default 0,
     status_acc boolean null default 0,
 	primary key(ID)
-);
-
-create table roles(
-	ID int AUTO_INCREMENT,
-	name varchar(20),
-    primary key(ID)
-);
-
-create table user_roles(
-	acc_id int,
-    role_id int,
-    primary key(acc_id,role_id)
 );
 
 create table event_information(
@@ -41,7 +29,7 @@ create table event_information(
     content nvarchar(10000),
     img nvarchar(200),
     planfile nvarchar(200),
-    number_of_collaborators int,
+    number_of_collaborators int null default 0,
     criteria nvarchar(1000),
     end_day date,
     status_of_event nvarchar(20) null default "Đang chờ",
@@ -56,7 +44,7 @@ create table join_register(
     event_ID int,
     event_name nvarchar(100),
     primary key(ID),
-	constraint fk_IDACDK foreign key(acc_ID) references account_information(ID),
+	constraint fk_IDACDK foreign key(acc_ID) references accouevent_informationnt_information(ID),
 	constraint fk_IDSKDK foreign key(event_ID) references event_information(ID)
 );
 create table collaborator(
@@ -89,5 +77,21 @@ create table history(
     primary key(ID),
     constraint fk_IDnews foreign key(ID_news) references news(ID),
     constraint fk_IDADMINLS foreign key(ID_acc) references account_information(ID)
+);
+create table roles
+(
+    ID   int auto_increment
+        primary key,
+    name varchar(20) null
+);
+create table user_roles
+(
+    acc_id  int not null,
+    role_id int not null,
+    primary key (acc_id, role_id),
+    constraint FK2w8pmf29beeop8352ql66ffm0
+        foreign key (acc_id) references account_information (ID),
+    constraint FKh8ciramu9cc9q3qcqiv4ue8a6
+        foreign key (role_id) references roles (ID)
 );
 

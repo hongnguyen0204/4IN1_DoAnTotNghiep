@@ -12,9 +12,9 @@ export class Thongtintaikhoan {
   // @ts-ignore
   faculty: string;
   // @ts-ignore
+  advantages: string;
+  // @ts-ignore
   day_of_birth: Date;
   // @ts-ignore
   phone_number: string;
-  // @ts-ignore
-  role_acc: boolean;
 }

@@ -41,7 +41,9 @@ export class ThemmoitintucComponent implements OnInit {
             this.quanLyTinTucService.create(this.tintuc).subscribe(data => {
               this.tintuc = data;
               alert("Thêm thành công");
-              this.router.navigate(['/admin/tintuc']);
+              this.router.navigate(['/admin/tintuc']).then(() => {
+                window.location.reload();
+              });
             });
           }
         });

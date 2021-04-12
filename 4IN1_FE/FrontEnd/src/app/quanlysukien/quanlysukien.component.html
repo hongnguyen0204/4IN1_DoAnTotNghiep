@@ -1,0 +1,90 @@
+<!--Bảng 1-->
+
+<div class="row" style="margin-top: 180px;">
+  <div class="col-md-12">
+    <a class="button" href="sukiencuatoi" style="vertical-align:middle;float: right"><span>Sự kiện của bạn</span></a>
+  </div>
+</div>
+<div class="content" style="margin-top: 40px">
+  <div class="container-fluid" style="position: relative;max-width: 80%;margin: 0px auto 40px auto;">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title ">Sự kiện đã đăng kí</h4>
+            <p class="card-category"></p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">
+                <thead>
+                <tr >
+                  <th>STT</th>
+                  <th>Tên sự kiện</th>
+                  <th>Thời gian</th>
+                  <th>Địa điểm tổ chức</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let ng of dangkithamgia ; let i=index">
+                  <td>{{i+1}}</td>
+                  <td>{{ng.event_name}}</td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <button class="btn btn-danger">Hủy</button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr width="100%" size="1" color="black">
+<!--Bảng 2-->
+<div class="content" >
+  <div class="container-fluid" style="position: relative;max-width: 80%;margin: 40px auto;">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title ">Sự kiện đã đăng kí làm cộng tác viên</h4>
+            <p class="card-category"></p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">
+                <thead>
+                <tr >
+                  <th>STT</th>
+                  <th>Tên sự kiện</th>
+                  <th>Thời gian</th>
+                  <th>Địa điểm tổ chức</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>1</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <button class="btn btn-danger">Hủy</button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
