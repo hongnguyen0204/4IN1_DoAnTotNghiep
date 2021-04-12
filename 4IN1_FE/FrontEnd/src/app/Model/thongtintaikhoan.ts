@@ -17,6 +17,4 @@ export class Thongtintaikhoan {
   day_of_birth: Date;
   // @ts-ignore
   phone_number: string;
-  // @ts-ignore
-  role_acc: boolean;
 }
