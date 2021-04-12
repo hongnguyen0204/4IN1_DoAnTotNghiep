@@ -35,8 +35,8 @@
             </div>
           </div>
 
-          <div *ngFor="let ctv of qlcongtacviens, let i = index" class="row">
-            <div class="cell" data-title="STT">
+          <div  *ngFor="let ctv of qlcongtacviens, let i = index" class="row">
+            <div class="cell" data-title="STT" >
               {{i+1}}
             </div>
             <div class="cell" data-title="Họ & Tên">
@@ -51,8 +51,8 @@
             <div class="cell" data-title="Số Điện Thoại">
               {{ctv[3]}}
             </div>
-            <div style="display: flex" class="cell" data-title="Trạng thái">
-              <input id="hau" [defaultChecked]="kiemtra(ctv[4])" (change)="duyet(ctv[4],ctv[5])" type="checkbox">
+            <div style="display: flex" class="cell" data-title="Trạnsg thái">
+              <input id="hau" [(ngModel)]="ctv[4]" (change)="duyet(ctv[4],ctv[5])" type="checkbox">
               <p style="margin-top: -5px; margin-left: 8px;">Duyệt</p>
             </div>
           </div>

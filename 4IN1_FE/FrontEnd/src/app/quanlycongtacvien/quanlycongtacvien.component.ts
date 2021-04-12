@@ -23,27 +23,18 @@ export class QuanlycongtacvienComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    this.ctvService.findAll().subscribe(data =>{
-      // @ts-ignore
-      this.qlcongtacviens = data;
-    })
     this.reloadData();
   }
 
-  kiemtra(check:boolean){
-    if(check){
-      $('#hau').prop('checked',true);
-    }
-  }
 
   // @ts-ignore
   duyet(status: boolean, id: number){
     console.log(status)
     if(status){
-      this.ctvService.updatenotok(id).subscribe();
+      this.ctvService.updateok(id).subscribe();
     }
     else {
-     this.ctvService.updateok(id).subscribe();
+      this.ctvService.updatenotok(id).subscribe();
     }
   }
 
