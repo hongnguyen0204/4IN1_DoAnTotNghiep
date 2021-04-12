@@ -8,7 +8,7 @@ import java.util.Date;
 public class Thongtintaikhoan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int ID;
     private String username;
     private String pwd;
     private String fullname;
@@ -24,8 +24,8 @@ public class Thongtintaikhoan {
     public Thongtintaikhoan() {
     }
 
-    public Thongtintaikhoan(int id, String username, String pwd, String fullname, String faculty, Date date_of_birth, String phone_number, String advantages, String img, boolean gender, boolean role_acc, boolean status_acc) {
-        this.id = id;
+    public Thongtintaikhoan(int ID, String username, String pwd, String fullname, String faculty, Date date_of_birth, String phone_number, String advantages, String img, boolean gender, boolean role_acc, boolean status_acc) {
+        this.ID = ID;
         this.username = username;
         this.pwd = pwd;
         this.fullname = fullname;
@@ -39,12 +39,12 @@ public class Thongtintaikhoan {
         this.status_acc = status_acc;
     }
 
-    public int getId() {
-        return id;
+    public int getID() {
+        return ID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getUsername() {
