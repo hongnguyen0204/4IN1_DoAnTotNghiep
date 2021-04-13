@@ -29,6 +29,10 @@ import { QuanlysukienComponent } from './quanlysukien/quanlysukien.component';
 import { SukiencuatoiComponent } from './sukiencuatoi/sukiencuatoi.component';
 import {DataTablesModule} from 'angular-datatables';
 import {AuthInterceptor} from './-helpers/auth.interceptor';
+import {CustomerAuthService} from './_services/customer.service';
+import {AdminAuthService} from './_services/admin.service';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { TintucComponent } from './tintuc/tintuc.component';
 
 // @ts-ignore
 @NgModule({
@@ -46,7 +50,8 @@ import {AuthInterceptor} from './-helpers/auth.interceptor';
     HeaderComponent,
     FooterComponent,
     QuanlysukienComponent,
-    SukiencuatoiComponent
+    SukiencuatoiComponent,
+    TintucComponent
   ],
     imports: [
         BrowserModule,
@@ -56,9 +61,10 @@ import {AuthInterceptor} from './-helpers/auth.interceptor';
         AdminModule,
         HttpClientModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
-        DataTablesModule
+        DataTablesModule,
+        MatSnackBarModule
     ],
-  providers: [AuthInterceptor],
+  providers: [AuthInterceptor,CustomerAuthService,AdminAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

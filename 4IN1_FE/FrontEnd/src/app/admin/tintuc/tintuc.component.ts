@@ -5,6 +5,7 @@ import {Quanlytintuc} from "../../Model/quanlytintuc";
 // @ts-ignore
 import {ActivatedRoute, Router} from '@angular/router';
 import {DatePipe} from "@angular/common";
+import {TokenStorageService} from '../../_services/token-storage.service';
 
 
 // @ts-ignore
@@ -23,7 +24,8 @@ export class TintucComponent implements OnInit {
 
 
   constructor(private quanLyTinTucService: QuanlytintucserviceService,private route: ActivatedRoute,
-              private router: Router,public datepipe: DatePipe, ) {
+              private router: Router,public datepipe: DatePipe,
+              private tokenStorageService: TokenStorageService) {
 
   }
 
@@ -53,6 +55,11 @@ export class TintucComponent implements OnInit {
 
   updateTinTuc(id: number){
     this.router.navigate(['/admin/suatintuc',id]);
+  }
+
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.reload();
   }
 
 }

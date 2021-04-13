@@ -4,6 +4,7 @@ import {QuanlytintucserviceService} from '../../Service/quanlytintucservice.serv
 import {AngularFireStorage} from '@angular/fire/storage';
 import {ActivatedRoute, Router} from '@angular/router';
 import {finalize} from 'rxjs/operators';
+import {TokenStorageService} from '../../_services/token-storage.service';
 
 @Component({
   selector: 'app-suatintuc',
@@ -25,7 +26,8 @@ export class SuatintucComponent implements OnInit {
               @Inject(AngularFireStorage)
               private storage: AngularFireStorage,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private tokenStorageService: TokenStorageService) {
   }
 
   ngOnInit(): void {
@@ -81,5 +83,9 @@ export class SuatintucComponent implements OnInit {
       reader.onload = e => this.imageSrc = reader.result;
       reader.readAsDataURL(this.selectedImage);
     }
+  }
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.reload();
   }
 }

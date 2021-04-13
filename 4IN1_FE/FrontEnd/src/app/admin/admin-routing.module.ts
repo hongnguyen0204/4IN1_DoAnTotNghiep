@@ -7,16 +7,17 @@ import {SukienComponent} from './sukien/sukien.component';
 import {TintucComponent} from './tintuc/tintuc.component';
 import {ThemmoitintucComponent} from './themmoitintuc/themmoitintuc.component';
 import {SuatintucComponent} from './suatintuc/suatintuc.component';
+import {AdminAuthService} from '../_services/admin.service';
 
 
 const routes: Routes = [
-  {path: 'admin/dashboard', component: DashboardComponent },
-  {path: 'admin/login', component: LoginComponent },
-  {path: 'admin/chitietsukien/:id', component: ThongkeComponent },
-  {path: 'admin/sukien', component: SukienComponent },
-  {path: 'admin/tintuc', component: TintucComponent },
-  {path: 'admin/themmoitintuc', component: ThemmoitintucComponent },
-  {path: 'admin/suatintuc/:id', component: SuatintucComponent }
+  {path: 'admin/dashboard', component: DashboardComponent, canActivate:[AdminAuthService] },
+  {path: 'admin/login', component: LoginComponent},
+  {path: 'admin/chitietsukien/:id', component: ThongkeComponent, canActivate:[AdminAuthService]  },
+  {path: 'admin/sukien', component: SukienComponent, canActivate:[AdminAuthService]  },
+  {path: 'admin/tintuc', component: TintucComponent, canActivate:[AdminAuthService]  },
+  {path: 'admin/themmoitintuc', component: ThemmoitintucComponent, canActivate:[AdminAuthService]  },
+  {path: 'admin/suatintuc/:id', component: SuatintucComponent, canActivate:[AdminAuthService]  }
 ];
 
 @NgModule({

@@ -15,21 +15,24 @@ import {QuanlycongtacvienComponent} from './quanlycongtacvien/quanlycongtacvien.
 import {QuenmatkhauComponent} from './quenmatkhau/quenmatkhau.component';
 import {QuanlysukienComponent} from './quanlysukien/quanlysukien.component';
 import {SukiencuatoiComponent} from './sukiencuatoi/sukiencuatoi.component';
+import {CustomerAuthService} from './_services/customer.service';
+import {TintucComponent} from './tintuc/tintuc.component';
 
 const routes: Routes = [
-  {path: 'dangkitochuc', component: DangkitochucsukienComponent},
-  {path: 'dangkithamgia/:id', component: DangkithamgiasukienComponent},
+  {path: 'dangkitochuc', component: DangkitochucsukienComponent,canActivate:[CustomerAuthService]},
+  {path: 'dangkithamgia/:id', component: DangkithamgiasukienComponent,canActivate:[CustomerAuthService]},
   {path: 'trangchu', component: TrangchuComponent},
-  {path: 'dangkicongtacvien', component: DangkilamcongtacvienComponent},
-  {path: 'thongtincanhan', component: ThongtincanhanComponent},
+  {path: 'dangkicongtacvien', component: DangkilamcongtacvienComponent,canActivate:[CustomerAuthService]},
+  {path: 'thongtincanhan', component: ThongtincanhanComponent,canActivate:[CustomerAuthService]},
   {path: 'sukien', component: SukienComponent},
   {path: 'timkiemsukien', component: TimkiemsukienComponent},
   {path: 'dangnhap', component: DangnhapComponent},
   {path: 'dangky', component: DangkyComponent},
   {path: 'quenmatkhau', component: QuenmatkhauComponent},
-  {path: 'quanlycongtacvien', component: QuanlycongtacvienComponent},
-  {path: 'quanlysukien', component: QuanlysukienComponent},
-  {path: 'sukiencuatoi', component: SukiencuatoiComponent},
+  {path: 'quanlycongtacvien', component: QuanlycongtacvienComponent,canActivate:[CustomerAuthService]},
+  {path: 'quanlysukien', component: QuanlysukienComponent,canActivate:[CustomerAuthService]},
+  {path: 'sukiencuatoi', component: SukiencuatoiComponent,canActivate:[CustomerAuthService]},
+  {path: 'tintuc', component: TintucComponent},
   {path: 'add', component: DangkyComponent},
   {path: '', redirectTo: '/trangchu', pathMatch: 'full' }
   ];
