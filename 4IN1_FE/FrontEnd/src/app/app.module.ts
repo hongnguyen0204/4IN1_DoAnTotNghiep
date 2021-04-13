@@ -29,6 +29,10 @@ import { QuanlysukienComponent } from './quanlysukien/quanlysukien.component';
 import { SukiencuatoiComponent } from './sukiencuatoi/sukiencuatoi.component';
 import {DataTablesModule} from 'angular-datatables';
 import {AuthInterceptor} from './-helpers/auth.interceptor';
+import { TimkiemsukienComponent } from './timkiemsukien/timkiemsukien.component';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { QuenmatkhauComponent } from './quenmatkhau/quenmatkhau.component';
+import { DoimatkhauComponent } from './doimatkhau/doimatkhau.component';
 
 // @ts-ignore
 @NgModule({
@@ -46,7 +50,10 @@ import {AuthInterceptor} from './-helpers/auth.interceptor';
     HeaderComponent,
     FooterComponent,
     QuanlysukienComponent,
-    SukiencuatoiComponent
+    SukiencuatoiComponent,
+    TimkiemsukienComponent,
+    QuenmatkhauComponent,
+    DoimatkhauComponent,
   ],
     imports: [
         BrowserModule,
@@ -56,7 +63,8 @@ import {AuthInterceptor} from './-helpers/auth.interceptor';
         AdminModule,
         HttpClientModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
-        DataTablesModule
+        DataTablesModule,
+        Ng2SearchPipeModule
     ],
   providers: [AuthInterceptor],
   bootstrap: [AppComponent]
