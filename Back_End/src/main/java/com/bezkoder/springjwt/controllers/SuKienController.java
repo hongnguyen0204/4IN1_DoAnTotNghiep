@@ -55,7 +55,6 @@ public class SuKienController {
         suKienRepository.save(sk);
     }
 
-
     @GetMapping("/{id}")
     public SuKien get(@PathVariable Integer id) {
         SuKien sk = suKienRepository.findById(id).get();
@@ -87,4 +86,13 @@ public class SuKienController {
         return suKienRepository.TongSKDaHuy();
     }
 
+    @GetMapping("/tongSuKienDangCho")
+    public Integer SuKienSapToChuc(){
+        return suKienRepository.SuKienSapToChuc();
+    }
+
+    @GetMapping("/tongNguoiThamGia")
+    public Integer TongNguoi(){
+        return suKienRepository.TongNguoiThamGia();
+    }
 }

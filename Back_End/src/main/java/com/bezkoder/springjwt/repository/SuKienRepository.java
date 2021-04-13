@@ -31,6 +31,9 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
     @Query(value = "SELECT COUNT(*) FROM event_information WHERE MONTH(time_of_event)=MONTH(NOW()) AND status_of_event='Từ chối' ", nativeQuery = true)
     Integer TongSKDaHuy();
 
-    @Query(value = "SELECT Count(*) FROM event_information time_of_event>DATE(NOW()) AND status_of_event='Đồng ý' ", nativeQuery = true)
+    @Query(value = "SELECT Count(*) FROM event_information WHERE time_of_event>DATE(NOW()) AND status_of_event='Đồng ý' ", nativeQuery = true)
     Integer SuKienSapToChuc();
+
+    @Query(value = "SELECT SUM(number_of_peoples) FROM event_information WHERE time_of_event<DATE(NOW()) AND status_of_event='Đồng ý' ", nativeQuery = true)
+    Integer TongNguoiThamGia();
 }

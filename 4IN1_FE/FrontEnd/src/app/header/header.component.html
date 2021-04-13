@@ -31,7 +31,7 @@
                       <a class="page-scroll" href="sukien">Sự kiện</a>
                     </li>
                     <li class="nav-item">
-                      <a class ="page-scroll" href="#">Tin tức</a>
+                      <a class ="page-scroll" href="tintuc">Tin tức</a>
                     </li>
                   </ul>
                 </div>
@@ -45,9 +45,16 @@
                   <a href="dangky" class="log-out">Đăng Ký</a>
                 </div>
                 <div class="login" style="margin-left: 20px" *ngIf="isLoggedIn">
-                  <a href="thongtincanhan" class="log-in">{{users.fullname}}</a>
-                  <span style="color: white"> | </span>
-                  <a class="log-out" (click)="logout()">Đăng xuất</a>
+                  <div class="dropdown">
+                    <button class="dropbtn">
+                      <img src="assets/images/mini.png">
+                    </button>
+                    <div class="dropdown-content">
+                      <a href="thongtincanhan">Thông tin cá nhân</a>
+                      <a href="quanlysukien">Quản lý sự kiện</a>
+                      <a (click)="logout()">Đăng xuất</a>
+                    </div>
+                  </div>
                 </div>
               </nav> <!-- navbar -->
             </div>

@@ -23,8 +23,14 @@ export class FooterComponent implements OnInit {
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      // this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.username = user.username;
+    }
+    let currentUrl = window.location.href;
+    if(currentUrl.includes("admin")){
+      this.showAdminBoard = true;
+    } else {
+      this.showAdminBoard = false;
     }
   }
 }
