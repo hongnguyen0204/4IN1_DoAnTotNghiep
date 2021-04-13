@@ -4,10 +4,10 @@ import {Thongtincanhan} from '../Model/thongtincanhan';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {ActivatedRoute, Router} from '@angular/router';
 import {finalize} from 'rxjs/operators';
-import {Quanlytintuc} from "../Model/quanlytintuc";
-import {QuanlytintucserviceService} from "../Service/quanlytintucservice.service";
 import {AccountService} from '../Service/account.service';
 import {TokenStorageService} from '../_services/token-storage.service';
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-thongtincanhan',
@@ -19,15 +19,14 @@ export class ThongtincanhanComponent implements OnInit {
 // @ts-ignore
   selectedImage: any = null;
   // @ts-ignore
-  ttcn: Thongtincanhan = new Thongtincanhan();
-  // @ts-ignore
   imageSrc: string;
   // @ts-ignore
   id: number;
   currentUser: any;
   // @ts-ignore
-  users:Thongtincanhan;
-
+  users:Thongtincanhan=new Thongtincanhan();
+  // @ts-ignore
+  gender:string;
   constructor(private thongtincanhanService: ThongtincanhanService,
               @Inject(AngularFireStorage)
               private storage: AngularFireStorage,
@@ -41,12 +40,15 @@ export class ThongtincanhanComponent implements OnInit {
     this.currentUser = this.token.getUser();
     this.accountService.findUser(this.currentUser.username).subscribe(data=>{
       this.users=data;
-    })
-    this.thongtincanhanService.get(this.users.id).subscribe(data => {
-      this.ttcn = data;
-      // @ts-ignore
-      this.imageSrc = this.ttcn.img;
-    }, error => console.log(error));
+      this.imageSrc = this.users.img;
+      this.id=this.users.id;
+      if(this.users.gender==true){
+        this.gender='Nam';
+      } else {
+        this.gender='Nữ';
+      }
+    });
+
   }
 
   save(event: any) {
@@ -56,13 +58,13 @@ export class ThongtincanhanComponent implements OnInit {
       this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe((url) => {
-            if (this.ttcn.img != url) {
-              this.ttcn.img = url;
-              console.log(this.ttcn.img);
+            if (this.users.img != url) {
+              this.users.img = url;
+              console.log(this.users.img);
             }
             if (confirm("Bạn chắc chắn muốn sửa hay không?")) {
-              this.thongtincanhanService.update(this.id, this.ttcn).subscribe(data => {
-                this.ttcn = data;
+              this.thongtincanhanService.update(this.id, this.users).subscribe(data => {
+                this.users = data;
                 alert("Sửa thành công");
               });
             }
@@ -70,8 +72,8 @@ export class ThongtincanhanComponent implements OnInit {
         })).subscribe();
     } else {
       if (confirm("Bạn chắc chắn muốn sửa hay không?")) {
-        this.thongtincanhanService.update(this.id, this.ttcn).subscribe(data => {
-          this.ttcn = data;
+        this.thongtincanhanService.update(this.id, this.users).subscribe(data => {
+          this.users = data;
           alert("Sửa thành công");
         });
       }

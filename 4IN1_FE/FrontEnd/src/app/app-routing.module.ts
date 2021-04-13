@@ -22,7 +22,7 @@ import {DoimatkhauComponent} from './doimatkhau/doimatkhau.component';
 
 const routes: Routes = [
   {path: 'dangkitochuc', component: DangkitochucsukienComponent,canActivate:[CustomerAuthService]},
-  {path: 'dangkithamgia/:id', component: DangkithamgiasukienComponent,canActivate:[CustomerAuthService]},
+  {path: 'dangkithamgia/:id', component: DangkithamgiasukienComponent},
   {path: 'trangchu', component: TrangchuComponent},
   {path: 'dangkicongtacvien', component: DangkilamcongtacvienComponent,canActivate:[CustomerAuthService]},
   {path: 'thongtincanhan', component: ThongtincanhanComponent,canActivate:[CustomerAuthService]},
@@ -32,9 +32,9 @@ const routes: Routes = [
   {path: 'dangky', component: DangkyComponent},
   {path: 'quenmatkhau', component: QuenmatkhauComponent},
   {path: 'tintuc', component: TintucComponent},
-  {path: 'quanlycongtacvien', component: QuanlycongtacvienComponent},
-  {path: 'quanlysukien', component: QuanlysukienComponent},
-  {path: 'sukiencuatoi', component: SukiencuatoiComponent},
+  {path: 'quanlycongtacvien', component: QuanlycongtacvienComponent,canActivate:[CustomerAuthService]},
+  {path: 'quanlysukien', component: QuanlysukienComponent,canActivate:[CustomerAuthService]},
+  {path: 'sukiencuatoi', component: SukiencuatoiComponent,canActivate:[CustomerAuthService]},
   {path: 'doimatkhau/:token', component: DoimatkhauComponent},
   {path: 'add', component: DangkyComponent},
   {path: '', redirectTo: '/trangchu', pathMatch: 'full' }

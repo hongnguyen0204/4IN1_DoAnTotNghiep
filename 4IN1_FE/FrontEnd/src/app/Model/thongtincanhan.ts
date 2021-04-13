@@ -20,7 +20,9 @@ export class Thongtincanhan {
   // @ts-ignore
   role_acc: boolean;
   // @ts-ignore
-  img: String;
+  img: string;
   // @ts-ignore
   reset_password_token:string;
+  // @ts-ignore
+  gender:boolean;
 }
