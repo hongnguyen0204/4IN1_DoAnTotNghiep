@@ -1,6 +1,7 @@
 package com.bezkoder.springjwt.models;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -20,11 +21,14 @@ public class Account {
     private boolean status_acc;
     private String password;
     private String advantages;
+    private String reset_password_token;
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDateTime tokenCreationDate;
 
     public Account() {
     }
 
-    public Account(int ID, String username, String email, String fullname, String faculty, Date day_of_birth, String phone_number, String img, boolean gender, boolean status_acc, String password, String advantages) {
+    public Account(int ID, String username, String email, String fullname, String faculty, Date day_of_birth, String phone_number, String img, boolean gender, boolean status_acc, String password, String advantages, String reset_password_token, LocalDateTime tokenCreationDate) {
         this.ID = ID;
         this.username = username;
         this.email = email;
@@ -37,6 +41,8 @@ public class Account {
         this.status_acc = status_acc;
         this.password = password;
         this.advantages = advantages;
+        this.reset_password_token = reset_password_token;
+        this.tokenCreationDate = tokenCreationDate;
     }
 
     public int getID() {
@@ -133,5 +139,21 @@ public class Account {
 
     public void setAdvantages(String advantages) {
         this.advantages = advantages;
+    }
+
+    public String getReset_password_token() {
+        return reset_password_token;
+    }
+
+    public void setReset_password_token(String reset_password_token) {
+        this.reset_password_token = reset_password_token;
+    }
+
+    public LocalDateTime getTokenCreationDate() {
+        return tokenCreationDate;
+    }
+
+    public void setTokenCreationDate(LocalDateTime tokenCreationDate) {
+        this.tokenCreationDate = tokenCreationDate;
     }
 }

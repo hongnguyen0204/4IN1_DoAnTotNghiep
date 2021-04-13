@@ -8,7 +8,6 @@ import {TrangchuComponent} from './trangchu/trangchu.component';
 import {DangkilamcongtacvienComponent} from './dangkilamcongtacvien/dangkilamcongtacvien.component';
 import {ThongtincanhanComponent} from './thongtincanhan/thongtincanhan.component';
 import {SukienComponent} from './sukien/sukien.component';
-import {TimkiemsukienComponent} from './timkiemsukien/timkiemsukien.component';
 import {DangnhapComponent} from './dangnhap/dangnhap.component';
 import {DangkyComponent} from './dangky/dangky.component';
 import {QuanlycongtacvienComponent} from './quanlycongtacvien/quanlycongtacvien.component';
@@ -17,6 +16,9 @@ import {QuanlysukienComponent} from './quanlysukien/quanlysukien.component';
 import {SukiencuatoiComponent} from './sukiencuatoi/sukiencuatoi.component';
 import {CustomerAuthService} from './_services/customer.service';
 import {TintucComponent} from './tintuc/tintuc.component';
+import {TimkiemsukienComponent} from './timkiemsukien/timkiemsukien.component';
+import {DoimatkhauComponent} from './doimatkhau/doimatkhau.component';
+
 
 const routes: Routes = [
   {path: 'dangkitochuc', component: DangkitochucsukienComponent,canActivate:[CustomerAuthService]},
@@ -29,10 +31,11 @@ const routes: Routes = [
   {path: 'dangnhap', component: DangnhapComponent},
   {path: 'dangky', component: DangkyComponent},
   {path: 'quenmatkhau', component: QuenmatkhauComponent},
-  {path: 'quanlycongtacvien', component: QuanlycongtacvienComponent,canActivate:[CustomerAuthService]},
-  {path: 'quanlysukien', component: QuanlysukienComponent,canActivate:[CustomerAuthService]},
-  {path: 'sukiencuatoi', component: SukiencuatoiComponent,canActivate:[CustomerAuthService]},
   {path: 'tintuc', component: TintucComponent},
+  {path: 'quanlycongtacvien', component: QuanlycongtacvienComponent},
+  {path: 'quanlysukien', component: QuanlysukienComponent},
+  {path: 'sukiencuatoi', component: SukiencuatoiComponent},
+  {path: 'doimatkhau/:token', component: DoimatkhauComponent},
   {path: 'add', component: DangkyComponent},
   {path: '', redirectTo: '/trangchu', pathMatch: 'full' }
   ];

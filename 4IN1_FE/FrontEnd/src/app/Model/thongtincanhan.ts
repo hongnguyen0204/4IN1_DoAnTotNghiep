@@ -21,5 +21,6 @@ export class Thongtincanhan {
   role_acc: boolean;
   // @ts-ignore
   img: String;
-
+  // @ts-ignore
+  reset_password_token:string;
 }
