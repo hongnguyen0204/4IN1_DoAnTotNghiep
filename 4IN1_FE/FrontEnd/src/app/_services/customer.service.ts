@@ -35,7 +35,7 @@ export class CustomerAuthService implements CanActivate{
   isRole() {
     const tokenPayload = this.tokenStorageService.getUser().roles;
     for (const role of tokenPayload) {
-      if (role === 'ROLE_USER') {
+      if (role === 'ROLE_USER' || role === 'ROLE_ADMIN') {
         return true;
       }
     }
