@@ -8,13 +8,14 @@ import {TrangchuComponent} from './trangchu/trangchu.component';
 import {DangkilamcongtacvienComponent} from './dangkilamcongtacvien/dangkilamcongtacvien.component';
 import {ThongtincanhanComponent} from './thongtincanhan/thongtincanhan.component';
 import {SukienComponent} from './sukien/sukien.component';
-import {TimkiemsukienComponent} from './timkiemsukien/timkiemsukien.component';
 import {DangnhapComponent} from './dangnhap/dangnhap.component';
 import {DangkyComponent} from './dangky/dangky.component';
 import {QuanlycongtacvienComponent} from './quanlycongtacvien/quanlycongtacvien.component';
 import {QuenmatkhauComponent} from './quenmatkhau/quenmatkhau.component';
 import {QuanlysukienComponent} from './quanlysukien/quanlysukien.component';
 import {SukiencuatoiComponent} from './sukiencuatoi/sukiencuatoi.component';
+import {TimkiemsukienComponent} from './timkiemsukien/timkiemsukien.component';
+import {DoimatkhauComponent} from './doimatkhau/doimatkhau.component';
 
 const routes: Routes = [
   {path: 'dangkitochuc', component: DangkitochucsukienComponent},
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path: 'quanlycongtacvien', component: QuanlycongtacvienComponent},
   {path: 'quanlysukien', component: QuanlysukienComponent},
   {path: 'sukiencuatoi', component: SukiencuatoiComponent},
+  {path: 'doimatkhau/:token', component: DoimatkhauComponent},
   {path: 'add', component: DangkyComponent},
   {path: '', redirectTo: '/trangchu', pathMatch: 'full' }
   ];

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Sukien} from '../Model/sukien';
 import {SukienService} from '../Service/sukien.service';
-import {getLocaleMonthNames} from '@angular/common';
 import {Router} from '@angular/router';
 
 @Component({
