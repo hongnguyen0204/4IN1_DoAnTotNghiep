@@ -1,5 +1,6 @@
 package com.bezkoder.springjwt.controllers;
 
+
 import com.bezkoder.springjwt.models.Account;
 import com.bezkoder.springjwt.repository.AccRepository;
 import net.bytebuddy.utility.RandomString;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.*;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
@@ -15,7 +17,6 @@ import java.io.UnsupportedEncodingException;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/account")
 public class AccController {
-
     @Autowired
     private JavaMailSender mailSender;
 

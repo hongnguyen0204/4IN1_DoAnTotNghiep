@@ -1,10 +1,16 @@
 package com.bezkoder.springjwt.models;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="collaborator")
 public class Congtacvien {
+    @javax.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
