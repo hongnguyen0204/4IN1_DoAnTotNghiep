@@ -39,7 +39,7 @@
       <div class="item">
         <p>Khoa<span class="required">*</span></p>
         <select name="khoa" [(ngModel)]="sukien.faculty" required>
-          <option value="0" selected>Chọn Khoa</option>
+          <option value="Tất cả" selected>Tất cả</option>
           <option value="Công nghệ thông tin">Công nghệ thông tin</option>
           <option value="Du lịch">Du lịch</option>
           <option value="Kiến trúc">Kiến trúc</option>
@@ -89,7 +89,7 @@
       </div>
       <div class="item">
         <p>Tiêu chí</p>
-        <textarea name="tieuchi" [(ngModel)]="sukien.criteria" id="tieuchi"rows="2"></textarea>
+        <textarea name="tieuchi" [(ngModel)]="sukien.criteria" id="tieuchi" rows="2"></textarea>
       </div>
     </div>
     <div class="btn-block">

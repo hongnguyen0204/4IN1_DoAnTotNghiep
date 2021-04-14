@@ -1,27 +1,14 @@
-/*-----------------------------------------------------------------------------------
 
-    Template Name: Eventify - Event and Conference Template
-    Template URI: graygrids.com
-    Description: Eventify - Event and Conference Template
-    Author: GrayGrids
-    Author URI: graygrids.com
-    Version: 1.0
-
------------------------------------------------------------------------------------
-
-    CSS INDEX
-    ===================
-
-    01. Theme default CSS
-	02. Header
-    03. Hero
-	04. Footer
-
------------------------------------------------------------------------------------*/
 /*===========================
     1. COMMON css
 ===========================*/
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800");
+
+#blah{
+  width: 180px;
+  height: 180px;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   font-weight: normal;
@@ -797,6 +784,7 @@ p {
 .back-to-top:hover {
   color: #fff;
   background-position: right center; }
+
 /************** Form ******************/
 
 html, body {

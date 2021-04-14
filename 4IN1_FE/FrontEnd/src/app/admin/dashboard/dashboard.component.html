@@ -14,7 +14,6 @@
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-
 </head>
 
 <body class="">
@@ -100,7 +99,7 @@
                 <a class="dropdown-item" href="#">Profile</a>
                 <a class="dropdown-item" href="#">Settings</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Log out</a>
+                <a class="dropdown-item" (click)="logout()">Log out</a>
               </div>
             </li>
           </ul>
@@ -118,8 +117,7 @@
                   <i class="material-icons">assignment_turned_in</i>
                 </div>
                 <p class="card-category">Sự kiện đã tổ chức</p>
-                <h3 class="card-title">10
-                </h3>
+                <h3 class="card-title">{{skdtc}}</h3>
               </div>
               <div class="card-footer">
                 <div class="stats">
@@ -135,7 +133,7 @@
                   <i class="material-icons">article</i>
                 </div>
                 <p class="card-category">Sự kiện đã duyệt</p>
-                <h3 class="card-title">1/10</h3>
+                <h3 class="card-title">{{tskdd}}/{{tsk}}</h3>
               </div>
               <div class="card-footer">
                 <div class="stats">
@@ -151,7 +149,7 @@
                   <i class="material-icons">assistant</i>
                 </div>
                 <p class="card-category">Sự kiện sắp diễn ra</p>
-                <h3 class="card-title">5</h3>
+                <h3 class="card-title">{{tsksdr}}</h3>
               </div>
               <div class="card-footer">
                 <div class="stats">
@@ -167,7 +165,7 @@
                   <i class="material-icons">assignment_late</i>
                 </div>
                 <p class="card-category">Sự kiện bị hủy</p>
-                <h3 class="card-title">0</h3>
+                <h3 class="card-title">{{tskdh}}</h3>
               </div>
               <div class="card-footer">
                 <div class="stats">
@@ -199,7 +197,7 @@
                   <i class="fa fa-ticket"></i>
                 </div>
                 <p class="card-category">Số người tham gia</p>
-                <h3 class="card-title">500</h3>
+                <h3 class="card-title">{{tongNguoi}}</h3>
               </div>
               <div class="card-footer">
                 <div class="stats">
@@ -218,25 +216,19 @@
                 <p class="card-category">Ngày 21 tháng 3 năm 2021</p>
               </div>
               <div class="card-body table-responsive">
-                <table class="table table-hover">
-                  <thead class="text-warning">
-                  <th>ID</th>
-                  <th>Họ Tên</th>
-                  <th>Khoa</th>
-                  <th>Tên sự kiện</th>
+                <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">
+                  <thead>
+                  <tr>
+                    <th>STT</th>
+                    <th>Tên sự kiện</th>
+                    <th>Người đăng kí</th>
+                  </tr>
                   </thead>
                   <tbody>
                   <tr>
                     <td>1</td>
-                    <td>Ngô Minh Cường</td>
-                    <td>IT</td>
-                    <td>Học HTML CSS</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Nguyễn Hậu</td>
-                    <td>IT</td>
-                    <td>Trượt patin</td>
+                    <td>Đá bóng</td>
+                    <td>Hìn</td>
                   </tr>
                   </tbody>
                 </table>
@@ -250,12 +242,14 @@
                 <p class="card-category">Tháng 3 năm 2021</p>
               </div>
               <div class="card-body table-responsive">
-                <table class="table table-hover">
-                  <thead class="text-warning">
-                  <th>ID</th>
-                  <th>Tên sự kiện</th>
-                  <th>Người tổ chức</th>
-                  <th>Người duyệt</th>
+                <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Tên sự kiện</th>
+                    <th>Người tổ chức</th>
+                    <th>Người duyệt</th>
+                  </tr>
                   </thead>
                   <tbody>
                   <tr>
@@ -327,27 +321,7 @@
           <div class="clearfix"></div>
         </a>
       </li>
-      <li class="header-title">Images</li>
-      <li class="active">
-        <a class="img-holder switch-trigger" href="javascript:void(0)">
-          <img src="content/img/sidebar-1.jpg" alt="">
-        </a>
-      </li>
-      <li>
-        <a class="img-holder switch-trigger" href="javascript:void(0)">
-          <img src="content/img/sidebar-2.jpg" alt="">
-        </a>
-      </li>
-      <li>
-        <a class="img-holder switch-trigger" href="javascript:void(0)">
-          <img src="content/img/sidebar-3.jpg" alt="">
-        </a>
-      </li>
-      <li>
-        <a class="img-holder switch-trigger" href="javascript:void(0)">
-          <img src="content/img/sidebar-4.jpg" alt="">
-        </a>
-      </li>
+
       <!-- <li class="header-title">Want more components?</li>
           <li class="button-container">
               <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">
