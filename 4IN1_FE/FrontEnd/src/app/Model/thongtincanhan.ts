@@ -2,21 +2,21 @@ export class Thongtincanhan {
   // @ts-ignore
   id: number;
   // @ts-ignore
-  username: String;
+  username: string;
   // @ts-ignore
-  password: String;
+  password: string;
   // @ts-ignore
-  email: String;
+  email: string;
   // @ts-ignore
-  fullname: String;
+  fullname: string;
   // @ts-ignore
-  faculty: String;
+  faculty: string;
   // @ts-ignore
   advantages: string;
   // @ts-ignore
   day_of_birth: Date;
   // @ts-ignore
-  phone_number: String;
+  phone_number: string;
   // @ts-ignore
   role_acc: boolean;
   // @ts-ignore

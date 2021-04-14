@@ -17,7 +17,6 @@ export class HeaderComponent implements OnInit {
   showAdminBoard = false;
   // @ts-ignore
   username: string;
-
   // @ts-ignore
   users:Thongtincanhan;
 
@@ -29,7 +28,6 @@ export class HeaderComponent implements OnInit {
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
-      // this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.username = user.username;
     }
     let currentUrl = window.location.href;
