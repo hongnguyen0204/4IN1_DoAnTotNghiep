@@ -29,17 +29,14 @@ import { QuanlysukienComponent } from './quanlysukien/quanlysukien.component';
 import { SukiencuatoiComponent } from './sukiencuatoi/sukiencuatoi.component';
 import {DataTablesModule} from 'angular-datatables';
 import {AuthInterceptor} from './-helpers/auth.interceptor';
-<<<<<<< HEAD
 import {CustomerAuthService} from './_services/customer.service';
 import {AdminAuthService} from './_services/admin.service';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { TintucComponent } from './tintuc/tintuc.component';
-=======
 import { TimkiemsukienComponent } from './timkiemsukien/timkiemsukien.component';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { QuenmatkhauComponent } from './quenmatkhau/quenmatkhau.component';
 import { DoimatkhauComponent } from './doimatkhau/doimatkhau.component';
->>>>>>> cdad756d888a766d21c451b3ba3674858011b162
 
 // @ts-ignore
 @NgModule({
@@ -58,13 +55,10 @@ import { DoimatkhauComponent } from './doimatkhau/doimatkhau.component';
     FooterComponent,
     QuanlysukienComponent,
     SukiencuatoiComponent,
-<<<<<<< HEAD
-    TintucComponent
-=======
+    TintucComponent,
     TimkiemsukienComponent,
     QuenmatkhauComponent,
-    DoimatkhauComponent,
->>>>>>> cdad756d888a766d21c451b3ba3674858011b162
+    DoimatkhauComponent
   ],
     imports: [
         BrowserModule,
@@ -75,11 +69,8 @@ import { DoimatkhauComponent } from './doimatkhau/doimatkhau.component';
         HttpClientModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         DataTablesModule,
-<<<<<<< HEAD
-        MatSnackBarModule
-=======
+        MatSnackBarModule,
         Ng2SearchPipeModule
->>>>>>> cdad756d888a766d21c451b3ba3674858011b162
     ],
   providers: [AuthInterceptor,CustomerAuthService,AdminAuthService],
   bootstrap: [AppComponent]
