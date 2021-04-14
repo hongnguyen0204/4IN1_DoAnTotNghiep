@@ -17,6 +17,7 @@ import java.io.UnsupportedEncodingException;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/account")
 public class AccController {
+
     @Autowired
     private JavaMailSender mailSender;
 
