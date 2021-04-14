@@ -73,6 +73,7 @@ export class DangkitochucsukienComponent implements OnInit {
     this.sukien.plan_file=this.id;
     this.sukien.img=this.idIMG;
     this.sukien.owner_event_id=this.users.id;
+    this.sukien.organizer=this.users.fullname;
     if(confirm("Bạn chắc chắn muốn đăng kí hay không?")){
       this.sukienService.create(this.sukien).subscribe(data=>{
         this.sukien = data;
