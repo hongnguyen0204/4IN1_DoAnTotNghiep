@@ -3,6 +3,7 @@ import * as $ from 'jquery';
 import {SukienService} from '../../Service/sukien.service';
 import {Sukien} from '../../Model/sukien';
 import {ActivatedRoute, Router} from '@angular/router';
+import {TokenStorageService} from '../../_services/token-storage.service';
 
 class DataTablesResponse {
   // @ts-ignore
@@ -32,7 +33,8 @@ export class SukienComponent implements OnInit {
   sukienDH: Sukien[];
   constructor(private skService:SukienService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.reload();
@@ -62,5 +64,9 @@ export class SukienComponent implements OnInit {
     this.skService.findSKDH().subscribe(data=>{
       this.sukienDH=data;
     });
+  }
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.reload();
   }
 }

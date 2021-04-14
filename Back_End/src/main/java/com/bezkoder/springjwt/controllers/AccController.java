@@ -23,6 +23,13 @@ public class AccController {
     @Autowired
     private AccRepository accRepository;
 
+    @PutMapping("thongtincanhan/{id}")
+    public void LuuThongTin(@PathVariable int id,@RequestBody Account account){
+        Account acc = accRepository.findById(id).get();
+        acc=account;
+        accRepository.save(acc);
+    }
+
     @GetMapping("/getAcc/{username}")
     public Account GetAcc(@PathVariable String username) {
         return accRepository.GetIF(username);
@@ -51,7 +58,6 @@ public class AccController {
             String subject = "Đây là link reset password:";
 
             String content = link;
-
 
             helper.setSubject(subject);
 

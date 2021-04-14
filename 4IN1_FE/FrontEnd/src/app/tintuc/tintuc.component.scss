@@ -1,0 +1,124 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+h2{
+  font-family: Sans-Serif;
+}
+span{
+  color: #0b0b0b;
+}
+
+.textbox{
+  position:relative;
+  margin: 160px auto 40px auto;
+  max-width: 90%;
+}
+
+.news {
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+#left {
+  display: inline-block;
+  border: 1px;
+  width: 60%;
+  margin-left: 10%;
+  background: #f1f1f1;
+  min-height: 500px;
+}
+
+div #left ul {
+  list-style-type: none;
+  margin-right: 20px;
+}
+
+div #left ul li {
+  margin-bottom: 25px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+div #left ul li a {
+  margin: 10px 0 10px 0;
+  text-decoration: none;
+  color: #333;
+}
+
+div #left ul li a:hover {
+  color: #1863ff;
+}
+
+div #left ul li img {
+  cursor: pointer;
+  width: 250px;
+  border: 1px solid #ccc;
+  padding: 2px;
+  margin-right: 10px;
+}
+
+div #left ul li p {
+  height: 20%;
+  text-align: justify;
+  margin-bottom: 10px;
+}
+
+#right {
+  position: absolute;
+  display: inline-block;
+  border: 1px;
+  max-width: 314px;
+  background: white;
+  min-height: 500px;
+  margin-left: 1%;
+}
+
+.right-header-news {
+  height: 30px;
+  width: 314px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  text-align: center;
+  line-height: 30px;
+  padding-right: 5px;
+  background-color: #1863ff
+}
+
+#right ul {
+  list-style-type: none;
+}
+
+#right ul li a:hover {
+  color: #1863ff;
+}
+
+#right ul li img {
+  cursor: pointer;
+  max-width: 230px;
+  max-height: 100px;
+  border: 1px solid #ccc;
+  padding: 2px;
+  margin: 5px;
+}
+
+#right ul li a {
+  text-decoration: none;
+  color: #333;
+}
+.right-header-reviews {
+  height: 30px;
+  width: 314px;
+  background-color: #d9291d;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  text-align: center;
+  line-height: 30px;
+  padding-right: 5px;
+}
+

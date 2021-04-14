@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {DashboardService} from '../../Service/dashboard.service';
+import {TokenStorageService} from '../../_services/token-storage.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  providers:[DashboardComponent]
+  providers:[DashboardService]
 })
 export class DashboardComponent implements OnInit {
 
@@ -19,8 +20,11 @@ export class DashboardComponent implements OnInit {
   tskdd:number;
   // @ts-ignore
   tskdh:number;
-
-  constructor(private dashboardService:DashboardService) { }
+  // @ts-ignore
+  tsksdr:number;
+  // @ts-ignore
+  tongNguoi:number;
+  constructor(private dashboardService:DashboardService,private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -38,6 +42,17 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.TSKDH().subscribe(data=>{
       this.tskdh=data;
     });
+    this.dashboardService.TSKSDR().subscribe(data=>{
+      this.tsksdr=data;
+    });
+    this.dashboardService.TongNguoi().subscribe(data=>{
+      this.tongNguoi=data;
+    })
+  }
+
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.reload();
   }
 
 }

@@ -15,6 +15,7 @@ create table account_information(
     img nvarchar(200),
     gender boolean null default 0,
     status_acc boolean null default 0,
+	reset_password_token varchar(50),
 	primary key(ID)
 );
 
@@ -32,8 +33,9 @@ create table event_information(
     number_of_collaborators int null default 0,
 	number_of_peoples int null default 0,
     criteria nvarchar(1000),
-    end_day date,
+    end_day datetime,
     status_of_event nvarchar(20) null default "Đang chờ",
+    time_upload datetime,
     owner_event_id int,
     hot boolean,
 	constraint fk_evid foreign key(owner_event_id) references account_information(ID),
@@ -43,7 +45,6 @@ create table join_register(
 	ID int AUTO_INCREMENT,
 	acc_ID int,
     event_ID int,
-    event_name nvarchar(100),
     primary key(ID),
 	constraint fk_IDACDK foreign key(acc_ID) references account_information(ID),
 	constraint fk_IDSKDK foreign key(event_ID) references event_information(ID)
@@ -64,7 +65,7 @@ create table news(
     describe_of_news nvarchar(500),
     content text,
     img nvarchar(200),
-    postday date,
+    post_day date,
     ID_admin int,
     constraint fk_IDADMINTT foreign key(ID_admin) references account_information(ID),
     primary key(ID)
@@ -74,7 +75,7 @@ create table history(
 	ID_news int,
     ID_acc int,
     act nvarchar(20),
-	acttime datetime,
+	act_time datetime,
     primary key(ID),
     constraint fk_IDnews foreign key(ID_news) references news(ID),
     constraint fk_IDADMINLS foreign key(ID_acc) references account_information(ID)
@@ -95,4 +96,7 @@ create table user_roles
     constraint FKh8ciramu9cc9q3qcqiv4ue8a6
         foreign key (role_id) references roles (ID)
 );
+insert into roles value(1,"ROLE_USER");
+insert into roles value(2,"ROLE_MODERATOR");
+insert into roles value(3,"ROLE_ADMIN");
 
