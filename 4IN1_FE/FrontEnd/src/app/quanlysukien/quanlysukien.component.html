@@ -29,11 +29,11 @@
                 <tbody>
                 <tr *ngFor="let ng of dangkithamgia ; let i=index">
                   <td>{{i+1}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{ng[0]}}</td>
+                  <td>{{ng[1] | date:'dd/MM/yyyy'}}</td>
+                  <td>{{ng[2]}}</td>
                   <td>
-                    <button class="btn btn-danger">Hủy</button>
+                    <button (click)="delete(ng[3])" class="btn btn-danger">Hủy</button>
                   </td>
                 </tr>
                 </tbody>

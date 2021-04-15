@@ -138,7 +138,8 @@
                       <td>{{quanlytintuc.title}}</td>
                       <td>{{quanlytintuc.describe_of_news}}</td>
                       <td >{{quanlytintuc.postday | date:'dd/MM/yyyy' }}</td>
-                      <td> <a class="btn btn-success" (click)="updateTinTuc(quanlytintuc.id)">Sửa</a>
+                      <td>
+                        <a class="btn btn-success" (click)="updateTinTuc(quanlytintuc.id)">Sửa</a>
                         <a class="btn btn-danger" (click)="delete(quanlytintuc.id)" >Xóa</a>
                       </td>
                     </tr>
