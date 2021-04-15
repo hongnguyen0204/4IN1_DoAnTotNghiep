@@ -37,6 +37,8 @@ import { TimkiemsukienComponent } from './timkiemsukien/timkiemsukien.component'
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { QuenmatkhauComponent } from './quenmatkhau/quenmatkhau.component';
 import { DoimatkhauComponent } from './doimatkhau/doimatkhau.component';
+import { ChitiettintucComponent } from './chitiettintuc/chitiettintuc.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 // @ts-ignore
 @NgModule({
@@ -58,7 +60,8 @@ import { DoimatkhauComponent } from './doimatkhau/doimatkhau.component';
     TintucComponent,
     TimkiemsukienComponent,
     QuenmatkhauComponent,
-    DoimatkhauComponent
+    DoimatkhauComponent,
+    ChitiettintucComponent
   ],
     imports: [
         BrowserModule,
@@ -70,7 +73,8 @@ import { DoimatkhauComponent } from './doimatkhau/doimatkhau.component';
         AngularFireModule.initializeApp(environment.firebaseConfig),
         DataTablesModule,
         MatSnackBarModule,
-        Ng2SearchPipeModule
+        Ng2SearchPipeModule,
+      BrowserAnimationsModule
     ],
   providers: [AuthInterceptor,CustomerAuthService,AdminAuthService],
   bootstrap: [AppComponent]

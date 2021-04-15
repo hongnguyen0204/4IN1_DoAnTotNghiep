@@ -19,6 +19,7 @@ import {TintucComponent} from './tintuc/tintuc.component';
 import {TimkiemsukienComponent} from './timkiemsukien/timkiemsukien.component';
 import {DoimatkhauComponent} from './doimatkhau/doimatkhau.component';
 import {ActiveService} from './_services/active.service';
+import {ChitiettintucComponent} from './chitiettintuc/chitiettintuc.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path: 'dangky', component: DangkyComponent},
   {path: 'quenmatkhau', component: QuenmatkhauComponent},
   {path: 'tintuc', component: TintucComponent},
+  {path: 'chitiettintuc', component: ChitiettintucComponent},
   {path: 'quanlycongtacvien', component: QuanlycongtacvienComponent,canActivate:[CustomerAuthService]},
   {path: 'quanlysukien', component: QuanlysukienComponent,canActivate:[CustomerAuthService]},
   {path: 'sukiencuatoi', component: SukiencuatoiComponent,canActivate:[CustomerAuthService]},
