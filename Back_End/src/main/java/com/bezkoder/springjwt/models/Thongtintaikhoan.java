@@ -10,7 +10,7 @@ public class Thongtintaikhoan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
     private String username;
-    private String pwd;
+    private String password;
     private String fullname;
     private String faculty;
     private Date date_of_birth;
@@ -18,16 +18,15 @@ public class Thongtintaikhoan {
     private String advantages;
     private String img;
     private boolean gender;
-    private boolean role_acc;
     private boolean status_acc;
 
     public Thongtintaikhoan() {
     }
 
-    public Thongtintaikhoan(int ID, String username, String pwd, String fullname, String faculty, Date date_of_birth, String phone_number, String advantages, String img, boolean gender, boolean role_acc, boolean status_acc) {
+    public Thongtintaikhoan(int ID, String username, String password, String fullname, String faculty, Date date_of_birth, String phone_number, String advantages, String img, boolean gender, boolean status_acc) {
         this.ID = ID;
         this.username = username;
-        this.pwd = pwd;
+        this.password = password;
         this.fullname = fullname;
         this.faculty = faculty;
         this.date_of_birth = date_of_birth;
@@ -35,7 +34,6 @@ public class Thongtintaikhoan {
         this.advantages = advantages;
         this.img = img;
         this.gender = gender;
-        this.role_acc = role_acc;
         this.status_acc = status_acc;
     }
 
@@ -55,12 +53,12 @@ public class Thongtintaikhoan {
         this.username = username;
     }
 
-    public String getPwd() {
-        return pwd;
+    public String getpassword() {
+        return password;
     }
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
+    public void setpassword(String password) {
+        this.password = password;
     }
 
     public String getFullname() {
@@ -118,15 +116,7 @@ public class Thongtintaikhoan {
     public void setGender(boolean gender) {
         this.gender = gender;
     }
-
-    public boolean isRole_acc() {
-        return role_acc;
-    }
-
-    public void setRole_acc(boolean role_acc) {
-        this.role_acc = role_acc;
-    }
-
+    
     public boolean isStatus_acc() {
         return status_acc;
     }
