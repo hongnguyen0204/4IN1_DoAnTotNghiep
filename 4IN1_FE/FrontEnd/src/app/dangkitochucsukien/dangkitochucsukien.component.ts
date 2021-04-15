@@ -8,12 +8,13 @@ import {finalize} from 'rxjs/operators';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {AccountService} from '../Service/account.service';
 import {Thongtincanhan} from '../Model/thongtincanhan';
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dangkitochucsukien',
   templateUrl: './dangkitochucsukien.component.html',
   styleUrls: ['./dangkitochucsukien.component.scss'],
-  providers: [SukienService,AccountService]
+  providers: [SukienService,AccountService],
 })
 export class DangkitochucsukienComponent implements OnInit {
 
@@ -31,11 +32,14 @@ export class DangkitochucsukienComponent implements OnInit {
   // @ts-ignore
   users:Thongtincanhan;
 
+  // @ts-ignore
   constructor(private sukienService: SukienService,
               private router: Router,
               @Inject(AngularFireStorage) private storage: AngularFireStorage,
               private token: TokenStorageService,
-              private accountService:AccountService) { }
+              private accountService:AccountService) {
+
+  }
 
   ngOnInit(): void {
     this.sukien = new Sukien();
@@ -70,18 +74,25 @@ export class DangkitochucsukienComponent implements OnInit {
   }
 
   add(){
-    this.sukien.plan_file=this.id;
-    this.sukien.img=this.idIMG;
-    this.sukien.owner_event_id=this.users.id;
-    this.sukien.organizer=this.users.fullname;
-    if(confirm("Bạn chắc chắn muốn đăng kí hay không?")){
-      this.sukienService.create(this.sukien).subscribe(data=>{
-        this.sukien = data;
-        alert("Đăng kí thành công");
-        this.sukien = new Sukien();
-        this.router.navigate(['/dangkitochuc']);
-      });
-    }
+    this.sukienService.kiemTra(this.sukien).subscribe(data=>{
+      console.log(this.sukien);
+      if(data!=0){
+       alert("Sự kiện của bạn trùng lịch với sự kiện khác sắp diễn ra!")
+      } else {
+        this.sukien.plan_file=this.id;
+        this.sukien.img=this.idIMG;
+        this.sukien.owner_event_id=this.users.id;
+        this.sukien.organizer=this.users.fullname;
+        if(confirm("Bạn chắc chắn muốn đăng kí hay không?")){
+          this.sukienService.create(this.sukien).subscribe(data=>{
+            this.sukien = data;
+            alert("Đăng kí thành công");
+            this.sukien = new Sukien();
+            this.router.navigate(['/dangkitochuc']);
+          });
+        }
+      }
+    });
   }
 
   readURL(event: any): void {
