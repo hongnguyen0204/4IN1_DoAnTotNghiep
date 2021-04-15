@@ -21,7 +21,6 @@ import { SuatintucComponent } from './suatintuc/suatintuc.component';
     TintucComponent,
     ThemmoitintucComponent,
     SuatintucComponent,
-
   ],
     imports: [
         CommonModule,

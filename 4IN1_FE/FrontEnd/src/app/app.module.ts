@@ -31,6 +31,7 @@ import {DataTablesModule} from 'angular-datatables';
 import {AuthInterceptor} from './-helpers/auth.interceptor';
 import {CustomerAuthService} from './_services/customer.service';
 import {AdminAuthService} from './_services/admin.service';
+// @ts-ignore
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { TintucComponent } from './tintuc/tintuc.component';
 import { TimkiemsukienComponent } from './timkiemsukien/timkiemsukien.component';

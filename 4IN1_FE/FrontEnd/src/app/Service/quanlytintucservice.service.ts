@@ -10,6 +10,7 @@ import {Observable} from "rxjs";
 export class QuanlytintucserviceService {
 
   // @ts-ignore
+  //dich vụ
   constructor(private http: HttpClient) { }
   // @ts-ignore
   findAll(): Observable<Quanlytintuc[]>{

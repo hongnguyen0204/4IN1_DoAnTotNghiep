@@ -117,11 +117,11 @@
                 <h4 class="card-title ">Tin tức</h4>
                 <p class="card-category"></p>
               </div>
-              <div class="card-body">
+              <div class="card-body" >
                 <div>
                   <a style="margin: 20px auto;" href="admin/themmoitintuc" class="btn-themmoi">Thêm mới</a>
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive" style="text-align: center">
                   <table datatable [dtOptions]="dtOptions" style="table-layout: fixed;" class="row-border hover" style="width:100%">
                     <thead>
                     <tr>
@@ -139,7 +139,7 @@
                       <td>{{quanlytintuc.describe_of_news}}</td>
                       <td >{{quanlytintuc.postday | date:'dd/MM/yyyy' }}</td>
                       <td>
-                        <a class="btn btn-success" (click)="updateTinTuc(quanlytintuc.id)">Sửa</a>
+                        <a class="btn btn-success" style="margin-right: 20px" (click)="updateTinTuc(quanlytintuc.id)">Sửa</a>
                         <a class="btn btn-danger" (click)="delete(quanlytintuc.id)" >Xóa</a>
                       </td>
                     </tr>
