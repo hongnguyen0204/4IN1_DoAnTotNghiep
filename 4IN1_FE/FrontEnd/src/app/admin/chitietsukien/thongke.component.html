@@ -138,8 +138,11 @@
                 </div>
                 <div class="item">
                   <p>Bản kế hoạch:</p>
-                  <br>
-                  <a href="{{sukien.plan_file}}">Tải bản kế hoạch tại đây</a>
+                  <a style="margin-top: 5px" href="{{sukien.plan_file}}">Tải bản kế hoạch tại đây</a>
+                </div>
+                <div class="item">
+                  <p>Mô tả:</p>
+                  <ckeditor name="mota" [(ngModel)]="sukien.content" ></ckeditor>
                 </div>
                 <div class="btn-block">
                   <button (click)="updateStudent()" href="#">Duyệt</button>

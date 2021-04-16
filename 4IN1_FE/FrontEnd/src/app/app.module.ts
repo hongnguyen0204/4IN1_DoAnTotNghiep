@@ -31,13 +31,19 @@ import {DataTablesModule} from 'angular-datatables';
 import {AuthInterceptor} from './-helpers/auth.interceptor';
 import {CustomerAuthService} from './_services/customer.service';
 import {AdminAuthService} from './_services/admin.service';
+// @ts-ignore
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { TintucComponent } from './tintuc/tintuc.component';
 import { TimkiemsukienComponent } from './timkiemsukien/timkiemsukien.component';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { QuenmatkhauComponent } from './quenmatkhau/quenmatkhau.component';
 import { DoimatkhauComponent } from './doimatkhau/doimatkhau.component';
+<<<<<<< HEAD
 import { XacthucemailComponent } from './xacthucemail/xacthucemail.component';
+=======
+import { ChitiettintucComponent } from './chitiettintuc/chitiettintuc.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+>>>>>>> 7444b122357e1cb4da4558250f06ff0e6ee0c073
 
 // @ts-ignore
 @NgModule({
@@ -60,7 +66,11 @@ import { XacthucemailComponent } from './xacthucemail/xacthucemail.component';
     TimkiemsukienComponent,
     QuenmatkhauComponent,
     DoimatkhauComponent,
+<<<<<<< HEAD
     XacthucemailComponent,
+=======
+    ChitiettintucComponent
+>>>>>>> 7444b122357e1cb4da4558250f06ff0e6ee0c073
   ],
     imports: [
         BrowserModule,
@@ -72,7 +82,8 @@ import { XacthucemailComponent } from './xacthucemail/xacthucemail.component';
         AngularFireModule.initializeApp(environment.firebaseConfig),
         DataTablesModule,
         MatSnackBarModule,
-        Ng2SearchPipeModule
+        Ng2SearchPipeModule,
+      BrowserAnimationsModule
     ],
   providers: [AuthInterceptor,CustomerAuthService,AdminAuthService],
   bootstrap: [AppComponent]
