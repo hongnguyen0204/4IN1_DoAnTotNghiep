@@ -11,9 +11,12 @@ public interface AccRepository extends JpaRepository<Account,Integer> {
     @Query(value = "SELECT * FROM account_information WHERE username=?1  ", nativeQuery = true)
     Account GetIF(String username);
 
+    @Query(value = "SELECT * FROM account_information WHERE reset_password_token=?1  ", nativeQuery = true)
+    Account Gettoken(String token);
+
     @Query(value = "SELECT * FROM account_information WHERE email=?1  ", nativeQuery = true)
     Account findByEmail(String email);
 
-    @Query(value = "SELECT * FROM account_information WHERE reset_password_token=?1 ", nativeQuery = true)
+    @Query(value = "SELECT * FROM account_information WHERE verification_email_token=?1 ", nativeQuery = true)
     Account findByToken(String token);
 }
