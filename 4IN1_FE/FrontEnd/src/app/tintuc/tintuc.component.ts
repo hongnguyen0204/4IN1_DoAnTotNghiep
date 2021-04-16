@@ -10,6 +10,6 @@ export class TintucComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
 
+  }
 }

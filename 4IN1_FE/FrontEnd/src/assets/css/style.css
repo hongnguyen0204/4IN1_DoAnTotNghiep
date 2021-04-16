@@ -718,6 +718,7 @@ p {
       width: 48%;
       margin-top: 10px; } }
   .event-tab .nav .nav-item a {
+    height: 69px;
     text-align: center;
     width: 225px;
     border: 3px solid rgba(24, 99, 255, 0.1);
