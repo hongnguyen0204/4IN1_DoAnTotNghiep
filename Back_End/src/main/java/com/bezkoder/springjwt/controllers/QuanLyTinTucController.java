@@ -11,6 +11,7 @@ import java.util.NoSuchElementException;
 
 
 @RestController
+//Kích hoạt CORS trên máy chủ
 @CrossOrigin (origins = "http://localhost:4200")
 @RequestMapping(value = "/quanlytintuc")
 
@@ -27,11 +28,11 @@ public class QuanLyTinTucController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public void add(@RequestBody QuanLyTinTuc quanLyTinTuc){
+        //currentTimeMillis lấy thời gian
         long millis=System.currentTimeMillis();
         java.sql.Date date=new java.sql.Date(millis);
         quanLyTinTuc.setPostday(date);
-        quanLyTinTuc.setID_admin(1);
-         quanLyTInTucRepository.save(quanLyTinTuc);
+        quanLyTInTucRepository.save(quanLyTinTuc);
     }
 
     @DeleteMapping("/delete/{id}")
