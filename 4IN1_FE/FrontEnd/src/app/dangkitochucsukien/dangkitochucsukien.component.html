@@ -8,16 +8,16 @@
     </div>
     <div class="item">
       <p>Tên sự kiện<span class="required">*</span></p>
-      <input type="text" name="event_name" [(ngModel)]="sukien.event_name" placeholder="Tên sự kiện" required/>
+      <input type="text" name="event_name" [(ngModel)]="sukien.event_name"  required/>
     </div>
     <div class="contact-item">
       <div class="item">
         <p>Số điện thoại<span class="required">*</span></p>
-        <input style="width: 100%" type="text" name="phone" [(ngModel)]="users.phone_number" placeholder="Số điện thoại" disabled/>
+        <input style="width: 100%" type="text" name="phone" [(ngModel)]="users.phone_number"  disabled/>
       </div>
       <div class="item">
         <p>Email<span class="required">*</span></p>
-        <input type="text" name="email" [(ngModel)]="users.email" placeholder="Email" disabled/>
+        <input type="text" name="email" [(ngModel)]="users.email"  disabled/>
       </div>
     </div>
     <div class="position-item">
@@ -92,7 +92,7 @@
       </div>
     </div>
     <div class="btn-block">
-      <button (click)="add()">Submit</button>
+      <button mat-raised-button (click)="add()">Submit</button>
       <button class="btn-danger" >Hủy</button>
     </div>
 </form>

@@ -27,6 +27,7 @@ export class ThongtincanhanComponent implements OnInit {
   users:Thongtincanhan=new Thongtincanhan();
   // @ts-ignore
   gender:string;
+
   constructor(private thongtincanhanService: ThongtincanhanService,
               @Inject(AngularFireStorage)
               private storage: AngularFireStorage,
@@ -42,13 +43,7 @@ export class ThongtincanhanComponent implements OnInit {
       this.users=data;
       this.imageSrc = this.users.img;
       this.id=this.users.id;
-      if(this.users.gender==true){
-        this.gender='Nam';
-      } else {
-        this.gender='Nữ';
-      }
     });
-
   }
 
   save(event: any) {
@@ -79,6 +74,7 @@ export class ThongtincanhanComponent implements OnInit {
       }
     }
   }
+
   // tslint:disable-next-line:typedef
   readURL(event: any): void {
     // @ts-ignore
@@ -91,5 +87,4 @@ export class ThongtincanhanComponent implements OnInit {
       reader.readAsDataURL(this.selectedImage);
     }
   }
-
 }
