@@ -85,3 +85,4 @@ export class ThemmoitintucComponent implements OnInit {
     window.location.reload();
   }
 }
+
