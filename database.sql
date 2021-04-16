@@ -1,6 +1,6 @@
 -- drop database quanlysukien;
--- create database quanlysukien;
--- use quanlysukien;
+create database quanlysukien;
+use quanlysukien;
 
 create table account_information(
 	ID int AUTO_INCREMENT,
@@ -94,9 +94,10 @@ create table user_roles
     constraint FK2w8pmf29beeop8352ql66ffm0
         foreign key (acc_id) references account_information (ID),
     constraint FKh8ciramu9cc9q3qcqiv4ue8a6
-        foreign key (role_id) references roles (ID)
+        foreign key (role_id) references rolesroles (ID)
 );
+
+
 insert into roles value(1,"ROLE_USER");
 insert into roles value(2,"ROLE_MODERATOR");
 insert into roles value(3,"ROLE_ADMIN");
-
