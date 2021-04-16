@@ -13,7 +13,7 @@
     <div class="contact-item">
       <div class="item">
         <p>Số điện thoại<span class="required">*</span></p>
-        <input type="text" name="phone" [(ngModel)]="users.phone_number" placeholder="Số điện thoại" disabled/>
+        <input style="width: 100%" type="text" name="phone" [(ngModel)]="users.phone_number" placeholder="Số điện thoại" disabled/>
       </div>
       <div class="item">
         <p>Email<span class="required">*</span></p>
@@ -24,7 +24,6 @@
       <div class="item">
         <p>Địa điểm tổ chức<span class="required">*</span></p>
         <select name="place" [(ngModel)]="sukien.place" required>
-          <option value="0" selected>Chọn địa điểm</option>
           <option value="P-603 Quang Trung">P-603 Quang Trung</option>
           <option value="Hòa Khách Nam">Hòa Khách Nam</option>
           <option value="Phan Thanh">Phan Thanh</option>
@@ -93,7 +92,7 @@
       </div>
     </div>
     <div class="btn-block">
-      <button (click)="add()">Submit</button>
+      <button mat-raised-button (click)="add()">Submit</button>
       <button class="btn-danger" >Hủy</button>
     </div>
 </form>

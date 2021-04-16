@@ -60,8 +60,24 @@ export class SukienService {
   }
 
   // @ts-ignore
-  find(id): Observable<Dangkithamgia[]>{
-    return this.http.get<Dangkithamgia[]>(`${'http://localhost:8080/nguoithamgia'}/${id}`);
+  find(id): Observable<any>{
+    return this.http.get<any>(`${'http://localhost:8080/nguoithamgia'}/${id}`);
   }
+
+  // @ts-ignore
+  get(id): Observable<any>{
+    return this.http.get<any>(`${'http://localhost:8080/nguoithamgia/infor'}/${id}`);
+  }
+
+  // @ts-ignore
+  huyDangKi(data){
+    return this.http.post('http://localhost:8080/nguoithamgia/delete',data);
+  }
+
+  // @ts-ignore
+  kiemTra(data){
+    return this.http.post('http://localhost:8080/sukien/kiemtra',data);
+  }
+
 }
 

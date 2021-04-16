@@ -6,7 +6,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Tin tức
+    Thêm tin tức
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <base href="/">
@@ -113,7 +113,7 @@
           <div class="col-md-12">
             <div class="card card-plain">
               <div class="card-header card-header-primary">
-                <h4 class="card-title mt-0"> Thêm Mới Thông Tin</h4>
+                <h4 class="card-title mt-0" > Thêm mới tin tức</h4>
               </div>
             </div>
           </div>
@@ -125,7 +125,7 @@
               </div>
               <div class="row">
                 <div class="col-25">
-                  <label for="ftentintuc">Tên Tin Tức</label>
+                  <label for="ftentintuc" style="color: #0b0b0b">Tên Tin Tức</label>
                 </div>
                 <div class="col-75">
                   <input type="text" name="tentintuc" [(ngModel)]="tintuc.title" placeholder="" id="ftentintuc">
@@ -133,19 +133,19 @@
               </div>
               <div class="row">
                 <div class="col-25">
-                  <label for="fmota">Mô Tả</label>
+                  <label for="fmota"  style="color: #0b0b0b">Mô Tả</label>
                 </div>
                 <div class="col-75">
                   <textarea id="fmota" [(ngModel)]="tintuc.describe_of_news" name="mota" placeholder="" style="height:200px"></textarea>
                 </div>
               </div>
-              <label class="lb">Thông tin</label>
+              <label class="lb" style="color: #0b0b0b">Thông tin</label>
               <ckeditor [(ngModel)]="tintuc.content" name="ckeditor" id="txtckeditor"></ckeditor>
-              <label class="lb">Hình ảnh</label>
+              <label class="lb" style="color: #0b0b0b">Hình ảnh</label>
               <div class="file-input" style=" ">
                 <input type='file' (change)="readURL($event);" id="file" class="file" />
                 <img  id="blah"  [src]="imageSrc || 'http://placehold.it/180'" alt="your image"  />
-                <label for="file">Chọn và lưu ảnh</label>
+                <label for="file" >Chọn và lưu ảnh</label>
               </div>
               <br>
               <div style="width: 30%;margin: 20px auto" class="row">

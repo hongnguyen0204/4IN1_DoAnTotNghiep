@@ -13,5 +13,5 @@ export class Quanlytintuc {
   // @ts-ignore
   postday: Date;
   // @ts-ignore
-  id_admin:number
+  ID_admin:number;
 }

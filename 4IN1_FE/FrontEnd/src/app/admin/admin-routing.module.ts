@@ -8,16 +8,19 @@ import {TintucComponent} from './tintuc/tintuc.component';
 import {ThemmoitintucComponent} from './themmoitintuc/themmoitintuc.component';
 import {SuatintucComponent} from './suatintuc/suatintuc.component';
 import {AdminAuthService} from '../_services/admin.service';
+import {ActiveService} from '../_services/active.service';
 
 
 const routes: Routes = [
   {path: 'admin/dashboard', component: DashboardComponent, canActivate:[AdminAuthService] },
-  {path: 'admin/login', component: LoginComponent},
+  {path: 'admin/login', component: LoginComponent,canActivate: [ActiveService]},
   {path: 'admin/chitietsukien/:id', component: ThongkeComponent, canActivate:[AdminAuthService]  },
   {path: 'admin/sukien', component: SukienComponent, canActivate:[AdminAuthService]  },
   {path: 'admin/tintuc', component: TintucComponent, canActivate:[AdminAuthService]  },
   {path: 'admin/themmoitintuc', component: ThemmoitintucComponent, canActivate:[AdminAuthService]  },
-  {path: 'admin/suatintuc/:id', component: SuatintucComponent, canActivate:[AdminAuthService]  }
+  {path: 'admin/suatintuc/:id', component: SuatintucComponent, canActivate:[AdminAuthService]  },
+  {path: '', redirectTo: '/admin/dashboard', pathMatch: 'full' }
+
 ];
 
 @NgModule({
