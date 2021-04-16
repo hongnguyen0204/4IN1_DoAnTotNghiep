@@ -38,12 +38,11 @@ import { TimkiemsukienComponent } from './timkiemsukien/timkiemsukien.component'
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { QuenmatkhauComponent } from './quenmatkhau/quenmatkhau.component';
 import { DoimatkhauComponent } from './doimatkhau/doimatkhau.component';
-<<<<<<< HEAD
+
 import { XacthucemailComponent } from './xacthucemail/xacthucemail.component';
-=======
+
 import { ChitiettintucComponent } from './chitiettintuc/chitiettintuc.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
->>>>>>> 7444b122357e1cb4da4558250f06ff0e6ee0c073
 
 // @ts-ignore
 @NgModule({
@@ -66,11 +65,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     TimkiemsukienComponent,
     QuenmatkhauComponent,
     DoimatkhauComponent,
-<<<<<<< HEAD
     XacthucemailComponent,
-=======
     ChitiettintucComponent
->>>>>>> 7444b122357e1cb4da4558250f06ff0e6ee0c073
   ],
     imports: [
         BrowserModule,

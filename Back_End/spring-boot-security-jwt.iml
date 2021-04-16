@@ -10,14 +10,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-<<<<<<< HEAD
         <datasource-mapping />
-=======
-        <datasource-mapping>
-          <factory-entry name="entityManagerFactory" value="ba027f7e-bd6a-4105-84d4-bda003b46821" />
-          <factory-entry name="spring-boot-security-jwt" />
-        </datasource-mapping>
->>>>>>> 63252046523d0e3c71c6810ddf4fe9194574a26b
         <naming-strategy-map />
       </configuration>
     </facet>

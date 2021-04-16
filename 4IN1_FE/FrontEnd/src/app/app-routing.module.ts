@@ -18,12 +18,9 @@ import {CustomerAuthService} from './_services/customer.service';
 import {TintucComponent} from './tintuc/tintuc.component';
 import {TimkiemsukienComponent} from './timkiemsukien/timkiemsukien.component';
 import {DoimatkhauComponent} from './doimatkhau/doimatkhau.component';
-<<<<<<< HEAD
 import {XacthucemailComponent} from './xacthucemail/xacthucemail.component';
-=======
 import {ActiveService} from './_services/active.service';
 import {ChitiettintucComponent} from './chitiettintuc/chitiettintuc.component';
->>>>>>> 7444b122357e1cb4da4558250f06ff0e6ee0c073
 
 
 const routes: Routes = [
