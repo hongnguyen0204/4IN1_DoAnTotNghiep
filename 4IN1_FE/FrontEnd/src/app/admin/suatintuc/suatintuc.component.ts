@@ -89,3 +89,4 @@ export class SuatintucComponent implements OnInit {
     window.location.reload();
   }
 }
+// this.quanLyTinTucService.update(this.id, this.tintuc).subscribe();

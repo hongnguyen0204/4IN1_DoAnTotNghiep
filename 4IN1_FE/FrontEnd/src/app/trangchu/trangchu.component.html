@@ -222,9 +222,9 @@
               <div class="tab-pane fade show active" id="day-1" role="tabpanel" aria-labelledby="day-1-tab">
                 <div class="event-content pt-40">
                   <div *ngFor="let sk of sukien">
-                      <div class="single-event d-md-flex mt-30">
+                      <div (click)="detailSK(sk.id)" class="single-event d-md-flex mt-30">
                         <div class="event-image">
-                          <img [src]="sk.img" alt="Event">
+                          <img (click)="detailSK(sk.id)" [src]="sk.img" alt="Event">
                         </div>
                         <div class="event-content media-body">
                           <h4 class="event-title">{{sk.event_name}}</h4>
@@ -242,9 +242,9 @@
               <div class="tab-pane fade" id="day-2" role="tabpanel" aria-labelledby="day-2-tab">
                 <div class="event-content pt-40">
                   <div *ngFor="let sk of sukien">
-                      <div class="single-event d-md-flex mt-30">
+                      <div (click)="detailSK(sk.id)" class="single-event d-md-flex mt-30">
                         <div class="event-image">
-                          <img [src]="sk.img" alt="Event">
+                          <img (click)="detailSK(sk.id)" [src]="sk.img" alt="Event">
                         </div>
                         <div class="event-content media-body">
                           <h4 class="event-title">{{sk.event_name}}</h4>
@@ -262,9 +262,9 @@
               <div class="tab-pane fade" id="day-3" role="tabpanel" aria-labelledby="day-3-tab">
                 <div class="event-content pt-40">
                   <div *ngFor="let sk of sukien">
-                      <div class="single-event d-md-flex mt-30">
+                      <div (click)="detailSK(sk.id)" class="single-event d-md-flex mt-30">
                         <div class="event-image">
-                          <img [src]="sk.img" alt="Event">
+                          <img (click)="detailSK(sk.id)" [src]="sk.img" alt="Event">
                         </div>
                         <div class="event-content media-body">
                           <h4 class="event-title">{{sk.event_name}}</h4>
@@ -283,9 +283,9 @@
               <div class="tab-pane fade" id="day-4" role="tabpanel" aria-labelledby="day-4-tab">
                 <div class="event-content pt-40">
                   <div *ngFor="let sk of sukien">
-                      <div class="single-event d-md-flex mt-30">
+                      <div (click)="detailSK(sk.id)" class="single-event d-md-flex mt-30">
                         <div class="event-image">
-                          <img [src]="sk.img" alt="Event">
+                          <img (click)="detailSK(sk.id)" [src]="sk.img" alt="Event">
                         </div>
                         <div class="event-content media-body">
                           <h4 class="event-title">{{sk.event_name}}</h4>

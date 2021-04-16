@@ -16,8 +16,18 @@ public class NguoiThamGiaController {
     private NguoiThamGiaRepository nguoiThamGiaRepository;
 
     @GetMapping("/{id}")
-    public List<NguoiThamGia> findall(@PathVariable int id){
+    public List<Object> findall(@PathVariable int id){
         return nguoiThamGiaRepository.SKDaThamGia(id);
+    }
+
+    @GetMapping("/infor/{id}")
+    public NguoiThamGia findIF(@PathVariable Integer id){
+        return nguoiThamGiaRepository.findById(id).get();
+    }
+
+    @PostMapping("/delete")
+    public void delete(@RequestBody NguoiThamGia nguoiThamGia) {
+        nguoiThamGiaRepository.HuySK(nguoiThamGia.getAcc_ID(),nguoiThamGia.getEvent_ID());
     }
 
     @PostMapping("/dangki")

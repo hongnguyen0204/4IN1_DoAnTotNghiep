@@ -95,4 +95,9 @@ public class SuKienController {
     public Integer TongNguoi(){
         return suKienRepository.TongNguoiThamGia();
     }
+
+    @PostMapping("/kiemtra")
+    public Integer KiemTra(@RequestBody SuKien suKien){
+       return suKienRepository.KiemTra(suKien.getTime_of_event(),suKien.getPlace());
+    }
 }
