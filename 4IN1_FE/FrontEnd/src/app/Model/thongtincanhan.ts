@@ -25,4 +25,6 @@ export class Thongtincanhan {
   reset_password_token:string;
   // @ts-ignore
   gender:boolean;
+  // @ts-ignore
+  status_acc: boolean;
 }

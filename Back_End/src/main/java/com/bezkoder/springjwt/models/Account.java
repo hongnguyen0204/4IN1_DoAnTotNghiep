@@ -22,13 +22,14 @@ public class Account {
     private String password;
     private String advantages;
     private String reset_password_token;
+    private String verification_email_token;
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime tokenCreationDate;
 
     public Account() {
     }
 
-    public Account(int ID, String username, String email, String fullname, String faculty, Date day_of_birth, String phone_number, String img, boolean gender, boolean status_acc, String password, String advantages, String reset_password_token, LocalDateTime tokenCreationDate) {
+    public Account(int ID, String username, String email, String fullname, String faculty, Date day_of_birth, String phone_number, String img, boolean gender, boolean status_acc, String password, String advantages, String reset_password_token, String verification_email_token, LocalDateTime tokenCreationDate) {
         this.ID = ID;
         this.username = username;
         this.email = email;
@@ -42,6 +43,7 @@ public class Account {
         this.password = password;
         this.advantages = advantages;
         this.reset_password_token = reset_password_token;
+        this.verification_email_token = verification_email_token;
         this.tokenCreationDate = tokenCreationDate;
     }
 
@@ -147,6 +149,14 @@ public class Account {
 
     public void setReset_password_token(String reset_password_token) {
         this.reset_password_token = reset_password_token;
+    }
+
+    public String getVerification_email_token() {
+        return verification_email_token;
+    }
+
+    public void setVerification_email_token(String verification_email_token) {
+        this.verification_email_token = verification_email_token;
     }
 
     public LocalDateTime getTokenCreationDate() {

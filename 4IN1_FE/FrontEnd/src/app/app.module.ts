@@ -37,6 +37,7 @@ import { TimkiemsukienComponent } from './timkiemsukien/timkiemsukien.component'
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { QuenmatkhauComponent } from './quenmatkhau/quenmatkhau.component';
 import { DoimatkhauComponent } from './doimatkhau/doimatkhau.component';
+import { XacthucemailComponent } from './xacthucemail/xacthucemail.component';
 
 // @ts-ignore
 @NgModule({
@@ -58,7 +59,8 @@ import { DoimatkhauComponent } from './doimatkhau/doimatkhau.component';
     TintucComponent,
     TimkiemsukienComponent,
     QuenmatkhauComponent,
-    DoimatkhauComponent
+    DoimatkhauComponent,
+    XacthucemailComponent,
   ],
     imports: [
         BrowserModule,
