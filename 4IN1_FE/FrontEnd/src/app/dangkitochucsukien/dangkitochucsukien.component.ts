@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import * as $ from 'jquery';
 import {Sukien} from '../Model/sukien';
 import {SukienService} from '../Service/sukien.service';
@@ -8,16 +8,17 @@ import {finalize} from 'rxjs/operators';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {AccountService} from '../Service/account.service';
 import {Thongtincanhan} from '../Model/thongtincanhan';
-import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
+import {ThongbaoService} from '../_services/thongbao.service';
 
 @Component({
   selector: 'app-dangkitochucsukien',
   templateUrl: './dangkitochucsukien.component.html',
   styleUrls: ['./dangkitochucsukien.component.scss'],
-  providers: [SukienService,AccountService],
+  providers: [SukienService,AccountService]
 })
 export class DangkitochucsukienComponent implements OnInit {
-
+// @ts-ignore
+  @ViewChild('appendTo', { read: ViewContainerRef }) public appendTo: ViewContainerRef;
   currentUser: any;
   selectedImage: any = null;
   selectedFile: any = null;
@@ -37,7 +38,8 @@ export class DangkitochucsukienComponent implements OnInit {
               private router: Router,
               @Inject(AngularFireStorage) private storage: AngularFireStorage,
               private token: TokenStorageService,
-              private accountService:AccountService) {
+              private accountService:AccountService,
+              private thongbao:ThongbaoService) {
 
   }
 
@@ -77,7 +79,7 @@ export class DangkitochucsukienComponent implements OnInit {
     this.sukienService.kiemTra(this.sukien).subscribe(data=>{
       console.log(this.sukien);
       if(data!=0){
-       alert("Sự kiện của bạn trùng lịch với sự kiện khác sắp diễn ra!")
+       this.thongbao.showWarning("Sự kiện của bạn trùng lịch với sự kiện khác sắp diễn ra!",this.appendTo);
       } else {
         this.sukien.plan_file=this.id;
         this.sukien.img=this.idIMG;
@@ -86,7 +88,7 @@ export class DangkitochucsukienComponent implements OnInit {
         if(confirm("Bạn chắc chắn muốn đăng kí hay không?")){
           this.sukienService.create(this.sukien).subscribe(data=>{
             this.sukien = data;
-            alert("Đăng kí thành công");
+            this.thongbao.showSuccess("Đăng kí thành công",this.appendTo);
             this.sukien = new Sukien();
             this.router.navigate(['/dangkitochuc']);
           });
@@ -119,9 +121,6 @@ export class DangkitochucsukienComponent implements OnInit {
     }
   }
 
-  chuaDangNhap(){
-    this.router.navigate(['dangnhap']);
-  }
 
 }
 
