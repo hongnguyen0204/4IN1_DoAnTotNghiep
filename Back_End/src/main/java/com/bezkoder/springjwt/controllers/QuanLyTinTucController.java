@@ -31,7 +31,7 @@ public class QuanLyTinTucController {
         //currentTimeMillis lấy thời gian
         long millis=System.currentTimeMillis();
         java.sql.Date date=new java.sql.Date(millis);
-        quanLyTinTuc.setPostday(date);
+        quanLyTinTuc.setPost_day(date);
         quanLyTInTucRepository.save(quanLyTinTuc);
     }
 
@@ -50,7 +50,8 @@ public class QuanLyTinTucController {
             if(quanLyTinTuc.getImg()!=null){
             quanLyTinTuc.setImg(st.getImg());
             }
-            quanLyTinTuc.setPostday(st.getPostday());
+            quanLyTinTuc.setPost_day(st.getPost_day());
+            quanLyTinTuc.setID_admin(st.getID_admin());
             quanLyTInTucRepository.save(quanLyTinTuc);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {

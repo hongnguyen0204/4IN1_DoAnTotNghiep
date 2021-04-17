@@ -43,6 +43,9 @@ import { XacthucemailComponent } from './xacthucemail/xacthucemail.component';
 
 import { ChitiettintucComponent } from './chitiettintuc/chitiettintuc.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NotificationModule } from '@progress/kendo-angular-notification';
+import {ThongbaoService} from './_services/thongbao.service';
+
 
 // @ts-ignore
 @NgModule({
@@ -79,9 +82,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         DataTablesModule,
         MatSnackBarModule,
         Ng2SearchPipeModule,
-      BrowserAnimationsModule
+      BrowserAnimationsModule,
+      NotificationModule
     ],
-  providers: [AuthInterceptor,CustomerAuthService,AdminAuthService],
+  providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
