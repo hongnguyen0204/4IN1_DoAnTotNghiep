@@ -2,6 +2,8 @@ package com.bezkoder.springjwt.controllers;
 
 
 import com.bezkoder.springjwt.models.Account;
+import com.bezkoder.springjwt.models.SuKien;
+import com.bezkoder.springjwt.models.Thongtintaikhoan;
 import com.bezkoder.springjwt.repository.AccRepository;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -35,6 +38,16 @@ public class AccController {
         return accRepository.GetIF(username);
     }
 
+    @GetMapping("/getAccToken/{token}")
+    public Account GetAcctoken(@PathVariable String token) {
+        return accRepository.findByToken(token);
+    }
+
+    @GetMapping("/getAccTokenEmail/{token}")
+    public Account GetAcctokenEmail(@PathVariable String token) {
+        return accRepository.findByToken(token);
+    }
+
     @PostMapping("/forgot_password/{email}")
     public String processForgotPassword(@PathVariable String email) throws UnsupportedEncodingException, MessagingException {
         String token = RandomString.make(30);
@@ -42,12 +55,23 @@ public class AccController {
         account.setReset_password_token(token);
         accRepository.save(account);
         String link = "http://localhost:4200" + "/doimatkhau/"+ token;
-        sendEmail(email,link);
+        sendEmailtoresetpassword(email,link);
+        return "Gửi qua mail thành công";
+    }
+
+    @PostMapping("/xacthucemail/{email}")
+    public String xacthucemail(@PathVariable String email) throws UnsupportedEncodingException, MessagingException {
+        String token = RandomString.make(50);
+        Account account = accRepository.findByEmail(email);
+        account.setVerification_email_token(token);
+        accRepository.save(account);
+        String link = "http://localhost:4200" + "/xacthucemail/"+ token;
+        sendEmailtoverification(email,link);
         return "Gửi qua mail thành công";
     }
 
 
-    public void sendEmail(String recipientEmail, String link) throws UnsupportedEncodingException, MessagingException {
+    public void sendEmailtoresetpassword(String recipientEmail, String link) throws UnsupportedEncodingException, MessagingException {
 
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message);
@@ -67,6 +91,27 @@ public class AccController {
 
     }
 
+    public void sendEmailtoverification(String recipientEmail, String link) throws UnsupportedEncodingException, MessagingException {
+
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
+
+        helper.setFrom("shonepro123@gmail.com", "Xác thực tài khoản");
+        helper.setTo(recipientEmail);
+
+        String subject = "Link xác thực tài khoản";
+
+        String content ="Link xác thực tài khoản  " + link;
+
+        helper.setSubject(subject);
+
+        helper.setText(content, true);
+
+        mailSender.send(message);
+
+    }
+
+
 
     @PostMapping("/reset_password")
     public String processResetPassword(@RequestBody Account acc) {
@@ -78,5 +123,12 @@ public class AccController {
             accRepository.save(account);
             return "Đổi mật khẩu thành công";
         }
+    }
+
+    @PostMapping("/verification/{token}")
+    public void verification(@PathVariable String token) {
+        Account account = accRepository.findByToken(token);
+        account.setStatus_acc(true);
+        accRepository.save(account);
     }
 }

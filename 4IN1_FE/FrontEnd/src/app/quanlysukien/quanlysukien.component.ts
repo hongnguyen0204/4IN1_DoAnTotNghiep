@@ -24,8 +24,7 @@ export class QuanlysukienComponent implements OnInit {
   id_SK: number;
   currentUser: any;
   // @ts-ignore
-  users:Thongtincanhan=new Thongtincanhan();
-
+  users: Thongtincanhan=new Thongtincanhan();
   // @ts-ignore
   infor : Dangkithamgia=new Dangkithamgia();
 
@@ -47,15 +46,12 @@ export class QuanlysukienComponent implements OnInit {
       this.skService.find(this.users.id).subscribe(data=>{
         this.dangkithamgia=data;
       });
-
     });
   }
 
   delete(id:number) {
     this.infor.acc_ID = this.id;
     this.infor.event_ID=id;
-    console.log(this.infor.acc_ID);
-    console.log(this.infor.event_ID);
     this.skService.huyDangKi(this.infor).subscribe(
         data => {
           console.log(data);

@@ -18,6 +18,7 @@ import {CustomerAuthService} from './_services/customer.service';
 import {TintucComponent} from './tintuc/tintuc.component';
 import {TimkiemsukienComponent} from './timkiemsukien/timkiemsukien.component';
 import {DoimatkhauComponent} from './doimatkhau/doimatkhau.component';
+import {XacthucemailComponent} from './xacthucemail/xacthucemail.component';
 import {ActiveService} from './_services/active.service';
 import {ChitiettintucComponent} from './chitiettintuc/chitiettintuc.component';
 
@@ -39,6 +40,7 @@ const routes: Routes = [
   {path: 'quanlysukien', component: QuanlysukienComponent,canActivate:[CustomerAuthService]},
   {path: 'sukiencuatoi', component: SukiencuatoiComponent,canActivate:[CustomerAuthService]},
   {path: 'doimatkhau/:token', component: DoimatkhauComponent},
+  {path: 'xacthucemail/:token', component: XacthucemailComponent},
   {path: 'add', component: DangkyComponent},
   {path: '', redirectTo: '/trangchu', pathMatch: 'full' }
   ];
