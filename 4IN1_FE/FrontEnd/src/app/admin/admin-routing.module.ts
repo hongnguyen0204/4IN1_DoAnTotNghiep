@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'admin/tintuc', component: TintucComponent, canActivate:[AdminAuthService]  },
   {path: 'admin/themmoitintuc', component: ThemmoitintucComponent, canActivate:[AdminAuthService]  },
   {path: 'admin/suatintuc/:id', component: SuatintucComponent, canActivate:[AdminAuthService]  },
-  {path: '', redirectTo: '/admin/dashboard', pathMatch: 'full' }
+  {path: 'admin', redirectTo: '/admin/dashboard', pathMatch: 'full' }
 
 ];
 

@@ -53,10 +53,15 @@ export class DangkithamgiasukienComponent implements OnInit {
   dangKi(id:number,idSK:number){
   this.dK.acc_ID=id;
   this.dK.event_ID=idSK;
-  this.sukienService.dangKi(this.dK).subscribe();
-  this.router.navigate(['quanlysukien']).then(() => {
-    window.location.reload();
-  });
+    this.sukienService.kiemTraTG(this.dK).subscribe(data=>{
+      if(data!=0){
+        alert("Bạn đã đăng kí tham gia sự kiện này rồi")
+      } else {
+        this.sukienService.dangKi(this.dK).subscribe();
+        this.router.navigate(['quanlysukien']).then(() => {
+          window.location.reload();
+        });
+      }
+    })
   }
-
 }

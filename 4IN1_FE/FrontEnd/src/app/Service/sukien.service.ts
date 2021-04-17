@@ -79,5 +79,10 @@ export class SukienService {
     return this.http.post('http://localhost:8080/sukien/kiemtra',data);
   }
 
+  // @ts-ignore
+  kiemTraTG(data){
+    return this.http.post('http://localhost:8080/nguoithamgia/kiemtrathamgia',data);
+  }
+
 }
 
