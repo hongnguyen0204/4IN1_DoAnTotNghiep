@@ -24,7 +24,8 @@ export class ThongkeComponent implements OnInit {
 
   ngOnInit(): void {
     this.id=this.route.snapshot.params['id'];
-    this.skService.get(this.id).subscribe(data=>{
+    console.log(this.id);
+    this.skService.getSK(this.id).subscribe(data=>{
       this.sukien=data;
     },error => console.log(error));
   }
