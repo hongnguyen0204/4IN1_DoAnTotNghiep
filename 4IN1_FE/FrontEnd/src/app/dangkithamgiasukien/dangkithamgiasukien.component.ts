@@ -37,7 +37,7 @@ export class DangkithamgiasukienComponent implements OnInit {
   ngOnInit(): void {
     this.ev_id=this.route.snapshot.params['id'];
     console.log(this.ev_id);
-    this.sukienService.get(this.ev_id).subscribe(data=>{
+    this.sukienService.getsk(this.ev_id).subscribe(data=>{
       this.sukien=data;
     },error => console.log(error));
 

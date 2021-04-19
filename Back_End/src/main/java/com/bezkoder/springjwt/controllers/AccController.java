@@ -61,12 +61,12 @@ public class AccController {
 
     @PostMapping("/xacthucemail/{email}")
     public String xacthucemail(@PathVariable String email) throws UnsupportedEncodingException, MessagingException {
-        String token = RandomString.make(50);
-        Account account = accRepository.findByEmail(email);
-        account.setVerification_email_token(token);
-        accRepository.save(account);
-        String link = "http://localhost:4200" + "/xacthucemail/"+ token;
-        sendEmailtoverification(email,link);
+        String token = RandomString.make(50); //Mã ngẫu nhiên do hệ thống tạo ra
+        Account account = accRepository.findByEmail(email); //Ta không viết service nên hàm ni viết @query kiểm tra xem trong csdl có email đó không ( email lấy từ request param trên url)
+        account.setVerification_email_token(token); // Sau khi tìm được rồi thì sẽ set token vô cho bảng user( nhớ thêm vô)
+        accRepository.save(account); //lưu lại token vừa rồi
+        String link = "http://localhost:4200" + "/xacthucemail/"+ token; //tạo ra đường dẫn có chứa token
+        sendEmailtoverification(email,link); //hàm gửi mail
         return "Gửi qua mail thành công";
     }
 
