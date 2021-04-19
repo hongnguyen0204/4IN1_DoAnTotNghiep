@@ -41,7 +41,11 @@ export class SukienService {
   }
 
   // @ts-ignore
+<<<<<<< HEAD
   getsk(id): Observable<any> {
+=======
+  getSK(id): Observable<any> {
+>>>>>>> fdbb783d39025f598741d253da4d11b6b74d1751
     return this.http.get(`${'http://localhost:8080/sukien'}/${id}`);
   }
   // @ts-ignore
@@ -77,6 +81,11 @@ export class SukienService {
   // @ts-ignore
   kiemTra(data){
     return this.http.post('http://localhost:8080/sukien/kiemtra',data);
+  }
+
+  // @ts-ignore
+  kiemTraTG(data){
+    return this.http.post('http://localhost:8080/nguoithamgia/kiemtrathamgia',data);
   }
 
 }

@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {QuanlytintucserviceService} from "../../Service/quanlytintucservice.service";
 import {Quanlytintuc} from "../../Model/quanlytintuc";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -7,6 +7,7 @@ import {finalize} from "rxjs/operators";
 import {TokenStorageService} from '../../_services/token-storage.service';
 import {Thongtincanhan} from '../../Model/thongtincanhan';
 import {AccountService} from '../../Service/account.service';
+import {ThongbaoService} from '../../_services/thongbao.service';
 
 @Component({
   selector: 'app-themmoitintuc',
@@ -15,11 +16,12 @@ import {AccountService} from '../../Service/account.service';
   providers:[QuanlytintucserviceService]
 })
 export class ThemmoitintucComponent implements OnInit {
-
+// @ts-ignore
+  @ViewChild('appendTo', { read: ViewContainerRef }) public appendTo: ViewContainerRef;
   // @ts-ignore
   selectedImage: any = null;
   // @ts-ignore
-  tintuc :Quanlytintuc;
+  tintuc :Quanlytintuc=new Quanlytintuc();
   // @ts-ignore
   imageSrc: string;
   // @ts-ignore
@@ -27,16 +29,16 @@ export class ThemmoitintucComponent implements OnInit {
   // @ts-ignore
   admin_id:number;
   currentUser: any;
-  users:Thongtincanhan=new Thongtincanhan();
+  users:Thongtincanhan =new Thongtincanhan();
 
   constructor(private quanLyTinTucService: QuanlytintucserviceService,
               @Inject(AngularFireStorage) private storage: AngularFireStorage,
               private router: Router,
               private tokenStorageService: TokenStorageService,
-              private accountService:AccountService) { }
+              private accountService:AccountService,
+              private thongbao:ThongbaoService) { }
 
   ngOnInit(): void {
-    this.tintuc = new Quanlytintuc();
     this.currentUser = this.tokenStorageService.getUser();
     this.accountService.findUser(this.currentUser.username).subscribe(data=>{
       this.users=data;
@@ -45,25 +47,28 @@ export class ThemmoitintucComponent implements OnInit {
   }
 
   save(event:any) {
-    const name = this.selectedImage.name;
-    const fileRef = this.storage.ref(name);
-    this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
-      finalize(() => {
-        fileRef.getDownloadURL().subscribe((url) => {
-          this.id = url;
-          this.tintuc.img = this.id;
-          this.tintuc.ID_admin=this.admin_id;
-          if (confirm("Bạn chắc chắn muốn thêm hay không?")) {
-            this.quanLyTinTucService.create(this.tintuc).subscribe(data => {
-              this.tintuc = data;
-              alert("Thêm thành công");
-              this.router.navigate(['/admin/tintuc']).then(() => {
-                window.location.reload();
+    if (this.selectedImage==null){
+      this.thongbao.showError("Bạn phải chọn ảnh!",this.appendTo);
+    } else{
+      const name = this.selectedImage.name;
+      const fileRef = this.storage.ref(name);
+      this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe((url) => {
+            this.id = url;
+            this.tintuc.img = this.id;
+            this.tintuc.id_admin = this.admin_id;
+            if (confirm("Bạn chắc chắn muốn thêm hay không?")) {
+              this.quanLyTinTucService.create(this.tintuc).subscribe(data => {
+                this.thongbao.showSuccess("Thêm thành công!",this.appendTo);
+                this.router.navigate(['/admin/tintuc']).then(() => {
+                  window.location.reload();
+                });
               });
-            });
-          }
-        });
-      })).subscribe();
+            }
+          });
+        })).subscribe();
+    }
   }
 
   // tslint:disable-next-line:typedef
@@ -72,7 +77,6 @@ export class ThemmoitintucComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
       // @ts-ignore
       this.selectedImage = event.target.files[0];
-
       const reader = new FileReader();
       // @ts-ignore
       reader.onload = e => this.imageSrc = reader.result;
@@ -85,3 +89,4 @@ export class ThemmoitintucComponent implements OnInit {
     window.location.reload();
   }
 }
+

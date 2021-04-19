@@ -7,6 +7,8 @@
     Author URI: graygrids.com
     Version: 1.0
 
+
+
 -----------------------------------------------------------------------------------
 
     CSS INDEX
@@ -21,13 +23,19 @@
 /*===========================
     1. COMMON css
 ===========================*/
+.notification-button{
+  padding: 10px 5px;
+  color: #313536;
+}
+
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800");
 body {
   font-family: "Poppins", sans-serif;
   font-weight: normal;
   font-style: normal;
   color: #777777;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+}
 
 * {
   margin: 0;
@@ -718,6 +726,7 @@ p {
       width: 48%;
       margin-top: 10px; } }
   .event-tab .nav .nav-item a {
+    height: 69px;
     text-align: center;
     width: 225px;
     border: 3px solid rgba(24, 99, 255, 0.1);

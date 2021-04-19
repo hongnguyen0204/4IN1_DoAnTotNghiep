@@ -12,6 +12,10 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="entityManagerFactory" value="f3464d0a-b5bf-434a-a78b-b38015aaa80a" />
+<<<<<<< HEAD
+=======
+          <factory-entry name="spring-boot-security-jwt" />
+>>>>>>> fdbb783d39025f598741d253da4d11b6b74d1751
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>

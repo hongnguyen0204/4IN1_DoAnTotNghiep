@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild, ViewContainerRef, ViewEncapsulation} from '@angular/core';
 import {SukienService} from '../Service/sukien.service';
 import {Sukien} from '../Model/sukien';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -6,14 +6,18 @@ import {Dangkithamgia} from '../Model/dangkithamgia';
 import {Thongtincanhan} from '../Model/thongtincanhan';
 import {AccountService} from '../Service/account.service';
 import {TokenStorageService} from '../_services/token-storage.service';
+import {ThongbaoService} from '../_services/thongbao.service';
 
 @Component({
   selector: 'app-dangkithamgiasukien',
   templateUrl: './dangkithamgiasukien.component.html',
   styleUrls: ['./dangkithamgiasukien.component.scss'],
-  providers: [SukienService]
+  providers: [SukienService],
+
 })
 export class DangkithamgiasukienComponent implements OnInit {
+  // @ts-ignore
+  @ViewChild('appendTo', { read: ViewContainerRef }) public appendTo: ViewContainerRef;
   // @ts-ignore
   sukien: Sukien=new Sukien();
   // @ts-ignore
@@ -32,7 +36,8 @@ export class DangkithamgiasukienComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private accountService:AccountService,
-              private token: TokenStorageService ) { }
+              private token: TokenStorageService ,
+              private thongbao:ThongbaoService) { }
 
   ngOnInit(): void {
     this.ev_id=this.route.snapshot.params['id'];
@@ -53,10 +58,15 @@ export class DangkithamgiasukienComponent implements OnInit {
   dangKi(id:number,idSK:number){
   this.dK.acc_ID=id;
   this.dK.event_ID=idSK;
-  this.sukienService.dangKi(this.dK).subscribe();
-  this.router.navigate(['quanlysukien']).then(() => {
-    window.location.reload();
-  });
+    this.sukienService.kiemTraTG(this.dK).subscribe(data=>{
+      if(data!=0){
+        this.thongbao.showWarning("Bạn đã đăng kí tham gia sự kiện này rồi",this.appendTo);
+      } else {
+        this.sukienService.dangKi(this.dK).subscribe();
+        this.router.navigate(['quanlysukien']).then(() => {
+          window.location.reload();
+        });
+      }
+    })
   }
-
 }
