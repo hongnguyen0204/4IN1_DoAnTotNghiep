@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {Sukien} from '../../Model/sukien';
 import {SukienService} from '../../Service/sukien.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TokenStorageService} from '../../_services/token-storage.service';
+import {ThongbaoService} from '../../_services/thongbao.service';
 
 @Component({
   selector: 'app-thongke',
@@ -12,15 +13,19 @@ import {TokenStorageService} from '../../_services/token-storage.service';
 })
 export class ThongkeComponent implements OnInit {
   // @ts-ignore
+  @ViewChild('appendTo', { read: ViewContainerRef }) public appendTo: ViewContainerRef;
+  // @ts-ignore
   id:number;
   sukien:Sukien=new Sukien();
   constructor(private skService: SukienService,private route: ActivatedRoute,
               private router: Router,
-              private tokenStorageService: TokenStorageService) { }
+              private tokenStorageService: TokenStorageService,
+              private thongbao:ThongbaoService) { }
 
   ngOnInit(): void {
     this.id=this.route.snapshot.params['id'];
-    this.skService.get(this.id).subscribe(data=>{
+    console.log(this.id);
+    this.skService.getSK(this.id).subscribe(data=>{
       this.sukien=data;
     },error => console.log(error));
   }
@@ -28,6 +33,7 @@ export class ThongkeComponent implements OnInit {
     this.skService.update(this.id,this.sukien).subscribe(data=>{
       console.log(data);
       this.router.navigate(['admin/sukien']) .then(() => {
+        this.thongbao.showSuccess("Duyệt thành công!",this.appendTo);
         window.location.reload();
       });
     },error => console.log(error));
@@ -37,6 +43,7 @@ export class ThongkeComponent implements OnInit {
       console.log(data);
       this.router.navigate(['admin/sukien']) .then(() => {
         window.location.reload();
+        this.thongbao.showError("Đã hủy!",this.appendTo);
       });
     },error => console.log(error));
   }

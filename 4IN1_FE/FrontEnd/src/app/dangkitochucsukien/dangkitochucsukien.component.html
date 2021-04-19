@@ -1,7 +1,7 @@
 <head>
   <title>Đăng kí tổ chức sự kiện</title>
 </head>
-<div class="testbox" *ngIf="currentUser; else loggedOut" style="position: relative;margin-top: 130px">
+<div #appendTo class="testbox" *ngIf="currentUser; else loggedOut" style="position: relative;margin-top: 130px">
   <form action="/">
     <div class="banner">
       <h1 style="color: black;">Đăng kí tổ chức sự kiện</h1>
