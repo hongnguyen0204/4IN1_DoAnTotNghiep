@@ -2,14 +2,13 @@ package com.bezkoder.springjwt.controllers;
 import com.bezkoder.springjwt.models.QuanLyTinTuc;
 import com.bezkoder.springjwt.repository.QuanLyTInTucRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-
-
 @RestController
 //Kích hoạt CORS trên máy chủ
 @CrossOrigin (origins = "http://localhost:4200")
@@ -23,8 +22,8 @@ public class QuanLyTinTucController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<QuanLyTinTuc>getAll(){
-        return quanLyTInTucRepository.findAll();
-    }
+        return quanLyTInTucRepository.findAll(Sort.by(Sort.Direction.DESC,"ID"));
+        }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public void add(@RequestBody QuanLyTinTuc quanLyTinTuc){
@@ -51,7 +50,10 @@ public class QuanLyTinTucController {
             quanLyTinTuc.setImg(st.getImg());
             }
             quanLyTinTuc.setPost_day(st.getPost_day());
+<<<<<<< HEAD
             quanLyTinTuc.setID_admin(st.getID_admin());
+=======
+>>>>>>> b430ca18c54eb155f04e2da7c12f2ff70201b75c
             quanLyTInTucRepository.save(quanLyTinTuc);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {
