@@ -22,6 +22,7 @@ export class ThongbaoService {
       position: {horizontal: 'right', vertical: 'top'},
       animation: {type: 'fade', duration: 400},
       type: {style: 'none', icon: false},
+      cssClass:'notification-button'
     });
   }
 
@@ -35,6 +36,7 @@ export class ThongbaoService {
       position: {horizontal: 'center', vertical: 'top'},
       animation: {type: 'fade', duration: 400},
       type: {style: 'success', icon: true},
+      cssClass:'notification-button'
     });
   }
 
@@ -48,6 +50,7 @@ export class ThongbaoService {
       position: {horizontal: 'center', vertical: 'top'},
       animation: {type: 'fade', duration: 400},
       type: {style: 'warning', icon: true},
+      cssClass:'notification-button'
     });
   }
 
@@ -61,6 +64,7 @@ export class ThongbaoService {
       position: {horizontal: 'center', vertical: 'bottom'},
       animation: {type: 'fade', duration: 400},
       type: {style: 'info', icon: true},
+      cssClass:'notification-button'
     });
   }
 
@@ -74,6 +78,7 @@ export class ThongbaoService {
       position: {horizontal: 'center', vertical: 'top'},
       animation: {type: 'fade', duration: 400},
       type: {style: 'error', icon: true},
+      cssClass:'notification-button'
     });
   }
 }

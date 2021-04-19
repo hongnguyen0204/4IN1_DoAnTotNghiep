@@ -41,7 +41,7 @@ export class SukienService {
   }
 
   // @ts-ignore
-  get(id): Observable<any> {
+  getSK(id): Observable<any> {
     return this.http.get(`${'http://localhost:8080/sukien'}/${id}`);
   }
   // @ts-ignore
