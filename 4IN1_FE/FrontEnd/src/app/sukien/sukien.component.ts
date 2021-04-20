@@ -17,7 +17,8 @@ export class SukienComponent implements OnInit {
   // @ts-ignore
   month:number = this.m.getMonth() + 1;
   // @ts-ignore
-  constructor(private sukienService: SukienService,private router:Router) {
+  constructor(private sukienService: SukienService,
+              private router:Router) {
   }
 
   ngOnInit(): void {

@@ -14,18 +14,19 @@ export class TintucComponent implements OnInit {
   // @ts-ignore
   tintuc:Quanlytintuc[];
   constructor(private  quanlytintucserviceService: QuanlytintucserviceService,
-              private router:Router,
-              public datepipe: DatePipe) { }
+              private router:Router) { }
 
   ngOnInit(): void {
     this.reloadData();
-
   }
   reloadData() {
     // @ts-ignore
     this.quanlytintucserviceService.findAll().subscribe(data => {
       this.tintuc = data;
     });
+  }
 
+  detailTT(id:number){
+    this.router.navigate(['chitiettintuc',id]);
   }
 }

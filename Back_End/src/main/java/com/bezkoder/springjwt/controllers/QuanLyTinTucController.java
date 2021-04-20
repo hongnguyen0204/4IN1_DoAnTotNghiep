@@ -1,5 +1,6 @@
 package com.bezkoder.springjwt.controllers;
 import com.bezkoder.springjwt.models.QuanLyTinTuc;
+import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.QuanLyTInTucRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -50,14 +51,8 @@ public class QuanLyTinTucController {
             quanLyTinTuc.setImg(st.getImg());
             }
             quanLyTinTuc.setPost_day(st.getPost_day());
-<<<<<<< HEAD
             quanLyTinTuc.setID_admin(st.getID_admin());
-=======
-<<<<<<< HEAD
             quanLyTinTuc.setID_admin(st.getID_admin());
-=======
->>>>>>> b430ca18c54eb155f04e2da7c12f2ff70201b75c
->>>>>>> 26d7b0cf9e035352a90e64fb051de017b995744e
             quanLyTInTucRepository.save(quanLyTinTuc);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {
@@ -74,6 +69,4 @@ public class QuanLyTinTucController {
             return new ResponseEntity<QuanLyTinTuc>(HttpStatus.NOT_FOUND);
         }
     }
-
-
 }

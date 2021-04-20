@@ -91,13 +91,14 @@ div #left ul li p {
 }
 
 #right {
+  margin-left: 120px;
   position: absolute;
   display: inline-block;
   border: 1px;
   max-width: 314px;
   background: white;
   min-height: 500px;
-  margin-left: 1%;
+
 }
 
 .right-header-news {

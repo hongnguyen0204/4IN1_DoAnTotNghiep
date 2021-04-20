@@ -7,13 +7,13 @@
     <div >
       <ul>
         <li >
-          <div style="display: flex" *ngFor="let tt of tintuc" >
-            <img [src]="tt.img"/>
-            <div>
-              <h3>
-                <a href="#">{{tt.title}}</a>
-              </h3>
-              <p>{{tt.describe_of_news}}</p>
+          <div style="display: flex; " *ngFor="let tt of tintuc"  >
+              <img  (click)="detailTT(tt.id)" [src]="tt.img"/>
+              <div>
+                <h5>
+                  <a (click)="detailTT(tt.id)" >{{tt.title}} </a>
+                </h5>
+                <p>{{tt.describe_of_news}}</p>
             </div>
           </div>
         </li>
@@ -27,8 +27,8 @@
     <ul *ngFor="let tt of tintuc;let i=index">
       <div  *ngIf="i % 4" >
         <li>
-          <img [src]="tt.img">
-          <a href="#">{{tt.title}}</a>
+          <img (click)="detailTT(tt.id)" [src]="tt.img">
+          <a (click)="detailTT(tt.id)" >{{tt.title}}</a>
         </li>
       </div>
     </ul>
