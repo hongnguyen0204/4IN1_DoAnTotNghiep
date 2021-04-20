@@ -46,10 +46,11 @@ export class QuanlycongtacvienComponent implements OnInit {
     }
   }
 
+  // tslint:disable-next-line:typedef
   reloadData(){
-    this.ctvService.findAll().subscribe(data=>{
+    this.ctvService.findAll().subscribe(data => {
       // @ts-ignore
       this.qlcongtacviens = data;
-    })
+    });
   }
 }

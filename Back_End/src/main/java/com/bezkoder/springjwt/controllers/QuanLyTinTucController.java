@@ -50,7 +50,14 @@ public class QuanLyTinTucController {
             quanLyTinTuc.setImg(st.getImg());
             }
             quanLyTinTuc.setPost_day(st.getPost_day());
+<<<<<<< HEAD
             quanLyTinTuc.setID_admin(st.getID_admin());
+=======
+<<<<<<< HEAD
+            quanLyTinTuc.setID_admin(st.getID_admin());
+=======
+>>>>>>> b430ca18c54eb155f04e2da7c12f2ff70201b75c
+>>>>>>> 26d7b0cf9e035352a90e64fb051de017b995744e
             quanLyTInTucRepository.save(quanLyTinTuc);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {
