@@ -33,7 +33,7 @@ export class ThongbaoService {
       hideAfter: 4000,
       height: 20,
       width: 300,
-      position: {horizontal: 'center', vertical: 'top'},
+      position: {horizontal: 'center', vertical: 'bottom'},
       animation: {type: 'fade', duration: 400},
       type: {style: 'success', icon: true},
       cssClass:'notification-button'
