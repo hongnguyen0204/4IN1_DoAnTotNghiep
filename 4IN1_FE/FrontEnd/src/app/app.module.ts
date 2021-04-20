@@ -45,6 +45,7 @@ import { ChitiettintucComponent } from './chitiettintuc/chitiettintuc.component'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import {ThongbaoService} from './_services/thongbao.service';
+import {DatePipe} from "@angular/common";
 
 
 // @ts-ignore
@@ -83,9 +84,10 @@ import {ThongbaoService} from './_services/thongbao.service';
         MatSnackBarModule,
         Ng2SearchPipeModule,
       BrowserAnimationsModule,
-      NotificationModule
+      NotificationModule,
+
     ],
-  providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService],
+  providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
