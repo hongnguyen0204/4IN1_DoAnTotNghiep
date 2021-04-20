@@ -1,4 +1,9 @@
-<body style="position: relative;margin-top: 130px">
+<form style="position:relative;margin-top: 130px"
+      name="form"
+      (ngSubmit)="f.form.valid && save($event)"
+      #f="ngForm"
+      novalidate
+      method="POST">
 <div class="container rounded bg-white mt-5 mb-5">
   <div class="row"style="border: 1.5px solid;border-radius: 6px;">
     <div class="col-md-3 border-right">
@@ -54,8 +59,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
-
-</body>
+</form>

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 @Transactional
 public interface NguoiThamGiaRepository extends JpaRepository<NguoiThamGia,Integer> {
@@ -18,6 +19,11 @@ public interface NguoiThamGiaRepository extends JpaRepository<NguoiThamGia,Integ
     @Query(value = "DELETE FROM join_register WHERE acc_ID=?1 AND event_ID=?2 ", nativeQuery = true)
     void HuySK(int acc_ID,int event_ID);
 
+    @Query(value = "SELECT Count(*) " +
+            "FROM join_register " +
+            "WHERE acc_ID=?1 " +
+            "AND event_ID=?2", nativeQuery = true)
+    Integer KiemTraThamGia(int acc_ID, int event_ID);
 
 
 }

@@ -41,7 +41,7 @@ export class SukienService {
   }
 
   // @ts-ignore
-  get(id): Observable<any> {
+  getSK(id): Observable<any> {
     return this.http.get(`${'http://localhost:8080/sukien'}/${id}`);
   }
   // @ts-ignore
@@ -79,5 +79,9 @@ export class SukienService {
     return this.http.post('http://localhost:8080/sukien/kiemtra',data);
   }
 
+  // @ts-ignore
+  kiemTraTG(data){
+    return this.http.post('http://localhost:8080/nguoithamgia/kiemtrathamgia',data);
+  }
 }
 
