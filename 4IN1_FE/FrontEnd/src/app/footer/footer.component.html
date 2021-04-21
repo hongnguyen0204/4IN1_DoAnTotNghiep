@@ -1,0 +1,53 @@
+<!--Footer dành cho người dùng-->
+<div *ngIf="showAdminBoard;else user">
+</div>
+<ng-template #user>
+<div style="display: block;position: relative" >
+  <section  id="footer" class="footer-area bg_cover" style="background-image: url(assets/images/footer.jpg)">
+    <div  class="footer-widget">
+      <div class="container">
+        <div class="widget  pt-80 pb-130">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="footer-address mt-40">
+                <h5 class="f-title">Vị Trí</h5>
+                <p class="text">Quảng Nam & Đà Nẵng</p>
+                <a class="contact-link" href="#">Liên hệ với chúng tôi</a>
+              </div> <!-- footer address -->
+            </div>
+            <div class="col-lg-6">
+              <div class="footer-contact mt-40">
+                <h5 class="f-title">Kết nối trực tuyến</h5>
+                <p class="text">Đừng bỏ lỡ điều gì! Nhận tin tức hàng ngày. Bạn nên kết nối để có bất kỳ cập nhật thích hợp vào bất kỳ lúc nào</p>
+                <ul class="social">
+                  <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
+                  <li><a href="#"><i class="lni-twitter-original"></i></a></li>
+                  <li><a href="#"><i class="lni-linkedin-original"></i></a></li>
+                  <li><a href="#"><i class="lni-instagram-original"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div> <!-- row -->
+        </div> <!-- widget -->
+      </div> <!-- container -->
+    </div> <!-- footer widget -->
+
+    <div class="footer-copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="copyright text-center">
+              <p class="text">Trang được thiết kế và phát triển bởi nhóm <a href="#" rel="nofollow">4 in 1</a>.Tất cả do chúng tôi thực hiện.</p>
+            </div> <!-- copyright -->
+          </div>
+        </div> <!-- row -->
+      </div> <!-- container -->
+    </div> <!-- container -->
+  </section>
+</div>
+</ng-template>
+<!--End Footer dành cho người dùng-->
+
+<!--Footer dành cho admin-->
+
+<!--End Footer dành cho admin-->

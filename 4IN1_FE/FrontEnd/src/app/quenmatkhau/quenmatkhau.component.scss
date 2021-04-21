@@ -1,0 +1,274 @@
+.limiter {
+  width: 100%;
+  margin: 0 auto;
+
+}
+div {
+  display: block;
+}
+.container-login100 {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  position: relative;
+  background: white;
+}
+.wrap-login100 {
+  width: 500px;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1.5px solid;
+}
+.login100-form {
+  width: 100%;
+  position: relative;
+  background-color: white;
+}
+.p-r-55 {
+  padding-right: 55px;
+}
+.p-l-55 {
+  padding-left: 55px;
+}
+.p-t-178 {
+  padding-top: 140px;
+}
+form {
+  display: block;
+  margin-top: 0em;
+}
+.login100-form-title {
+  font-family: JosefinSans-Bold;
+  font-size: 30px;
+  color: black;
+  line-height: 1.2;
+  text-align: center;
+  display: block;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: white;
+  padding-top: 40px;
+  padding-bottom: 30px;
+  font-weight: 600;
+}
+.validate-input {
+  margin-bottom: 15px;
+}
+.wrap-input100 {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 27px;
+  position: relative;
+  z-index: 1;
+}
+.m-b-16 {
+  margin-bottom: 20px;
+}
+.input100 {
+  font-family: Ubuntu-Bold;
+  font-size: 15px;
+  color: #1b3815;
+  line-height: 1.2;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 45px;
+  border-radius: 6px;
+  padding: 0 20px 0 20px;
+  border: 1px solid #ebebeb;
+}
+input {
+  outline: none;
+  border: none;
+}
+button, input {
+  overflow: visible;
+}
+button, input, optgroup, select, textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+[role=button], a, area, button, input, label, select, summary, textarea {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+.text-right {
+  text-align: right;
+}
+.p-b-23 {
+  padding-bottom: 23px;
+}
+.p-t-13 {
+  padding-top: 13px;
+}
+.text-right {
+  text-align: right!important;
+}
+.txt1 {
+  font-family: Ubuntu-Regular;
+  font-size: 15px;
+  color: #666666;
+  line-height: 1.4;
+}
+.txt2 {
+  font-size: 14px;
+  color: #1863ff;
+  line-height: 1.4;
+}
+a {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666666;
+  margin: 0px;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+}
+[role=button], a, area, button, input, label, select, summary, textarea {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+a {
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+a:-webkit-any-link {
+  cursor: pointer;
+}
+.container-login100-form-btn {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.login100-form-btn:hover {
+  background: -webkit-linear-gradient(left, #102baf 0%, #1664ff 100%);
+  background: -o-linear-gradient(left, #102baf 0%, #1664ff 100%);
+  background: linear-gradient(to right, #102baf 0%, #1664ff 100%);
+}
+.login100-form-btn {
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 45px;
+  background-color: #1863ff;
+  border-radius: 6px;
+  font-size: 15px;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+button {
+  outline: none !important;
+  border: none;
+  background: transparent;
+}
+[type=reset], [type=submit], button, html [type=button] {
+  -webkit-appearance: button;
+}
+button, select {
+  text-transform: none;
+}
+button, input {
+  overflow: visible;
+}
+button, input, optgroup, select, textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+[role=button], a, area, button, input, label, select, summary, textarea {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+button {
+  appearance: auto;
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  align-items: flex-start;
+  cursor: default;
+  background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+  box-sizing: border-box;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  padding: 1px 6px;
+  border-width: 2px;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+}
+.flex-col-c {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  flex-direction: column;
+  -ms-align-items: center;
+  align-items: center;
+}
+.p-b-40 {
+  padding-bottom: 40px;
+}
+.p-t-170 {
+  padding-top: 40px;
+}
+.txt1 {
+  font-size: 15px;
+  color: #666666;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.p-b-9 {
+  padding-bottom: 9px;
+}
+.txt3 {
+  font-family: Ubuntu-Bold;
+  font-size: 15px;
+  color: #1863ff;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+a {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666666;
+  margin: 0px;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+}

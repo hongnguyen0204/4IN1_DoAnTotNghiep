@@ -1,0 +1,60 @@
+<div class="container-table100">
+  <div class="container-table100" style="position: relative;margin-top: 130px">
+<!--    <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">-->
+      <div class="wrap-table100" >
+        <ul class="nav justify-content-between align-items-center" id="myTab" role="tablist">
+          <li class="nav-item">
+            <div class="dropdown" >
+              <select  style="border: none; width: 960px; height: 50px; outline:none;">
+                <option value="vanthang" selected>Chào mừng tân sinh viên khoá K23</option>
+              </select>
+            </div>
+          </li>
+        </ul>
+        <div class="table">
+          <div class="row header">
+            <div class="cell">
+              STT
+            </div>
+            <div class="cell">
+              Họ & Tên
+            </div>
+            <div class="cell">
+              Email
+            </div>
+            <div class="cell">
+              Điểm mạnh
+            </div>
+            <div class="cell">
+              Số Điện Thoại
+            </div>
+            <div class="cell">
+              Trạng thái
+            </div>
+          </div>
+          <div *ngFor="let ctv of qlcongtacviens, let i = index" class="row">
+            <div class="cell" data-title="STT">
+              {{i+1}}
+            </div>
+            <div class="cell" data-title="Họ & Tên">
+              {{ctv[0]}}
+            </div>
+            <div class="cell" data-title="Mail">
+              {{ctv[1]}}
+            </div>
+            <div class="cell" data-title="Điểm mạnh">
+              {{ctv[2]}}
+            </div>
+            <div class="cell" data-title="Số Điện Thoại">
+              {{ctv[3]}}
+            </div>
+            <div style="display: flex" class="cell" data-title="Trạng thái">
+              <input id="hau" [defaultChecked]="kiemtra(ctv[4])" (change)="duyet(ctv[4],ctv[5])" type="checkbox">
+              <p style="margin-top: -5px; margin-left: 8px;">Duyệt</p>
+            </div>
+          </div>
+        </div>
+      </div>
+<!--    </table>-->
+  </div>
+</div>
