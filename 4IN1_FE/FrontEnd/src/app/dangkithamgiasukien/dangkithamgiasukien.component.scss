@@ -39,11 +39,15 @@ hr {
 .main-desc div {
   margin: 0px 15px 0px 15px
 }
+.img{
+  width: 149px;
+  height: 94px;
+}
 
 .textbox{
   position:relative;
   margin: 160px auto 40px auto;
-  max-width: 90%;
+  max-width: 100%;
 }
 
 #left {
@@ -94,7 +98,7 @@ div #left ul li p {
   position: absolute;
   display: inline-block;
   border: 1px;
-  max-width: 314px;
+  max-width: 514px;
   background: white;
   min-height: 500px;
   margin-left: 3%;
