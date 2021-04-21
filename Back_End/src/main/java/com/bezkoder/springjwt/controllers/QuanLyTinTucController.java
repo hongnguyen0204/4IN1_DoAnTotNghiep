@@ -52,6 +52,7 @@ public class QuanLyTinTucController {
             }
             quanLyTinTuc.setPost_day(st.getPost_day());
             quanLyTinTuc.setID_admin(st.getID_admin());
+            quanLyTinTuc.setID_admin(st.getID_admin());
             quanLyTInTucRepository.save(quanLyTinTuc);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {
