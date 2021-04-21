@@ -4,10 +4,6 @@
     <facet type="web" name="Web">
       <configuration>
         <webroots />
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/java" />
-          <root url="file://$MODULE_DIR$/src/main/resources" />
-        </sourceRoots>
       </configuration>
     </facet>
     <facet type="jpa" name="JPA">
@@ -15,7 +11,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="entityManagerFactory" value="fbe17cba-7dc0-4a55-888d-7a4944bdc427" />
+          <factory-entry name="entityManagerFactory" value="84df083f-ec43-432e-9af1-8c66a9732d20" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
