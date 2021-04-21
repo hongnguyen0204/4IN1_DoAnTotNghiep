@@ -19,31 +19,6 @@ public class QuanLyTinTuc {
     public QuanLyTinTuc() {
     }
 
-<<<<<<< HEAD
-    public QuanLyTinTuc(int ID, String title, String describe_of_news, String content, String img, Date post_day, int ID_admin) {
-=======
-    public QuanLyTinTuc(Integer ID, String title, String describe_of_news, String content, String img, Date post_day,int ID_admin) {
->>>>>>> 887dcc75749d8536735102acc0b76e337de6c583
-        this.ID = ID;
-        this.title = title;
-        this.describe_of_news = describe_of_news;
-        this.content = content;
-        this.img = img;
-        this.post_day = post_day;
-        this.ID_admin=ID_admin;
-    }
-
-<<<<<<< HEAD
-=======
-    public int getID_admin() {
-        return ID_admin;
-    }
-
-    public void setID_admin(int ID_admin) {
-        this.ID_admin = ID_admin;
-    }
-
->>>>>>> 887dcc75749d8536735102acc0b76e337de6c583
     public int getID() {
         return ID;
     }
@@ -98,16 +73,17 @@ public class QuanLyTinTuc {
 
     public void setID_admin(int ID_admin) {
         this.ID_admin = ID_admin;
-<<<<<<< HEAD
-=======
     }
 
-    public int getID_admin() {
-        return ID_admin;
+    public QuanLyTinTuc(int ID, String title, String describe_of_news, String content, String img, Date post_day, int ID_admin) {
+        this.ID = ID;
+        this.title = title;
+        this.describe_of_news = describe_of_news;
+        this.content = content;
+        this.img = img;
+        this.post_day = post_day;
+        this.ID_admin=ID_admin;
     }
 
-    public void setID_admin(int ID_admin) {
-        this.ID_admin = ID_admin;
->>>>>>> 887dcc75749d8536735102acc0b76e337de6c583
-    }
+
 }
