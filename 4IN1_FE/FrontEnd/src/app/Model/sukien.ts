@@ -31,6 +31,4 @@ export class Sukien {
   owner_event_id: number;
   // @ts-ignore
   hot: boolean;
-  // @ts-ignore
-  number_of_peoples:number;
 }

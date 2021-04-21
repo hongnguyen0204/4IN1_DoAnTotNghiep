@@ -3,13 +3,14 @@ import com.bezkoder.springjwt.models.QuanLyTinTuc;
 import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.QuanLyTInTucRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+
+
 @RestController
 //Kích hoạt CORS trên máy chủ
 @CrossOrigin (origins = "http://localhost:4200")
@@ -23,8 +24,8 @@ public class QuanLyTinTucController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<QuanLyTinTuc>getAll(){
-        return quanLyTInTucRepository.findAll(Sort.by(Sort.Direction.DESC,"ID"));
-        }
+        return quanLyTInTucRepository.findAll();
+    }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public void add(@RequestBody QuanLyTinTuc quanLyTinTuc){

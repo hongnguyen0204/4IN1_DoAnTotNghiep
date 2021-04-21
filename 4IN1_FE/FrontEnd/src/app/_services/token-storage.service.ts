@@ -8,38 +8,30 @@ const USER_KEY = 'auth-user';
 })
 export class TokenStorageService {
 
-  signOut() {
-    window.localStorage.clear();
+  constructor() { }
+
+  signOut(): void {
     window.sessionStorage.clear();
   }
-  public saveTokenLocal(token: string) {
-    window.localStorage.removeItem(TOKEN_KEY);
-    window.localStorage.setItem(TOKEN_KEY, token);
-  }
-  public saveTokenSession(token: string) {
+
+  public saveToken(token: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
   }
+
   public getToken(): string {
-    if(localStorage.getItem(TOKEN_KEY)!==null){
-      return <string>localStorage.getItem(TOKEN_KEY);
-    }else {
-      return <string>sessionStorage.getItem(TOKEN_KEY);
-    }
+    // @ts-ignore
+    return sessionStorage.getItem(TOKEN_KEY);
   }
-  public saveUserLocal(user: any) {
-    window.localStorage.removeItem(USER_KEY);
-    window.localStorage.setItem(USER_KEY, JSON.stringify(user));
-  }
-  public saveUserSession(user: any) {
+
+  // @ts-ignore
+  public saveUser(user): void {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
-  public getUser() {
-    if(localStorage.getItem(USER_KEY) !== null){
-      return JSON.parse(<string>localStorage.getItem(USER_KEY));
-    }else {
-      return JSON.parse(<string>sessionStorage.getItem(USER_KEY));
-    }
+
+  public getUser(): any {
+    // @ts-ignore
+    return JSON.parse(sessionStorage.getItem(USER_KEY));
   }
 }

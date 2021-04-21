@@ -22,17 +22,17 @@
             <input type="text" class="form-input" name="name" id="name" placeholder="Tên đăng nhập"
                    [(ngModel)]="form.username"
                    required
-                   minlength="10"
-                   maxlength="100"
+                   minlength="3"
+                   maxlength="20"
                    #username="ngModel"
             >
             <div class="alert-danger" *ngIf="f.submitted && username.invalid">
               <div *ngIf="username.errors.required">Không được để trống</div>
               <div *ngIf="username.errors.minlength">
-                Tên đăng nhập phải nhiều hơn 10 kí tự
+                Tên đăng nhập phải nhiều hơn 3 kí tự
               </div>
               <div *ngIf="username.errors.maxlength">
-                Tên đăng nhập không được quá 100 kí tự
+                Tên đăng nhập không được quá 20 kí tự
               </div>
             </div>
           </div>

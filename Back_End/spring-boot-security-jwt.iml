@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" version="4">
   <component name="FacetManager">
+<<<<<<< HEAD
+=======
+    <facet type="web" name="Web">
+      <configuration>
+        <webroots />
+      </configuration>
+    </facet>
+>>>>>>> 887dcc75749d8536735102acc0b76e337de6c583
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
+<<<<<<< HEAD
           <factory-entry name="entityManagerFactory" value="c2e7e0bd-1344-4bc3-a753-bdf47270033b" />
+=======
+          <factory-entry name="entityManagerFactory" value="84df083f-ec43-432e-9af1-8c66a9732d20" />
+          <factory-entry name="entityManagerFactory" value="fbe17cba-7dc0-4a55-888d-7a4944bdc427" />
+          <factory-entry name="entityManagerFactory" value="c2e7e0bd-1344-4bc3-a753-bdf47270033b" />
+          <factory-entry name="entityManagerFactory" value="84df083f-ec43-432e-9af1-8c66a9732d20" />
+>>>>>>> 887dcc75749d8536735102acc0b76e337de6c583
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>

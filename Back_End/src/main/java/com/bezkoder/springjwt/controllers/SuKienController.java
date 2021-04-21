@@ -59,6 +59,11 @@ public class SuKienController {
         return sk;
     }
 
+    @GetMapping("/theoid/{id}")
+    public List<SuKien> getSKbyid(@PathVariable Integer id){
+        return suKienRepository.findByID(id);
+    }
+
     @GetMapping("/theothang/{thang}")
     public List<SuKien> getSK(@PathVariable Integer thang){
        return suKienRepository.findByMonth(thang);
