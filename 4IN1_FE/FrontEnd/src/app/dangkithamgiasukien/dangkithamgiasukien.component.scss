@@ -94,62 +94,11 @@ div #left ul li p {
   margin-bottom: 10px;
 }
 
-.textbox{
-  position:relative;
-  margin: 160px auto 40px auto;
-  max-width: 90%;
-}
-
-#left {
-  display: inline-block;
-  border: 1px;
-  width: 100%;
-  margin-left: 10%;
-  min-height: 500px;
-}
-
-div #left ul {
-  list-style-type: none;
-  margin-right: 20px;
-}
-
-div #left ul li {
-  margin-bottom: -20px;
-  margin-top: 0px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-div #left ul li a {
-  margin: 10px 0 10px 0;
-  text-decoration: none;
-  color: #333;
-}
-
-div #left ul li a:hover {
-  color: #1863ff;
-}
-
-div #left ul li img {
-  cursor: pointer;
-  width: 250px;
-  border: 1px solid #ccc;
-  padding: 2px;
-  margin-right: 10px;
-}
-
-div #left ul li p {
-  height: 20%;
-  text-align: justify;
-  margin-bottom: 10px;
-}
-
 #right {
   position: absolute;
   display: inline-block;
   border: 1px;
   max-width: 514px;
-  max-width: 314px;
   background: white;
   min-height: 500px;
   margin-left: 3%;
@@ -205,7 +154,7 @@ div #left ul li p {
 
 
 .animated-btn {
-  margin-right: 15%;
+  margin-left: 160%;
   width: 180px;
   height: 80px;
   border-radius: 50%;
