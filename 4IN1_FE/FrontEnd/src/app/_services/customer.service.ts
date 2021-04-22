@@ -1,32 +1,34 @@
 import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router} from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
 import {TokenStorageService} from './token-storage.service';
+import {AccountService} from '../Service/account.service';
+import {Thongtincanhan} from '../Model/thongtincanhan';
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class CustomerAuthService implements CanActivate{
+  users:Thongtincanhan=new Thongtincanhan();
 
   constructor(private tokenStorageService: TokenStorageService,
               private router: Router,
-              private matSnackBar: MatSnackBar) { }
+              private accountService:AccountService) { }
+
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const token = this.tokenStorageService.getToken();
 
     if (token == null) {
       this.router.navigateByUrl('/dangnhap');
-      this.matSnackBar.open('Bạn cần đăng nhập để thực hiện tác vụ!', 'Ok', {
-        duration: 4000,
-      });
+
+      return false;
+    } else if(!this.isCheck()){
+      this.router.navigateByUrl('/dangnhap');
       return false;
     } else if (!this.isRole()) {
       this.router.navigateByUrl('/dangnhap');
-      this.matSnackBar.open('Bạn không có quyền truy cập trang này!', 'Ok', {
-        duration: 4000,
-      });
+
       return false;
     }  else {
       return true;
@@ -40,5 +42,15 @@ export class CustomerAuthService implements CanActivate{
       }
     }
     return false;
+  }
+
+  isCheck(){
+    this.accountService.findUser(this.tokenStorageService.getUser().username).subscribe(data=>{
+      this.users=data;
+    });
+    if(this.users.status_acc==false) {
+      return false
+    } else {
+      return true};
   }
 }

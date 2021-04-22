@@ -1,6 +1,4 @@
-// @ts-ignore
 import { NgModule } from '@angular/core';
-// @ts-ignore
 import { RouterModule, Routes } from '@angular/router';
 import {DangkitochucsukienComponent} from './dangkitochucsukien/dangkitochucsukien.component';
 import {DangkithamgiasukienComponent} from './dangkithamgiasukien/dangkithamgiasukien.component';

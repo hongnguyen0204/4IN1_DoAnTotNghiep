@@ -9,6 +9,7 @@ import {TokenStorageService} from '../_services/token-storage.service';
 import {AccountService} from '../Service/account.service';
 import {Thongtincanhan} from '../Model/thongtincanhan';
 import {ThongbaoService} from '../_services/thongbao.service';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-dangkitochucsukien',
@@ -32,15 +33,21 @@ export class DangkitochucsukienComponent implements OnInit {
   imageSrc: string;
   // @ts-ignore
   users:Thongtincanhan;
-
   // @ts-ignore
+  check_Date=new Date();
+  // @ts-ignore
+  localCompleteDate: string;
+
   constructor(private sukienService: SukienService,
               private router: Router,
               @Inject(AngularFireStorage) private storage: AngularFireStorage,
               private token: TokenStorageService,
               private accountService:AccountService,
               private thongbao:ThongbaoService) {
-
+    this.check_Date.setSeconds(0);
+    this.check_Date.setMilliseconds(0);
+    this.localCompleteDate = this.check_Date.toISOString();
+    this.localCompleteDate = this.localCompleteDate.substring(0, this.localCompleteDate.length - 1);
   }
 
   ngOnInit(): void {
@@ -109,8 +116,6 @@ export class DangkitochucsukienComponent implements OnInit {
       reader.readAsDataURL(this.selectedImage);
     }
   }
-
-
   //Xem bạn có muốn tuyển cộng tác viên hay không
     kiemtra(){
     if ($('#radio_1').prop('checked')){
@@ -120,7 +125,5 @@ export class DangkitochucsukienComponent implements OnInit {
       $('#congtac').css('display', 'none');
     }
   }
-
-
 }
 

@@ -22,7 +22,6 @@ import {FormsModule} from '@angular/forms';
 import {AdminModule} from './admin/admin.module';
 // @ts-ignore
 import {HttpClientModule} from '@angular/common/http';
-import {AngularClassDecorators} from 'codelyzer/util/utils';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import { QuanlysukienComponent } from './quanlysukien/quanlysukien.component';
@@ -38,14 +37,13 @@ import { TimkiemsukienComponent } from './timkiemsukien/timkiemsukien.component'
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { QuenmatkhauComponent } from './quenmatkhau/quenmatkhau.component';
 import { DoimatkhauComponent } from './doimatkhau/doimatkhau.component';
-
 import { XacthucemailComponent } from './xacthucemail/xacthucemail.component';
-
 import { ChitiettintucComponent } from './chitiettintuc/chitiettintuc.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import {ThongbaoService} from './_services/thongbao.service';
 import {DatePipe} from "@angular/common";
+
 
 
 // @ts-ignore
@@ -72,7 +70,7 @@ import {DatePipe} from "@angular/common";
     XacthucemailComponent,
     ChitiettintucComponent
   ],
-    imports: [
+  imports: [
         BrowserModule,
         AppRoutingModule,
         CKEditorModule,
