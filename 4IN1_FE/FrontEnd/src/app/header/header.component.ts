@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
       this.username = user.username;
-    };
+    }
     let currentUrl = window.location.href;
     if(currentUrl.includes("admin")){
       this.showAdminBoard = true;

@@ -1,32 +1,59 @@
+<div class="textbox" >
 
-<body #appendTo  style="position: relative;margin-top: 130px">
-<div>
-<!--  <div *ngIf="sk.id == 2">-->
-  <div class="container" style="width: 70%;margin: auto;position: sticky;">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="row justify-content-center">
-          <div class="col-lg-8 button-join-event">
-            <div class="content-event">
-              <h1 class="title" style="margin-top:50px; text-align:center;">{{sukien.event_name}}</h1>
-              <br>
-              <h5 class="summary">{{sukien.id}}</h5>
-              <br>
-              <br>
-              <div class="panel-body" [innerHtml]='sukien.content'>
-              </div>
-            </div> <!-- section title -->
-            <div style="height:30px"></div>
-            <div class="text-center">
-              <!-- Animated button -->
-              <a class="animated-btn text-white" style="margin-bottom: 50px;cursor: pointer" (click)="dangKi(id,ev_id)" >Tham gia ngay</a>
-            </div>
-          </div>
-        </div> <!-- row -->
+  <div id="left">
+    <div class="main-desc">
+      <div class="main-title">
+        <span>{{sukien.event_name}}</span>
       </div>
-    </div> <!-- row -->
-  </div> <!-- container -->
-  </div>
-<!--</div>-->
-</body>
+      <div>
+        <div class="" [innerHtml]='sukien.content'>
+        </div>
+      </div>
+    </div>
+    <div id="right">
+      <ul>
+        <li style="display:flex">
+          <img style="width: 149px; height: 94px" class="img-float-left" src="assets/images/a_news_1.png">
+          <a href="#">Đề án mở ngành: Quản Trị Nhân Lực</a>
+        </li>
+        <br>
+        <li style="display:flex">
+          <img style="width: 149px; height: 94px" src="assets/images/a-header-review1.jpg">
+          <a href="#">Tổng quan về Đại học Duy Tân</a>
+        </li>
+        <br>
+        <li style="display:flex">
+          <img style="width: 149px; height: 94px" src="assets/images/a-header-review2.jpg">
+          <a href="#">Hoạt động Nghiên cứu tại Đại học Duy Tân</a>
+        </li>
+        <br>
+        <li style="display:flex">
+          <img style="width: 149px; height: 94px" src="assets/images/a-header-reviews.jpg">
+          <a href="#">
+            Cơ sở Hòa Khánh Nam - Q. Liên Chiểu, Tp. Đà Nẵng</a>
+        </li>
+        <br>
+        <li style="display:flex">
+          <img style="width: 149px; height: 94px" src="assets/images/a-header-review3.jpg">
+          <a href="#">Đại học Duy Tân Nỗ lực Hợp tác Trong nước và Quốc tế</a>
+        </li>
+        <br>
+      </ul>
+    </div>
 
+  </div>
+  <br>
+  <br>
+  <div class="text-center">
+    <ul style="display: flex">
+      <li>
+        <a class="animated-btn text-white" style="margin-bottom: 50px;cursor: pointer" (click)="dangKi(id,ev_id)" >Tham gia ngay</a>
+      </li>
+      <li style="width: 100px;">
+      </li>
+      <li>
+        <a href="/dangkicongtacvien" class="animated-btn text-white" style="margin-bottom: 50px;" >Đăng kí cộng tác viên</a>
+      </li>
+    </ul>
+  </div>
+</div>

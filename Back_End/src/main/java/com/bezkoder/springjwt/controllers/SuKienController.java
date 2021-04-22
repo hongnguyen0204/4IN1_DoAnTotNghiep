@@ -1,10 +1,8 @@
 package com.bezkoder.springjwt.controllers;
-
 import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.SuKienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 
@@ -59,6 +57,11 @@ public class SuKienController {
     public SuKien get(@PathVariable Integer id) {
         SuKien sk = suKienRepository.findById(id).get();
         return sk;
+    }
+
+    @GetMapping("/theoid/{id}")
+    public List<SuKien> getSKbyid(@PathVariable Integer id){
+        return suKienRepository.findByID(id);
     }
 
     @GetMapping("/theothang/{thang}")

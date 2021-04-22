@@ -15,17 +15,20 @@ export class CustomerAuthService implements CanActivate{
               private router: Router,
               private accountService:AccountService) { }
 
+
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const token = this.tokenStorageService.getToken();
 
     if (token == null) {
       this.router.navigateByUrl('/dangnhap');
+
       return false;
     } else if(!this.isCheck()){
       this.router.navigateByUrl('/dangnhap');
       return false;
     } else if (!this.isRole()) {
       this.router.navigateByUrl('/dangnhap');
+
       return false;
     }  else {
       return true;

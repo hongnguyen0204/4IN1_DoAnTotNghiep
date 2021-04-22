@@ -22,7 +22,6 @@ import {FormsModule} from '@angular/forms';
 import {AdminModule} from './admin/admin.module';
 // @ts-ignore
 import {HttpClientModule} from '@angular/common/http';
-import {AngularClassDecorators} from 'codelyzer/util/utils';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import { QuanlysukienComponent } from './quanlysukien/quanlysukien.component';
@@ -38,14 +37,13 @@ import { TimkiemsukienComponent } from './timkiemsukien/timkiemsukien.component'
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { QuenmatkhauComponent } from './quenmatkhau/quenmatkhau.component';
 import { DoimatkhauComponent } from './doimatkhau/doimatkhau.component';
-
 import { XacthucemailComponent } from './xacthucemail/xacthucemail.component';
-
 import { ChitiettintucComponent } from './chitiettintuc/chitiettintuc.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import {ThongbaoService} from './_services/thongbao.service';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import {DatePipe} from "@angular/common";
+
 
 
 // @ts-ignore
@@ -73,21 +71,21 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     ChitiettintucComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CKEditorModule,
-    FormsModule,
-    AdminModule,
-    HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    DataTablesModule,
-    MatSnackBarModule,
-    Ng2SearchPipeModule,
-    BrowserAnimationsModule,
-    NotificationModule,
-    MatDatepickerModule
-  ],
-  providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService],
+        BrowserModule,
+        AppRoutingModule,
+        CKEditorModule,
+        FormsModule,
+        AdminModule,
+        HttpClientModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        DataTablesModule,
+        MatSnackBarModule,
+        Ng2SearchPipeModule,
+      BrowserAnimationsModule,
+      NotificationModule,
+
+    ],
+  providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

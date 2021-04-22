@@ -1,25 +1,19 @@
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
 
-@font-face {
-  font-family: Montserrat-Regular;
-  src: url('fonts/montserrat/Montserrat-Regular.ttf');
+
+
+/*//////////////////////////////////////////////////////////////////
+[ RESTYLE TAG ]*/
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
-@font-face {
-  font-family: Montserrat-Bold;
-  src: url('fonts/montserrat/Montserrat-Bold.ttf');
-}
-
-@font-face {
-  font-family: Montserrat-ExtraBold;
-  src: url('fonts/montserrat/Montserrat-ExtraBold.ttf');
-}
-
-@font-face {
-  font-family: Montserrat-Medium;
-  src: url('fonts/montserrat/Montserrat-Medium.ttf');
-}
 body, html {
-
+  height: 100%;
   font-family: Montserrat-Regular, sans-serif;
 }
 
@@ -46,7 +40,7 @@ a:hover {
 }
 
 /*---------------------------------------------*/
-h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5, h6 {
   margin: 0px;
 }
 
@@ -75,19 +69,7 @@ textarea {
   border: none;
 }
 
-textarea:focus, input:focus {
-  border-color: transparent !important;
-}
 
-input::-webkit-input-placeholder { color: #999999; }
-input:-moz-placeholder { color: #999999; }
-input::-moz-placeholder { color: #999999; }
-input:-ms-input-placeholder { color: #999999; }
-
-textarea::-webkit-input-placeholder { color: #999999; }
-textarea:-moz-placeholder { color: #999999; }
-textarea::-moz-placeholder { color: #999999; }
-textarea:-ms-input-placeholder { color: #999999; }
 
 /*---------------------------------------------*/
 button {
@@ -103,9 +85,6 @@ button:hover {
 iframe {
   border: none !important;
 }
-
-
-
 
 /*//////////////////////////////////////////////////////////////////
 [ Contact 1 ]*/
@@ -140,7 +119,7 @@ iframe {
   justify-content: space-between;
   align-items: center;
 
-  padding: 55px 75px 45px 148px;
+  padding: 90px 130px 88px 148px;
 }
 
 /*------------------------------------------------------------------
@@ -162,10 +141,8 @@ iframe {
 
 .contact1-form-title {
   display: block;
-  font-family: Montserrat-ExtraBold;
   font-size: 24px;
-  color: #333333;
-  line-height: 1.2;
+
   text-align: center;
   padding-bottom: 44px;
 }
@@ -175,6 +152,7 @@ input.input1 {
   border-radius: 25px;
   padding: 0 30px;
 }
+
 input.input1 + .shadow-input1 {
   border-radius: 25px;
 }
@@ -184,6 +162,7 @@ textarea.input1 {
   border-radius: 25px;
   padding: 12px 30px;
 }
+
 textarea.input1 + .shadow-input1 {
   border-radius: 25px;
 }
@@ -200,7 +179,6 @@ textarea.input1 + .shadow-input1 {
   display: block;
   width: 100%;
   background: #e6e6e6;
-  font-family: Montserrat-Bold;
   font-size: 15px;
   line-height: 1.5;
   color: #666666;
@@ -216,7 +194,7 @@ textarea.input1 + .shadow-input1 {
   width: 100%;
   height: 100%;
   box-shadow: 0px 0px 0px 0px;
-  color: rgba(87,184,70, 0.5);
+
 }
 
 .input1:focus + .shadow-input1 {
@@ -254,8 +232,7 @@ textarea.input1 + .shadow-input1 {
   height: 50px;
   border-radius: 25px;
   border: solid;
-  background: #1863ff;
-  font-family: Montserrat-Bold;
+  background: -webkit-linear-gradient(left, #102baf 0%, #1664ff 100%);
   font-size: 15px;
   line-height: 1.5;
   color: #fff;
@@ -270,19 +247,11 @@ textarea.input1 + .shadow-input1 {
 
 }
 
-.contact1-form-btn:hover{
+.contact1-form-btn:hover {
   background: -webkit-linear-gradient(left, #102baf 0%, #1664ff 100%);
   background: -o-linear-gradient(left, #102baf 0%, #1664ff 100%);
   background: linear-gradient(to right, #102baf 0%, #1664ff 100%);
 }
-
-
-
-
-
-
-
-
 
 
 /*------------------------------------------------------------------
@@ -399,27 +368,4 @@ textarea.input1 + .shadow-input1 {
     opacity: 1;
   }
 
-}
-form {
-  width: 80%;
-  padding: 20px;
-  border-radius: 6px;
-  background: #fff;
-}
-.banner {
-  position: relative;
-  height: 210px;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 20px;
-}
-.banner::after {
-  content: "";
-  background-color: rgb(245,245,245);
-  position: absolute;
-  width: 100%;
-  height: 100%;
 }

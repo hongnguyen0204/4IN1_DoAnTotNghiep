@@ -1,9 +1,4 @@
-<form style="position:relative;margin-top: 130px"
-      name="form"
-      (ngSubmit)="f.form.valid && save($event)"
-      #f="ngForm"
-      novalidate
-      method="POST">
+<body style="position: relative;margin-top: 130px">
 <div class="container rounded bg-white mt-5 mb-5">
   <div class="row"style="border: 1.5px solid;border-radius: 6px;">
     <div class="col-md-3 border-right">
@@ -32,10 +27,10 @@
         </div>
         <div class="row mt-3 ">
           <div class="col-md-12">
-            <label class="labels">Giới tính: {{gender}}</label>
+            <label class="labels">Giới tính: {{users.gender}}</label>
             <form >
               <label class="radio-inline-nam">
-                <input id="nam" [(ngModel)]="users.gender" type="radio" name="gender" name="optradio" value="true">Nam
+                <input id="nam" [(ngModel)]="users.gender" type="radio" name="gender" name="optradio" value="true">Nádasdasd
               </label>
               <label class="radio-inline-nu">
                 <input id="nu" [(ngModel)]="users.gender" type="radio" name="gender" name="optradio" value="false">Nữ
@@ -50,7 +45,8 @@
           </div>
 
           <div class="col-md-12"><label class="labels">Email</label>
-            <input type="text" name="email" [(ngModel)]="users.email" class="form-control" disabled></div>
+            <input type="text" name="email" [(ngModel)]="users.email" class="form-control" disabled>
+          </div>
           <div class="col-md-12"><label class="labels">Khoa</label>
             <input type="text" name="faculty" [(ngModel)]="users.faculty" class="form-control" ></div>
         </div>
@@ -59,6 +55,8 @@
         </div>
       </div>
     </div>
+
   </div>
 </div>
-</form>
+
+</body>

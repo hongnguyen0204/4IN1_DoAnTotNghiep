@@ -85,4 +85,5 @@ public class QuanLyTinTuc {
         this.ID_admin = ID_admin;
     }
 
+
 }

@@ -13,7 +13,7 @@ import * as $ from 'jquery';
   selector: 'app-thongtincanhan',
   templateUrl: './thongtincanhan.component.html',
   styleUrls: ['./thongtincanhan.component.scss'],
-  providers:[ThongtincanhanService,AccountService]
+  providers: [ThongtincanhanService, AccountService]
 })
 export class ThongtincanhanComponent implements OnInit {
 // @ts-ignore
@@ -24,28 +24,28 @@ export class ThongtincanhanComponent implements OnInit {
   id: number;
   currentUser: any;
   // @ts-ignore
-  users:Thongtincanhan=new Thongtincanhan();
+  users: Thongtincanhan = new Thongtincanhan();
   // @ts-ignore
-  gender:string;
+  gender: string;
 
   constructor(private thongtincanhanService: ThongtincanhanService,
               @Inject(AngularFireStorage)
               private storage: AngularFireStorage,
               private router: Router,
               private route: ActivatedRoute,
-              private accountService:AccountService,
+              private accountService: AccountService,
               private token: TokenStorageService) {
   }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
     this.accountService.findUser(this.currentUser.username).subscribe(data=>{
-      this.users=data;
+      this.users = data;
       this.imageSrc = this.users.img;
-      this.id=this.users.id;
+      this.id = this.users.id;
     });
   }
-
+  // tslint:disable-next-line:typedef
   save(event: any) {
     if (this.selectedImage) {
       const name = this.selectedImage.name;
@@ -57,24 +57,23 @@ export class ThongtincanhanComponent implements OnInit {
               this.users.img = url;
               console.log(this.users.img);
             }
-            if (confirm("Bạn chắc chắn muốn sửa hay không?")) {
+            if (confirm('Bạn chắc chắn muốn sửa hay không?')) {
               this.thongtincanhanService.update(this.id, this.users).subscribe(data => {
                 this.users = data;
-                alert("Sửa thành công");
+                alert('Sửa thành công');
               });
             }
           });
         })).subscribe();
     } else {
-      if (confirm("Bạn chắc chắn muốn sửa hay không?")) {
+      if (confirm('Bạn chắc chắn muốn sửa hay không?')) {
         this.thongtincanhanService.update(this.id, this.users).subscribe(data => {
           this.users = data;
-          alert("Sửa thành công");
+          alert('Sửa thành công');
         });
       }
     }
   }
-
   // tslint:disable-next-line:typedef
   readURL(event: any): void {
     // @ts-ignore
