@@ -28,7 +28,6 @@ export class CustomerAuthService implements CanActivate{
       return false;
     } else if (!this.isRole()) {
       this.router.navigateByUrl('/dangnhap');
-
       return false;
     }  else {
       return true;

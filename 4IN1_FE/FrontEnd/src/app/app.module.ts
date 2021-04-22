@@ -31,7 +31,6 @@ import {AuthInterceptor} from './-helpers/auth.interceptor';
 import {CustomerAuthService} from './_services/customer.service';
 import {AdminAuthService} from './_services/admin.service';
 // @ts-ignore
-import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { TintucComponent } from './tintuc/tintuc.component';
 import { TimkiemsukienComponent } from './timkiemsukien/timkiemsukien.component';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
@@ -43,8 +42,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import {ThongbaoService} from './_services/thongbao.service';
 import {DatePipe} from "@angular/common";
-
-
 
 // @ts-ignore
 @NgModule({
@@ -79,10 +76,9 @@ import {DatePipe} from "@angular/common";
         HttpClientModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         DataTablesModule,
-        MatSnackBarModule,
         Ng2SearchPipeModule,
-      BrowserAnimationsModule,
-      NotificationModule,
+        BrowserAnimationsModule,
+        NotificationModule,
 
     ],
   providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService,DatePipe],
