@@ -39,15 +39,23 @@ export class TimkiemsukienComponent implements OnInit {
   }
   // @ts-ignore
   // tslint:disable-next-line:typedef
-  findByDay(start, end){
+  findByDay(start, end, searchtext){
     start =this.datepipe.transform(start, 'dd-MM-yyyy');
     end =this.datepipe.transform(end, 'dd-MM-yyyy');
-      this.sukienService.findByDay(start, end).subscribe(data => {
+      this.sukienService.findByDay(start, end, searchtext).subscribe(data => {
         this.sukiens = data;
       });
       console.log(start);
       console.log(end);
       console.log(this.sukiens);
+  }
+
+  // @ts-ignore
+  timkiem(searchtext){
+    this.sukienService.findByText(searchtext).subscribe(data =>{
+      this.sukiens = data;
+    });
+    console.log(this.sukiens);
   }
 
 }
