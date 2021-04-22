@@ -19,10 +19,10 @@
       <div class="alert-danger" *ngIf="f.submitted && event_name.invalid">
         <div *ngIf="event_name.errors.required">Không được để trống</div>
         <div *ngIf="event_name.errors.minlength">
-          Tên đăng nhập phải nhiều hơn 10 kí tự
+          Tên sự kiện phải nhiều hơn 10 kí tự
         </div>
         <div *ngIf="event_name.errors.maxlength">
-          Tên đăng nhập không được quá 100 kí tự
+          Tên sự kiện không được quá 100 kí tự
         </div>
       </div>
     </div>
@@ -45,7 +45,7 @@
           <option value="Phan Thanh">Phan Thanh</option>
         </select>
         <div
-          class="alert alert-danger"
+          class="alert-danger"
           role="alert"
           *ngIf="f.submitted && place.invalid"
         >
@@ -53,15 +53,12 @@
         </div>
       </div>
       <div class="item">
-        <p>Ngày tổ chức<span class="required">*</span></p>
-        <input [(ngModel)]="sukien.time_of_event" type="datetime-local" name="date_start"
+        <p>Ngày tổ chức <span class="required">*</span></p>
+        <input [(ngModel)]="sukien.time_of_event" [min]="localCompleteDate" type="datetime-local" name="date_start"
                required
                #date_start="ngModel"/>
-      </div>
-      <div class="alert-danger" *ngIf="f.submitted && date_start.invalid">
-        <div *ngIf="date_start.errors.required">Không được để trống</div>
-        <div *ngIf="date_start.errors.datetime">
-          Cần đúng định dạng ngày tháng
+        <div class="alert-danger" *ngIf="f.submitted && date_start.invalid">
+          <div *ngIf="date_start.errors.required">Không được để trống</div>
         </div>
       </div>
     </div>
@@ -80,7 +77,7 @@
       </div>
       <div class="item">
         <p>Số người tham gia (dự kiến)<span class="required">*</span></p>
-        <input type="number" [(ngModel)]="sukien.number_of_peoples"  name="name" placeholder="Số người tham gia" required/>
+        <input type="number" min="0" [(ngModel)]="sukien.number_of_peoples"  name="name" placeholder="Số người tham gia" required/>
       </div>
     </div>
 
@@ -95,10 +92,10 @@
       <div class="alert-danger" *ngIf="f.submitted && describle.invalid">
         <div *ngIf="describle.errors.required">Không được để trống</div>
         <div *ngIf="describle.errors.minlength">
-          Mật khẩu phải nhiều hơn 50 kí tự
+          Mô tả phải nhiều hơn 50 kí tự
         </div>
         <div *ngIf="describle.errors.maxlength">
-          Mật khẩu phải ít hơn 1000 kí tự
+          Mô tả phải ít hơn 1000 kí tự
         </div>
       </div>
     </div>
@@ -142,16 +139,16 @@
                   id="tieuchi" rows="2"></textarea>
         <div class="alert-danger" *ngIf="f.submitted && tieuchi.invalid">
           <div *ngIf="tieuchi.errors.minlength">
-            Mật khẩu phải nhiều hơn 50 kí tự
+            Tiêu chí phải nhiều hơn 50 kí tự
           </div>
           <div *ngIf="tieuchi.errors.maxlength">
-            Mật khẩu phải ít hơn 500 kí tự
+            Tiêu chí phải ít hơn 500 kí tự
           </div>
         </div>
       </div>
     </div>
     <div class="btn-block">
-      <button mat-raised-button (click)="add()">Submit</button>
+      <button mat-raised-button >Submit</button>
       <button class="btn-danger" >Hủy</button>
     </div>
 </form>
@@ -163,7 +160,6 @@
         <h1 style="color: black;">Bạn cần đăng nhập để thực hiện điều này!</h1>
       </div>
     </form>
-   <
   </div>
 </ng-template>
 <style>

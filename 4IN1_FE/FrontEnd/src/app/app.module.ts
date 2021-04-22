@@ -45,6 +45,7 @@ import { ChitiettintucComponent } from './chitiettintuc/chitiettintuc.component'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import {ThongbaoService} from './_services/thongbao.service';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 // @ts-ignore
@@ -71,20 +72,21 @@ import {ThongbaoService} from './_services/thongbao.service';
     XacthucemailComponent,
     ChitiettintucComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        CKEditorModule,
-        FormsModule,
-        AdminModule,
-        HttpClientModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig),
-        DataTablesModule,
-        MatSnackBarModule,
-        Ng2SearchPipeModule,
-      BrowserAnimationsModule,
-      NotificationModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CKEditorModule,
+    FormsModule,
+    AdminModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    DataTablesModule,
+    MatSnackBarModule,
+    Ng2SearchPipeModule,
+    BrowserAnimationsModule,
+    NotificationModule,
+    MatDatepickerModule
+  ],
   providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService],
   bootstrap: [AppComponent]
 })

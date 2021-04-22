@@ -17,6 +17,8 @@ export class DangkyComponent{
   isSignUpFailed = false;
   errorMessage = '';
   // @ts-ignore
+  pwd:string;
+  // @ts-ignore
   constructor(private authService: AuthService, private xacthucmailservice: XacthucemailService) { }
 
   ngOnInit(): void {
