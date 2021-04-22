@@ -3,7 +3,11 @@ import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.SuKienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 @RestController
@@ -67,6 +71,11 @@ public class SuKienController {
     @GetMapping("/theothang/{thang}")
     public List<SuKien> getSK(@PathVariable Integer thang){
        return suKienRepository.findByMonth(thang);
+    }
+
+    @GetMapping(path ="/theongay/{ngay1}/{ngay2}")
+    public List<SuKien> getSKbyday(@PathVariable String ngay1,@PathVariable String ngay2){
+        return suKienRepository.findByDay(ngay1, ngay2);
     }
 
     @GetMapping("/tongSuKienDaToChuc")
