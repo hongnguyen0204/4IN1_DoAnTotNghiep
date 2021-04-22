@@ -10,29 +10,35 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title ">Sự kiện đã đăng kí</h4>
+            <h4 class="card-title ">Sự kiện đã đăng kí tổ chức</h4>
             <p class="card-category"></p>
           </div>
+          <select (change)="tsk()" [(ngModel)]="idevent" name="tensukien"  style=" width: auto; height: 50px; outline:none;">
+            <option value="{{sk.id}}" *ngFor="let sk of sukiens">{{sk.event_name}}</option>
+          </select>
           <div class="card-body">
             <div class="table-responsive">
               <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">
                 <thead>
                 <tr >
                   <th>STT</th>
-                  <th>Tên sự kiện</th>
-                  <th>Thời gian</th>
-                  <th>Địa điểm tổ chức</th>
-                  <th>Action</th>
+                  <th>Họ & Tên</th>
+                  <th>Email</th>
+                  <th>Điểm mạnh</th>
+                  <th>Số Điện Thoại</th>
+                  <th>Trạng thái</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>1</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                <tr (change)="tsk()"s *ngFor="let ctv of qlcongtacviens, let i = index" >
+                  <td>{{i+1}}</td>
+                  <td>{{ctv[0]}}</td>
+                  <td>{{ctv[1]}}</td>
+                  <td>{{ctv[2]}}</td>
+                  <td>{{ctv[3]}}</td>
+
                   <td>
-                    <button class="btn btn-danger">Hủy</button>
+                    <input id="hau" [(ngModel)]="ctv[4]" (change)="tsk()" (click)="duyet(ctv[4],ctv[5])" type="checkbox">
                   </td>
                 </tr>
                 </tbody>

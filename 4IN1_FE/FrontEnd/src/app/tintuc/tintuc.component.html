@@ -6,16 +6,16 @@
     </div>
     <div >
       <ul>
-        <li >
-          <div style="display: flex; " *ngFor="let tt of tintuc"  >
-              <img  (click)="detailTT(tt.id)" [src]="tt.img"/>
-              <div>
+        <li *ngFor="let tt of tintuc">
+              <div class="box-img">
+                <img  (click)="detailTT(tt.id)" [src]="tt.img"/>
+              </div>
+              <div class="box-content">
                 <h5>
                   <a (click)="detailTT(tt.id)" >{{tt.title}} </a>
                 </h5>
                 <p>{{tt.describe_of_news}}</p>
             </div>
-          </div>
         </li>
       </ul>
     </div>

@@ -1,14 +1,14 @@
-  <div class="textbox" >
+<div class="textbox" >
 
-    <div id="left">
-      <div class="main-desc">
-        <div class="main-title">
-          <span>{{sukien.event_name}}</span>
-        </div>
-        <div>
+  <div id="left">
+    <div class="main-desc">
+      <div class="main-title">
+        <span>{{sukien.event_name}}</span>
+      </div>
+      <div>
         <div class="" [innerHtml]='sukien.content'>
         </div>
-        </div>
+      </div>
     </div>
     <div id="right">
       <ul>
@@ -38,76 +38,22 @@
           <a href="#">Đại học Duy Tân Nỗ lực Hợp tác Trong nước và Quốc tế</a>
         </li>
         <br>
-        <li>
-          <a href="#">Khoa Công Nghệ Thông Tin</a>
-        </li>
-        <hr>
-        <li>
-          <a href="#">Khoa Kế Toán</a>
-        </li>
-        <hr>
-        <li>
-          <a href="#">Khoa Xây Dựng</a>
-        </li>
-        <hr>
-        <li>
-          <a href="#">Khoa Kiến Trúc</a>
-        </li>
-        <hr>
-        <li>
-          <a href="#">Khoa Quản trị Kinh doanh</a>
-        </li>
-        <hr>
-        <li>
-          <a href="#">Khoa Đào tạo Quốc tế</a>
-        </li>
-        <hr>
-        <li>
-          <a href="#">Khoa Khoa học Tự nhiên</a>
-        </li>
-        <hr>
-        <li>
-          <a href="#">Viện Đào tạo & Nghiên cứu Du lịch</a>
-        </li>
-        <hr>
-        <li>
-          <a href="#">Viện Ngôn Ngữ</a>
-        </li>
-        <hr>
-        <li>
-          <a href="#">Khoa Lý luận Chính trị</a>
-        </li>
-        <hr>
-        <li>
-          <a href="#">Khoa Y</a>
-        </li>
-        <hr>
-        <li>
-          <a href="#">Khoa Dược</a>
-        </li>
-        <hr>
-        <li>
-          <a href="#">Khoa Điều dưỡng</a>
-        </li>
-        <hr>
-        <li>
-          <a href="#">Khoa Luật</a>
-        </li>
-        <hr>
-        <li>
-          <a href="#">Khoa Điện - Điện tử</a>
-        </li>
-        <hr>
-        <li>
-          <a href="#">Khoa Cao đẳng Thực hành</a>
-        </li>
-        <hr>
       </ul>
     </div>
+
   </div>
-    <br>
-    <br>
-    <div class="text-center">
-      <a class="animated-btn text-white" style="margin-bottom: 50px;cursor: pointer" (click)="dangKi(id,ev_id)" >Tham gia ngay</a>
-    </div>
+  <br>
+  <br>
+  <div class="text-center">
+    <ul style="display: flex">
+      <li>
+        <a class="animated-btn text-white" style="margin-bottom: 50px;cursor: pointer" (click)="dangKi(id,ev_id)" >Tham gia ngay</a>
+      </li>
+      <li style="width: 100px;">
+      </li>
+      <li>
+        <a href="/dangkicongtacvien" class="animated-btn text-white" style="margin-bottom: 50px;" >Đăng kí cộng tác viên</a>
+      </li>
+    </ul>
   </div>
+</div>
