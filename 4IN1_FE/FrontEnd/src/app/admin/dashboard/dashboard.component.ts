@@ -24,7 +24,8 @@ export class DashboardComponent implements OnInit {
   tsksdr:number;
   // @ts-ignore
   tongNguoi:number;
-  constructor(private dashboardService:DashboardService,private tokenStorageService: TokenStorageService) { }
+  constructor(private dashboardService:DashboardService,
+              private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.dtOptions = {

@@ -10,6 +10,7 @@ import {AccountService} from '../Service/account.service';
 import {Thongtincanhan} from '../Model/thongtincanhan';
 import {ThongbaoService} from '../_services/thongbao.service';
 import {DatePipe} from '@angular/common';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-dangkitochucsukien',
@@ -19,7 +20,6 @@ import {DatePipe} from '@angular/common';
 })
 export class DangkitochucsukienComponent implements OnInit {
 // @ts-ignore
-  @ViewChild('appendTo', { read: ViewContainerRef }) public appendTo: ViewContainerRef;
   currentUser: any;
   selectedImage: any = null;
   selectedFile: any = null;
@@ -43,7 +43,7 @@ export class DangkitochucsukienComponent implements OnInit {
               @Inject(AngularFireStorage) private storage: AngularFireStorage,
               private token: TokenStorageService,
               private accountService:AccountService,
-              private thongbao:ThongbaoService) {
+              private toastr: ToastrService) {
     this.check_Date.setSeconds(0);
     this.check_Date.setMilliseconds(0);
     this.localCompleteDate = this.check_Date.toISOString();
@@ -84,9 +84,8 @@ export class DangkitochucsukienComponent implements OnInit {
 
   add(){
     this.sukienService.kiemTra(this.sukien).subscribe(data=>{
-      console.log(this.sukien);
       if(data!=0){
-       this.thongbao.showWarning("Sự kiện của bạn trùng lịch với sự kiện khác sắp diễn ra!",this.appendTo);
+        this.toastr.error("Sự kiện của bạn trùng lịch với sự kiện khác sắp diễn ra!");
       } else {
         this.sukien.plan_file=this.id;
         this.sukien.img=this.idIMG;
@@ -95,7 +94,7 @@ export class DangkitochucsukienComponent implements OnInit {
         if(confirm("Bạn chắc chắn muốn đăng kí hay không?")){
           this.sukienService.create(this.sukien).subscribe(data=>{
             this.sukien = data;
-            this.thongbao.showSuccess("Đăng kí thành công",this.appendTo);
+            this.toastr.success("Đăng kí thành công");
             this.sukien = new Sukien();
             this.router.navigate(['/dangkitochuc']);
           });

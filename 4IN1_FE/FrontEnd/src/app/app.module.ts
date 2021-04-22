@@ -42,6 +42,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import {ThongbaoService} from './_services/thongbao.service';
 import {DatePipe} from "@angular/common";
+import {ToastrModule} from 'ngx-toastr';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 // @ts-ignore
 @NgModule({
@@ -79,7 +81,8 @@ import {DatePipe} from "@angular/common";
         Ng2SearchPipeModule,
         BrowserAnimationsModule,
         NotificationModule,
-
+        ToastrModule.forRoot(),
+    MatSnackBarModule
     ],
   providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService,DatePipe],
   bootstrap: [AppComponent]

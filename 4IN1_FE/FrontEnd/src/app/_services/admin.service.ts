@@ -17,15 +17,9 @@ export class AdminAuthService implements CanActivate{
 
     if (token == null) {
       this.router.navigateByUrl('/admin/login');
-      this.matSnackBar.open('Bạn cần đăng nhập để thực hiện tác vụ!', 'Ok', {
-        duration: 4000,
-      });
       return false;
     } else if (!this.isRole()) {
       this.router.navigateByUrl('/admin/login');
-      this.matSnackBar.open('Bạn không có quyền truy cập trang này!', 'Ok', {
-        duration: 4000,
-      });
       return false;
     }  else {
       return true;

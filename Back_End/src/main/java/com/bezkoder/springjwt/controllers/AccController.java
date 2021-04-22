@@ -26,6 +26,18 @@ public class AccController {
     @Autowired
     private AccRepository accRepository;
 
+    @GetMapping("/getFullAcc")
+    public List<Account> GetFullAcc() {
+        return accRepository.findAll();
+    }
+
+    @PutMapping("/ban/{id}")
+    public void duyetSuKien(@PathVariable Integer id){
+        Account acc =accRepository.findById(id).get();
+        acc.setBan(true);
+        accRepository.save(acc);
+    }
+
     @PutMapping("thongtincanhan/{id}")
     public void LuuThongTin(@PathVariable int id,@RequestBody Account account){
         Account acc = accRepository.findById(id).get();
