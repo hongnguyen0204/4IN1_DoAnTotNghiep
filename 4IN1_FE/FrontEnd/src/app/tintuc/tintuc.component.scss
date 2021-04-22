@@ -51,17 +51,31 @@ div #left ul li a {
 }
 
 div #left ul li a:hover {
-  color: #1863ff;
+  cursor: pointer;
+  color: #0b3251;
 }
-
+div #left ul li {
+  height: 220px;
+  display: flex;
+  justify-content: center;
+}
+div #left ul li .box-img{
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
+}
 div #left ul li img {
   cursor: pointer;
-  width: 250px;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   padding: 2px;
-  margin-right: 10px;
+  margin-right: 15px;
+  margin-top: 15px;
+  width: 100%;
+  height: 100%;
 }
-
+div #left ul li .box-content{
+  width: 70%;
+}
 div #left ul li p {
   height: 20%;
   text-align: justify;
@@ -75,7 +89,6 @@ div #left ul li p {
   max-width: 314px;
   background: white;
   min-height: 500px;
-  margin-left: 1%;
 }
 
 .right-header-news {
@@ -94,13 +107,14 @@ div #left ul li p {
 }
 
 #right ul li a:hover {
-  color: #1863ff;
+  cursor: pointer;
 }
 
 #right ul li img {
+  Object-fit: cover;
   cursor: pointer;
   max-width: 230px;
-  max-height: 100px;
+  max-height: 200px;
   border: 1px solid #ccc;
   padding: 2px;
   margin: 5px;

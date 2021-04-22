@@ -28,6 +28,7 @@ import { SuatintucComponent } from './suatintuc/suatintuc.component';
         DataTablesModule,
         CKEditorModule,
         FormsModule,
+
     ]
 })
 export class AdminModule { }

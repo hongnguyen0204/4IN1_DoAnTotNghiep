@@ -45,7 +45,6 @@ export class ThongtincanhanComponent implements OnInit {
       this.id = this.users.id;
     });
   }
-
   // tslint:disable-next-line:typedef
   save(event: any) {
     if (this.selectedImage) {
@@ -75,7 +74,6 @@ export class ThongtincanhanComponent implements OnInit {
       }
     }
   }
-
   // tslint:disable-next-line:typedef
   readURL(event: any): void {
     // @ts-ignore

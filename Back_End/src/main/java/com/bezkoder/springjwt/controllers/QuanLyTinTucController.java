@@ -1,5 +1,6 @@
 package com.bezkoder.springjwt.controllers;
 import com.bezkoder.springjwt.models.QuanLyTinTuc;
+import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.QuanLyTInTucRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -69,6 +70,4 @@ public class QuanLyTinTucController {
             return new ResponseEntity<QuanLyTinTuc>(HttpStatus.NOT_FOUND);
         }
     }
-
-
 }

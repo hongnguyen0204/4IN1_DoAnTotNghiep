@@ -35,7 +35,7 @@ const routes: Routes = [
   {path: 'dangky', component: DangkyComponent},
   {path: 'quenmatkhau', component: QuenmatkhauComponent},
   {path: 'tintuc', component: TintucComponent},
-  {path: 'chitiettintuc', component: ChitiettintucComponent},
+  {path: 'chitiettintuc/:id', component: ChitiettintucComponent},
   {path: 'quanlycongtacvien', component: QuanlycongtacvienComponent,canActivate:[CustomerAuthService]},
   {path: 'quanlysukien', component: QuanlysukienComponent,canActivate:[CustomerAuthService]},
   {path: 'sukiencuatoi', component: SukiencuatoiComponent,canActivate:[CustomerAuthService]},

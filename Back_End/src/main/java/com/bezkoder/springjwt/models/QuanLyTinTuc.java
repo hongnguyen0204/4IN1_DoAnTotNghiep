@@ -84,4 +84,6 @@ public class QuanLyTinTuc {
     public void setID_admin(int ID_admin) {
         this.ID_admin = ID_admin;
     }
+
+
 }
