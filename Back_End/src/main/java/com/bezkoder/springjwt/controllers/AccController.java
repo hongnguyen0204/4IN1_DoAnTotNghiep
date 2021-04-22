@@ -115,7 +115,7 @@ public class AccController {
 
     @PostMapping("/reset_password")
     public String processResetPassword(@RequestBody Account acc) {
-        Account account = accRepository.findByToken(acc.getReset_password_token());
+        Account account = accRepository.Gettoken(acc.getReset_password_token());
         if (account == null) {
             return "Không tìm thấy tài khoản";
         } else {
