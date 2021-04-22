@@ -10,6 +10,7 @@ import {SukienService} from '../Service/sukien.service';
   providers: [SukienService, DatePipe]
 })
 export class TimkiemsukienComponent implements OnInit {
+  p: number =1;
   // @ts-ignore
   sukiens: Sukien[];
   // @ts-ignore

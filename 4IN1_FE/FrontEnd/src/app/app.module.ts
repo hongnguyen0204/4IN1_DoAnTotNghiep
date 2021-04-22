@@ -43,6 +43,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import {ThongbaoService} from './_services/thongbao.service';
 import {DatePipe} from "@angular/common";
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -70,7 +71,7 @@ import {DatePipe} from "@angular/common";
     XacthucemailComponent,
     ChitiettintucComponent
   ],
-  imports: [
+    imports: [
         BrowserModule,
         AppRoutingModule,
         CKEditorModule,
@@ -81,8 +82,9 @@ import {DatePipe} from "@angular/common";
         DataTablesModule,
         MatSnackBarModule,
         Ng2SearchPipeModule,
-      BrowserAnimationsModule,
-      NotificationModule,
+        BrowserAnimationsModule,
+        NotificationModule,
+        NgxPaginationModule,
 
     ],
   providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService,DatePipe],

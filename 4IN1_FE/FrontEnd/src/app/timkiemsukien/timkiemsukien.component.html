@@ -52,7 +52,7 @@
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="day-1" role="tabpanel" aria-labelledby="day-1-tab">
             <div class="event-content pt-40">
-              <div *ngFor="let sk of sukiens | filter:khoa | filter: diadiem ">
+              <div *ngFor="let sk of sukiens | filter:khoa | filter: diadiem | paginate: {itemsPerPage:10, currentPage:p};">
                 <div class="single-event d-md-flex mt-30">
                   <div class="event-image">
                     <img [src]="sk.img" alt="Event">
@@ -69,6 +69,7 @@
                   </div>
                 </div>
               </div> <!-- single event -->
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
             </div> <!-- event content -->
           </div>
         </div>
