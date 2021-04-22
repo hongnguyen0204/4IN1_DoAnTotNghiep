@@ -20,6 +20,11 @@ export class SukienService {
   }
 
   // @ts-ignore
+  findByDay(ngay1, ngay2): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theongay'}/${ngay1}/${ngay2}`);
+  }
+
+  // @ts-ignore
   findAll(): Observable<Sukien[]>{
     return this.http.get<Sukien[]>('http://localhost:8080/sukien/sukiendangcho');
   }
