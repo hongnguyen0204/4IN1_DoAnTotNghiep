@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
   providers: [SukienService]
 })
 export class SukienComponent implements OnInit {
+  p: number =1;
   // @ts-ignore
   sukiens: Sukien[];
   // @ts-ignore
