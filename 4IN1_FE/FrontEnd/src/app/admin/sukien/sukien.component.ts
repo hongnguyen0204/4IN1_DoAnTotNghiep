@@ -35,10 +35,8 @@ export class SukienComponent implements OnInit {
   constructor(private skService:SukienService,
               private route: ActivatedRoute,
               private router: Router,
-              private tokenStorageService: TokenStorageService,
-              private load:LoadService) {
-    this.load.loadScript("node_modules/jquery/dist/jquery.js/ jquery.min.js");
-
+              private tokenStorageService: TokenStorageService
+             ) {
   }
 
   ngOnInit(): void {
@@ -46,6 +44,7 @@ export class SukienComponent implements OnInit {
     this.SKDaDuyet();
     this.SKDaHuy();
     this.dtOptions = {
+      language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers'
     };
   }

@@ -18,7 +18,7 @@ import {LoadService} from '../../_services/load.service';
 })
 export class TintucComponent implements OnInit {
   // @ts-ignore
-  dtOptions: { pagingType: string };
+  dtOptions: any={};
   // @ts-ignore
   quanlytintucs: Quanlytintuc[];
   // @ts-ignore
@@ -35,6 +35,7 @@ export class TintucComponent implements OnInit {
   ngOnInit(): void {
     this.reloadData();
     this.dtOptions = {
+      language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers'
     };
   }

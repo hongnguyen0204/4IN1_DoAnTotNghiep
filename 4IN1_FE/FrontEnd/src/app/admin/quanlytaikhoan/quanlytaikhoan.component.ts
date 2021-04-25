@@ -14,7 +14,7 @@ import {LoadService} from '../../_services/load.service';
 export class QuanlytaikhoanComponent implements OnInit {
 
   // @ts-ignore
-  dtOptions: { pagingType: string };
+  dtOptions: any= {  };
   // @ts-ignore
   listAcc:Thongtincanhan[];
   constructor(private tokenStorageService: TokenStorageService,
@@ -29,6 +29,7 @@ export class QuanlytaikhoanComponent implements OnInit {
       this.listAcc = data;
     });
     this.dtOptions = {
+      language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers'
     };
   }
