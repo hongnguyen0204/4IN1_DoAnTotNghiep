@@ -6,6 +6,7 @@ import {Dangkithamgia} from '../Model/dangkithamgia';
 import {Thongtincanhan} from '../Model/thongtincanhan';
 import {AccountService} from '../Service/account.service';
 import {TokenStorageService} from '../_services/token-storage.service';
+import {LoadService} from '../_services/load.service';
 
 @Component({
   selector: 'app-quanlysukien',
@@ -15,7 +16,7 @@ import {TokenStorageService} from '../_services/token-storage.service';
 })
 export class QuanlysukienComponent implements OnInit {
   // @ts-ignore
-  dtOptions: { pagingType: string };
+  dtOptions: DataTables.Settings = {};
   // @ts-ignore
   dangkithamgia:any;
   // @ts-ignore
@@ -32,13 +33,9 @@ export class QuanlysukienComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private accountService:AccountService,
-              private token: TokenStorageService) {
-  }
+              private token: TokenStorageService) {}
 
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers'
-    };
     this.currentUser = this.token.getUser();
     this.accountService.findUser(this.currentUser.username).subscribe(data=>{
       this.users=data;
@@ -47,6 +44,9 @@ export class QuanlysukienComponent implements OnInit {
         this.dangkithamgia=data;
       });
     });
+    this.dtOptions = {
+      pagingType: 'full_numbers'
+    };
   }
 
   delete(id:number) {

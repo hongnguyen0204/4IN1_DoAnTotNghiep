@@ -44,6 +44,7 @@ import {ThongbaoService} from './_services/thongbao.service';
 import {DatePipe} from "@angular/common";
 import {ToastrModule} from 'ngx-toastr';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 // @ts-ignore
 @NgModule({
@@ -82,7 +83,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
         BrowserAnimationsModule,
         NotificationModule,
         ToastrModule.forRoot(),
-    MatSnackBarModule
+        MatSnackBarModule,
+        NgxPaginationModule
     ],
   providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService,DatePipe],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DashboardService} from '../../Service/dashboard.service';
 import {TokenStorageService} from '../../_services/token-storage.service';
+import {LoadService} from '../../_services/load.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,7 +26,10 @@ export class DashboardComponent implements OnInit {
   // @ts-ignore
   tongNguoi:number;
   constructor(private dashboardService:DashboardService,
-              private tokenStorageService: TokenStorageService) { }
+              private tokenStorageService: TokenStorageService,
+              private load:LoadService) {
+    this.load.loadScript("node_modules/jquery/dist/jquery.min.js");
+  }
 
   ngOnInit(): void {
     this.dtOptions = {

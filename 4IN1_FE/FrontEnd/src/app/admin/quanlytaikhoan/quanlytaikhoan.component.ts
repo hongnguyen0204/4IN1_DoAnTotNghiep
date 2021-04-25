@@ -4,6 +4,7 @@ import {AccountService} from '../../Service/account.service';
 import {ToastrService} from 'ngx-toastr';
 import {Router, RouterModule} from '@angular/router';
 import {Thongtincanhan} from '../../Model/thongtincanhan';
+import {LoadService} from '../../_services/load.service';
 
 @Component({
   selector: 'app-quanlytaikhoan',
@@ -19,7 +20,9 @@ export class QuanlytaikhoanComponent implements OnInit {
   constructor(private tokenStorageService: TokenStorageService,
               private accountService:AccountService,
               private toastr:ToastrService,
-              private router:Router) { }
+              private router:Router,
+              private load:LoadService) {
+    this.load.loadScript("node_modules/jquery/dist/jquery.js/jquery.min.js");  }
 
   ngOnInit(): void {
     this.accountService.findAll().subscribe(data => {
