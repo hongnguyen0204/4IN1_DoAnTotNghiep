@@ -8,6 +8,7 @@ import {TokenStorageService} from '../../_services/token-storage.service';
 import {Thongtincanhan} from '../../Model/thongtincanhan';
 import {AccountService} from '../../Service/account.service';
 import {ThongbaoService} from '../../_services/thongbao.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-themmoitintuc',
@@ -36,7 +37,7 @@ export class ThemmoitintucComponent implements OnInit {
               private router: Router,
               private tokenStorageService: TokenStorageService,
               private accountService:AccountService,
-              private thongbao:ThongbaoService) { }
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorageService.getUser();
@@ -48,7 +49,7 @@ export class ThemmoitintucComponent implements OnInit {
 
   save(event:any) {
     if (this.selectedImage==null){
-      this.thongbao.showError("Bạn phải chọn ảnh!",this.appendTo);
+      this.toastr.warning("Bạn phải chọn 1 hình ảnh")
     } else{
       const name = this.selectedImage.name;
       const fileRef = this.storage.ref(name);
@@ -60,7 +61,7 @@ export class ThemmoitintucComponent implements OnInit {
             this.tintuc.id_admin = this.admin_id;
             if (confirm("Bạn chắc chắn muốn thêm hay không?")) {
               this.quanLyTinTucService.create(this.tintuc).subscribe(data => {
-                this.thongbao.showSuccess("Thêm thành công!",this.appendTo);
+                this.toastr.success("Thêm thành công!");
                 this.router.navigate(['/admin/tintuc']).then(() => {
                   window.location.reload();
                 });

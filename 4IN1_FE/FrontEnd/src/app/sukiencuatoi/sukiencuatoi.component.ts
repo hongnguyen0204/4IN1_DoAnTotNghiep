@@ -9,6 +9,7 @@ import {CongtacvienService} from '../Service/congtacvien.service';
 import * as $ from 'jquery';
 import {Sukien} from '../Model/sukien';
 import {Congtacvien} from '../Model/congtacvien';
+import {LoadService} from '../_services/load.service';
 
 @Component({
   selector: 'app-sukiencuatoi',
@@ -37,8 +38,9 @@ export class SukiencuatoiComponent implements OnInit {
               private router: Router,
               private accountService: AccountService,
               private token: TokenStorageService,
-              private ctvService: CongtacvienService) {
-  }
+              private ctvService: CongtacvienService,
+              private load:LoadService) {
+    this.load.loadScript("node_modules/jquery/dist/jquery.js/jquery.min.js");  }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();

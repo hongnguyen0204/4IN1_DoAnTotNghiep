@@ -31,7 +31,6 @@ import {AuthInterceptor} from './-helpers/auth.interceptor';
 import {CustomerAuthService} from './_services/customer.service';
 import {AdminAuthService} from './_services/admin.service';
 // @ts-ignore
-import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { TintucComponent } from './tintuc/tintuc.component';
 import { TimkiemsukienComponent } from './timkiemsukien/timkiemsukien.component';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
@@ -43,9 +42,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import {ThongbaoService} from './_services/thongbao.service';
 import {DatePipe} from "@angular/common";
+import {ToastrModule} from 'ngx-toastr';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {NgxPaginationModule} from 'ngx-pagination';
-
-
 
 // @ts-ignore
 @NgModule({
@@ -71,7 +70,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     XacthucemailComponent,
     ChitiettintucComponent
   ],
-    imports: [
+  imports: [
         BrowserModule,
         AppRoutingModule,
         CKEditorModule,
@@ -80,12 +79,12 @@ import {NgxPaginationModule} from 'ngx-pagination';
         HttpClientModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         DataTablesModule,
-        MatSnackBarModule,
         Ng2SearchPipeModule,
         BrowserAnimationsModule,
         NotificationModule,
-        NgxPaginationModule,
-
+        ToastrModule.forRoot(),
+        MatSnackBarModule,
+        NgxPaginationModule
     ],
   providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService,DatePipe],
   bootstrap: [AppComponent]
