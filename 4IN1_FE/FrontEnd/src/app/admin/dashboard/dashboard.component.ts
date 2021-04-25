@@ -12,7 +12,7 @@ import {LoadService} from '../../_services/load.service';
 export class DashboardComponent implements OnInit {
 
   // @ts-ignore
-  dtOptions: { pagingType: string };
+  dtOptions: any = {};
   // @ts-ignore
   skdtc:number;
   // @ts-ignore
@@ -32,7 +32,9 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // @ts-ignore
     this.dtOptions = {
+      language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers'
     };
     this.dashboardService.SKDTC().subscribe(data=>{

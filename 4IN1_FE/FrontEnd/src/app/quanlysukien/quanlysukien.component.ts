@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Sukien} from '../Model/sukien';
 import {SukienService} from '../Service/sukien.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -7,6 +7,7 @@ import {Thongtincanhan} from '../Model/thongtincanhan';
 import {AccountService} from '../Service/account.service';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {LoadService} from '../_services/load.service';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-quanlysukien',
@@ -14,9 +15,10 @@ import {LoadService} from '../_services/load.service';
   styleUrls: ['./quanlysukien.component.scss'],
   providers:[SukienService]
 })
-export class QuanlysukienComponent implements OnInit {
+export class QuanlysukienComponent implements OnInit,OnDestroy {
   // @ts-ignore
   dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
   // @ts-ignore
   dangkithamgia:any;
   // @ts-ignore
@@ -36,17 +38,25 @@ export class QuanlysukienComponent implements OnInit {
               private token: TokenStorageService) {}
 
   ngOnInit(): void {
+    this.dtOptions = {
+      language: {url:'assets/Vietnamese.json'},
+      pagingType: 'full_numbers',
+      pageLength: 5
+    };
     this.currentUser = this.token.getUser();
     this.accountService.findUser(this.currentUser.username).subscribe(data=>{
       this.users=data;
       this.id = this.users.id;
       this.skService.find(this.users.id).subscribe(data=>{
         this.dangkithamgia=data;
+        this.dtTrigger.next();
       });
     });
-    this.dtOptions = {
-      pagingType: 'full_numbers'
-    };
+  }
+
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
   }
 
   delete(id:number) {

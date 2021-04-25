@@ -86,4 +86,12 @@ export class ThongtincanhanComponent implements OnInit {
       reader.readAsDataURL(this.selectedImage);
     }
   }
+
+  gioiTinh(gender:boolean){
+    if(gender){
+      return "Nam";
+    } else {
+      return "Nữ"
+    }
+  }
 }

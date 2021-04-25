@@ -140,19 +140,20 @@
                   <p>Địa điểm: {{sukien.place}}</p>
                 </div>
                 <div class="item">
-                  <p>Mô tả: {{sukien.describe_of_event}}</p>
+                  <p>Mô tả:</p>
+                  <textarea style="width: 100%;border-style: solid" rows="3">{{sukien.describe_of_event}}</textarea>
                 </div>
                 <div class="item">
                   <p>Bản kế hoạch:</p>
                   <a style="margin-top: 5px" href="{{sukien.plan_file}}">Tải bản kế hoạch tại đây</a>
                 </div>
                 <div class="item">
-                  <p>Mô tả:</p>
+                  <p>Nội dung:</p>
                   <ckeditor name="mota" [(ngModel)]="sukien.content" ></ckeditor>
                 </div>
                 <div class="btn-block">
-                  <button (click)="updateStudent()" href="#">Duyệt</button>
-                  <button class="cancel" (click)="cancelStudent()" href="#">Cancel</button>
+                  <button (click)="updateStudent()" style="margin-right: 20px">Duyệt</button>
+                  <button class="cancel" (click)="cancelStudent()" >Cancel</button>
                 </div>
               </form>
             </div>
