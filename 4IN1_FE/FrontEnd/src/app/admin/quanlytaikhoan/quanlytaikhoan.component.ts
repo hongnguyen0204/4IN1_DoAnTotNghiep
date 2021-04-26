@@ -9,20 +9,20 @@ import {LoadService} from '../../_services/load.service';
 @Component({
   selector: 'app-quanlytaikhoan',
   templateUrl: './quanlytaikhoan.component.html',
-  styleUrls: ['./quanlytaikhoan.component.scss']
+  styleUrls: ['./quanlytaikhoan.component.scss'],
+  providers:[AccountService]
 })
 export class QuanlytaikhoanComponent implements OnInit {
 
   // @ts-ignore
-  dtOptions: any= {  };
+  dtOptions: any = {};
   // @ts-ignore
   listAcc:Thongtincanhan[];
   constructor(private tokenStorageService: TokenStorageService,
               private accountService:AccountService,
               private toastr:ToastrService,
-              private router:Router,
-              private load:LoadService) {
-    this.load.loadScript("node_modules/jquery/dist/jquery.js/jquery.min.js");  }
+              private router:Router
+              ) {}
 
   ngOnInit(): void {
     this.accountService.findAll().subscribe(data => {
