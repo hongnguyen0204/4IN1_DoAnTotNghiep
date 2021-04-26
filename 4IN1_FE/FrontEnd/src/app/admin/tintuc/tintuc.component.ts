@@ -28,9 +28,8 @@ export class TintucComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               public datepipe: DatePipe,
-              private tokenStorageService: TokenStorageService,
-              private load:LoadService) {
-    this.load.loadScript("node_modules/jquery/dist/jquery.js/jquery.min.js");  }
+              private tokenStorageService: TokenStorageService) {
+      }
 
   ngOnInit(): void {
     this.reloadData();

@@ -85,7 +85,11 @@ import {MatDialogModule} from '@angular/material/dialog';
         Ng2SearchPipeModule,
         BrowserAnimationsModule,
         NotificationModule,
-        ToastrModule.forRoot(),
+        ToastrModule.forRoot({
+          timeOut: 3000,
+          positionClass: 'toast-top-center',
+          preventDuplicates: true,
+        }),
         MatSnackBarModule,
         NgxPaginationModule,
         MatDialogModule
