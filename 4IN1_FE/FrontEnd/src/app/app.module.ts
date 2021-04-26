@@ -45,6 +45,8 @@ import {DatePipe} from "@angular/common";
 import {ToastrModule} from 'ngx-toastr';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ConfirmDialogComponent } from './-helpers/confirm-dialog/confirm-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 // @ts-ignore
 @NgModule({
@@ -68,7 +70,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     QuenmatkhauComponent,
     DoimatkhauComponent,
     XacthucemailComponent,
-    ChitiettintucComponent
+    ChitiettintucComponent,
+    ConfirmDialogComponent
   ],
   imports: [
         BrowserModule,
@@ -84,7 +87,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
         NotificationModule,
         ToastrModule.forRoot(),
         MatSnackBarModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        MatDialogModule
     ],
   providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService,DatePipe],
   bootstrap: [AppComponent]
