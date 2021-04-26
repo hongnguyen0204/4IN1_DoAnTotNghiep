@@ -11,6 +11,8 @@ import {Quanlytintuc} from '../Model/quanlytintuc';
   providers:[QuanlytintucserviceService]
 })
 export class TintucComponent implements OnInit {
+
+
   // @ts-ignore
   tintuc:Quanlytintuc[];
   constructor(private  quanlytintucserviceService: QuanlytintucserviceService,
