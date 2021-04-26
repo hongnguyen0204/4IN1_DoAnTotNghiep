@@ -1,5 +1,5 @@
 <!--Bảng 1-->
-
+<script src="../../jquery-3.6.0.min.js"></script>
 <div class="row" style="margin-top: 180px;">
   <div class="col-md-12">
     <a class="button" href="sukiencuatoi" style="vertical-align:middle;float: right"><span>Sự kiện của bạn</span></a>
@@ -16,7 +16,7 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">
                 <thead>
                 <tr>
                   <th>STT</th>
@@ -58,9 +58,9 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">
                 <thead>
-                <tr >
+                <tr>
                   <th>STT</th>
                   <th>Tên sự kiện</th>
                   <th>Thời gian</th>
@@ -87,4 +87,5 @@
     </div>
   </div>
 </div>
+
 

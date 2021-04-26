@@ -20,8 +20,13 @@ export class SukienService {
   }
 
   // @ts-ignore
-  findByDay(ngay1, ngay2): Observable<Sukien[]>{
-    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theongay'}/${ngay1}/${ngay2}`);
+  findByText(searchtext): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theotext'}/${searchtext}`);
+  }
+
+  // @ts-ignore
+  findByDay(ngay1, ngay2, searchtext): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theongay'}/${ngay1}/${ngay2}/${searchtext}`);
   }
 
   // @ts-ignore

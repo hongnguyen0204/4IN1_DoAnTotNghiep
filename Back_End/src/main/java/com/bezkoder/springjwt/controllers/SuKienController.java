@@ -73,9 +73,16 @@ public class SuKienController {
        return suKienRepository.findByMonth(thang);
     }
 
-    @GetMapping(path ="/theongay/{ngay1}/{ngay2}")
-    public List<SuKien> getSKbyday(@PathVariable String ngay1,@PathVariable String ngay2){
-        return suKienRepository.findByDay(ngay1, ngay2);
+    @GetMapping(path ="/theongay/{ngay1}/{ngay2}/{searchtext}")
+    public List<SuKien> getSKbyday(@PathVariable String ngay1,@PathVariable String ngay2, @PathVariable String searchtext){
+        String search = "%" + searchtext + "%";
+        return suKienRepository.findByDay(ngay1, ngay2, search);
+    }
+
+    @GetMapping(path ="/theotext/{searchtext}")
+    public List<SuKien> getSKbytext(@PathVariable String searchtext){
+        String search = "%" + searchtext + "%";
+        return suKienRepository.findBytext(search);
     }
 
     @GetMapping("/tongSuKienDaToChuc")
