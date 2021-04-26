@@ -52,7 +52,7 @@ div #left ul li a {
 
 div #left ul li a:hover {
   cursor: pointer;
-  color: #0b3251;
+  color: #1d75b3;
 }
 div #left ul li {
   height: 220px;
@@ -89,25 +89,29 @@ div #left ul li p {
   max-width: 314px;
   background: white;
   min-height: 500px;
+
 }
 
 .right-header-news {
   height: 30px;
   width: 314px;
   margin-bottom: 10px;
-  margin-left: 5px;
+  margin-left: 15px;
   text-align: center;
   line-height: 30px;
   padding-right: 5px;
   background-color: #1863ff
+
 }
 
 #right ul {
   list-style-type: none;
+  margin-left: 25px;
 }
 
 #right ul li a:hover {
   cursor: pointer;
+  color: #1d75b3;
 }
 
 #right ul li img {
@@ -117,12 +121,13 @@ div #left ul li p {
   max-height: 200px;
   border: 1px solid #ccc;
   padding: 2px;
-  margin: 5px;
+  margin-bottom: 5px;
 }
 
 #right ul li a {
   text-decoration: none;
   color: #333;
+  margin-bottom: 30px;
 }
 .right-header-reviews {
   height: 30px;
