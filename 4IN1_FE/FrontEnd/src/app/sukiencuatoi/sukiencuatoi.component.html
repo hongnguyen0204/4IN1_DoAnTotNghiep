@@ -18,9 +18,9 @@
           </select>
           <div class="card-body">
             <div class="table-responsive">
-              <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">
                 <thead>
-                <tr >
+                <tr>
                   <th>STT</th>
                   <th>Họ & Tên</th>
                   <th>Email</th>
@@ -36,7 +36,6 @@
                   <td>{{ctv[1]}}</td>
                   <td>{{ctv[2]}}</td>
                   <td>{{ctv[3]}}</td>
-
                   <td>
                     <input id="hau" [(ngModel)]="ctv[4]" (change)="tsk()" (click)="duyet(ctv[4],ctv[5])" type="checkbox">
                   </td>

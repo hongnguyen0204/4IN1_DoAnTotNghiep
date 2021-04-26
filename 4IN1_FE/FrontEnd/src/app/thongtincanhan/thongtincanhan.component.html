@@ -27,13 +27,13 @@
         </div>
         <div class="row mt-3 ">
           <div class="col-md-12">
-            <label class="labels">Giới tính: {{users.gender}}</label>
+            <label class="labels">Giới tính: {{gioiTinh(users.gender)}}</label>
             <form >
               <label class="radio-inline-nam">
-                <input id="nam" [(ngModel)]="users.gender" type="radio" name="gender" name="optradio" value="true">Nádasdasd
+                <input id="nam" [(ngModel)]="users.gender" type="radio" name="gender"  value="true">Nam
               </label>
               <label class="radio-inline-nu">
-                <input id="nu" [(ngModel)]="users.gender" type="radio" name="gender" name="optradio" value="false">Nữ
+                <input id="nu" [(ngModel)]="users.gender" type="radio" name="gender"  value="false">Nữ
               </label>
             </form>
           </div>

@@ -4,6 +4,7 @@ import {SukienService} from '../../Service/sukien.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TokenStorageService} from '../../_services/token-storage.service';
 import {ThongbaoService} from '../../_services/thongbao.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-thongke',
@@ -20,7 +21,7 @@ export class ThongkeComponent implements OnInit {
   constructor(private skService: SukienService,private route: ActivatedRoute,
               private router: Router,
               private tokenStorageService: TokenStorageService,
-              private thongbao:ThongbaoService) { }
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id=this.route.snapshot.params['id'];
@@ -33,7 +34,7 @@ export class ThongkeComponent implements OnInit {
     this.skService.update(this.id,this.sukien).subscribe(data=>{
       console.log(data);
       this.router.navigate(['admin/sukien']) .then(() => {
-        this.thongbao.showSuccess("Duyệt thành công!",this.appendTo);
+        this.toastr.success("Duyệt thành công!");
         window.location.reload();
       });
     },error => console.log(error));
@@ -42,8 +43,8 @@ export class ThongkeComponent implements OnInit {
     this.skService.cancel(this.id,this.sukien).subscribe(data=>{
       console.log(data);
       this.router.navigate(['admin/sukien']) .then(() => {
+        this.toastr.warning("Đã hủy sự kiện!");
         window.location.reload();
-        this.thongbao.showError("Đã hủy!",this.appendTo);
       });
     },error => console.log(error));
   }

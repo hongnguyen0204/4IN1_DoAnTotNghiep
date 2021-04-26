@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DashboardService} from '../../Service/dashboard.service';
 import {TokenStorageService} from '../../_services/token-storage.service';
+import {LoadService} from '../../_services/load.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,7 @@ import {TokenStorageService} from '../../_services/token-storage.service';
 export class DashboardComponent implements OnInit {
 
   // @ts-ignore
-  dtOptions: { pagingType: string };
+  dtOptions: any = {};
   // @ts-ignore
   skdtc:number;
   // @ts-ignore
@@ -24,10 +25,16 @@ export class DashboardComponent implements OnInit {
   tsksdr:number;
   // @ts-ignore
   tongNguoi:number;
-  constructor(private dashboardService:DashboardService,private tokenStorageService: TokenStorageService) { }
+  constructor(private dashboardService:DashboardService,
+              private tokenStorageService: TokenStorageService,
+              private load:LoadService) {
+    this.load.loadScript("node_modules/jquery/dist/jquery.min.js");
+  }
 
   ngOnInit(): void {
+    // @ts-ignore
     this.dtOptions = {
+      language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers'
     };
     this.dashboardService.SKDTC().subscribe(data=>{
