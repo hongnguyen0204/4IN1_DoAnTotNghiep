@@ -22,6 +22,11 @@ public class SuKienController {
         return suKienRepository.findAll();
     }
 
+    @GetMapping("/sukienhot")
+    public SuKien getSuKienhot() {
+        return suKienRepository.sukienhot();
+    }
+
     @GetMapping("/sukiendangcho")
     public List<SuKien> SKDC() {
         return suKienRepository.SKDangCho();
@@ -119,4 +124,5 @@ public class SuKienController {
     public Integer KiemTra(@RequestBody SuKien suKien){
        return suKienRepository.KiemTra(suKien.getTime_of_event(),suKien.getPlace());
     }
+
 }
