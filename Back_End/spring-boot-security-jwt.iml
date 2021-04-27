@@ -1,34 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" version="4">
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
+    <facet type="web" name="Web">
+      <configuration>
+        <webroots />
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
+        </sourceRoots>
+      </configuration>
+    </facet>
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <datasource-mapping>
-          <factory-entry name="entityManagerFactory" />
-          <factory-entry name="spring-boot-security-jwt" />
-        </datasource-mapping>
-=======
         <datasource-mapping />
->>>>>>> 8d8e33d4cccd777e08c2e76d1b41b51c2ce44c49
-=======
-        <datasource-mapping>
-          <factory-entry name="entityManagerFactory" value="0080ac76-c1b1-4d87-bf1d-64d207de50c8" />
-        </datasource-mapping>
->>>>>>> 990a928d3f0c74633ed055392abab546c11321f0
         <naming-strategy-map />
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
       <configuration />
-    </facet>
-    <facet type="web" name="Web">
-      <configuration>
-        <webroots />
-      </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
