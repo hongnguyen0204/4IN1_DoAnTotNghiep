@@ -136,7 +136,9 @@
                   minlength="50"
                   maxlength="500"
                   #tieuchi="ngModel"
-                  id="tieuchi" rows="2"></textarea>
+                  id="tieuchi" rows="2">
+
+        </textarea>
         <div class="alert-danger" *ngIf="f.submitted && tieuchi.invalid">
           <div *ngIf="tieuchi.errors.minlength">
             Tiêu chí phải nhiều hơn 50 kí tự
