@@ -1,88 +1,43 @@
-<div class="textbox"  >
+<title>Tin tức</title>
+<div class="textbox" >
   <div id="left">
     <div class="news">
       <h2>TIN TỨC</h2>
       <hr width="96%" size="10" color="black">
     </div>
-    <ul>
-      <li>
-        <img src="assets/images/news_1.jpg"/>
-        <h3>
-          <a href="#">Kỷ Niệm 90 năm ngày thành lập Đoàn TNCS Hồ Chí Minh (26/03/1932-26/03/2021)</a>
-        </h3>
-        <p>Chiều ngày 19/3/2021, vòng Chung kết Cuộc thi Schneider Go Green 2021 tại Việt Nam đã được diễn ra theo hình thức online với sự tham gia của nhiều đội thi đến từ nhiều cơ sở đào tạo, trường...</p>
-        <div class="desc">
-          <span>Ngày đăng : 27/03/2021</span>
-        </div>
-      </li>
-      <li>
-        <img src="assets/images/a1.jpg"/>
-        <h3>
-          <a href="#">Sinh viên Duy Tân giành giải Nhì Cuộc thi Schneider Go Green 2021</a>
-        </h3>
-        <p>Chiều ngày 19/3/2021, vòng Chung kết Cuộc thi Schneider Go Green 2021 tại Việt Nam đã được diễn ra theo hình thức online với sự tham gia của nhiều đội thi đến từ nhiều cơ sở đào tạo, trường...</p>
-        <div class="desc">
-          <span>Ngày đăng : 26/03/2021</span>
-        </div>
-      </li>
-      <li>
-        <img src="assets/images/a2.jpg"/>
-        <h3>
-          <a href="#">Hội nghị Tuyển sinh Đại học, Cao đẳng năm 2021</a>
-        </h3>
-        <p>Sáng ngày 25/3/2021, Hội nghị Tuyển sinh đại học, cao đẳng năm 2021 đã được diễn ra tại 4 điểm cầu: Hà Nội, Tp. Hồ Chí Minh, Đà Nẵng, Cần Thơ. Tại Hội nghị, Bộ Giáo dục và Đào tạo cùng các...</p>
-        <div>
-          <span>Ngày đăng : 26/03/2021</span>
-        </div>
-      </li>
-      <li>
-        <img src="assets/images/a3.jpg"/>
-        <h3>
-          <a href="#">Nữ sinh viên duy nhất của lớp và bảng vàng thành tích nghiên cứu khoa học đáng nể</a>
-        </h3>
-        <p>Phụ nữ hoàn toàn có thể học và làm những công việc được cho là chỉ dành riêng cho cánh mày râu. Hà Mỹ Duyên, vừa tốt nghiệp ngành Thiết kế số, Khoa Điện – Điện tử, trường ĐH Duy Tân (Đà...</p>
-        <div>
-          <span>Ngày đăng : 27/03/2021</span>
-        </div>
-      </li>
-      <li>
-        <img src="assets/images/news_4.jpg"/>
-        <h3>
-          <a href="#">Đại học Duy Tân Ký kết Hợp tác với Công ty Cổ phần Dược CPC1 Hà Nội</a>
-        </h3>
-        <p>Nhằm tăng cường hiệu quả hợp tác với doanh nghiệp trong quá trình đào tạo, nghiên cứu và tạo việc làm cho sinh viên, Đại học Duy Tân đã ký kết hợp tác với Công ty Cổ phần Dược CPC1 Hà Nội...</p>
-        <div>
-          <span>Ngày đăng : 06/04/2021</span>
-        </div>
-      </li>
-    </ul>
+    <div >
+      <ul>
+        <li *ngFor="let tt of tintuc | paginate: {itemsPerPage:5, currentPage:p};">
+              <div class="box-img">
+                <img  (click)="detailTT(tt.id)" [src]="tt.img"/>
+              </div>
+              <div class="box-content">
+                <h5>
+                  <a (click)="detailTT(tt.id)" >{{tt.title}} </a>
+                </h5>
+                <p>{{tt.describe_of_news}}</p>
+            </div>
+        </li>
+        <pagination-controls style="text-align: center" previousLabel="Trước"
+                             nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
+      </ul>
+    </div>
   </div>
   <div id="right">
     <div class="right-header-news">
+<<<<<<< HEAD
       <span>CÁC TIN KHÁC</span>
+=======
+      <span>BÀI VIẾT KHÁC</span>
+>>>>>>> 0a5425776d7703395283c5f5e155214dbb5e2b7f
     </div>
-    <ul>
-      <li>
-        <img class="img-float-left" src="assets/images/a_news_1.png">
-        <a href="#">Đề án mở ngành: Quản Trị Nhân Lực</a>
-      </li>
-      <li>
-        <img src="assets/images/a-header-review1.jpg">
-        <a href="#">Tổng quan về Đại học Duy Tân</a>
-      </li>
-      <li>
-        <img src="assets/images/a-header-review2.jpg">
-        <a href="#">Hoạt động Nghiên cứu tại Đại học Duy Tân</a>
-      </li>
-      <li>
-        <img src="assets/images/a-header-reviews.jpg">
-        <a href="#">
-          Cơ sở Hòa Khánh Nam - Q. Liên Chiểu, Tp. Đà Nẵng</a>
-      </li>
-      <li>
-        <img src="assets/images/a-header-review3.jpg">
-        <a href="#">Đại học Duy Tân Nỗ lực Hợp tác Trong nước và Quốc tế</a>
-      </li>
+    <ul *ngFor="let tt of tintuc;let i=index">
+      <div  *ngIf="i % 4" >
+        <li>
+          <img (click)="detailTT(tt.id)" [src]="tt.img">
+          <a (click)="detailTT(tt.id)" >{{tt.title}}</a>
+        </li>
+      </div>
     </ul>
   </div>
 </div>

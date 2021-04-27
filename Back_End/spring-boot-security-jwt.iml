@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" version="4">
   <component name="FacetManager">
-    <facet type="web" name="Web">
-      <configuration>
-        <webroots />
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/java" />
-          <root url="file://$MODULE_DIR$/src/main/resources" />
-        </sourceRoots>
-      </configuration>
-    </facet>
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
@@ -25,11 +16,7 @@
 >>>>>>> 8d8e33d4cccd777e08c2e76d1b41b51c2ce44c49
 =======
         <datasource-mapping>
-<<<<<<< HEAD
-          <factory-entry name="entityManagerFactory" value="c2e7e0bd-1344-4bc3-a753-bdf47270033b" />
-=======
-          <factory-entry name="entityManagerFactory" value="fbe17cba-7dc0-4a55-888d-7a4944bdc427" />
->>>>>>> eb90045e4b85e3517e4f34513d8e7ab8577ec903
+          <factory-entry name="entityManagerFactory" value="0080ac76-c1b1-4d87-bf1d-64d207de50c8" />
         </datasource-mapping>
 >>>>>>> 990a928d3f0c74633ed055392abab546c11321f0
         <naming-strategy-map />
@@ -37,6 +24,11 @@
     </facet>
     <facet type="Spring" name="Spring">
       <configuration />
+    </facet>
+    <facet type="web" name="Web">
+      <configuration>
+        <webroots />
+      </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">

@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
   providers: [SukienService]
 })
 export class SukienComponent implements OnInit {
+  p: number =1;
   // @ts-ignore
   sukiens: Sukien[];
   // @ts-ignore
@@ -17,7 +18,8 @@ export class SukienComponent implements OnInit {
   // @ts-ignore
   month:number = this.m.getMonth() + 1;
   // @ts-ignore
-  constructor(private sukienService: SukienService,private router:Router) {
+  constructor(private sukienService: SukienService,
+              private router:Router) {
   }
 
   ngOnInit(): void {

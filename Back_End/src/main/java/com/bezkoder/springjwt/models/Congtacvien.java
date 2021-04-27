@@ -1,7 +1,5 @@
 package com.bezkoder.springjwt.models;
-
 import org.springframework.data.annotation.Id;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +15,6 @@ public class Congtacvien {
     private int user_ID;
     private int event_ID;
     private int status_col;
-
     public Congtacvien() {
     }
 

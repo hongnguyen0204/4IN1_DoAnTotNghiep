@@ -11,6 +11,7 @@ import { ThemmoitintucComponent } from './themmoitintuc/themmoitintuc.component'
 import {CKEditorModule} from 'ckeditor4-angular';
 import {FormsModule} from '@angular/forms';
 import { SuatintucComponent } from './suatintuc/suatintuc.component';
+import { QuanlytaikhoanComponent } from './quanlytaikhoan/quanlytaikhoan.component';
 @NgModule({
 
   declarations: [
@@ -21,13 +22,14 @@ import { SuatintucComponent } from './suatintuc/suatintuc.component';
     TintucComponent,
     ThemmoitintucComponent,
     SuatintucComponent,
+    QuanlytaikhoanComponent,
   ],
     imports: [
         CommonModule,
         AdminRoutingModule,
         DataTablesModule,
         CKEditorModule,
-        FormsModule,
+        FormsModule
     ]
 })
 export class AdminModule { }

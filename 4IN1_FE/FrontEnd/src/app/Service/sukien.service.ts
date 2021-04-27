@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Sukien} from '../Model/sukien';
 import {Dangkithamgia} from '../Model/dangkithamgia';
+import {Congtacvien} from '../Model/congtacvien';
 
 
 // @ts-ignore
@@ -18,9 +19,29 @@ export class SukienService {
     return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theothang'}/${thang}`);
   }
 
+    findByhot(): Observable<Sukien>{
+    return this.http.get<Sukien>('http://localhost:8080/sukien/sukienhot');
+  }
+
+  // @ts-ignore
+  findByText(searchtext): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theotext'}/${searchtext}`);
+  }
+
+  // @ts-ignore
+  sendmessage(message){
+    // @ts-ignore
+    return this.http.post('http://localhost:8080/account/guilienlac',message);
+  }
+
+  // @ts-ignore
+  findByDay(ngay1, ngay2, searchtext): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theongay'}/${ngay1}/${ngay2}/${searchtext}`);
+  }
+
   // @ts-ignore
   findAll(): Observable<Sukien[]>{
-      return this.http.get<Sukien[]>('http://localhost:8080/sukien/sukiendangcho');
+    return this.http.get<Sukien[]>('http://localhost:8080/sukien/sukiendangcho');
   }
 
   findAllsk(): Observable<Sukien[]>{
@@ -38,6 +59,23 @@ export class SukienService {
   // @ts-ignore
   create(data): Observable<any>{
     return this.http.post<Sukien>('http://localhost:8080/sukien/add', data);
+  }
+  // @ts-ignore
+  getSKbyiduser(id): Observable<Sukien[]>{
+    // @ts-ignore
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theoid'}/${id}`);
+  }
+
+  // @ts-ignore
+  getSKbyid(id):Observable<any>{
+    // @ts-ignore
+    return this.http.get<any>(`${'http://localhost:8080/quanlycongtacvien/theoid'}/${id}`);
+  }
+
+  // @ts-ignore
+  getNTGbyid(id):Observable<any>{
+    // @ts-ignore
+    return this.http.get<any>(`${'http://localhost:8080/sukien/NguoiDangKiSuKien'}/${id}`);
   }
 
   // @ts-ignore

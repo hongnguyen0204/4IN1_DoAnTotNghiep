@@ -9,6 +9,7 @@ import {ThemmoitintucComponent} from './themmoitintuc/themmoitintuc.component';
 import {SuatintucComponent} from './suatintuc/suatintuc.component';
 import {AdminAuthService} from '../_services/admin.service';
 import {ActiveService} from '../_services/active.service';
+import {QuanlytaikhoanComponent} from './quanlytaikhoan/quanlytaikhoan.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'admin/tintuc', component: TintucComponent, canActivate:[AdminAuthService]  },
   {path: 'admin/themmoitintuc', component: ThemmoitintucComponent, canActivate:[AdminAuthService]  },
   {path: 'admin/suatintuc/:id', component: SuatintucComponent, canActivate:[AdminAuthService]  },
+  {path: 'admin/quanlytaikhoan', component: QuanlytaikhoanComponent, canActivate:[AdminAuthService]  },
   {path: 'admin', redirectTo: '/admin/dashboard', pathMatch: 'full' }
 
 ];

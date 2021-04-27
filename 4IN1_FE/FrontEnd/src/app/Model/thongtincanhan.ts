@@ -27,4 +27,6 @@ export class Thongtincanhan {
   gender:boolean;
   // @ts-ignore
   status_acc: boolean;
+  // @ts-ignore
+  ban:boolean;
 }

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 -- drop database quanlysukien;
+=======
+drop database quanlysukien;
+>>>>>>> 0a5425776d7703395283c5f5e155214dbb5e2b7f
 create database quanlysukien;
 use quanlysukien;
 
@@ -16,6 +20,7 @@ create table account_information(
     gender boolean null default 0,
     status_acc boolean null default 0,
 	reset_password_token varchar(50),
+    ban boolean null default 0,
 	primary key(ID)
 );
 
@@ -37,7 +42,7 @@ create table event_information(
     status_of_event nvarchar(20) null default "Đang chờ",
     time_upload datetime,
     owner_event_id int,
-    hot boolean,
+    hot boolean null default 0,
 	constraint fk_evid foreign key(owner_event_id) references account_information(ID),
     primary key(ID)
 );

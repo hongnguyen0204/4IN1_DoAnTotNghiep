@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.bezkoder.springjwt.repository.AccRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -43,6 +44,9 @@ public class AuthController {
 	UserRepository userRepository;
 
 	@Autowired
+	AccRepository accRepository;
+
+	@Autowired
 	RoleRepository roleRepository;
 
 	@Autowired
@@ -69,7 +73,9 @@ public class AuthController {
 												 userDetails.getId(), 
 												 userDetails.getUsername(), 
 												 userDetails.getEmail(), 
-												 roles));
+												 roles,
+				  								 accRepository.GetStt_Acc(userDetails.getUsername()),
+												 accRepository.GetBan(userDetails.getUsername())));
 	}
 
 	@PostMapping("/signup")
