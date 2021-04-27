@@ -2,12 +2,13 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {Thongtincanhan} from "../Model/thongtincanhan";
 import {SukienService} from "../Service/sukien.service";
 import {ActivatedRoute, Router} from '@angular/router';
-import {AngularFireStorage} from "@angular/fire/storage";
 import {TokenStorageService} from "../_services/token-storage.service";
 import {AccountService} from "../Service/account.service";
 import {DangkilamctvService} from '../Service/dangkilamctv.service';
 import {Dangkilamctv} from '../Model/dangkilamctv';
+import {ToastrService} from 'ngx-toastr';
 import {Sukien} from '../Model/sukien';
+
 
 // @ts-ignore
 @Component({
@@ -34,7 +35,9 @@ export class DangkilamcongtacvienComponent implements OnInit {
               private token: TokenStorageService,
               private accountService:AccountService,
               private dangkilamctvService:DangkilamctvService,
+              private toastr: ToastrService,
               private sukienService:SukienService) { }
+
 
   ngOnInit(): void {
 
@@ -55,7 +58,7 @@ export class DangkilamcongtacvienComponent implements OnInit {
     console.log(this.dkctv.event_ID);
     this.dangkilamctvService.create(this.dkctv).subscribe(data =>{
       this.dkctv = data;
-      alert("Đăng kí thành công!")
+      this.toastr.success("Đăng kí đã được gửi!");
     });
   }
 }

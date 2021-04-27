@@ -84,6 +84,9 @@ export class DangkitochucsukienComponent implements OnInit {
   }
 
   add(){
+    if(this.selectedFile==null || this.selectedImage==null){
+      this.toastr.warning("Bạn phải chọn ảnh và file kế hoạch!");
+    } else{
     this.sukienService.kiemTra(this.sukien).subscribe(data=>{
       if(data!=0){
         this.toastr.error("Sự kiện của bạn trùng lịch với sự kiện khác sắp diễn ra!");
@@ -108,16 +111,9 @@ export class DangkitochucsukienComponent implements OnInit {
             });
           }
         });
-        // if(confirm("Bạn chắc chắn muốn đăng kí hay không?")){
-        //   this.sukienService.create(this.sukien).subscribe(data=>{
-        //     this.sukien = data;
-        //     this.toastr.success("Đăng kí thành công");
-        //     this.sukien = new Sukien();
-        //     this.router.navigate(['/dangkitochuc']);
-        //   });
-        // }
       }
     });
+  }
   }
 
   readURL(event: any): void {

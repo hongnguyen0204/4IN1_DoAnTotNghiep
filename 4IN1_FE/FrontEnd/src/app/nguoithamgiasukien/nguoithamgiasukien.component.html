@@ -1,11 +1,6 @@
-<!--Bảng 1-->
-<title>Sự kiện của tôi</title>
 <div class="row" style="margin-top: 180px;">
   <div class="col">
-    <a class="button" href="quanlysukien" style="vertical-align:middle"><span>Quản lý sự kiện</span></a>
-  </div>
-  <div class="col">
-    <a class="button1" href="nguoithamgiasukien" style="vertical-align:middle;float: right"><span>Người tham gia sự kiện</span></a>
+    <a class="button" href="sukiencuatoi" style="vertical-align:middle"><span>Quản lý CTV</span></a>
   </div>
 </div>
 <div class="content" style="margin-top: 40px">
@@ -14,10 +9,10 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title ">Cộng tác viên của sự kiện</h4>
+            <h4 class="card-title ">Người tham gia sự kiện</h4>
             <p class="card-category"></p>
           </div>
-          <select (change)="tsk()" [(ngModel)]="idevent" name="tensukien"  style=" width: auto; height: 50px; outline:none;">
+          <select (change)="ntg()" [(ngModel)]="idevent" name="tensukien"  style=" width: auto; height: 50px; outline:none;">
             <option value="{{sk.id}}" *ngFor="let sk of sukiens">{{sk.event_name}}</option>
           </select>
           <div class="card-body">
@@ -28,21 +23,15 @@
                   <th>STT</th>
                   <th>Họ & Tên</th>
                   <th>Email</th>
-                  <th>Điểm mạnh</th>
                   <th>Số Điện Thoại</th>
-                  <th>Trạng thái</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr (change)="tsk()"s *ngFor="let ctv of qlcongtacviens, let i = index" >
+                <tr (change)="ntg()" *ngFor="let nguoithamgia of nguoithamgias, let i = index" >
                   <td>{{i+1}}</td>
-                  <td>{{ctv[0]}}</td>
-                  <td>{{ctv[1]}}</td>
-                  <td>{{ctv[2]}}</td>
-                  <td>{{ctv[3]}}</td>
-                  <td>
-                    <input id="hau" [(ngModel)]="ctv[4]" (change)="tsk()" (click)="duyet(ctv[4],ctv[5])" type="checkbox">
-                  </td>
+                  <td>{{nguoithamgia[0]}}</td>
+                  <td>{{nguoithamgia[1]}}</td>
+                  <td>{{nguoithamgia[2]}}</td>
                 </tr>
                 </tbody>
               </table>
@@ -53,8 +42,3 @@
     </div>
   </div>
 </div>
-
-<!--Bảng 2-->
-
-
-

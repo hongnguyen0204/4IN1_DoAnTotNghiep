@@ -47,6 +47,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ConfirmDialogComponent } from './-helpers/confirm-dialog/confirm-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { NguoithamgiasukienComponent } from './nguoithamgiasukien/nguoithamgiasukien.component';
 
 // @ts-ignore
 @NgModule({
@@ -71,7 +72,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     DoimatkhauComponent,
     XacthucemailComponent,
     ChitiettintucComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    NguoithamgiasukienComponent
   ],
   imports: [
         BrowserModule,
@@ -85,7 +87,11 @@ import {MatDialogModule} from '@angular/material/dialog';
         Ng2SearchPipeModule,
         BrowserAnimationsModule,
         NotificationModule,
-        ToastrModule.forRoot(),
+        ToastrModule.forRoot({
+          timeOut: 3000,
+          positionClass: 'toast-top-center',
+          preventDuplicates: true,
+        }),
         MatSnackBarModule,
         NgxPaginationModule,
         MatDialogModule

@@ -4,11 +4,19 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10">
+          <div style="margin-left: 50px" id="timer"  class="flex-wrap d-flex justify-content-center">
+            <div id="days" style="color: #ee163a;" class="align-items-center flex-column d-flex justify-content-center"></div>
+            <div id="hours" style="color: #ffc107;" class="align-items-center flex-column d-flex justify-content-center"></div>
+            <div id="minutes" style="color: #03a9f4;" class="align-items-center flex-column d-flex justify-content-center"></div>
+            <div id="seconds" style="color: #8bc34a;" class="align-items-center flex-column d-flex justify-content-center"></div>
+          </div>
           <div data-countdown="2021/04/30"></div>
           <div class="header-content text-center">
-            <h2 class="header-title"> Deadline CODING</h2>
-            <h3 class="sub-title">12 Tháng 4, 2021 Tại CodeGym</h3>
+            <h2 class="header-title">{{sukienhot.event_name}}</h2>
+            <h3 class="sub-title">{{sukienhot.time_of_event}}, Tại {{sukienhot.place}}</h3>
             <ul class="header-btn">
+              <li><a class="main-btn main-btn-2" style="color: white;" (click)="detailSK(sukienhot.id)">Tham gia ngay</a></li>
+              <li><a class="main-btn" href="#">Thông tin</a></li>
               <li><a class="main-btn main-btn-2" style="color: white;" (click)="detailSK(1)">Tham gia ngay</a></li>
               <li><a class="main-btn" (click)="detailSK(1)">Thông tin</a></li>
             </ul>
@@ -448,35 +456,35 @@
       </div>
       <div class="col-lg-8">
         <div class="contact-form pt-20">
-          <form id="contact-form" action="assets/contact.php" method="post">
+          <form (ngSubmit)="guilienlac()" id="contact-form" action="assets/contact.php" method="post">
             <div class="row">
               <div class="col-md-6">
                 <div class="single-form">
-                  <input type="text" name="name" placeholder="Họ và tên">
+                  <input [(ngModel)]="message.name" type="text" name="name" placeholder="Họ và tên">
                   <i class="lni-user"></i>
                 </div> <!-- single form -->
               </div>
               <div class="col-md-6">
                 <div class="single-form">
-                  <input type="email" name="email" placeholder="Email">
+                  <input type="email" [(ngModel)]="message.email" name="email" placeholder="Email">
                   <i class="lni-envelope"></i>
                 </div> <!-- single form -->
               </div>
               <div class="col-md-6">
                 <div class="single-form">
-                  <input type="text" name="subject" placeholder="Ngành của bạn">
+                  <input type="text" [(ngModel)]="message.subject" name="subject" placeholder="Ngành của bạn">
                   <i class="lni-pencil-alt"></i>
                 </div> <!-- single form -->
               </div>
               <div class="col-md-6">
                 <div class="single-form">
-                  <input type="text" name="number" placeholder="Số điện thoại">
+                  <input type="text" [(ngModel)]="message.sdt" name="sdt" placeholder="Số điện thoại">
                   <i class="lni-phone-handset"></i>
                 </div> <!-- single form -->
               </div>
               <div class="col-md-12">
                 <div class="single-form">
-                  <textarea name="message" placeholder="Lời nhắn của bạn"></textarea>
+                  <textarea name="message" [(ngModel)]="message.loinhan" placeholder="Lời nhắn của bạn"></textarea>
                   <i class="lni-comment-alt"></i>
                 </div> <!-- single form -->
               </div>

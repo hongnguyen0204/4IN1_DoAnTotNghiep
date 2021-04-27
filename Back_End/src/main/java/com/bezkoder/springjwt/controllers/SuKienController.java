@@ -17,9 +17,19 @@ public class SuKienController {
    @Autowired
    private SuKienRepository suKienRepository;
 
+    @GetMapping("/NguoiDangKiSuKien/{id}")
+    public List<Object> findall(@PathVariable int id){
+        return suKienRepository.NguoiThamGia(id);
+    }
+
    @GetMapping("/all")
     public List<SuKien> getSuKiens() {
         return suKienRepository.findAll();
+    }
+
+    @GetMapping("/sukienhot")
+    public SuKien getSuKienhot() {
+        return suKienRepository.sukienhot();
     }
 
     @GetMapping("/sukiendangcho")
@@ -119,4 +129,5 @@ public class SuKienController {
     public Integer KiemTra(@RequestBody SuKien suKien){
        return suKienRepository.KiemTra(suKien.getTime_of_event(),suKien.getPlace());
     }
+
 }
