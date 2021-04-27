@@ -26,7 +26,7 @@ const routes: Routes = [
   {path: 'dangkitochuc', component: DangkitochucsukienComponent,canActivate:[CustomerAuthService]},
   {path: 'dangkithamgia/:id', component: DangkithamgiasukienComponent},
   {path: 'trangchu', component: TrangchuComponent},
-  {path: 'dangkicongtacvien', component: DangkilamcongtacvienComponent,canActivate:[CustomerAuthService]},
+  {path: 'dangkicongtacvien/:id', component: DangkilamcongtacvienComponent,canActivate:[CustomerAuthService]},
   {path: 'thongtincanhan', component: ThongtincanhanComponent,canActivate:[CustomerAuthService]},
   {path: 'sukien', component: SukienComponent},
   {path: 'timkiemsukien', component: TimkiemsukienComponent},

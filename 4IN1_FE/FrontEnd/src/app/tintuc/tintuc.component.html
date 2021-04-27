@@ -6,7 +6,7 @@
     </div>
     <div >
       <ul>
-        <li *ngFor="let tt of tintuc">
+        <li *ngFor="let tt of tintuc | paginate: {itemsPerPage:5, currentPage:p};">
               <div class="box-img">
                 <img  (click)="detailTT(tt.id)" [src]="tt.img"/>
               </div>
@@ -17,6 +17,8 @@
                 <p>{{tt.describe_of_news}}</p>
             </div>
         </li>
+        <pagination-controls style="text-align: center" previousLabel="Trước"
+                             nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
       </ul>
     </div>
   </div>

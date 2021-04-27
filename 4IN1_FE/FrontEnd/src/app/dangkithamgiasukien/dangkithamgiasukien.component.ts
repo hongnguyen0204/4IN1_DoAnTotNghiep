@@ -70,4 +70,7 @@ export class DangkithamgiasukienComponent implements OnInit {
       }
     })
   }
+  updatesk(id: number){
+    this.router.navigate(['/dangkicongtacvien',id]);
+  }
 }

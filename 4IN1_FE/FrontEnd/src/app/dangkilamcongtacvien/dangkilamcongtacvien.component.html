@@ -1,7 +1,6 @@
 <head>
   <title>Đăng ki làm CTV</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 <body>
 <div class="contact1" *ngIf="currentUser; else loggedOut" style="position: relative;margin-top: 140px">
@@ -10,20 +9,20 @@
       <img src="assets/images/unnamed.png" alt="IMG">
     </div>
     <form (ngSubmit)="gui()" class="contact1-form validate-form">
-				<span class="contact1-form-title">
+				<span class="contact1-form-title" style="color: black">
 					Đăng Kí Làm Cộng Tác Viên
 				</span>
       <div class="wrap-input1 validate-input" data-validate="Name is required">
-        <input class="input1" [(ngModel)]="users.fullname" type="text" name="fullname" placeholder="Name" disabled>
+        <input class="input1" [(ngModel)]="users.fullname" type="text" name="fullname" placeholder="Họ tên" disabled>
       </div>
       <div class="wrap-input1 validate-input" data-validate="Valid email is required: ex@abc.xyz">
         <input class="input1" [(ngModel)]="users.email" type="text" name="email" placeholder="Email" disabled>
       </div>
       <div class="wrap-input1 validate-input" data-validate="Valid Phone number is required: ex@abc.xyz">
-        <input class="input1" [(ngModel)]="users.phone_number" type="text" name="Phone number" placeholder="Phone number" disabled>
+        <input class="input1" [(ngModel)]="users.phone_number" type="text" name="Phone number" placeholder="Số điện thoại" disabled>
       </div>
       <div class="wrap-input1 validate-input" data-validate="Valid Faculty is required: ex@abc.xyz">
-        <input class="input1" [(ngModel)]="users.faculty" type="text" name="Faculty" placeholder="Faculty" disabled>
+        <input class="input1" [(ngModel)]="users.faculty" type="text" name="Faculty" placeholder="Khoa" disabled>
       </div>
       <div class="container">
         <div class="row">
@@ -37,8 +36,8 @@
               </thead>
               <tbody>
               <tr>
-                <td style="max-width: 70px">Sự Kiện đá bóng</td>
-                <td style="max-width: 80px">Năng động, hoạt bát</td>
+                <td style="max-width: 70px">{{sukien.event_name}}</td>
+                <td style="max-width: 80px">{{sukien.criteria}}</td>
               </tr>
               </tbody>
             </table>
@@ -46,7 +45,7 @@
         </div>
       </div>
       <div class="wrap-input1 validate-input" data-validate="Message is required">
-        <textarea class="input1" name="message" placeholder="Message"></textarea>
+        <textarea class="input1" style="margin-top: 10px;" name="message" placeholder="Tin nhắn..."></textarea>
       </div>
 
       <div class="container-contact1-form-btn">
