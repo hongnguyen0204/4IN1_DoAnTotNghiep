@@ -6,7 +6,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {finalize} from 'rxjs/operators';
 import {AccountService} from '../Service/account.service';
 import {TokenStorageService} from '../_services/token-storage.service';
-import * as $ from 'jquery';
+import {ToastrService} from 'ngx-toastr';
+import {MatDialog} from '@angular/material/dialog';
+import {ConfirmDialogComponent} from '../-helpers/confirm-dialog/confirm-dialog.component';
+import {Sukien} from '../Model/sukien';
 
 
 @Component({
@@ -34,7 +37,9 @@ export class ThongtincanhanComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private accountService: AccountService,
-              private token: TokenStorageService) {
+              private token: TokenStorageService,
+              private toast:ToastrService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -43,11 +48,6 @@ export class ThongtincanhanComponent implements OnInit {
       this.users = data;
       this.imageSrc = this.users.img;
       this.id = this.users.id;
-      if(this.users.gender){
-        $('#nam').prop('checked',true)
-      } else {
-        $('#nu').prop('checked',true)
-      }
     });
   }
   // tslint:disable-next-line:typedef
@@ -62,21 +62,37 @@ export class ThongtincanhanComponent implements OnInit {
               this.users.img = url;
               console.log(this.users.img);
             }
-            if (confirm('Bạn chắc chắn muốn sửa hay không?')) {
-              this.thongtincanhanService.update(this.id, this.users).subscribe(data => {
-                this.users = data;
-                alert('Sửa thành công');
-              });
-            }
+            const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+              data: {
+                title: 'Sửa thông tin',
+                message: 'Bạn chắc chắn muốn sửa hay không?'
+              }
+            });
+            confirmDialog.afterClosed().subscribe(result => {
+              if (result === true) {
+                this.thongtincanhanService.update(this.id, this.users).subscribe(data => {
+                  this.users = data;
+                  this.toast.success("Sửa thành công");
+                });
+              }
+            });
           });
         })).subscribe();
     } else {
-      if (confirm('Bạn chắc chắn muốn sửa hay không?')) {
-        this.thongtincanhanService.update(this.id, this.users).subscribe(data => {
-          this.users = data;
-          alert('Sửa thành công');
-        });
-      }
+      const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+        data: {
+          title: 'Sửa thông tin',
+          message: 'Bạn chắc chắn muốn sửa hay không?'
+        }
+      });
+      confirmDialog.afterClosed().subscribe(result => {
+        if (result === true) {
+          this.thongtincanhanService.update(this.id, this.users).subscribe(data => {
+            this.users = data;
+            this.toast.success("Sửa thành công");
+          });
+        }
+      });
     }
   }
   // tslint:disable-next-line:typedef
