@@ -19,4 +19,9 @@ export class DangkilamctvService {
   list(id):Observable<any>{
     return this.http.get<any>(`${'http://localhost:8080/dangkilamctv'}/${id}`)
   }
+
+  // @ts-ignore
+  check(data){
+    return this.http.post('http://localhost:8080/dangkilamctv/kiemtra',data);
+  }
 }

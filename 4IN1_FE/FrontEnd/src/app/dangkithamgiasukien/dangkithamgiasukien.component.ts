@@ -8,6 +8,8 @@ import {AccountService} from '../Service/account.service';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {ThongbaoService} from '../_services/thongbao.service';
 import {ToastrService} from 'ngx-toastr';
+import {Dangkilamctv} from '../Model/dangkilamctv';
+import {DangkilamctvService} from '../Service/dangkilamctv.service';
 
 @Component({
   selector: 'app-dangkithamgiasukien',
@@ -32,13 +34,16 @@ export class DangkithamgiasukienComponent implements OnInit {
   dK:Dangkithamgia=new Dangkithamgia();
   // @ts-ignore
   id:number;
+  // @ts-ignore
+  dangKiCTV:Dangkilamctv=new Dangkilamctv();
 
   constructor(private sukienService: SukienService,
               private route: ActivatedRoute,
               private router: Router,
               private accountService:AccountService,
               private token: TokenStorageService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              private dangkiCTVSV:DangkilamctvService) { }
 
   ngOnInit(): void {
     this.ev_id=this.route.snapshot.params['id'];
@@ -71,6 +76,14 @@ export class DangkithamgiasukienComponent implements OnInit {
     })
   }
   updatesk(id: number){
-    this.router.navigate(['/dangkicongtacvien',id]);
+    this.dangKiCTV.user_ID=this.id;
+    this.dangKiCTV.event_ID=id;
+    this.dangkiCTVSV.check(this.dangKiCTV).subscribe(data=>{
+      if(data!=0){
+        this.toastr.warning("Bạn đã đăng kí cộng tác viên cho sự kiện này rồi!");
+      } else {
+        this.router.navigate(['/dangkicongtacvien',id]);
+      }
+    });
   }
 }
