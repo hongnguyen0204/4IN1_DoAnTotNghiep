@@ -4,21 +4,18 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10">
-          <div style="margin-left: 50px" id="timer"  class="flex-wrap d-flex justify-content-center">
+          <div style="margin-left: 20px; margin-top: 50px; width: 1000px;" id="timer"  class="flex-wrap d-flex justify-content-center">
             <div id="days" style="color: #ee163a;" class="align-items-center flex-column d-flex justify-content-center"></div>
             <div id="hours" style="color: #ffc107;" class="align-items-center flex-column d-flex justify-content-center"></div>
             <div id="minutes" style="color: #03a9f4;" class="align-items-center flex-column d-flex justify-content-center"></div>
             <div id="seconds" style="color: #8bc34a;" class="align-items-center flex-column d-flex justify-content-center"></div>
           </div>
-          <div data-countdown="2021/04/30"></div>
           <div class="header-content text-center">
             <h2 class="header-title">{{sukienhot.event_name}}</h2>
             <h3 class="sub-title">{{sukienhot.time_of_event}}, Tại {{sukienhot.place}}</h3>
             <ul class="header-btn">
               <li><a class="main-btn main-btn-2" style="color: white;" (click)="detailSK(sukienhot.id)">Tham gia ngay</a></li>
               <li><a class="main-btn" href="#">Thông tin</a></li>
-              <li><a class="main-btn main-btn-2" style="color: white;" (click)="detailSK(1)">Tham gia ngay</a></li>
-              <li><a class="main-btn" (click)="detailSK(1)">Thông tin</a></li>
             </ul>
           </div>  <!-- header content -->
         </div>
