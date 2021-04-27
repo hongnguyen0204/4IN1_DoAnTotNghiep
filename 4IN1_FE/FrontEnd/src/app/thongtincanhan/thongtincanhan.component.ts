@@ -70,9 +70,10 @@ export class ThongtincanhanComponent implements OnInit {
             });
             confirmDialog.afterClosed().subscribe(result => {
               if (result === true) {
+                this.toast.success("Sửa thành công");
                 this.thongtincanhanService.update(this.id, this.users).subscribe(data => {
                   this.users = data;
-                  this.toast.success("Sửa thành công");
+                  window.location.reload();
                 });
               }
             });
@@ -87,9 +88,10 @@ export class ThongtincanhanComponent implements OnInit {
       });
       confirmDialog.afterClosed().subscribe(result => {
         if (result === true) {
+          this.toast.success("Sửa thành công");
           this.thongtincanhanService.update(this.id, this.users).subscribe(data => {
             this.users = data;
-            this.toast.success("Sửa thành công");
+            window.location.reload();
           });
         }
       });

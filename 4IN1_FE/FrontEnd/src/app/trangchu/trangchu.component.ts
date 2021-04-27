@@ -45,8 +45,6 @@ export class TrangchuComponent implements OnInit {
       this.sukien=data;
     })
   }
-
-
   datahot(){
     // @ts-ignore
     this.sukienService.findByhot().subscribe(data=>{
