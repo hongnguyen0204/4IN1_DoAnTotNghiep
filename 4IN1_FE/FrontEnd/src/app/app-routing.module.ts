@@ -19,13 +19,14 @@ import {DoimatkhauComponent} from './doimatkhau/doimatkhau.component';
 import {XacthucemailComponent} from './xacthucemail/xacthucemail.component';
 import {ActiveService} from './_services/active.service';
 import {ChitiettintucComponent} from './chitiettintuc/chitiettintuc.component';
+import {NguoithamgiasukienComponent} from './nguoithamgiasukien/nguoithamgiasukien.component';
 
 
 const routes: Routes = [
   {path: 'dangkitochuc', component: DangkitochucsukienComponent,canActivate:[CustomerAuthService]},
   {path: 'dangkithamgia/:id', component: DangkithamgiasukienComponent},
   {path: 'trangchu', component: TrangchuComponent},
-  {path: 'dangkicongtacvien', component: DangkilamcongtacvienComponent,canActivate:[CustomerAuthService]},
+  {path: 'dangkicongtacvien/:id', component: DangkilamcongtacvienComponent,canActivate:[CustomerAuthService]},
   {path: 'thongtincanhan', component: ThongtincanhanComponent,canActivate:[CustomerAuthService]},
   {path: 'sukien', component: SukienComponent},
   {path: 'timkiemsukien', component: TimkiemsukienComponent},
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path: 'quanlycongtacvien', component: QuanlycongtacvienComponent,canActivate:[CustomerAuthService]},
   {path: 'quanlysukien', component: QuanlysukienComponent,canActivate:[CustomerAuthService]},
   {path: 'sukiencuatoi', component: SukiencuatoiComponent,canActivate:[CustomerAuthService]},
+  {path: 'nguoithamgiasukien', component: NguoithamgiasukienComponent,canActivate:[CustomerAuthService]},
   {path: 'doimatkhau/:token', component: DoimatkhauComponent},
   {path: 'xacthucemail/:token', component: XacthucemailComponent},
   {path: 'add', component: DangkyComponent},

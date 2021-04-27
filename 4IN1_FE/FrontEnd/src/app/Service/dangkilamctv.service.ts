@@ -14,4 +14,9 @@ export class DangkilamctvService {
   create(data): Observable<any>{
     return this.http.post<Dangkilamctv>('http://localhost:8080/dangkilamctv/dangki', data);
   }
+
+  // @ts-ignore
+  list(id):Observable<any>{
+    return this.http.get<any>(`${'http://localhost:8080/dangkilamctv'}/${id}`)
+  }
 }

@@ -11,6 +11,12 @@ import java.util.List;
 
 @Repository
 public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
+
+    @Query(value = "SELECT ac.fullname, ac.email, ac.phone_number " +
+            "FROM account_information ac,join_register j " +
+            "WHERE j.acc_ID=ac.ID AND j.event_ID=?1 ", nativeQuery = true)
+    List<Object> NguoiThamGia(int id);
+
     @Query(value = "SELECT * FROM event_information WHERE MONTH(time_of_event) = ?1 AND status_of_event='Đồng ý' ", nativeQuery = true)
     List<SuKien> findByMonth(Integer thang);
 

@@ -46,7 +46,7 @@
     </div>
   </div>
 </div>
-<hr width="100%" size="1" color="black">
+
 <!--Bảng 2-->
 <div class="content" >
   <div class="container-fluid" style="position: relative;max-width: 80%;margin: 40px auto;">
@@ -59,7 +59,7 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger1" style="table-layout:fixed" class="row-border hover" style="width:100%">
                 <thead>
                 <tr>
                   <th>STT</th>
@@ -70,11 +70,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let i=index">
+                <tr *ngFor="let ctv of congtacviens ;let i=index">
                   <td>{{i+1}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{ctv[0]}}</td>
+                  <td>{{ctv[1]| date:'dd/MM/yyyy'}}</td>
+                  <td>{{ctv[2]}}</td>
                   <td>
                     <button class="btn btn-danger">Hủy</button>
                   </td>

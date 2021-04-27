@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import * as $ from 'jquery';
 import {Sukien} from '../Model/sukien';
 import {SukienService} from '../Service/sukien.service';
@@ -8,9 +8,9 @@ import {finalize} from 'rxjs/operators';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {AccountService} from '../Service/account.service';
 import {Thongtincanhan} from '../Model/thongtincanhan';
-import {ThongbaoService} from '../_services/thongbao.service';
-import {DatePipe} from '@angular/common';
 import {ToastrService} from 'ngx-toastr';
+import {MatDialog} from '@angular/material/dialog';
+import {ConfirmDialogComponent} from '../-helpers/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-dangkitochucsukien',
@@ -43,7 +43,8 @@ export class DangkitochucsukienComponent implements OnInit {
               @Inject(AngularFireStorage) private storage: AngularFireStorage,
               private token: TokenStorageService,
               private accountService:AccountService,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private dialog: MatDialog) {
     this.check_Date.setSeconds(0);
     this.check_Date.setMilliseconds(0);
     this.localCompleteDate = this.check_Date.toISOString();
@@ -83,6 +84,9 @@ export class DangkitochucsukienComponent implements OnInit {
   }
 
   add(){
+    if(this.selectedFile==null || this.selectedImage==null){
+      this.toastr.warning("Bạn phải chọn ảnh và file kế hoạch!");
+    } else{
     this.sukienService.kiemTra(this.sukien).subscribe(data=>{
       if(data!=0){
         this.toastr.error("Sự kiện của bạn trùng lịch với sự kiện khác sắp diễn ra!");
@@ -91,16 +95,25 @@ export class DangkitochucsukienComponent implements OnInit {
         this.sukien.img=this.idIMG;
         this.sukien.owner_event_id=this.users.id;
         this.sukien.organizer=this.users.fullname;
-        if(confirm("Bạn chắc chắn muốn đăng kí hay không?")){
-          this.sukienService.create(this.sukien).subscribe(data=>{
-            this.sukien = data;
-            this.toastr.success("Đăng kí thành công");
-            this.sukien = new Sukien();
-            this.router.navigate(['/dangkitochuc']);
-          });
-        }
+        const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+          data: {
+            title: 'Đăng kí',
+            message: 'Bạn có chắc chắn muốn đăng kí hay không?'
+          }
+        });
+        confirmDialog.afterClosed().subscribe(result => {
+          if (result === true) {
+            this.sukienService.create(this.sukien).subscribe(data=>{
+              this.sukien = data;
+              this.toastr.success("Đăng kí thành công");
+              this.sukien = new Sukien();
+              this.router.navigate(['/dangkitochuc']);
+            });
+          }
+        });
       }
     });
+  }
   }
 
   readURL(event: any): void {

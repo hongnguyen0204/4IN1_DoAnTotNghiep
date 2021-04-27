@@ -17,6 +17,11 @@ public class SuKienController {
    @Autowired
    private SuKienRepository suKienRepository;
 
+    @GetMapping("/NguoiDangKiSuKien/{id}")
+    public List<Object> findall(@PathVariable int id){
+        return suKienRepository.NguoiThamGia(id);
+    }
+
    @GetMapping("/all")
     public List<SuKien> getSuKiens() {
         return suKienRepository.findAll();

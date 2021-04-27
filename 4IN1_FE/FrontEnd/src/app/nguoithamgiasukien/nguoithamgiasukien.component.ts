@@ -1,23 +1,21 @@
 import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {DataTableDirective} from 'angular-datatables';
+import {Subject} from 'rxjs';
+import {Thongtincanhan} from '../Model/thongtincanhan';
+import {Sukien} from '../Model/sukien';
 import {SukienService} from '../Service/sukien.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Thongtincanhan} from '../Model/thongtincanhan';
-import {ThongtincanhanService} from '../Service/thongtincanhan.service';
 import {AccountService} from '../Service/account.service';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {CongtacvienService} from '../Service/congtacvien.service';
-import {Sukien} from '../Model/sukien';
-import {Subject} from 'rxjs';
-import {DataTableDirective} from 'angular-datatables';
 
 @Component({
-  selector: 'app-sukiencuatoi',
-  templateUrl: './sukiencuatoi.component.html',
-  styleUrls: ['./sukiencuatoi.component.scss'],
-  providers: [SukienService, ThongtincanhanService, CongtacvienService]
+  selector: 'app-nguoithamgiasukien',
+  templateUrl: './nguoithamgiasukien.component.html',
+  styleUrls: ['./nguoithamgiasukien.component.scss'],
+  providers:[SukienService,CongtacvienService,AccountService]
 })
-export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
-
+export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewInit {
   @ViewChild(DataTableDirective, {static: false})
     // @ts-ignore
   dtElement: DataTableDirective;
@@ -32,7 +30,7 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
   id: number;
   // @ts-ignore
   idevent: number;
-  qlcongtacviens: any;
+  nguoithamgias:any;
 
   constructor(private skService: SukienService,
               private route: ActivatedRoute,
@@ -86,16 +84,15 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
     this.dtTrigger.next();
   }
 
-  tsk(){
-    this.skService.getSKbyid(this.idevent).subscribe(data =>{
+  ntg(){
+    this.skService.getNTGbyid(this.idevent).subscribe(data =>{
       // @ts-ignore
       this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
         // Destroy the table first
         dtInstance.destroy();
-        this.qlcongtacviens = data;
+        this.nguoithamgias = data;
         this.dtTrigger.next();
       });
     });
   }
-
 }
