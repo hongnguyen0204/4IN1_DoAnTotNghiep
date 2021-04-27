@@ -19,9 +19,19 @@ export class SukienService {
     return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theothang'}/${thang}`);
   }
 
+    findByhot(): Observable<Sukien>{
+    return this.http.get<Sukien>('http://localhost:8080/sukien/sukienhot');
+  }
+
   // @ts-ignore
   findByText(searchtext): Observable<Sukien[]>{
     return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theotext'}/${searchtext}`);
+  }
+
+  // @ts-ignore
+  sendmessage(message){
+    // @ts-ignore
+    return this.http.post('http://localhost:8080/account/guilienlac',message);
   }
 
   // @ts-ignore

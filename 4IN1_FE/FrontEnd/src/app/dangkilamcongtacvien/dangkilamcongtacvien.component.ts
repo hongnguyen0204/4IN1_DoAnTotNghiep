@@ -40,6 +40,7 @@ export class DangkilamcongtacvienComponent implements OnInit {
 
 
   ngOnInit(): void {
+
     this.id = this.router.snapshot.params['id'];
     this.sukienService.getSK(this.id).subscribe(data => {
       this.sukien = data;

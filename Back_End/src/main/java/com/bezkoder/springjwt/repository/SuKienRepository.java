@@ -42,6 +42,9 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
     @Query(value = "SELECT * FROM event_information WHERE status_of_event='Từ chối' ", nativeQuery = true)
     List<SuKien> SKDaHuy();
 
+    @Query(value = "SELECT * FROM event_information WHERE hot= 1 ", nativeQuery = true)
+    SuKien sukienhot();
+
     @Query(value = "SELECT Count(*) FROM event_information WHERE time_of_event<DATE(NOW()) AND status_of_event='Đồng ý' ", nativeQuery = true)
     Integer SKDaToChuc();
 

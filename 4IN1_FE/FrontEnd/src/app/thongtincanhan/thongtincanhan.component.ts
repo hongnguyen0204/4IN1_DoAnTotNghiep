@@ -43,6 +43,11 @@ export class ThongtincanhanComponent implements OnInit {
       this.users = data;
       this.imageSrc = this.users.img;
       this.id = this.users.id;
+      if(this.users.gender){
+        $('#nam').prop('checked',true)
+      } else {
+        $('#nu').prop('checked',true)
+      }
     });
   }
   // tslint:disable-next-line:typedef
