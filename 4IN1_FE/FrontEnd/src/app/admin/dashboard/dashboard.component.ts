@@ -26,9 +26,7 @@ export class DashboardComponent implements OnInit {
   // @ts-ignore
   tongNguoi:number;
   constructor(private dashboardService:DashboardService,
-              private tokenStorageService: TokenStorageService,
-              private load:LoadService) {
-    this.load.loadScript("node_modules/jquery/dist/jquery.min.js");
+              private tokenStorageService: TokenStorageService) {
   }
 
   ngOnInit(): void {

@@ -36,9 +36,5 @@ export class TrangchuComponent implements OnInit {
     })
   }
 
-  // reloadData() {
-  //   this.sukienService.findAll().subscribe(data => {
-  //     this.sukiens = data;
-  //   })
   }
 
