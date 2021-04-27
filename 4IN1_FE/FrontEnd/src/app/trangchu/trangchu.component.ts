@@ -46,7 +46,7 @@ export class TrangchuComponent implements OnInit {
     })
   }
 
-<<<<<<< HEAD
+
   datahot(){
     // @ts-ignore
     this.sukienService.findByhot().subscribe(data=>{
@@ -79,7 +79,6 @@ export class TrangchuComponent implements OnInit {
   //   this.sukienService.findAll().subscribe(data => {
   //     this.sukiens = data;
   //   })
-=======
->>>>>>> 6e6867a9fca57d1227af675fe713c9506cea207e
+
   }
 
