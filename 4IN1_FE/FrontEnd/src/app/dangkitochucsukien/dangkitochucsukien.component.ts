@@ -86,7 +86,7 @@ export class DangkitochucsukienComponent implements OnInit {
   add(){
     if(this.selectedFile==null || this.selectedImage==null){
       this.toastr.warning("Bạn phải chọn ảnh và file kế hoạch!");
-    }
+    } else{
     this.sukienService.kiemTra(this.sukien).subscribe(data=>{
       if(data!=0){
         this.toastr.error("Sự kiện của bạn trùng lịch với sự kiện khác sắp diễn ra!");
@@ -113,6 +113,7 @@ export class DangkitochucsukienComponent implements OnInit {
         });
       }
     });
+  }
   }
 
   readURL(event: any): void {

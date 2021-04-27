@@ -7,6 +7,7 @@ import {TokenStorageService} from "../_services/token-storage.service";
 import {AccountService} from "../Service/account.service";
 import {DangkilamctvService} from '../Service/dangkilamctv.service';
 import {Dangkilamctv} from '../Model/dangkilamctv';
+import {ToastrService} from 'ngx-toastr';
 
 // @ts-ignore
 @Component({
@@ -30,7 +31,8 @@ export class DangkilamcongtacvienComponent implements OnInit {
   constructor(private router: Router,
               private token: TokenStorageService,
               private accountService:AccountService,
-              private dangkilamctvService:DangkilamctvService) { }
+              private dangkilamctvService:DangkilamctvService,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
@@ -46,7 +48,7 @@ export class DangkilamcongtacvienComponent implements OnInit {
     console.log(this.dkctv.event_ID);
     this.dangkilamctvService.create(this.dkctv).subscribe(data =>{
       this.dkctv = data;
-      alert("Đăng kí thành công!")
+      this.toastr.success("Đăng kí đã được gửi!");
     });
   }
 }

@@ -8,6 +8,7 @@ import {AccountService} from '../Service/account.service';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {LoadService} from '../_services/load.service';
 import {Subject} from 'rxjs';
+import {DangkilamctvService} from '../Service/dangkilamctv.service';
 
 @Component({
   selector: 'app-quanlysukien',
@@ -19,8 +20,10 @@ export class QuanlysukienComponent implements OnInit,OnDestroy {
   // @ts-ignore
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
+  dtTrigger1: Subject<any> = new Subject<any>();
   // @ts-ignore
   dangkithamgia:any;
+  congtacviens:any;
   // @ts-ignore
   id: number;
   // @ts-ignore
@@ -35,7 +38,8 @@ export class QuanlysukienComponent implements OnInit,OnDestroy {
               private route: ActivatedRoute,
               private router: Router,
               private accountService:AccountService,
-              private token: TokenStorageService) {}
+              private token: TokenStorageService,
+              private ctvService:DangkilamctvService) {}
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -51,12 +55,17 @@ export class QuanlysukienComponent implements OnInit,OnDestroy {
         this.dangkithamgia=data;
         this.dtTrigger.next();
       });
+      this.ctvService.list(this.users.id).subscribe(data=>{
+        this.congtacviens=data;
+        this.dtTrigger1.next();
+      });
     });
   }
 
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
+    this.dtTrigger1.unsubscribe();
   }
 
   delete(id:number) {
