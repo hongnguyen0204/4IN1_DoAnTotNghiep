@@ -8,7 +8,7 @@
       <img src="assets/images/unnamed.png" alt="IMG">
     </div>
     <form name="form"
-          (ngSubmit)="f.form.valid && gui()"
+          (ngSubmit)="f.form.valid"
           #f="ngForm"
           class="contact1-form"
           novalidate>
@@ -51,10 +51,10 @@
         <textarea class="input1" style="margin-top: 10px;" name="tieuchi" placeholder="Tin nhắn..."></textarea>
       </div>
       <div class="container-contact1-form-btn">
-        <button class="contact1-form-btn">
+        <button (click)="gui()" class="contact1-form-btn">
 						<span>
 							Gửi yêu cầu
-							<button class="fa fa-long-arrow-right" type="submit" aria-hidden="true"></button>
+							<button class="fa fa-long-arrow-right" aria-hidden="true"></button>
 						</span>
         </button>
       </div>
