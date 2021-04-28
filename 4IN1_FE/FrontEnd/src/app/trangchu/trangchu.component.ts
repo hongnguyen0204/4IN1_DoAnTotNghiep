@@ -12,7 +12,9 @@ import {Message} from '../Model/message';
 })
 export class TrangchuComponent implements OnInit {
   message: Message = new Message();
-
+  day:any;
+  month:any;
+  year:any;
   p: number =1;
   // @ts-ignore
   sukien: Sukien[];

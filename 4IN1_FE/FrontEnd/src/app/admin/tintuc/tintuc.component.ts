@@ -1,12 +1,12 @@
 // @ts-ignore
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {QuanlytintucserviceService} from "../../Service/quanlytintucservice.service";
 import {Quanlytintuc} from "../../Model/quanlytintuc";
 // @ts-ignore
 import {ActivatedRoute, Router} from '@angular/router';
 import {DatePipe} from "@angular/common";
 import {TokenStorageService} from '../../_services/token-storage.service';
-import {LoadService} from '../../_services/load.service';
+import {Subject} from 'rxjs';
 
 
 // @ts-ignore
@@ -16,9 +16,10 @@ import {LoadService} from '../../_services/load.service';
   styleUrls: ['./tintuc.component.scss'],
   providers:[QuanlytintucserviceService, DatePipe]
 })
-export class TintucComponent implements OnInit {
+export class TintucComponent implements OnInit,OnDestroy {
   // @ts-ignore
-  dtOptions: any={};
+  dtOptions: DataTables.Settings={};
+  dtTrigger: Subject<any> = new Subject<any>();
   // @ts-ignore
   quanlytintucs: Quanlytintuc[];
   // @ts-ignore
@@ -32,17 +33,24 @@ export class TintucComponent implements OnInit {
       }
 
   ngOnInit(): void {
-    this.reloadData();
     this.dtOptions = {
       language: {url:'assets/Vietnamese.json'},
-      pagingType: 'full_numbers'
+      pagingType: 'full_numbers',
+      pageLength: 5
     };
+    this.reloadData();
+  }
+
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
   }
 
   reloadData() {
     // @ts-ignore
     this.quanLyTinTucService.findAll().subscribe(data => {
       this.quanlytintucs = data;
+      this.dtTrigger.next();
     });
   }
 
