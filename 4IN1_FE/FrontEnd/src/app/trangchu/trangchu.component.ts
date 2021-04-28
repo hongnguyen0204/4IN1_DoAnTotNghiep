@@ -45,6 +45,7 @@ export class TrangchuComponent implements OnInit {
       this.sukien=data;
     })
   }
+
   datahot(){
     // @ts-ignore
     this.sukienService.findByhot().subscribe(data=>{
@@ -71,5 +72,6 @@ export class TrangchuComponent implements OnInit {
   guilienlac(){
     this.sukienService.sendmessage(this.message).subscribe();
   }
+
   }
 
