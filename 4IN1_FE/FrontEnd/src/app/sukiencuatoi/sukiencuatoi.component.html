@@ -1,7 +1,11 @@
 <!--Bảng 1-->
+<title>Sự kiện của tôi</title>
 <div class="row" style="margin-top: 180px;">
   <div class="col">
     <a class="button" href="quanlysukien" style="vertical-align:middle"><span>Quản lý sự kiện</span></a>
+  </div>
+  <div class="col">
+    <a class="button1" href="nguoithamgiasukien" style="vertical-align:middle;float: right"><span>Người tham gia sự kiện</span></a>
   </div>
 </div>
 <div class="content" style="margin-top: 40px">
@@ -10,7 +14,11 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
+<<<<<<< HEAD
             <h4 class="card-title ">Sự kiện đã đăng kí tổ chức</h4>
+=======
+            <h4 class="card-title ">Cộng tác viên của sự kiện</h4>
+>>>>>>> ee68d46f11a5ae64a4ee9f2e1d705e60019ddebf
             <p class="card-category"></p>
           </div>
           <select (change)="tsk()" [(ngModel)]="idevent" name="tensukien"  style=" width: auto; height: 50px; outline:none;">
@@ -18,9 +26,9 @@
           </select>
           <div class="card-body">
             <div class="table-responsive">
-              <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">
                 <thead>
-                <tr >
+                <tr>
                   <th>STT</th>
                   <th>Họ & Tên</th>
                   <th>Email</th>
@@ -36,7 +44,10 @@
                   <td>{{ctv[1]}}</td>
                   <td>{{ctv[2]}}</td>
                   <td>{{ctv[3]}}</td>
+<<<<<<< HEAD
 
+=======
+>>>>>>> ee68d46f11a5ae64a4ee9f2e1d705e60019ddebf
                   <td>
                     <input id="hau" [(ngModel)]="ctv[4]" (change)="tsk()" (click)="duyet(ctv[4],ctv[5])" type="checkbox">
                   </td>

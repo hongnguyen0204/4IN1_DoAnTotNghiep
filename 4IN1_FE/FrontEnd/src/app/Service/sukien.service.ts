@@ -19,9 +19,29 @@ export class SukienService {
     return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theothang'}/${thang}`);
   }
 
+    findByhot(): Observable<Sukien>{
+    return this.http.get<Sukien>('http://localhost:8080/sukien/sukienhot');
+  }
+
+  // @ts-ignore
+  findByText(searchtext): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theotext'}/${searchtext}`);
+  }
+
+  // @ts-ignore
+  sendmessage(message){
+    // @ts-ignore
+    return this.http.post('http://localhost:8080/account/guilienlac',message);
+  }
+
+  // @ts-ignore
+  findByDay(ngay1, ngay2, searchtext): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theongay'}/${ngay1}/${ngay2}/${searchtext}`);
+  }
+
   // @ts-ignore
   findAll(): Observable<Sukien[]>{
-      return this.http.get<Sukien[]>('http://localhost:8080/sukien/sukiendangcho');
+    return this.http.get<Sukien[]>('http://localhost:8080/sukien/sukiendangcho');
   }
 
   findAllsk(): Observable<Sukien[]>{
@@ -51,6 +71,15 @@ export class SukienService {
     // @ts-ignore
     return this.http.get<any>(`${'http://localhost:8080/quanlycongtacvien/theoid'}/${id}`);
   }
+<<<<<<< HEAD
+=======
+
+  // @ts-ignore
+  getNTGbyid(id):Observable<any>{
+    // @ts-ignore
+    return this.http.get<any>(`${'http://localhost:8080/sukien/NguoiDangKiSuKien'}/${id}`);
+  }
+>>>>>>> ee68d46f11a5ae64a4ee9f2e1d705e60019ddebf
 
   // @ts-ignore
   getSK(id): Observable<any> {

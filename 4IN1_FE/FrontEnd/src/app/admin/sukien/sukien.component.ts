@@ -4,6 +4,7 @@ import {SukienService} from '../../Service/sukien.service';
 import {Sukien} from '../../Model/sukien';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TokenStorageService} from '../../_services/token-storage.service';
+import {LoadService} from '../../_services/load.service';
 
 class DataTablesResponse {
   // @ts-ignore
@@ -34,13 +35,16 @@ export class SukienComponent implements OnInit {
   constructor(private skService:SukienService,
               private route: ActivatedRoute,
               private router: Router,
-              private tokenStorageService: TokenStorageService) { }
+              private tokenStorageService: TokenStorageService
+             ) {
+  }
 
   ngOnInit(): void {
     this.reload();
     this.SKDaDuyet();
     this.SKDaHuy();
     this.dtOptions = {
+      language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers'
     };
   }

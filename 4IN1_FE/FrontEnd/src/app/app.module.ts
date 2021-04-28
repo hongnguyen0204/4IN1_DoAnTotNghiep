@@ -22,7 +22,6 @@ import {FormsModule} from '@angular/forms';
 import {AdminModule} from './admin/admin.module';
 // @ts-ignore
 import {HttpClientModule} from '@angular/common/http';
-import {AngularClassDecorators} from 'codelyzer/util/utils';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import { QuanlysukienComponent } from './quanlysukien/quanlysukien.component';
@@ -32,20 +31,23 @@ import {AuthInterceptor} from './-helpers/auth.interceptor';
 import {CustomerAuthService} from './_services/customer.service';
 import {AdminAuthService} from './_services/admin.service';
 // @ts-ignore
-import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { TintucComponent } from './tintuc/tintuc.component';
 import { TimkiemsukienComponent } from './timkiemsukien/timkiemsukien.component';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { QuenmatkhauComponent } from './quenmatkhau/quenmatkhau.component';
 import { DoimatkhauComponent } from './doimatkhau/doimatkhau.component';
-
 import { XacthucemailComponent } from './xacthucemail/xacthucemail.component';
-
 import { ChitiettintucComponent } from './chitiettintuc/chitiettintuc.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import {ThongbaoService} from './_services/thongbao.service';
-
+import {DatePipe} from "@angular/common";
+import {ToastrModule} from 'ngx-toastr';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ConfirmDialogComponent } from './-helpers/confirm-dialog/confirm-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { NguoithamgiasukienComponent } from './nguoithamgiasukien/nguoithamgiasukien.component';
 
 // @ts-ignore
 @NgModule({
@@ -69,9 +71,11 @@ import {ThongbaoService} from './_services/thongbao.service';
     QuenmatkhauComponent,
     DoimatkhauComponent,
     XacthucemailComponent,
-    ChitiettintucComponent
+    ChitiettintucComponent,
+    ConfirmDialogComponent,
+    NguoithamgiasukienComponent
   ],
-    imports: [
+  imports: [
         BrowserModule,
         AppRoutingModule,
         CKEditorModule,
@@ -80,12 +84,19 @@ import {ThongbaoService} from './_services/thongbao.service';
         HttpClientModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         DataTablesModule,
-        MatSnackBarModule,
         Ng2SearchPipeModule,
-      BrowserAnimationsModule,
-      NotificationModule
+        BrowserAnimationsModule,
+        NotificationModule,
+        ToastrModule.forRoot({
+          timeOut: 3000,
+          positionClass: 'toast-top-center',
+          preventDuplicates: true,
+        }),
+        MatSnackBarModule,
+        NgxPaginationModule,
+        MatDialogModule
     ],
-  providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService],
+  providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

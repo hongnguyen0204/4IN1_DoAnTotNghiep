@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router} from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
 import {TokenStorageService} from './token-storage.service';
+import {AccountService} from '../Service/account.service';
+import {Thongtincanhan} from '../Model/thongtincanhan';
+import {ToastrService} from 'ngx-toastr';
+import {timeout} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -11,27 +14,35 @@ export class CustomerAuthService implements CanActivate{
 
   constructor(private tokenStorageService: TokenStorageService,
               private router: Router,
-              private matSnackBar: MatSnackBar) { }
+              private accountService:AccountService,
+              private toastr:ToastrService) { }
+
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const token = this.tokenStorageService.getToken();
-
     if (token == null) {
       this.router.navigateByUrl('/dangnhap');
-      this.matSnackBar.open('Bạn cần đăng nhập để thực hiện tác vụ!', 'Ok', {
-        duration: 4000,
+      return false;
+    } else if(!this.isCheck()){
+      this.router.navigateByUrl('').then(() => {
+        // @ts-ignore
+        this.toastr.warning("Tài khoản của bạn chưa được xác thực!","",timeout(3000));
       });
       return false;
-    } else if (!this.isRole()) {
+    } else if(this.isBan()){
+      this.router.navigateByUrl('').then(() => {
+        // @ts-ignore
+        this.toastr.warning("Tài khoản của bạn đã bị cấm!","",timeout(3000));
+      });
+      return false;
+    }  else if (!this.isRole()) {
       this.router.navigateByUrl('/dangnhap');
-      this.matSnackBar.open('Bạn không có quyền truy cập trang này!', 'Ok', {
-        duration: 4000,
-      });
       return false;
-    }  else {
+    } else {
       return true;
     }
   }
+
   isRole() {
     const tokenPayload = this.tokenStorageService.getUser().roles;
     for (const role of tokenPayload) {
@@ -39,6 +50,22 @@ export class CustomerAuthService implements CanActivate{
         return true;
       }
     }
+    return false;
+  }
+
+  isCheck(){
+    let tokenPayload = this.tokenStorageService.getUser().status_acc;
+      if (tokenPayload) {
+        return true;
+      };
+    return false;
+  }
+
+  isBan(){
+    let tokenPayload = this.tokenStorageService.getUser().ban;
+    if (tokenPayload) {
+      return true;
+    };
     return false;
   }
 }

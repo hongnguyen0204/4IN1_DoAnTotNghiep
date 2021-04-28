@@ -11,8 +11,27 @@ import java.util.List;
 
 @Repository
 public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
+
+    @Query(value = "SELECT ac.fullname, ac.email, ac.phone_number " +
+            "FROM account_information ac,join_register j " +
+            "WHERE j.acc_ID=ac.ID AND j.event_ID=?1 ", nativeQuery = true)
+    List<Object> NguoiThamGia(int id);
+
     @Query(value = "SELECT * FROM event_information WHERE MONTH(time_of_event) = ?1 AND status_of_event='Đồng ý' ", nativeQuery = true)
     List<SuKien> findByMonth(Integer thang);
+
+    @Query(value = "SELECT * FROM event_information WHERE status_of_event='Đồng ý' ", nativeQuery = true)
+    List<SuKien> findAll();
+
+    @Query(value = "SELECT * FROM event_information WHERE DAY(time_of_event) BETWEEN ?1 AND ?2 AND event_name LIKE ?3 ", nativeQuery = true)
+    List<SuKien> findByDay(String ngay1, String ngay2, String search);
+
+    @Query(value = "SELECT * FROM event_information WHERE event_name LIKE ?1 ", nativeQuery = true)
+    List<SuKien> findBytext(String searchText);
+
+    @Query(value = "SELECT * FROM event_information WHERE owner_event_id = ?1" , nativeQuery = true)
+    List<SuKien> findByID(Integer id);
+
 
     @Query(value = "SELECT * FROM event_information WHERE status_of_event='Đang chờ' ", nativeQuery = true)
     List<SuKien> SKDangCho();
@@ -22,6 +41,9 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
 
     @Query(value = "SELECT * FROM event_information WHERE status_of_event='Từ chối' ", nativeQuery = true)
     List<SuKien> SKDaHuy();
+
+    @Query(value = "SELECT * FROM event_information WHERE hot= 1 ", nativeQuery = true)
+    SuKien sukienhot();
 
     @Query(value = "SELECT Count(*) FROM event_information WHERE time_of_event<DATE(NOW()) AND status_of_event='Đồng ý' ", nativeQuery = true)
     Integer SKDaToChuc();

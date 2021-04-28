@@ -1,6 +1,7 @@
 package com.bezkoder.springjwt.controllers;
 
 import com.bezkoder.springjwt.models.Congtacvien;
+import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.CongtacvienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class CongtacvienController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Object> getAll() {
-        return congtacvienRepository.findbyCongtacvien();
+        return congtacvienRepository.findbyCongtacvientest();
     }
 
     @PutMapping("/dongyduyet/{id}")
@@ -24,6 +25,11 @@ public class CongtacvienController {
         Congtacvien ctv = congtacvienRepository.findById(id).get();
         ctv.setStatus_col(1);
         congtacvienRepository.save(ctv);
+    }
+
+    @GetMapping("/theoid/{id}")
+    public List<Object> getSKbyid(@PathVariable Integer id){
+        return congtacvienRepository.findbyCongtacvien(id);
     }
 
     @PutMapping("/tuchoiduyet/{id}")

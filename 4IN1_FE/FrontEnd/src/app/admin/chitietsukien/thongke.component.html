@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" href="content/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard
+    Chi tiết
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -43,6 +43,12 @@
           <a class="nav-link" href="admin/tintuc">
             <i class="material-icons">feed</i>
             <p>Tin tức</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="admin/quanlytaikhoan">
+            <i class="material-icons">manage_accounts</i>
+            <p>Quản lý tài khoản</p>
           </a>
         </li>
       </ul>
@@ -134,19 +140,20 @@
                   <p>Địa điểm: {{sukien.place}}</p>
                 </div>
                 <div class="item">
-                  <p>Mô tả: {{sukien.describe_of_event}}</p>
+                  <p>Mô tả:</p>
+                  <textarea style="width: 100%;border-style: solid" rows="3">{{sukien.describe_of_event}}</textarea>
                 </div>
                 <div class="item">
                   <p>Bản kế hoạch:</p>
                   <a style="margin-top: 5px" href="{{sukien.plan_file}}">Tải bản kế hoạch tại đây</a>
                 </div>
                 <div class="item">
-                  <p>Mô tả:</p>
+                  <p>Nội dung:</p>
                   <ckeditor name="mota" [(ngModel)]="sukien.content" ></ckeditor>
                 </div>
                 <div class="btn-block">
-                  <button (click)="updateStudent()" href="#">Duyệt</button>
-                  <button class="cancel" (click)="cancelStudent()" href="#">Cancel</button>
+                  <button (click)="updateStudent()" style="margin-right: 20px">Duyệt</button>
+                  <button class="cancel" (click)="cancelStudent()" >Cancel</button>
                 </div>
               </form>
             </div>

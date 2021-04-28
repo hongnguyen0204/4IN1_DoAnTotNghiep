@@ -3,7 +3,11 @@ import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.SuKienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 @RestController
@@ -13,9 +17,19 @@ public class SuKienController {
    @Autowired
    private SuKienRepository suKienRepository;
 
+    @GetMapping("/NguoiDangKiSuKien/{id}")
+    public List<Object> findall(@PathVariable int id){
+        return suKienRepository.NguoiThamGia(id);
+    }
+
    @GetMapping("/all")
     public List<SuKien> getSuKiens() {
         return suKienRepository.findAll();
+    }
+
+    @GetMapping("/sukienhot")
+    public SuKien getSuKienhot() {
+        return suKienRepository.sukienhot();
     }
 
     @GetMapping("/sukiendangcho")
@@ -59,9 +73,26 @@ public class SuKienController {
         return sk;
     }
 
+    @GetMapping("/theoid/{id}")
+    public List<SuKien> getSKbyid(@PathVariable Integer id){
+        return suKienRepository.findByID(id);
+    }
+
     @GetMapping("/theothang/{thang}")
     public List<SuKien> getSK(@PathVariable Integer thang){
        return suKienRepository.findByMonth(thang);
+    }
+
+    @GetMapping(path ="/theongay/{ngay1}/{ngay2}/{searchtext}")
+    public List<SuKien> getSKbyday(@PathVariable String ngay1,@PathVariable String ngay2, @PathVariable String searchtext){
+        String search = "%" + searchtext + "%";
+        return suKienRepository.findByDay(ngay1, ngay2, search);
+    }
+
+    @GetMapping(path ="/theotext/{searchtext}")
+    public List<SuKien> getSKbytext(@PathVariable String searchtext){
+        String search = "%" + searchtext + "%";
+        return suKienRepository.findBytext(search);
     }
 
     @GetMapping("/tongSuKienDaToChuc")
@@ -98,4 +129,5 @@ public class SuKienController {
     public Integer KiemTra(@RequestBody SuKien suKien){
        return suKienRepository.KiemTra(suKien.getTime_of_event(),suKien.getPlace());
     }
+
 }

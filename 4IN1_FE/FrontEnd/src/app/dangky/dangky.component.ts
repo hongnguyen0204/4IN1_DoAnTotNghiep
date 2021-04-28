@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../_services/auth.service';
-import * as $ from 'jquery';
 import {XacthucemailService} from '../Service/xacthucemail.service';
 
 
@@ -16,6 +14,8 @@ export class DangkyComponent{
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+  // @ts-ignore
+  pwd:string;
   // @ts-ignore
   constructor(private authService: AuthService, private xacthucmailservice: XacthucemailService) { }
 

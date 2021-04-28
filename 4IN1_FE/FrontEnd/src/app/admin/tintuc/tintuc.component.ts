@@ -6,6 +6,7 @@ import {Quanlytintuc} from "../../Model/quanlytintuc";
 import {ActivatedRoute, Router} from '@angular/router';
 import {DatePipe} from "@angular/common";
 import {TokenStorageService} from '../../_services/token-storage.service';
+import {LoadService} from '../../_services/load.service';
 
 
 // @ts-ignore
@@ -17,21 +18,23 @@ import {TokenStorageService} from '../../_services/token-storage.service';
 })
 export class TintucComponent implements OnInit {
   // @ts-ignore
-  dtOptions: { pagingType: string };
+  dtOptions: any={};
   // @ts-ignore
   quanlytintucs: Quanlytintuc[];
   // @ts-ignore
 
 
-  constructor(private quanLyTinTucService: QuanlytintucserviceService,private route: ActivatedRoute,
-              private router: Router,public datepipe: DatePipe,
+  constructor(private quanLyTinTucService: QuanlytintucserviceService,
+              private route: ActivatedRoute,
+              private router: Router,
+              public datepipe: DatePipe,
               private tokenStorageService: TokenStorageService) {
-
-  }
+      }
 
   ngOnInit(): void {
     this.reloadData();
     this.dtOptions = {
+      language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers'
     };
   }

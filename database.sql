@@ -1,6 +1,6 @@
--- drop database quanlysukien;
--- create database quanlysukien;
--- use quanlysukien;
+drop database quanlysukien;
+create database quanlysukien;
+use quanlysukien;
 
 create table account_information(
 	ID int AUTO_INCREMENT,
@@ -16,6 +16,7 @@ create table account_information(
     gender boolean null default 0,
     status_acc boolean null default 0,
 	reset_password_token varchar(50),
+    ban boolean null default 0,
 	primary key(ID)
 );
 
@@ -26,18 +27,18 @@ create table event_information(
     time_of_event datetime,
     place	nvarchar(100),
     faculty nvarchar(50),
-    describe_of_event nvarchar(1000),
+    describe_of_event nvarchar(500),
     content nvarchar(10000),
     img nvarchar(200),
     planfile nvarchar(200),
     number_of_collaborators int null default 0,
 	number_of_peoples int null default 0,
-    criteria nvarchar(1000),
+    criteria nvarchar(200),
     end_day datetime,
     status_of_event nvarchar(20) null default "Đang chờ",
     time_upload datetime,
     owner_event_id int,
-    hot boolean,
+    hot boolean null default 0,
 	constraint fk_evid foreign key(owner_event_id) references account_information(ID),
     primary key(ID)
 );

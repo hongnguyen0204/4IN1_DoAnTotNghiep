@@ -1,9 +1,11 @@
+<title>Tin tức</title>
 <div class="textbox" >
   <div id="left">
     <div class="news">
       <h2>TIN TỨC</h2>
       <hr width="96%" size="10" color="black">
     </div>
+<<<<<<< HEAD
     <ul>
       <li >
         <div style="display: flex">
@@ -57,33 +59,37 @@
         </div>
       </li>
     </ul>
+=======
+    <div >
+      <ul>
+        <li *ngFor="let tt of tintuc | paginate: {itemsPerPage:5, currentPage:p};">
+              <div class="box-img">
+                <img  (click)="detailTT(tt.id)" [src]="tt.img"/>
+              </div>
+              <div class="box-content">
+                <h5>
+                  <a (click)="detailTT(tt.id)" >{{tt.title}} </a>
+                </h5>
+                <p>{{tt.describe_of_news}}</p>
+            </div>
+        </li>
+        <pagination-controls style="text-align: center" previousLabel="Trước"
+                             nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
+      </ul>
+    </div>
+>>>>>>> ee68d46f11a5ae64a4ee9f2e1d705e60019ddebf
   </div>
   <div id="right">
     <div class="right-header-news">
-      <span>BÀI VIẾT MỚI NHẤT</span>
+      <span>BÀI VIẾT KHÁC</span>
     </div>
-    <ul>
-      <li>
-        <img class="img-float-left" src="assets/images/a_news_1.png">
-        <a href="#">Đề án mở ngành: Quản Trị Nhân Lực</a>
-      </li>
-      <li>
-        <img src="assets/images/a-header-review1.jpg">
-        <a href="#">Tổng quan về Đại học Duy Tân</a>
-      </li>
-      <li>
-        <img src="assets/images/a-header-review2.jpg">
-        <a href="#">Hoạt động Nghiên cứu tại Đại học Duy Tân</a>
-      </li>
-      <li>
-        <img src="assets/images/a-header-reviews.jpg">
-        <a href="#">
-          Cơ sở Hòa Khánh Nam - Q. Liên Chiểu, Tp. Đà Nẵng</a>
-      </li>
-      <li>
-        <img src="assets/images/a-header-review3.jpg">
-        <a href="#">Đại học Duy Tân Nỗ lực Hợp tác Trong nước và Quốc tế</a>
-      </li>
+    <ul *ngFor="let tt of tintuc;let i=index">
+      <div  *ngIf="i % 4" >
+        <li>
+          <img (click)="detailTT(tt.id)" [src]="tt.img">
+          <a (click)="detailTT(tt.id)" >{{tt.title}}</a>
+        </li>
+      </div>
     </ul>
   </div>
 </div>

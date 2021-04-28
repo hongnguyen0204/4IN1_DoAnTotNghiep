@@ -1,14 +1,14 @@
-  <div class="textbox" >
-
-    <div id="left">
-      <div class="main-desc">
-        <div class="main-title">
-          <span>{{sukien.event_name}}</span>
-        </div>
-        <div>
+<div class="textbox" >
+  <title>{{sukien.event_name}}</title>
+  <div id="left">
+    <div class="main-desc">
+      <div class="main-title">
+        <span>{{sukien.event_name}}</span>
+      </div>
+      <div>
         <div class="" [innerHtml]='sukien.content'>
         </div>
-        </div>
+      </div>
     </div>
     <div id="right">
       <ul>
@@ -42,6 +42,7 @@
     </div>
 
   </div>
+<<<<<<< HEAD
     <br>
     <br>
     <div class="text-center">
@@ -56,4 +57,20 @@
         </li>
       </ul>
     </div>
+=======
+  <br>
+  <br>
+  <div class="text-center">
+    <ul style="display: flex">
+      <li>
+        <a class="animated-btn text-white" style="margin-bottom: 50px;cursor: pointer" (click)="dangKi(id,ev_id)" >Tham gia ngay</a>
+      </li>
+      <li style="width: 100px;">
+      </li>
+      <li>
+        <a class="animated-btn text-white" style="margin-bottom: 50px;" (click)="updatesk(sukien.id)" >Đăng kí cộng tác viên</a>
+      </li>
+    </ul>
+>>>>>>> ee68d46f11a5ae64a4ee9f2e1d705e60019ddebf
   </div>
+</div>

@@ -67,7 +67,6 @@ div #left ul li {
 }
 
 div #left ul li a {
-  margin: 10px 0 10px 0;
   text-decoration: none;
   color: #333;
 }
@@ -77,19 +76,18 @@ div #left ul li a:hover {
 }
 
 div #left ul li img {
+  Object-fit: cover;
   cursor: pointer;
-  width: 250px;
+  max-width: 230px;
+  max-height: 200px;
   border: 1px solid #ccc;
   padding: 2px;
-  margin-right: 10px;
 }
 
 div #left ul li p {
-  height: 20%;
-  text-align: justify;
-  margin-bottom: 10px;
+  text-decoration: none;
+  color: #333;
 }
-
 #right {
   position: absolute;
   display: inline-block;
@@ -97,7 +95,7 @@ div #left ul li p {
   max-width: 314px;
   background: white;
   min-height: 500px;
-  margin-left: 1%;
+  margin-left: 130px;
 }
 
 .right-header-news {
@@ -116,13 +114,16 @@ div #left ul li p {
 }
 
 #right ul li a:hover {
-  color: #1863ff;
+  cursor: pointer;
+  color: #1d75b3;
+
 }
 
 #right ul li img {
+  Object-fit: cover;
   cursor: pointer;
   max-width: 230px;
-  max-height: 100px;
+  max-height: 200px;
   border: 1px solid #ccc;
   padding: 2px;
   margin: 5px;
@@ -143,4 +144,3 @@ div #left ul li p {
   line-height: 30px;
   padding-right: 5px;
 }
-

@@ -2,6 +2,7 @@ package com.bezkoder.springjwt.controllers;
 
 
 import com.bezkoder.springjwt.models.Account;
+import com.bezkoder.springjwt.models.Message;
 import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.models.Thongtintaikhoan;
 import com.bezkoder.springjwt.repository.AccRepository;
@@ -25,6 +26,18 @@ public class AccController {
 
     @Autowired
     private AccRepository accRepository;
+
+    @GetMapping("/getFullAcc")
+    public List<Account> GetFullAcc() {
+        return accRepository.findAll();
+    }
+
+    @PutMapping("/ban/{id}")
+    public void duyetSuKien(@PathVariable Integer id){
+        Account acc =accRepository.findById(id).get();
+        acc.setBan(true);
+        accRepository.save(acc);
+    }
 
     @PutMapping("thongtincanhan/{id}")
     public void LuuThongTin(@PathVariable int id,@RequestBody Account account){
@@ -59,6 +72,12 @@ public class AccController {
         return "Gửi qua mail thành công";
     }
 
+    @PostMapping("/guilienlac")
+    public String processsendmessage(@RequestBody Message ms) throws UnsupportedEncodingException, MessagingException {
+        sendEmailMessage(ms);
+        return "Gửi qua mail thành công";
+    }
+
     @PostMapping("/xacthucemail/{email}")
     public String xacthucemail(@PathVariable String email) throws UnsupportedEncodingException, MessagingException {
         String token = RandomString.make(50); //Mã ngẫu nhiên do hệ thống tạo ra
@@ -70,13 +89,33 @@ public class AccController {
         return "Gửi qua mail thành công";
     }
 
+    public String sendEmailMessage(Message ms) throws UnsupportedEncodingException, MessagingException {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
+
+        helper.setFrom("shonepro123@gmail.com", "Người dùng phản hồi liên lạc");
+        helper.setTo(ms.getEmail());
+
+        String subject1 = "Người dùng phản hồi:";
+
+        String content = "Tên: " + ms.getName() + "<br>" + "Email: " + ms.getEmail() + "<br>" + "Ngành: " + ms.getSubject() + "<br>" + "số điện thoại: " + ms.getSdt() + "<br>" + "Nội dung: " + ms.getLoinhan() + "<br>" ;
+
+        helper.setSubject(subject1);
+
+        helper.setText(content, true);
+
+        mailSender.send(message);
+
+        return "đc nè";
+
+    }
 
     public void sendEmailtoresetpassword(String recipientEmail, String link) throws UnsupportedEncodingException, MessagingException {
 
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message);
 
-                helper.setFrom("shonepro123@gmail.com", "Cập nhật lại mật khẩu");
+            helper.setFrom("shonepro123@gmail.com", "Cập nhật lại mật khẩu");
             helper.setTo(recipientEmail);
 
             String subject = "Đây là link reset password:";
@@ -115,7 +154,7 @@ public class AccController {
 
     @PostMapping("/reset_password")
     public String processResetPassword(@RequestBody Account acc) {
-        Account account = accRepository.findByToken(acc.getReset_password_token());
+        Account account = accRepository.Gettoken(acc.getReset_password_token());
         if (account == null) {
             return "Không tìm thấy tài khoản";
         } else {
