@@ -17,8 +17,6 @@ import {ToastrService} from 'ngx-toastr';
   providers:[QuanlytintucserviceService]
 })
 export class ThemmoitintucComponent implements OnInit {
-// @ts-ignore
-  @ViewChild('appendTo', { read: ViewContainerRef }) public appendTo: ViewContainerRef;
   // @ts-ignore
   selectedImage: any = null;
   // @ts-ignore
