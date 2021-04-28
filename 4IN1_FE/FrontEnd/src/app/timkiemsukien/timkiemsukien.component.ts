@@ -2,6 +2,8 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {Sukien} from '../Model/sukien';
 import {SukienService} from '../Service/sukien.service';
+import {HttpClientModule} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-timkiemsukien',
@@ -25,7 +27,8 @@ export class TimkiemsukienComponent implements OnInit {
   end:Date = new Date();
   // @ts-ignore
   middles: middle[];
-  constructor(private sukienService: SukienService, public datepipe: DatePipe ) { }
+  constructor(private sukienService: SukienService, public datepipe: DatePipe,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.reloadData();
@@ -59,4 +62,7 @@ export class TimkiemsukienComponent implements OnInit {
     console.log(this.sukiens);
   }
 
+  detaikSK(id: number) {
+    this.router.navigate(['dangkithamgia',id])
+  }
 }
