@@ -14,8 +14,8 @@
             <h2 class="header-title">{{sukienhot.event_name}}</h2>
             <h3 class="sub-title">{{sukienhot.time_of_event}}, Tại {{sukienhot.place}}</h3>
             <ul class="header-btn">
-              <li><a class="main-btn main-btn-2" style="color: white;" (click)="detailSK(sukienhot.id)">Tham gia ngay</a></li>
-              <li><a class="main-btn" href="#">Thông tin</a></li>
+              <li><a class="main-btn main-btn-2" style="color: white;margin-bottom: 25px" (click)="detailSK(sukienhot.id)">Tham gia ngay</a></li>
+              <li><a class="main-btn" style="margin-bottom: 25px" (click)="detailSK(sukienhot.id)">Thông tin</a></li>
             </ul>
           </div>  <!-- header content -->
         </div>
@@ -27,18 +27,18 @@
       <div class="row align-items-center">
         <div class="col-lg-6">
           <div class="about-image mt-50 wow fadeInLeft" data-wow-duration="1s">
-            <img src="assets/images/dtu.jpg" alt="About">
+            <img style="height: 600px" src="{{sukienhot.img}}" alt="About">
           </div> <!-- about image -->
         </div>
         <div class="col-lg-6">
           <div class="about-content mt-45 wow fadeInRight" data-wow-duration="1s">
             <div class="section-title">
-              <h2 class="title">Sự kiện tân sinh viên</h2>
+              <h2 class="title">{{sukienhot.event_name}}</h2>
             </div> <!-- section title -->
 
-            <p class="text mt-30"> Bắt đầu mỗi năm học đến hẹn lại lên<br>. <br> Chương trình tổ chức giao lưu giữa tân
-              sinh viên các khoa với nhau. </p>
-            <p class="date"><span>01<sup>th</sup></span>Tháng 5 2021</p>
+            <p class="text mt-30"> {{sukienhot.describe_of_event}}</p>
+            <br>
+            <p class="date">Ngày diễn ra: {{sukienhot.time_of_event|date:'dd/MM/yyyy'}}</p>
           </div> <!-- about content -->
         </div>
       </div> <!-- row -->
@@ -61,109 +61,24 @@
       </div> <!-- row -->
 
       <div class="row">
-        <div class="col-lg-4 col-sm-6">
+        <div class="col-lg-4 col-sm-6" *ngFor="let tt of tintuc">
           <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
             <div class="team-image">
-              <img src="assets/images/team-1.jpg" alt="Team">
+              <img src="{{tt.img}}" alt="Team">
             </div>
             <div class="team-content">
               <div class="team-social">
                 <ul class="social">
                   <li><a href="#"><i class="lni-information"></i></a></li>
-                  <li><a href="#"><i class="lni-chevron-down-circle"></i></a></li>
                 </ul>
               </div>
-              <h4 class="team-name"><a href="#">Tân Sinh Viên</a></h4>
-              <span class="sub-title">14/08/2021</span>
-            </div>
-          </div> <!-- single team -->
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
-            <div class="team-image">
-              <img src="assets/images/team-2.jpg" alt="Team">
-            </div>
-            <div class="team-content">
-              <div class="team-social">
-                <ul class="social">
-                  <li><a href="#"><i class="lni-information"></i></a></li>
-                  <li><a href="#"><i class="lni-chevron-down-circle"></i></a></li>
-                </ul>
-              </div>
-              <h4 class="team-name"><a href="#">Bóng đá IT</a></h4>
-              <span class="sub-title">29/03/2021</span>
-            </div>
-          </div> <!-- single team -->
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="1s">
-            <div class="team-image">
-              <img src="assets/images/team-3.jpg" alt="Team">
-            </div>
-            <div class="team-content">
-              <div class="team-social">
-                <ul class="social">
-                  <li><a href="#"><i class="lni-information"></i></a></li>
-                  <li><a href="#"><i class="lni-chevron-down-circle"></i></a></li>
-                </ul>
-              </div>
-              <h4 class="team-name"><a href="#">Serminar-Rikkei</a></h4>
-              <span class="sub-title">25/5/2021</span>
-            </div>
-          </div> <!-- single team -->
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
-            <div class="team-image">
-              <img src="assets/images/team-4.jpg" alt="Team">
-            </div>
-            <div class="team-content">
-              <div class="team-social">
-                <ul class="social">
-                  <li><a href="#"><i class="lni-information"></i></a></li>
-                  <li><a href="#"><i class="lni-chevron-down-circle"></i></a></li>
-                </ul>
-              </div>
-              <h4 class="team-name"><a href="#">...</a></h4>
-              <span class="sub-title">...</span>
-            </div>
-          </div> <!-- single team -->
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="1s">
-            <div class="team-image">
-              <img src="assets/images/team-5.jpg" alt="Team">
-            </div>
-            <div class="team-content">
-              <div class="team-social">
-                <ul class="social">
-                  <li><a href="#"><i class="lni-information"></i></a></li>
-                  <li><a href="#"><i class="lni-chevron-down-circle"></i></a></li>
-                </ul>
-              </div>
-              <h4 class="team-name"><a href="#">...</a></h4>
-              <span class="sub-title">...</span>
-            </div>
-          </div> <!-- single team -->
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="1.5s">
-            <div class="team-image">
-              <img src="assets/images/team-6.jpg" alt="Team">
-            </div>
-            <div class="team-content">
-              <div class="team-social">
-                <ul class="social">
-                  <li><a href="#"><i class="lni-information"></i></a></li>
-                  <li><a href="#"><i class="lni-chevron-down-circle"></i></a></li>
-                </ul>
-              </div>
-              <h4 class="team-name"><a href="#">...</a></h4>
-              <span class="sub-title">...</span>
+              <h4 class="team-name"><a href="#">{{tt.title}}</a></h4>
             </div>
           </div> <!-- single team -->
         </div>
       </div> <!-- row -->
+
+
     </div> <!-- container -->
     <div class="container">
       <div class="row">
@@ -469,7 +384,13 @@
               </div>
               <div class="col-md-6">
                 <div class="single-form">
-                  <input type="text" [(ngModel)]="message.subject" name="subject" placeholder="Ngành của bạn">
+                  <select type="text" [(ngModel)]="message.subject" name="subject" placeholder="Ngành của bạn">
+                    <option value="Công nghệ thông tin">Công nghệ thông tin</option>
+                    <option value="Kế Toán">Kế Toán</option>
+                    <option value="Y dược">Y dược</option>
+                    <option value="Kiến Trúc">Kiến Trúc</option>
+                    <option value="Ngoại ngữ">Ngoại ngữ</option>
+                  </select>
                   <i class="lni-pencil-alt"></i>
                 </div> <!-- single form -->
               </div>

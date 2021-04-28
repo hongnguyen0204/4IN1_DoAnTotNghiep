@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TokenStorageService} from '../../_services/token-storage.service';
 import {AccountService} from '../../Service/account.service';
 import {ToastrService} from 'ngx-toastr';
-import {Router, RouterModule} from '@angular/router';
+import {Router} from '@angular/router';
 import {Thongtincanhan} from '../../Model/thongtincanhan';
-import {LoadService} from '../../_services/load.service';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-quanlytaikhoan',
@@ -12,10 +12,11 @@ import {LoadService} from '../../_services/load.service';
   styleUrls: ['./quanlytaikhoan.component.scss'],
   providers:[AccountService]
 })
-export class QuanlytaikhoanComponent implements OnInit {
+export class QuanlytaikhoanComponent implements OnInit,OnDestroy {
 
   // @ts-ignore
   dtOptions: any = {};
+  dtTrigger: Subject<any> = new Subject<any>();
   // @ts-ignore
   listAcc:Thongtincanhan[];
   constructor(private tokenStorageService: TokenStorageService,
@@ -27,11 +28,16 @@ export class QuanlytaikhoanComponent implements OnInit {
   ngOnInit(): void {
     this.accountService.findAll().subscribe(data => {
       this.listAcc = data;
+      this.dtTrigger.next();
     });
     this.dtOptions = {
       language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers'
     };
+  }
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
   }
 
   logout(): void {

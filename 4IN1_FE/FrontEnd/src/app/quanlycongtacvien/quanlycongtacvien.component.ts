@@ -16,7 +16,6 @@ export class QuanlycongtacvienComponent implements OnInit {
   // @ts-ignore
   qlcongtacviens: any;
 
-
   constructor(private ctvService: CongtacvienService,
               private route: ActivatedRoute,
               private router: Router) { }
@@ -25,7 +24,7 @@ export class QuanlycongtacvienComponent implements OnInit {
     this.ctvService.findAll().subscribe(data =>{
       // @ts-ignore
       this.qlcongtacviens = data;
-    })
+    });
     this.reloadData();
   }
 
@@ -46,11 +45,10 @@ export class QuanlycongtacvienComponent implements OnInit {
     }
   }
 
-  // tslint:disable-next-line:typedef
   reloadData(){
-    this.ctvService.findAll().subscribe(data => {
+    this.ctvService.findAll().subscribe(data=>{
       // @ts-ignore
       this.qlcongtacviens = data;
-    });
+    })
   }
 }

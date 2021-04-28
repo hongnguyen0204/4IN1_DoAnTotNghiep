@@ -3,16 +3,22 @@ import {Sukien} from '../Model/sukien';
 import {SukienService} from '../Service/sukien.service';
 import {Router} from '@angular/router';
 import {Message} from '../Model/message';
+import {QuanlytintucserviceService} from '../Service/quanlytintucservice.service';
+import {Quanlytintuc} from '../Model/quanlytintuc';
 
 @Component({
   selector: 'app-trangchu',
   templateUrl: './trangchu.component.html',
   styleUrls: ['./trangchu.component.scss'],
-  providers: [SukienService]
+  providers: [SukienService,QuanlytintucserviceService]
 })
 export class TrangchuComponent implements OnInit {
   message: Message = new Message();
-
+  // @ts-ignore
+  tintuc:Quanlytintuc[];
+  day:any;
+  month:any;
+  year:any;
   p: number =1;
   // @ts-ignore
   sukien: Sukien[];
@@ -22,7 +28,8 @@ export class TrangchuComponent implements OnInit {
   // @ts-ignore
   month:number = this.m.getMonth() + 1;
   // @ts-ignore
-  constructor(private sukienService: SukienService,private router:Router) {
+  constructor(private sukienService: SukienService,private router:Router,
+              private quanlytintucserviceService: QuanlytintucserviceService) {
   }
   demo:any;
   x:any;
@@ -34,6 +41,14 @@ export class TrangchuComponent implements OnInit {
     // @ts-ignore
     this.datahot();
     // @ts-ignore
+    this.reloadData();
+  }
+
+  reloadData() {
+    // @ts-ignore
+    this.quanlytintucserviceService.findAll().subscribe(data => {
+      this.tintuc = data;
+    });
   }
 
   detailSK(id:number){
@@ -72,6 +87,5 @@ export class TrangchuComponent implements OnInit {
   guilienlac(){
     this.sukienService.sendmessage(this.message).subscribe();
   }
-
   }
 

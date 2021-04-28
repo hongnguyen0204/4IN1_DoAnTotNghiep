@@ -37,24 +37,25 @@
         </div>
         <div class="row mt-3 ">
           <div class="col-md-12">
-            <label class="labels">Ngày sinh: {{users.day_of_birth|date:'dd/MM/yyyy'}}</label>
-            <input type="date" name="date" [(ngModel)]="users.day_of_birth"  class="form-control"/>
+            <label class="labels">Ngày sinh: </label>
+            <input value="{{users.day_of_birth | date: 'yyyy-MM-dd'}}" id="date"  type="date" name="date"   class="form-control" />
           </div>
         </div>
         <div class="row mt-3 ">
           <div class="col-md-12">
-            <label class="labels">Giới tính: {{gioiTinh(users.gender)}}</label>
+            <label class="labels">Giới tính: </label>
+<!--            {{gioiTinh(users.gender)}}-->
+            <br>
               <label class="radio-inline-nam">
-                <input id="nam" [(ngModel)]="users.gender" type="radio" name="gender" name="optradio" value="true">Nam
-              </label>
-              <label class="radio-inline-nu">
-                <input id="nu" [(ngModel)]="users.gender" type="radio" name="gender"  value="false">Nữ
+                <input  [defaultChecked]="users.gender" type="radio" name="gender"  value="true">Nam
+                <input  [defaultChecked]="!users.gender" type="radio" name="gender"  value="false">Nữ
               </label>
           </div>
         </div>
         <div class="row mt-3">
           <div class="col-md-12">
             <label class="labels">Số điện thoại</label>
+
             <input type="text" name="phone"  [(ngModel)]="users.phone_number" class="form-control"
             required
             pattern="(0)[0-9 ]{9}"
@@ -66,10 +67,10 @@
             <div *ngIf="sdt.errors.pattern">Vui lòng nhập đúng định dạng</div>
           </div>
 
-          <div class="col-md-12"><label class="labels">Email</label>
+          <div class="col-md-12"><label class="labels" style="margin-top: 2%;">Email</label>
             <input type="text" name="email" [(ngModel)]="users.email" class="form-control" disabled>
           </div>
-          <div class="col-md-12"><label class="labels">Khoa</label>
+          <div class="col-md-12"><label class="labels" style="margin-top: 2%;">Khoa</label>
             <input type="text" name="faculty" [(ngModel)]="users.faculty" class="form-control"
             required
             minlength="5"
