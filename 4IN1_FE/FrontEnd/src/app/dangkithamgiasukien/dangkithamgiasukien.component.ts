@@ -20,52 +20,55 @@ import {DangkilamctvService} from '../Service/dangkilamctv.service';
 })
 export class DangkithamgiasukienComponent implements OnInit {
   // @ts-ignore
-  @ViewChild('appendTo', { read: ViewContainerRef }) public appendTo: ViewContainerRef;
+  @ViewChild('appendTo', {read: ViewContainerRef}) public appendTo: ViewContainerRef;
   // @ts-ignore
-  sukien: Sukien=new Sukien();
+  suKiens: Sukien[];
+  sukien: Sukien = new Sukien();
   // @ts-ignore
   id: number;
   // @ts-ignore
-  ev_id:number;
+  ev_id: number;
   currentUser: any;
   // @ts-ignore
-  users:Thongtincanhan=new Thongtincanhan();
+  users: Thongtincanhan = new Thongtincanhan();
   // @ts-ignore
-  dK:Dangkithamgia=new Dangkithamgia();
+  dK: Dangkithamgia = new Dangkithamgia();
   // @ts-ignore
-  id:number;
+  id: number;
   // @ts-ignore
-  dangKiCTV:Dangkilamctv=new Dangkilamctv();
+  dangKiCTV: Dangkilamctv = new Dangkilamctv();
 
   constructor(private sukienService: SukienService,
               private route: ActivatedRoute,
               private router: Router,
-              private accountService:AccountService,
+              private accountService: AccountService,
               private token: TokenStorageService,
               private toastr: ToastrService,
-              private dangkiCTVSV:DangkilamctvService) { }
+              private dangkiCTVSV: DangkilamctvService) {
+  }
 
   ngOnInit(): void {
-    this.ev_id=this.route.snapshot.params['id'];
+    this.reloadData();
+    this.ev_id = this.route.snapshot.params['id'];
     console.log(this.ev_id);
-    this.sukienService.getSK(this.ev_id).subscribe(data=>{
-      this.sukien=data;
-    },error => console.log(error));
+    this.sukienService.getSK(this.ev_id).subscribe(data => {
+      this.sukien = data;
+    }, error => console.log(error));
 
     this.currentUser = this.token.getUser();
-    this.accountService.findUser(this.currentUser.username).subscribe(data=>{
-      this.users=data;
-      this.id=this.users.id;
+    this.accountService.findUser(this.currentUser.username).subscribe(data => {
+      this.users = data;
+      this.id = this.users.id;
       console.log(this.id);
     });
   }
 
   // @ts-ignore
-  dangKi(id:number,idSK:number){
-  this.dK.acc_ID=id;
-  this.dK.event_ID=idSK;
-    this.sukienService.kiemTraTG(this.dK).subscribe(data=>{
-      if(data!=0){
+  dangKi(id: number, idSK: number) {
+    this.dK.acc_ID = id;
+    this.dK.event_ID = idSK;
+    this.sukienService.kiemTraTG(this.dK).subscribe(data => {
+      if (data != 0) {
         this.toastr.warning("Bạn đã đăng kí tham gia sự kiện này rồi!");
       } else {
         this.sukienService.dangKi(this.dK).subscribe();
@@ -75,15 +78,28 @@ export class DangkithamgiasukienComponent implements OnInit {
       }
     })
   }
-  updatesk(id: number){
-    this.dangKiCTV.user_ID=this.id;
-    this.dangKiCTV.event_ID=id;
-    this.dangkiCTVSV.check(this.dangKiCTV).subscribe(data=>{
-      if(data!=0){
+
+  updatesk(id: number) {
+    this.dangKiCTV.user_ID = this.id;
+    this.dangKiCTV.event_ID = id;
+    this.dangkiCTVSV.check(this.dangKiCTV).subscribe(data => {
+      if (data != 0) {
         this.toastr.warning("Bạn đã đăng kí cộng tác viên cho sự kiện này rồi!");
       } else {
-        this.router.navigate(['/dangkicongtacvien',id]);
+        this.router.navigate(['/dangkicongtacvien', id]);
       }
     });
+  }
+
+  reloadData() {
+    this.sukienService.findAllsk().subscribe(data => {
+      this.suKiens = data;
+    })
+  }
+
+  detailSK(id: number) {
+    this.router.navigate(['dangkithamgia',id]).then(() => {
+      window.location.reload();
+    })
   }
 }
