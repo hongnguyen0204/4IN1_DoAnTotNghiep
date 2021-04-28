@@ -87,6 +87,5 @@ export class TrangchuComponent implements OnInit {
   guilienlac(){
     this.sukienService.sendmessage(this.message).subscribe();
   }
-
   }
 
