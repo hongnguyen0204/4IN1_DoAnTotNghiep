@@ -71,15 +71,9 @@ export class TrangchuComponent implements OnInit {
   guilienlac(){
     this.sukienService.sendmessage(this.message).subscribe();
   }
-<<<<<<< HEAD
-
-
   // reloadData() {
   //   this.sukienService.findAll().subscribe(data => {
   //     this.sukiens = data;
   //   })
-
-=======
->>>>>>> ee68d46f11a5ae64a4ee9f2e1d705e60019ddebf
   }
 

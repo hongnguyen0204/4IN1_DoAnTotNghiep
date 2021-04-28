@@ -9,7 +9,7 @@ import {TokenStorageService} from '../_services/token-storage.service';
 import {ToastrService} from 'ngx-toastr';
 import {MatDialog} from '@angular/material/dialog';
 import {ConfirmDialogComponent} from '../-helpers/confirm-dialog/confirm-dialog.component';
-import {Sukien} from '../Model/sukien';
+
 
 
 @Component({
@@ -30,7 +30,7 @@ export class ThongtincanhanComponent implements OnInit {
   users: Thongtincanhan = new Thongtincanhan();
   // @ts-ignore
   gender: string;
-
+  // @ts-ignore
   constructor(private thongtincanhanService: ThongtincanhanService,
               @Inject(AngularFireStorage)
               private storage: AngularFireStorage,
@@ -42,6 +42,8 @@ export class ThongtincanhanComponent implements OnInit {
               private dialog: MatDialog) {
   }
 
+  // @ts-ignore
+
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
     this.accountService.findUser(this.currentUser.username).subscribe(data=>{
@@ -52,6 +54,10 @@ export class ThongtincanhanComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   save(event: any) {
+    // @ts-ignore
+    this.users.day_of_birth = document.getElementById("date").value;
+    // @ts-ignore
+    this.users.gender = document.querySelector('input[name="gender"]:checked').value;
     if (this.selectedImage) {
       const name = this.selectedImage.name;
       const fileRef = this.storage.ref(name);
@@ -109,6 +115,8 @@ export class ThongtincanhanComponent implements OnInit {
       reader.readAsDataURL(this.selectedImage);
     }
   }
+
+
 
   gioiTinh(gender:boolean){
     if(gender){

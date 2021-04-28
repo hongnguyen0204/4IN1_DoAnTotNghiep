@@ -37,19 +37,18 @@
         </div>
         <div class="row mt-3 ">
           <div class="col-md-12">
-            <label class="labels">Ngày sinh: {{users.day_of_birth | date : 'dd/MM/yyyy'}}</label>
-            <input type="date" name="date" [(ngModel)]="users.day_of_birth" class="form-control" />
+            <label class="labels">Ngày sinh: </label>
+            <input value="{{users.day_of_birth | date: 'yyyy-MM-dd'}}" id="date"  type="date" name="date"   class="form-control" />
           </div>
         </div>
         <div class="row mt-3 ">
           <div class="col-md-12">
-            <label class="labels">Giới tính: {{gioiTinh(users.gender)}}</label>
+            <label class="labels">Giới tính: </label>
+<!--            {{gioiTinh(users.gender)}}-->
             <br>
               <label class="radio-inline-nam">
-                <input id="nam" [(ngModel)]="users.gender" type="radio" name="gender" name="optradio" value="true">Nam
-              </label>
-              <label class="radio-inline-nu">
-                <input id="nu" [(ngModel)]="users.gender" type="radio" name="gender"  value="false">Nữ
+                <input  [defaultChecked]="users.gender" type="radio" name="gender"  value="true">Nam
+                <input  [defaultChecked]="!users.gender" type="radio" name="gender"  value="false">Nữ
               </label>
           </div>
         </div>
