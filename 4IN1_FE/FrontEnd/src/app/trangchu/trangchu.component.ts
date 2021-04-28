@@ -12,7 +12,9 @@ import {Message} from '../Model/message';
 })
 export class TrangchuComponent implements OnInit {
   message: Message = new Message();
-
+  day:any;
+  month:any;
+  year:any;
   p: number =1;
   // @ts-ignore
   sukien: Sukien[];
@@ -45,6 +47,7 @@ export class TrangchuComponent implements OnInit {
       this.sukien=data;
     })
   }
+
   datahot(){
     // @ts-ignore
     this.sukienService.findByhot().subscribe(data=>{
@@ -71,9 +74,5 @@ export class TrangchuComponent implements OnInit {
   guilienlac(){
     this.sukienService.sendmessage(this.message).subscribe();
   }
-  // reloadData() {
-  //   this.sukienService.findAll().subscribe(data => {
-  //     this.sukiens = data;
-  //   })
   }
 

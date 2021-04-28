@@ -601,7 +601,7 @@ p {
 
 /*===== Header =====*/
 .header-content-area {
-  height: 640px;
+  height: 100%px;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   position: relative;
@@ -674,8 +674,8 @@ p {
 .header-content {
   margin-top: 60px; }
   .header-content .header-title {
-    width: 1200px;
-    margin-left: -100px;
+    width: 100%;
+    margin: auto;
     font-size: 75px;
     color: #fff;
     text-transform: uppercase; }
@@ -1140,7 +1140,9 @@ p {
   position: relative;
   margin-top: 30px; }
   .single-form input,
-  .single-form textarea {
+  .single-form textarea,
+  .single-form select
+  {
     width: 100%;
     height: 65px;
     border: 1px solid #e6e6e6;
