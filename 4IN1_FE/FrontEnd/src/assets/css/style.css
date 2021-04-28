@@ -674,8 +674,8 @@ p {
 .header-content {
   margin-top: 60px; }
   .header-content .header-title {
-    width: 1200px;
-    margin-left: -100px;
+    width: 90%;
+    margin: auto;
     font-size: 75px;
     color: #fff;
     text-transform: uppercase; }
