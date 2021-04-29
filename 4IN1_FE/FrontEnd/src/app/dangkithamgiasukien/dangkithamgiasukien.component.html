@@ -17,7 +17,7 @@
       <ul *ngFor="let sK of suKiens, let i = index">
         <div *ngIf="i%4">
           <li (click)="detailSK(sK.id)" style="display:flex">
-            <img style="width: 149px; height: 94px" class="img-float-left" [src]="sK.img">
+            <img [src]="sK.img">
             <a>{{sK.event_name}}</a>
           </li>
         </div>
@@ -26,6 +26,22 @@
     </div>
 
   </div>
+<<<<<<< HEAD
+    <br>
+    <br>
+    <div class="text-center">
+      <ul style="display: flex">
+        <li>
+        <a class="animated-btn text-white" style="margin-bottom: 50px;cursor: pointer" (click)="dangKi(id,ev_id)" >Tham gia ngay</a>
+        </li>
+        <li style="width: 100px;">
+        </li>
+        <li>
+          <a class="animated-btn text-white" style="margin-bottom: 50px;" >Đăng kí cộng tác viên</a>
+        </li>
+      </ul>
+    </div>
+=======
   <br>
   <br>
   <div class="text-center">
@@ -39,5 +55,6 @@
         <a class="animated-btn text-white" style="margin-bottom: 50px;" (click)="updatesk(sukien.id)" >Đăng kí cộng tác viên</a>
       </li>
     </ul>
+>>>>>>> ee68d46f11a5ae64a4ee9f2e1d705e60019ddebf
   </div>
 </div>
