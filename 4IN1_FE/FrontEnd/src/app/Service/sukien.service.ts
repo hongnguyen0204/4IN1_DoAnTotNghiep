@@ -71,15 +71,12 @@ export class SukienService {
     // @ts-ignore
     return this.http.get<any>(`${'http://localhost:8080/quanlycongtacvien/theoid'}/${id}`);
   }
-<<<<<<< HEAD
-=======
 
   // @ts-ignore
   getNTGbyid(id):Observable<any>{
     // @ts-ignore
     return this.http.get<any>(`${'http://localhost:8080/sukien/NguoiDangKiSuKien'}/${id}`);
   }
->>>>>>> ee68d46f11a5ae64a4ee9f2e1d705e60019ddebf
 
   // @ts-ignore
   getSK(id): Observable<any> {
