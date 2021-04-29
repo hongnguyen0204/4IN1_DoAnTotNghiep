@@ -10,7 +10,7 @@
                style=" height:40px; width: 855px;"
                placeholder="Nhập tên sự kiện cần tìm kiếm"
         >
-        <button (click)="timkiem(searchText)" style="border: none; color: white; border-radius: 5px; background-color: #1863ff; width: 100px; height: 40px;margin-left: 5px;" id="button-search">Tìm kiếm</button>
+        <button (click)="timkiem(searchText)" style=" border: none; color: white; border-radius: 5px; background-color: #1863ff; width: 100px; height: 40px;margin-left: 5px;" id="button-search">Tìm kiếm</button>
         </div>
           <br>
         <br>
@@ -23,7 +23,7 @@
 
           <li class="nav-item">
             <div class="dropdown">Đến ngày
-              <input name="search" autocomplete="off" (change)="findByDay(start,end, searchText)" [(ngModel)]="end" class="dropdown form-control" type="date" style="width: 185px; height: 50px;" >
+              <input name="search" id="txtDate" autocomplete="off" (change)="findByDay(start,end, searchText)" [(ngModel)]="end" class="dropdown form-control" type="date" style="width: 185px; height: 50px;" >
             </div>
           </li>
 
@@ -61,9 +61,9 @@
                     <h4 class="event-title">{{sk.event_name}}</h4>
                     <p class="text">{{sk.describe_of_event}}</p>
                     <ul class="event-meta">
-                      <li>Start: {{sk.time_of_event}}</li>
+                      <li>Bắt đầu: {{sk.time_of_event}}</li>
                       <li>{{sk.faculty}}</li>
-                      <li>End: {{sk.end_day}} </li>
+                      <li>Kết thúc: {{sk.end_day}} </li>
                       <li>Địa điểm: {{sk.place}}</li>
                     </ul>
                   </div>

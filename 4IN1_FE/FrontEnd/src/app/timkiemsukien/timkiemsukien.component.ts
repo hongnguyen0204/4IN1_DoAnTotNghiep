@@ -33,7 +33,23 @@ export class TimkiemsukienComponent implements OnInit {
   ngOnInit(): void {
     this.reloadData();
     // @ts-ignore
+    var dtToday = this.start;
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+      { // @ts-ignore
+        month = '0' + month.toString();
+      }
+    if(day < 10)
+      { // @ts-ignore
+        day = '0' + day.toString();
+      }
+    var minDate= year + '-' + month + '-' + day;
+    $('#txtDate').attr('min', minDate);
   }
+
+
 
   // tslint:disable-next-line:typedef
   reloadData() {
