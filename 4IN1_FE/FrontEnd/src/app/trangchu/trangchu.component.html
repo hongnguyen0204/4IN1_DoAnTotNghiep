@@ -61,109 +61,24 @@
       </div> <!-- row -->
 
       <div class="row">
-        <div class="col-lg-4 col-sm-6">
+        <div class="col-lg-4 col-sm-6" *ngFor="let tt of tintuc">
           <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
             <div class="team-image">
-              <img src="assets/images/team-1.jpg" alt="Team">
+              <img src="{{tt.img}}" alt="Team">
             </div>
             <div class="team-content">
               <div class="team-social">
                 <ul class="social">
                   <li><a href="#"><i class="lni-information"></i></a></li>
-                  <li><a href="#"><i class="lni-chevron-down-circle"></i></a></li>
                 </ul>
               </div>
-              <h4 class="team-name"><a href="#">Tân Sinh Viên</a></h4>
-              <span class="sub-title">14/08/2021</span>
-            </div>
-          </div> <!-- single team -->
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
-            <div class="team-image">
-              <img src="assets/images/team-2.jpg" alt="Team">
-            </div>
-            <div class="team-content">
-              <div class="team-social">
-                <ul class="social">
-                  <li><a href="#"><i class="lni-information"></i></a></li>
-                  <li><a href="#"><i class="lni-chevron-down-circle"></i></a></li>
-                </ul>
-              </div>
-              <h4 class="team-name"><a href="#">Bóng đá IT</a></h4>
-              <span class="sub-title">29/03/2021</span>
-            </div>
-          </div> <!-- single team -->
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="1s">
-            <div class="team-image">
-              <img src="assets/images/team-3.jpg" alt="Team">
-            </div>
-            <div class="team-content">
-              <div class="team-social">
-                <ul class="social">
-                  <li><a href="#"><i class="lni-information"></i></a></li>
-                  <li><a href="#"><i class="lni-chevron-down-circle"></i></a></li>
-                </ul>
-              </div>
-              <h4 class="team-name"><a href="#">Serminar-Rikkei</a></h4>
-              <span class="sub-title">25/5/2021</span>
-            </div>
-          </div> <!-- single team -->
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
-            <div class="team-image">
-              <img src="assets/images/team-4.jpg" alt="Team">
-            </div>
-            <div class="team-content">
-              <div class="team-social">
-                <ul class="social">
-                  <li><a href="#"><i class="lni-information"></i></a></li>
-                  <li><a href="#"><i class="lni-chevron-down-circle"></i></a></li>
-                </ul>
-              </div>
-              <h4 class="team-name"><a href="#">...</a></h4>
-              <span class="sub-title">...</span>
-            </div>
-          </div> <!-- single team -->
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="1s">
-            <div class="team-image">
-              <img src="assets/images/team-5.jpg" alt="Team">
-            </div>
-            <div class="team-content">
-              <div class="team-social">
-                <ul class="social">
-                  <li><a href="#"><i class="lni-information"></i></a></li>
-                  <li><a href="#"><i class="lni-chevron-down-circle"></i></a></li>
-                </ul>
-              </div>
-              <h4 class="team-name"><a href="#">...</a></h4>
-              <span class="sub-title">...</span>
-            </div>
-          </div> <!-- single team -->
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="1.5s">
-            <div class="team-image">
-              <img src="assets/images/team-6.jpg" alt="Team">
-            </div>
-            <div class="team-content">
-              <div class="team-social">
-                <ul class="social">
-                  <li><a href="#"><i class="lni-information"></i></a></li>
-                  <li><a href="#"><i class="lni-chevron-down-circle"></i></a></li>
-                </ul>
-              </div>
-              <h4 class="team-name"><a href="#">...</a></h4>
-              <span class="sub-title">...</span>
+              <h4 class="team-name"><a href="#">{{tt.title}}</a></h4>
             </div>
           </div> <!-- single team -->
         </div>
       </div> <!-- row -->
+
+
     </div> <!-- container -->
     <div class="container">
       <div class="row">
