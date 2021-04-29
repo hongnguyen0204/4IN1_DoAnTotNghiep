@@ -17,7 +17,7 @@ export class TimkiemsukienComponent implements OnInit {
   // @ts-ignore
   sukiens: Sukien[];
   // @ts-ignore
-  searchText;
+  searchText = "";
   // @ts-ignore
   khoa;
   // @ts-ignore
@@ -40,7 +40,6 @@ export class TimkiemsukienComponent implements OnInit {
   validatengay(){
     // @ts-ignore
     this.start =this.datepipe.transform(this.start, 'yyyy-MM-dd');
-    console.log(this.start)
     // @ts-ignore
     $('#txtTo').attr('min', this.start);
   }
@@ -64,9 +63,15 @@ export class TimkiemsukienComponent implements OnInit {
 
   // @ts-ignore
   timkiem(searchtext){
-    this.sukienService.findByText(searchtext).subscribe(data =>{
-      this.sukiens = data;
-    });
+    if(searchtext==""){
+      this.sukienService.findAllsk().subscribe(data => {
+        this.sukiens = data;
+      });
+    }else{
+      this.sukienService.findByText(searchtext).subscribe(data => {
+        this.sukiens = data;
+      });
+    }
     console.log(this.sukiens);
   }
 
