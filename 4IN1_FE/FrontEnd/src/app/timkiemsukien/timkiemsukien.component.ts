@@ -4,6 +4,7 @@ import {Sukien} from '../Model/sukien';
 import {SukienService} from '../Service/sukien.service';
 import {HttpClientModule} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {consolidateMessages} from '@angular/localize/src/tools/src/extract/translation_files/utils';
 
 @Component({
   selector: 'app-timkiemsukien',
@@ -22,7 +23,7 @@ export class TimkiemsukienComponent implements OnInit {
   // @ts-ignore
   diadiem;
   // @ts-ignore
-  start;
+  start:Date;
   // @ts-ignore
   end:Date = new Date();
   // @ts-ignore
@@ -33,22 +34,16 @@ export class TimkiemsukienComponent implements OnInit {
   ngOnInit(): void {
     this.reloadData();
     // @ts-ignore
-    var dtToday = this.start;
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
-    if(month < 10)
-      { // @ts-ignore
-        month = '0' + month.toString();
-      }
-    if(day < 10)
-      { // @ts-ignore
-        day = '0' + day.toString();
-      }
-    var minDate= year + '-' + month + '-' + day;
     $('#txtDate').attr('min', minDate);
   }
 
+  validatengay(){
+    // @ts-ignore
+    this.start =this.datepipe.transform(this.start, 'yyyy-MM-dd');
+    console.log(this.start)
+    // @ts-ignore
+    $('#txtTo').attr('min', this.start);
+  }
 
 
   // tslint:disable-next-line:typedef
@@ -65,9 +60,6 @@ export class TimkiemsukienComponent implements OnInit {
       this.sukienService.findByDay(start, end, searchtext).subscribe(data => {
         this.sukiens = data;
       });
-      console.log(start);
-      console.log(end);
-      console.log(this.sukiens);
   }
 
   // @ts-ignore
