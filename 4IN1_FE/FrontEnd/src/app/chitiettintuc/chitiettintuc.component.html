@@ -1,0 +1,32 @@
+<div class="textbox" >
+  <title>{{tintuc.title}}</title>
+  <div id="left">
+    <div class="main-desc">
+      <div class="main-title">
+        <span>{{tintuc.title}}</span>
+      </div>
+      <div>
+        <div class="" [innerHtml]='tintuc.content'>
+        </div>
+      </div>
+    </div>
+    <div id="right">
+      <div class="right-header-news">
+        <span>BÀI VIẾT KHÁC</span>
+      </div>
+      <ul *ngFor="let tt of tintucs,let i=index">
+        <div  *ngIf="i % 7 && i<8" >
+          <li>
+            <img (click)="detailTT(tt.id)" (click)="refresh()"
+            [src]="tt.img">
+            <a (click)="detailTT(tt.id)" (click)="refresh()" >
+              {{tt.title}}
+            </a>
+          </li>
+        </div>
+      </ul>
+    </div>
+
+  </div>
+
+</div>

@@ -1,3 +1,4 @@
+<title>Sự kiện</title>
 <div class="container" style="position: relative;margin-top: 130px">
   <div class="row justify-content-center">
     <div class="col-lg-8">
@@ -14,248 +15,131 @@
       <div class="event-tab mt-60">
         <ul class="nav justify-content-between align-items-center" id="myTab" role="tablist">
           <li class="nav-item">
-            <a class="active" id="day-1-tab" data-toggle="tab" href="#day-1" role="tab" aria-controls="day-1" aria-selected="true">
-              <h4 class="nav-title">25</h4>
-              <span>THÁNG 2</span>
+            <a class="active" id="day-1-tab" (click)="dataMonth(month)" data-toggle="tab" href="#day-1" role="tab" aria-controls="day-1"
+               aria-selected="true">
+              <h4 class="nav-title">Tháng {{month}}</h4>
+              <span> </span>
             </a>
           </li>
           <li class="nav-item">
-            <a id="day-2-tab" data-toggle="tab" href="#day-2" role="tab" aria-controls="day-2" aria-selected="false">
-              <h4 class="nav-title">26</h4>
-              <span>THÁNG 2</span>
+            <a id="day-2-tab" data-toggle="tab" (click)="dataMonth(month + 1)" href="#day-2" role="tab" aria-controls="day-2"
+               aria-selected="false">
+              <h4 class="nav-title">Tháng {{month + 1}}</h4>
+              <span> </span>
             </a>
           </li>
           <li class="nav-item">
-            <a id="day-3-tab" data-toggle="tab" href="#day-3" role="tab" aria-controls="day-3" aria-selected="false">
-              <h4 class="nav-title">27</h4>
-              <span>THÁNG 2</span>
+            <a id="day-3-tab" data-toggle="tab" (click)="dataMonth(month + 2)" href="#day-3" role="tab" aria-controls="day-3"
+               aria-selected="false">
+              <h4 class="nav-title">Tháng {{month + 2}}</h4>
+              <span> </span>
             </a>
           </li>
           <li class="nav-item">
-            <a id="day-4-tab" data-toggle="tab" href="#day-4" role="tab" aria-controls="day-4" aria-selected="false">
-              <h4 class="nav-title">28</h4>
-              <span>THÁNG 2</span>
+            <a id="day-4-tab" data-toggle="tab" (click)="dataMonth(month + 3)" href="#day-4" role="tab" aria-controls="day-4"
+               aria-selected="false">
+              <h4 class="nav-title">Tháng {{month + 3}}</h4>
+              <span> </span>
             </a>
           </li>
         </ul>
+
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="day-1" role="tabpanel" aria-labelledby="day-1-tab">
             <div class="event-content pt-40">
-              <div class="single-event d-md-flex mt-30">
-                <div class="event-image">
-                  <img src="assets/images/sukien1.jpg" alt="Event">
+              <div *ngFor="let sk of sukiens | paginate: {itemsPerPage:5, currentPage:p};">
+                <div (click)="detailSK(sk.id)" class="single-event d-md-flex mt-30">
+                  <div class="event-image">
+                    <img (click)="detailSK(sk.id)" [src]="sk.img" alt="Event">
+                  </div>
+                  <div class="event-content media-body">
+                    <h4 class="event-title">{{sk.event_name}}</h4>
+                    <p class="text">{{sk.describe_of_event}}</p>
+                    <ul class="event-meta">
+                      <li>Bắt đầu: {{sk.time_of_event}}</li>
+                      <li>Kết thúc: {{sk.end_day}} </li>
+                      <li>Địa điểm: {{sk.place}}</li>
+                    </ul>
+                  </div>
                 </div>
-                <div class="event-content media-body">
-                  <h4 class="event-title">Chào đón tân sinh viên K23</h4>
-                  <p class="text">Lễ khai giảng "Khát Vọng Duy Tân: Top 300 Đại Học Châu Á": 7h00 Thứ Năm ngày 14/09/2017 tại Nhà hát Trương Vương.</p>
-                  <ul class="event-meta">
-                    <li>Bắt đầu: 7.00 AM</li>
-                    <li>Kết thúc: 10.00 AM</li>
-                    <li>Địa điểm: Hội trường 613, 03 Quang Trung</li>
-                    <li style="font-style: italic; color: red;">Sắp diễn ra</li>
-                  </ul>
-                </div>
-              </div> <!-- single event -->
-
-              <div class="single-event d-md-flex mt-30">
-                <div class="event-image">
-                  <img src="assets/images/sukien1.jpg" alt="Event">
-                </div>
-                <div class="event-content media-body">
-                  <h4 class="event-title">Chào đón tân sinh viên K23</h4>
-                  <p class="text">Lễ khai giảng "Khát Vọng Duy Tân: Top 300 Đại Học Châu Á": 7h00 Thứ Năm ngày 14/09/2017 tại Nhà hát Trương Vương.</p>
-                  <ul class="event-meta">
-                    <li>Bắt đầu: 7.00 AM</li>
-                    <li>Kết thúc: 10.00 AM</li>
-                    <li>Địa điểm: Hội trường 613, 03 Quang Trung</li>
-                    <li style="font-style: italic; color: red;">Sắp diễn ra</li>
-                  </ul>
-                </div>
-              </div> <!-- single event -->
-
-              <div class="single-event d-md-flex mt-30">
-                <div class="event-image">
-                  <img src="assets/images/sukien1.jpg" alt="Event">
-                </div>
-                <div class="event-content media-body">
-                  <h4 class="event-title">Chào đón tân sinh viên K23</h4>
-                  <p class="text">Lễ khai giảng "Khát Vọng Duy Tân: Top 300 Đại Học Châu Á": 7h00 Thứ Năm ngày 14/09/2017 tại Nhà hát Trương Vương.</p>
-                  <ul class="event-meta">
-                    <li>Bắt đầu: 7.00 AM</li>
-                    <li>Kết thúc: 10.00 AM</li>
-                    <li>Địa điểm: Hội trường 613, 03 Quang Trung</li>
-                    <li style="font-style: italic; color: red;">Sắp diễn ra</li>
-                  </ul>
-                </div>
-              </div> <!-- single event -->
+              </div><!-- single event -->
+              <pagination-controls style="text-align: center" previousLabel="Trước"
+                                   nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
             </div> <!-- event content -->
           </div>
           <div class="tab-pane fade" id="day-2" role="tabpanel" aria-labelledby="day-2-tab">
             <div class="event-content pt-40">
-              <div class="single-event d-md-flex mt-30">
-                <div class="event-image">
-                  <img src="assets/images/sukien1.jpg" alt="Event">
-                </div>
-                <div class="event-content media-body">
-                  <h4 class="event-title">Chào đón tân sinh viên K23</h4>
-                  <p class="text">Lễ khai giảng "Khát Vọng Duy Tân: Top 300 Đại Học Châu Á": 7h00 Thứ Năm ngày 14/09/2017 tại Nhà hát Trương Vương.</p>
-                  <ul class="event-meta">
-                    <li>Bắt đầu: 7.00 AM</li>
-                    <li>Kết thúc: 10.00 AM</li>
-                    <br>
-                    <li>Địa điểm: Hội trường 613, 03 Quang Trung</li>
-                    <li style="font-style: italic; color: red;">Sắp diễn ra</li>
-                  </ul>
-                </div>
-              </div> <!-- single event -->
-
-              <div class="single-event d-md-flex mt-30">
-                <div class="event-image">
-                  <img src="assets/images/sukien1.jpg" alt="Event">
-                </div>
-                <div class="event-content media-body">
-                  <h4 class="event-title">Chào đón tân sinh viên K23</h4>
-                  <p class="text">Lễ khai giảng "Khát Vọng Duy Tân: Top 300 Đại Học Châu Á": 7h00 Thứ Năm ngày 14/09/2017 tại Nhà hát Trương Vương.</p>
-                  <ul class="event-meta">
-                    <li>Bắt đầu: 7.00 AM</li>
-                    <li>Kết thúc: 10.00 AM</li>
-                    <br>
-                    <li>Địa điểm: Hội trường 613, 03 Quang Trung</li>
-                    <li style="font-style: italic; color: red;">Sắp diễn ra</li>
-                  </ul>
+              <div *ngFor="let sk of sukiens | paginate: {itemsPerPage:5, currentPage:p};">
+                <div (click)="detailSK(sk.id)" class="single-event d-md-flex mt-30">
+                  <div class="event-image">
+                    <img (click)="detailSK(sk.id)" [src]="sk.img" alt="Event">
+                  </div>
+                  <div class="event-content media-body">
+                    <h4 class="event-title">{{sk.event_name}}</h4>
+                    <p class="text">{{sk.describe_of_event}}</p>
+                    <ul class="event-meta">
+                      <li>Bắt đầu: {{sk.time_of_event}}</li>
+                      <li>Kết thúc: {{sk.end_day}} </li>
+                      <li>Địa điểm: {{sk.place}}</li>
+                    </ul>
+                  </div>
                 </div>
               </div> <!-- single event -->
-
-              <div class="single-event d-md-flex mt-30">
-                <div class="event-image">
-                  <img src="assets/images/sukien1.jpg" alt="Event">
-                </div>
-                <div class="event-content media-body">
-                  <h4 class="event-title">Chào đón tân sinh viên K23</h4>
-                  <p class="text">Lễ khai giảng "Khát Vọng Duy Tân: Top 300 Đại Học Châu Á": 7h00 Thứ Năm ngày 14/09/2017 tại Nhà hát Trương Vương.</p>
-                  <ul class="event-meta">
-                    <li>Bắt đầu: 7.00 AM</li>
-                    <li>Kết thúc: 10.00 AM</li>
-                    <br>
-                    <li>Địa điểm: Hội trường 613, 03 Quang Trung</li>
-                    <li style="font-style: italic; color: red;">Sắp diễn ra</li>
-                  </ul>
-                </div>
-              </div> <!-- single event -->
+              <pagination-controls style="text-align: center" previousLabel="Trước"
+                                   nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
             </div> <!-- event content -->
           </div>
           <div class="tab-pane fade" id="day-3" role="tabpanel" aria-labelledby="day-3-tab">
             <div class="event-content pt-40">
-              <div class="single-event d-md-flex mt-30">
-                <div class="event-image">
-                  <img src="assets/images/sukien1.jpg" alt="Event">
-                </div>
-                <div class="event-content media-body">
-                  <h4 class="event-title">Chào đón tân sinh viên K23</h4>
-                  <p class="text">Lễ khai giảng "Khát Vọng Duy Tân: Top 300 Đại Học Châu Á": 7h00 Thứ Năm ngày 14/09/2017 tại Nhà hát Trương Vương.</p>
-                  <ul class="event-meta">
-                    <li>Bắt đầu: 7.00 AM</li>
-                    <li>Kết thúc: 10.00 AM</li>
-                    <br>
-                    <li>Địa điểm: Hội trường 613, 03 Quang Trung</li>
-                    <li style="font-style: italic; color: red;">Sắp diễn ra</li>
-                  </ul>
+              <div *ngFor="let sk of sukiens | paginate: {itemsPerPage:5, currentPage:p};">
+                <div (click)="detailSK(sk.id)" class="single-event d-md-flex mt-30">
+                  <div class="event-image">
+                    <img (click)="detailSK(sk.id)" [src]="sk.img" alt="Event">
+                  </div>
+                  <div class="event-content media-body">
+                    <h4 class="event-title">{{sk.event_name}}</h4>
+                    <p class="text">{{sk.describe_of_event}}</p>
+                    <ul class="event-meta">
+                      <li>Bắt đầu: {{sk.time_of_event}}</li>
+                      <li>Kết thúc: {{sk.end_day}} </li>
+                      <li>Địa điểm: {{sk.place}}</li>
+                    </ul>
+                  </div>
                 </div>
               </div> <!-- single event -->
+              <pagination-controls style="text-align: center" previousLabel="Trước"
+                                   nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
 
-              <div class="single-event d-md-flex mt-30">
-                <div class="event-image">
-                  <img src="assets/images/sukien1.jpg" alt="Event">
-                </div>
-                <div class="event-content media-body">
-                  <h4 class="event-title">Chào đón tân sinh viên K23</h4>
-                  <p class="text">Lễ khai giảng "Khát Vọng Duy Tân: Top 300 Đại Học Châu Á": 7h00 Thứ Năm ngày 14/09/2017 tại Nhà hát Trương Vương.</p>
-                  <ul class="event-meta">
-                    <li>Bắt đầu: 7.00 AM</li>
-                    <li>Kết thúc: 10.00 AM</li>
-                    <br>
-                    <li>Địa điểm: Hội trường 613, 03 Quang Trung</li>
-                    <li style="font-style: italic; color: red;">Sắp diễn ra</li>
-                  </ul>
-                </div>
-              </div> <!-- single event -->
-
-              <div class="single-event d-md-flex mt-30">
-                <div class="event-image">
-                  <img src="assets/images/sukien1.jpg" alt="Event">
-                </div>
-                <div class="event-content media-body">
-                  <h4 class="event-title">Chào đón tân sinh viên K23</h4>
-                  <p class="text">Lễ khai giảng "Khát Vọng Duy Tân: Top 300 Đại Học Châu Á": 7h00 Thứ Năm ngày 14/09/2017 tại Nhà hát Trương Vương.</p>
-                  <ul class="event-meta">
-                    <li>Bắt đầu: 7.00 AM</li>
-                    <li>Kết thúc: 10.00 AM</li>
-                    <br>
-                    <li>Địa điểm: Hội trường 613, 03 Quang Trung</li>
-                    <li style="font-style: italic; color: red;">Sắp diễn ra</li>
-                  </ul>
-                </div>
-              </div> <!-- single event -->
             </div> <!-- event content -->
           </div>
           <div class="tab-pane fade" id="day-4" role="tabpanel" aria-labelledby="day-4-tab">
             <div class="event-content pt-40">
-              <div class="single-event d-md-flex mt-30">
-                <div class="event-image">
-                  <img src="assets/images/sukien1.jpg" alt="Event">
+              <div *ngFor="let sk of sukiens | paginate: {itemsPerPage:5, currentPage:p};">
+                <div (click)="detailSK(sk.id)" class="single-event d-md-flex mt-30">
+                  <div class="event-image">
+                    <img (click)="detailSK(sk.id)" [src]="sk.img" alt="Event">
+                  </div>
+                  <div class="event-content media-body">
+                    <h4 class="event-title">{{sk.event_name}}</h4>
+                    <p class="text">{{sk.describe_of_event}}</p>
+                    <ul class="event-meta">
+                      <li>Bắt đầu: {{sk.time_of_event}}</li>
+                      <li>Kết thúc: {{sk.end_day}} </li>
+                      <li>Địa điểm: {{sk.place}}</li>
+                    </ul>
+                  </div>
                 </div>
-                <div class="event-content media-body">
-                  <h4 class="event-title">Chào đón tân sinh viên K23</h4>
-                  <p class="text">Lễ khai giảng "Khát Vọng Duy Tân: Top 300 Đại Học Châu Á": 7h00 Thứ Năm ngày 14/09/2017 tại Nhà hát Trương Vương.</p>
-                  <ul class="event-meta">
-                    <li>Bắt đầu: 7.00 AM</li>
-                    <li>Kết thúc: 10.00 AM</li>
-                    <br>
-                    <li>Địa điểm: Hội trường 613, 03 Quang Trung</li>
-                    <li style="font-style: italic; color: red;">Sắp diễn ra</li>
-                  </ul>
-                </div>
-              </div> <!-- single event -->
-
-              <div class="single-event d-md-flex mt-30">
-                <div class="event-image">
-                  <img src="assets/images/sukien1.jpg" alt="Event">
-                </div>
-                <div class="event-content media-body">
-                  <h4 class="event-title">Chào đón tân sinh viên K23</h4>
-                  <p class="text">Lễ khai giảng "Khát Vọng Duy Tân: Top 300 Đại Học Châu Á": 7h00 Thứ Năm ngày 14/09/2017 tại Nhà hát Trương Vương.</p>
-                  <ul class="event-meta">
-                    <li>Bắt đầu: 7.00 AM</li>
-                    <li>Kết thúc: 10.00 AM</li>
-                    <br>
-                    <li>Địa điểm: Hội trường 613, 03 Quang Trung</li>
-                    <li style="font-style: italic; color: red;">Sắp diễn ra</li>
-                  </ul>
-                </div>
-              </div> <!-- single event -->
-
-              <div class="single-event d-md-flex mt-30">
-                <div class="event-image">
-                  <img src="assets/images/sukien1.jpg" alt="Event">
-                </div>
-                <div class="event-content media-body">
-                  <h4 class="event-title">Chào đón tân sinh viên K23</h4>
-                  <p class="text">Lễ khai giảng "Khát Vọng Duy Tân: Top 300 Đại Học Châu Á": 7h00 Thứ Năm ngày 14/09/2017 tại Nhà hát Trương Vương.</p>
-                  <ul class="event-meta">
-                    <li>Bắt đầu: 7.00 AM</li>
-                    <li>Kết thúc: 10.00 AM</li>
-                    <li>Địa điểm: Hội trường 613, 03 Quang Trung</li>
-                    <li style="font-style: italic; color: red;">Sắp diễn ra</li>
-                  </ul>
-                </div>
-              </div> <!-- single event -->
-            </div> <!-- event content -->
-          </div>
+              </div>
+            </div> <!-- single event -->
+            <pagination-controls style="text-align: center" previousLabel="Trước"
+                                 nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
+          </div> <!-- event content -->
         </div>
-      </div> <!-- event tab -->
+      </div>
     </div>
-  </div> <!-- row -->
-</div> <!-- container -->
+  </div> <!-- event tab -->
+</div> <!-- row -->
+<!-- container -->
 <div style="height: 50px;">
 </div>
 

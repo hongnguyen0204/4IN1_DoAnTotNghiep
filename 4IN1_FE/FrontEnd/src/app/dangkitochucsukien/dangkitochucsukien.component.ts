@@ -5,15 +5,22 @@ import {SukienService} from '../Service/sukien.service';
 import {Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import {TokenStorageService} from '../_services/token-storage.service';
+import {AccountService} from '../Service/account.service';
+import {Thongtincanhan} from '../Model/thongtincanhan';
+import {ToastrService} from 'ngx-toastr';
+import {MatDialog} from '@angular/material/dialog';
+import {ConfirmDialogComponent} from '../-helpers/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-dangkitochucsukien',
   templateUrl: './dangkitochucsukien.component.html',
   styleUrls: ['./dangkitochucsukien.component.scss'],
-  providers: [SukienService]
+  providers: [SukienService,AccountService]
 })
 export class DangkitochucsukienComponent implements OnInit {
-
+// @ts-ignore
+  currentUser: any;
   selectedImage: any = null;
   selectedFile: any = null;
   // @ts-ignore
@@ -24,14 +31,32 @@ export class DangkitochucsukienComponent implements OnInit {
   sukien : Sukien;
   // @ts-ignore
   imageSrc: string;
+  // @ts-ignore
+  users:Thongtincanhan;
+  // @ts-ignore
+  check_Date=new Date();
+  // @ts-ignore
+  localCompleteDate: string;
 
-
-  constructor(private sukienService: SukienService, private router: Router,
-              @Inject(AngularFireStorage) private storage: AngularFireStorage
-               ) { }
+  constructor(private sukienService: SukienService,
+              private router: Router,
+              @Inject(AngularFireStorage) private storage: AngularFireStorage,
+              private token: TokenStorageService,
+              private accountService:AccountService,
+              private toastr: ToastrService,
+              private dialog: MatDialog) {
+    this.check_Date.setSeconds(0);
+    this.check_Date.setMilliseconds(0);
+    this.localCompleteDate = this.check_Date.toISOString();
+    this.localCompleteDate = this.localCompleteDate.substring(0, this.localCompleteDate.length - 1);
+  }
 
   ngOnInit(): void {
     this.sukien = new Sukien();
+    this.currentUser = this.token.getUser();
+    this.accountService.findUser(this.currentUser.username).subscribe(data=>{
+      this.users=data;
+    })
   }
 
   save(event:any) {
@@ -59,15 +84,36 @@ export class DangkitochucsukienComponent implements OnInit {
   }
 
   add(){
-    this.sukien.plan_file=this.id;
-    this.sukien.img=this.idIMG;
-    if(confirm("Bạn chắc chắn muốn đăng kí hay không?")){
-      this.sukienService.create(this.sukien).subscribe(data=>{
-        this.sukien = data;
-        alert("Đăng kí thành công");
-        this.router.navigate(['/dangkitochuc']);
-      });
-    }
+    if(this.selectedFile==null || this.selectedImage==null){
+      this.toastr.warning("Bạn phải chọn ảnh và file kế hoạch!");
+    } else{
+    this.sukienService.kiemTra(this.sukien).subscribe(data=>{
+      if(data!=0){
+        this.toastr.error("Sự kiện của bạn trùng lịch với sự kiện khác sắp diễn ra!");
+      } else {
+        this.sukien.plan_file=this.id;
+        this.sukien.img=this.idIMG;
+        this.sukien.owner_event_id=this.users.id;
+        this.sukien.organizer=this.users.fullname;
+        const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+          data: {
+            title: 'Đăng kí',
+            message: 'Bạn có chắc chắn muốn đăng kí hay không?'
+          }
+        });
+        confirmDialog.afterClosed().subscribe(result => {
+          if (result === true) {
+            this.sukienService.create(this.sukien).subscribe(data=>{
+              this.sukien = data;
+              this.toastr.success("Đăng kí thành công");
+              this.sukien = new Sukien();
+              this.router.navigate(['/dangkitochuc']);
+            });
+          }
+        });
+      }
+    });
+  }
   }
 
   readURL(event: any): void {
@@ -82,8 +128,6 @@ export class DangkitochucsukienComponent implements OnInit {
       reader.readAsDataURL(this.selectedImage);
     }
   }
-
-
   //Xem bạn có muốn tuyển cộng tác viên hay không
     kiemtra(){
     if ($('#radio_1').prop('checked')){
@@ -93,7 +137,5 @@ export class DangkitochucsukienComponent implements OnInit {
       $('#congtac').css('display', 'none');
     }
   }
-
-
 }
 

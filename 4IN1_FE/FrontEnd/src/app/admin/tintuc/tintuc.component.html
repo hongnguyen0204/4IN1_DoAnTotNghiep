@@ -1,24 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Tin tức
   </title>
-  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <base href="/">
   <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 </head>
-
 <body class="">
 <div class="wrapper ">
   <div class="sidebar" data-color="azure" data-background-color="white" data-image="">
-
     <div class="logo"><a href="./assets/img/apple-icon.png" class="simple-text logo-normal">
       4 in 1
     </a>
@@ -41,6 +32,12 @@
           <a class="nav-link" href="admin/tintuc">
             <i class="material-icons">feed</i>
             <p>Tin tức</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="admin/quanlytaikhoan">
+            <i class="material-icons">manage_accounts</i>
+            <p>Quản lý tài khoản</p>
           </a>
         </li>
       </ul>
@@ -100,7 +97,7 @@
                 <a class="dropdown-item" href="#">Profile</a>
                 <a class="dropdown-item" href="#">Settings</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Log out</a>
+                <a class="dropdown-item" (click)="logout()">Log out</a>
               </div>
             </li>
           </ul>
@@ -117,19 +114,20 @@
                 <h4 class="card-title ">Tin tức</h4>
                 <p class="card-category"></p>
               </div>
-              <div class="card-body">
+              <div class="card-body" >
                 <div>
-                  <a style="margin: 20px auto;" href="admin/themmoitintuc" class="btn btn-primary">Thêm mới</a>
+                  <a style="margin: 20px auto;" href="admin/themmoitintuc" class="btn-themmoi">Thêm mới</a>
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive" style="text-align: center">
                   <table datatable [dtOptions]="dtOptions" style="table-layout: fixed;" class="row-border hover" style="width:100%">
                     <thead>
-                    <tr >
-                      <th>STT</th>
-                      <th>Tên Tin Tức</th>
-                      <th>Mô Tả Tin Tức</th>
+                    <tr>
+
+                      <th style="width: 10%">STT</th>
+                      <th style="width: 20%">Tên Tin Tức</th>
+                      <th style="width: 50%">Mô Tả Tin Tức</th>
                       <th>Ngày Đăng Tin</th>
-                      <th>Thao Tác</th>
+                      <th style="width: 20%">Thao Tác</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -137,8 +135,9 @@
                       <td>{{i+1}}</td>
                       <td>{{quanlytintuc.title}}</td>
                       <td>{{quanlytintuc.describe_of_news}}</td>
-                      <td><img [src]="quanlytintuc.img"></td>
-                      <td> <a class="btn btn-success" (click)="updateTinTuc(quanlytintuc.id)">Sửa</a>
+                      <td >{{quanlytintuc.post_day | date:'dd/MM/yyyy' }}</td>
+                      <td>
+                        <a class="btn btn-success" style="margin-right: 20px" (click)="updateTinTuc(quanlytintuc.id)">Sửa</a>
                         <a class="btn btn-danger" (click)="delete(quanlytintuc.id)" >Xóa</a>
                       </td>
                     </tr>
@@ -187,9 +186,8 @@
   </div>
 </div>
 </body>
-</html>
 <style>
-  td {
+  td{
     word-wrap:break-word;
   }
 </style>

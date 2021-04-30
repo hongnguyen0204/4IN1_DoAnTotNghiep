@@ -1,45 +1,72 @@
 <head>
   <title>Đăng kí tổ chức sự kiện</title>
 </head>
-<div class="testbox" style="position: relative;margin-top: 130px">
-  <form action="/">
+<div #appendTo class="testbox" *ngIf="currentUser; else loggedOut" style="position: relative;margin-top: 130px">
+  <form name="form"
+        (ngSubmit)="f.form.valid && add()"
+        #f="ngForm"
+        novalidate>
     <div class="banner">
       <h1 style="color: black;">Đăng kí tổ chức sự kiện</h1>
     </div>
     <div class="item">
       <p>Tên sự kiện<span class="required">*</span></p>
-      <input type="text" name="event_name" [(ngModel)]="sukien.event_name" placeholder="Tên sự kiện" required/>
+      <input type="text" name="event_name" [(ngModel)]="sukien.event_name"
+             required
+             minlength="10"
+             maxlength="100"
+             #event_name="ngModel"/>
+      <div class="alert-danger" *ngIf="f.submitted && event_name.invalid">
+        <div *ngIf="event_name.errors.required">Không được để trống</div>
+        <div *ngIf="event_name.errors.minlength">
+          Tên sự kiện phải nhiều hơn 10 kí tự
+        </div>
+        <div *ngIf="event_name.errors.maxlength">
+          Tên sự kiện không được quá 100 kí tự
+        </div>
+      </div>
     </div>
     <div class="contact-item">
       <div class="item">
         <p>Số điện thoại<span class="required">*</span></p>
-        <input type="text" name="phone"  placeholder="Số điện thoại" required/>
+        <input style="width: 100%" type="text" name="phone" [(ngModel)]="users.phone_number"  disabled/>
       </div>
       <div class="item">
         <p>Email<span class="required">*</span></p>
-        <input type="text" name="email" placeholder="Email" required/>
+        <input type="text" name="email" [(ngModel)]="users.email"  disabled/>
       </div>
     </div>
     <div class="position-item">
       <div class="item">
         <p>Địa điểm tổ chức<span class="required">*</span></p>
-        <select name="place" [(ngModel)]="sukien.place" required>
-          <option value="0" selected>Chọn địa điểm</option>
+        <select name="place" [(ngModel)]="sukien.place" required #place="ngModel">
           <option value="P-603 Quang Trung">P-603 Quang Trung</option>
           <option value="Hòa Khách Nam">Hòa Khách Nam</option>
           <option value="Phan Thanh">Phan Thanh</option>
         </select>
+        <div
+          class="alert-danger"
+          role="alert"
+          *ngIf="f.submitted && place.invalid"
+        >
+          Cần chọn địa điểm!
+        </div>
       </div>
       <div class="item">
-        <p>Ngày tổ chức<span class="required">*</span></p>
-        <input [(ngModel)]="sukien.time_of_event" type="datetime-local" name="date_start" required/>
+        <p>Ngày tổ chức <span class="required">*</span></p>
+        <input [(ngModel)]="sukien.time_of_event" [min]="localCompleteDate" type="datetime-local" name="date_start"
+               required
+               #date_start="ngModel"/>
+        <div class="alert-danger" *ngIf="f.submitted && date_start.invalid">
+          <div *ngIf="date_start.errors.required">Không được để trống</div>
+        </div>
       </div>
     </div>
     <div class="position-item">
       <div class="item">
         <p>Khoa<span class="required">*</span></p>
         <select name="khoa" [(ngModel)]="sukien.faculty" required>
-          <option value="0" selected>Chọn Khoa</option>
+          <option value="Tất cả" selected>Tất cả</option>
           <option value="Công nghệ thông tin">Công nghệ thông tin</option>
           <option value="Du lịch">Du lịch</option>
           <option value="Kiến trúc">Kiến trúc</option>
@@ -50,13 +77,28 @@
       </div>
       <div class="item">
         <p>Số người tham gia (dự kiến)<span class="required">*</span></p>
-        <input type="number" name="name" placeholder="Số người tham gia" required/>
+        <input type="number" min="0" [(ngModel)]="sukien.number_of_peoples"  name="name" placeholder="Số người tham gia" required/>
       </div>
     </div>
 
     <div class="item">
       <p>Mô tả</p>
-      <textarea  name="describle" [(ngModel)]="sukien.describe_of_event" id="instructions" rows="3"></textarea>
+      <textarea  name="describle" [(ngModel)]="sukien.describe_of_event" required
+                 minlength="50"
+                 maxlength="1000"
+                 #describle="ngModel"
+                 id="describle"
+                 rows="3"></textarea>
+      <div class="alert-danger" *ngIf="f.submitted && describle.invalid">
+        <div *ngIf="describle.errors.required">Không được để trống</div>
+        <div *ngIf="describle.errors.minlength">
+          Mô tả phải nhiều hơn 50 kí tự
+        </div>
+        <div *ngIf="describle.errors.maxlength">
+          Mô tả phải ít hơn 1000 kí tự
+        </div>
+      </div>
+    </div>
       <p>Nội dung</p>
       <ckeditor name="ckeditor" [(ngModel)]="sukien.content" id="txtckeditor"></ckeditor>
       <br>
@@ -66,6 +108,7 @@
         <img id="blah" [src]="imageSrc ||'http://placehold.it/180'" alt="your image"  />
       </div>
       <br>
+    <div class="item">
       <p>Bảng kế hoạch</p>
       <input type="file" (change)="save($event)" name="file">
     </div>
@@ -89,16 +132,38 @@
       </div>
       <div class="item">
         <p>Tiêu chí</p>
-        <textarea name="tieuchi" [(ngModel)]="sukien.criteria" id="tieuchi"rows="2"></textarea>
+        <textarea name="tieuchi" [(ngModel)]="sukien.criteria"
+                  minlength="50"
+                  maxlength="500"
+                  #tieuchi="ngModel"
+                  id="tieuchi" rows="2">
+
+        </textarea>
+        <div class="alert-danger" *ngIf="f.submitted && tieuchi.invalid">
+          <div *ngIf="tieuchi.errors.minlength">
+            Tiêu chí phải nhiều hơn 50 kí tự
+          </div>
+          <div *ngIf="tieuchi.errors.maxlength">
+            Tiêu chí phải ít hơn 500 kí tự
+          </div>
+        </div>
       </div>
     </div>
     <div class="btn-block">
-      <button (click)="add()">Submit</button>
+      <button mat-raised-button >Submit</button>
       <button class="btn-danger" >Hủy</button>
     </div>
 </form>
 </div>
-
+<ng-template #loggedOut>
+  <div style="position: relative;margin-top: 140px;">
+    <form style="margin:auto">
+      <div class="banner" >
+        <h1 style="color: black;">Bạn cần đăng nhập để thực hiện điều này!</h1>
+      </div>
+    </form>
+  </div>
+</ng-template>
 <style>
   .btn-block {
     margin-top: 10px;

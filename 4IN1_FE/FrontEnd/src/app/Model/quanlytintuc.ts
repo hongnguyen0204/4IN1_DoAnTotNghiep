@@ -1,17 +1,16 @@
 export class Quanlytintuc {
-
   // @ts-ignore
   id: number;
   // @ts-ignore
-  title: String;
+  title: string;
   // @ts-ignore
- describe_of_news: String;
+ describe_of_news: string;
   // @ts-ignore
- content: String;
+ content: string;
   // @ts-ignore
-  img: String;
+  img: string;
   // @ts-ignore
-  postday: Date;
+  post_day: Date;
   // @ts-ignore
-  id_admin:number
+  id_admin:number;
 }

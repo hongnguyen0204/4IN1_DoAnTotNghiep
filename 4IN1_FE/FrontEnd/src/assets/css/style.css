@@ -7,6 +7,8 @@
     Author URI: graygrids.com
     Version: 1.0
 
+
+
 -----------------------------------------------------------------------------------
 
     CSS INDEX
@@ -21,24 +23,31 @@
 /*===========================
     1. COMMON css
 ===========================*/
+
+
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800");
 body {
   font-family: "Poppins", sans-serif;
   font-weight: normal;
   font-style: normal;
   color: #777777;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+}
 
 * {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
-img {
-  max-width: 180px;
-max-height: 180px
+img{
+  max-width: 100%;
+}
+.event-tab .tab-content .event-content .single-event .event-image img{
+  max-height: 200px;
+  max-width: 200px;
 }
 
 a:focus,
@@ -137,7 +146,6 @@ p {
     -moz-box-shadow: 0px 5px 29px 0px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 5px 29px 0px rgba(0, 0, 0, 0.25); }
   .main-btn.main-btn-2 {
-
     background: -webkit-linear-gradient(left, #102baf 0%, #1664ff 50%, #102baf 100%);
     background: -o-linear-gradient(left, #102baf 0%, #1664ff 50%, #102baf 100%);
     background: linear-gradient(to right, #102baf 0%, #1664ff 50%, #102baf 100%);
@@ -455,7 +463,6 @@ p {
 
 /*===== Navbar =====*/
 .navbar-area {
-  padding: 10px 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -594,9 +601,7 @@ p {
 
 /*===== Header =====*/
 .header-content-area {
-  height: 640px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  height: 100%px;
   position: relative;
   overflow: hidden; }
   @media only screen and (min-width: 1400px) {
@@ -667,6 +672,8 @@ p {
 .header-content {
   margin-top: 60px; }
   .header-content .header-title {
+    width: 100%;
+    margin: auto;
     font-size: 75px;
     color: #fff;
     text-transform: uppercase; }
@@ -716,6 +723,7 @@ p {
       width: 48%;
       margin-top: 10px; } }
   .event-tab .nav .nav-item a {
+    height: 69px;
     text-align: center;
     width: 225px;
     border: 3px solid rgba(24, 99, 255, 0.1);
@@ -795,6 +803,7 @@ p {
       .event-tab .nav .nav-item a.active::before {
         opacity: 1; }
   .event-tab .tab-content .event-content .single-event {
+    cursor: pointer;
     padding: 40px;
     z-index: 5;
     position: relative;
@@ -829,6 +838,8 @@ p {
       .event-tab .tab-content .event-content .single-event .event-image img {
         width: 100%; } }
     .event-tab .tab-content .event-content .single-event .event-content {
+      word-wrap:break-word;
+      width: 200px;
       padding-left: 30px; }
       @media only screen and (min-width: 992px) and (max-width: 1200px) {
         .event-tab .tab-content .event-content .single-event .event-content {
@@ -850,10 +861,10 @@ p {
       .event-tab .tab-content .event-content .single-event .event-content .event-meta {
         padding-top: 10px; }
         .event-tab .tab-content .event-content .single-event .event-content .event-meta li {
-          display: inline-block;
+          display: block;
           padding-top: 10px;
           font-size: 16px;
-          color: #777777;
+          color: #0c83e2;
           margin-right: 20px; }
           @media only screen and (min-width: 992px) and (max-width: 1200px) {
             .event-tab .tab-content .event-content .single-event .event-content .event-meta li {
@@ -882,7 +893,8 @@ p {
   -moz-box-shadow: 0px 8px 16px 0px rgba(72, 127, 255, 0.1);
   box-shadow: 0px 8px 16px 0px rgba(72, 127, 255, 0.1); }
   .single-team .team-image img {
-    width: 100%; }
+    width: 400px;
+  height: 400px}
   .single-team .team-content {
     position: absolute;
     bottom: 0;
@@ -950,7 +962,7 @@ p {
               color: #1863ff; }
     .single-team .team-content .team-name a {
       color: #1b273d;
-      font-size: 24px;
+      font-size: 16px;
       font-weight: 600;
       -webkit-transition: all 0.3s ease-out 0s;
       -moz-transition: all 0.3s ease-out 0s;
@@ -1127,7 +1139,9 @@ p {
   position: relative;
   margin-top: 30px; }
   .single-form input,
-  .single-form textarea {
+  .single-form textarea,
+  .single-form select
+  {
     width: 100%;
     height: 65px;
     border: 1px solid #e6e6e6;

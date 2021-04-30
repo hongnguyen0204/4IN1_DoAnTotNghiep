@@ -4,6 +4,7 @@ import {QuanlytintucserviceService} from '../../Service/quanlytintucservice.serv
 import {AngularFireStorage} from '@angular/fire/storage';
 import {ActivatedRoute, Router} from '@angular/router';
 import {finalize} from 'rxjs/operators';
+import {TokenStorageService} from '../../_services/token-storage.service';
 
 @Component({
   selector: 'app-suatintuc',
@@ -22,9 +23,11 @@ export class SuatintucComponent implements OnInit {
   id: number;
 
   constructor(private quanLyTinTucService: QuanlytintucserviceService,
-              @Inject(AngularFireStorage) private storage: AngularFireStorage,
+              @Inject(AngularFireStorage)
+              private storage: AngularFireStorage,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private tokenStorageService: TokenStorageService) {
   }
 
   ngOnInit(): void {
@@ -50,7 +53,9 @@ export class SuatintucComponent implements OnInit {
               this.quanLyTinTucService.update(this.id, this.tintuc).subscribe(data => {
                 this.tintuc = data;
                 alert("Sửa thành công");
-                this.router.navigate(['/admin/tintuc']);
+                this.router.navigate(['/admin/tintuc']).then(() => {
+                  window.location.reload();
+                });
               });
             }
           });
@@ -60,14 +65,13 @@ export class SuatintucComponent implements OnInit {
         this.quanLyTinTucService.update(this.id, this.tintuc).subscribe(data => {
           this.tintuc = data;
           alert("Sửa thành công");
-          this.router.navigate(['/admin/tintuc']);
+          this.router.navigate(['/admin/tintuc']).then(() => {
+            window.location.reload();
+          });
         });
       }
     }
   }
-
-
-
   // tslint:disable-next-line:typedef
   readURL(event: any): void {
     // @ts-ignore
@@ -79,5 +83,9 @@ export class SuatintucComponent implements OnInit {
       reader.onload = e => this.imageSrc = reader.result;
       reader.readAsDataURL(this.selectedImage);
     }
+  }
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.reload();
   }
 }
