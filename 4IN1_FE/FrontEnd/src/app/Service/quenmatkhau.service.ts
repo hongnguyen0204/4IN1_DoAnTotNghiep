@@ -22,4 +22,8 @@ export class QuenmatkhauService {
     return this.http.post<Thongtincanhan>('http://localhost:8080/account/reset_password',data);
   }
 
+  kiemtratoken(token:string){
+    return this.http.get(`${'http://localhost:8080/account/forgot_password/'}${token}`);
+  }
+
 }
