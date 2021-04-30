@@ -10,6 +10,7 @@ import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
@@ -21,6 +22,9 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/account")
 public class AccController {
+    @Autowired
+    PasswordEncoder encoder;
+
     @Autowired
     private JavaMailSender mailSender;
 
@@ -62,15 +66,28 @@ public class AccController {
     }
 
     @PostMapping("/forgot_password/{email}")
-    public String processForgotPassword(@PathVariable String email) throws UnsupportedEncodingException, MessagingException {
+    public void processForgotPassword(@PathVariable String email) throws UnsupportedEncodingException, MessagingException {
         String token = RandomString.make(30);
         Account account = accRepository.findByEmail(email);
         account.setReset_password_token(token);
         accRepository.save(account);
         String link = "http://localhost:4200" + "/doimatkhau/"+ token;
         sendEmailtoresetpassword(email,link);
-        return "Gửi qua mail thành công";
+        int i = 600;
+        while (i>0){
+            try {
+                i--;
+                Thread.sleep(1000L);
+            }
+            catch (InterruptedException e) {
+            }
+        }
+        if(i==0){
+            account.setReset_password_token("");
+            accRepository.save(account);
+        }
     }
+
 
     @PostMapping("/guilienlac")
     public String processsendmessage(@RequestBody Message ms) throws UnsupportedEncodingException, MessagingException {
@@ -79,14 +96,26 @@ public class AccController {
     }
 
     @PostMapping("/xacthucemail/{email}")
-    public String xacthucemail(@PathVariable String email) throws UnsupportedEncodingException, MessagingException {
-        String token = RandomString.make(50); //Mã ngẫu nhiên do hệ thống tạo ra
-        Account account = accRepository.findByEmail(email); //Ta không viết service nên hàm ni viết @query kiểm tra xem trong csdl có email đó không ( email lấy từ request param trên url)
-        account.setVerification_email_token(token); // Sau khi tìm được rồi thì sẽ set token vô cho bảng user( nhớ thêm vô)
-        accRepository.save(account); //lưu lại token vừa rồi
+    public void xacthucemail(@PathVariable String email) throws UnsupportedEncodingException, MessagingException {
+        String token = RandomString.make(50);
+        Account account = accRepository.findByEmail(email);
+        account.setVerification_email_token(token);
+        accRepository.save(account);
         String link = "http://localhost:4200" + "/xacthucemail/"+ token; //tạo ra đường dẫn có chứa token
-        sendEmailtoverification(email,link); //hàm gửi mail
-        return "Gửi qua mail thành công";
+        sendEmailtoverification(email,link);
+        int i = 600;
+        while (i>0){
+            try {
+                i--;
+                Thread.sleep(1000L);
+            }
+            catch (InterruptedException e) {
+            }
+        }
+        if(i==0){
+            account.setVerification_email_token("");
+            accRepository.save(account);
+        }
     }
 
     public String sendEmailMessage(Message ms) throws UnsupportedEncodingException, MessagingException {
@@ -118,9 +147,9 @@ public class AccController {
             helper.setFrom("shonepro123@gmail.com", "Cập nhật lại mật khẩu");
             helper.setTo(recipientEmail);
 
-            String subject = "Đây là link reset password:";
+            String subject = "Reset password:";
 
-            String content = link;
+            String content ="Lưu ý: Đường dẫn chỉ có hiệu lực trong 10 phút. <br>"+ link;
 
             helper.setSubject(subject);
 
@@ -138,9 +167,9 @@ public class AccController {
         helper.setFrom("shonepro123@gmail.com", "Xác thực tài khoản");
         helper.setTo(recipientEmail);
 
-        String subject = "Link xác thực tài khoản";
+        String subject = "Xác thực tài khoản";
 
-        String content ="Link xác thực tài khoản  " + link;
+        String content ="Lưu ý: Đường dẫn chỉ có hiệu lực trong 10 phút. <br>" + link;
 
         helper.setSubject(subject);
 
@@ -158,7 +187,7 @@ public class AccController {
         if (account == null) {
             return "Không tìm thấy tài khoản";
         } else {
-            account.setPassword(acc.getPassword());
+            account.setPassword(encoder.encode(acc.getPassword()));
             accRepository.save(account);
             return "Đổi mật khẩu thành công";
         }
