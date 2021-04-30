@@ -61,21 +61,21 @@
       </div> <!-- row -->
 
       <div class="row">
-        <div class="col-lg-4 col-sm-6" *ngFor="let tt of tintuc">
+        <div class="col-lg-4 col-sm-6" *ngFor="let tt of tintuc; let i = index">
+          <div *ngIf="i<=5">
           <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
             <div class="team-image">
-              <img src="{{tt.img}}" alt="Team">
+              <img  (click)="detailTT(tt.id)" [src]="tt.img" alt="Team">
             </div>
             <div class="team-content">
               <div class="team-social">
-                <ul class="social">
-                  <li><a href="#"><i class="lni-information"></i></a></li>
-                </ul>
+
               </div>
-              <h4 class="team-name"><a href="#">{{tt.title}}</a></h4>
+              <h4 class="team-name"><a (click)="detailTT(tt.id)" >{{tt.title}}</a></h4>
             </div>
           </div> <!-- single team -->
-        </div>
+          </div>
+          </div>
       </div> <!-- row -->
 
 
