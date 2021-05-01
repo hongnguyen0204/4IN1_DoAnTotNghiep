@@ -11,13 +11,16 @@ import {ThongbaoService} from '../_services/thongbao.service';
   providers: [QuenmatkhauService]
 })
 export class DoimatkhauComponent implements OnInit {
+  form: any = {};
   // @ts-ignore
   @ViewChild('appendTo', { read: ViewContainerRef }) public appendTo: ViewContainerRef;
-
-  // @ts-ignore
+  isSuccessful= false;
+  // @ts-ignoreappendTo
   password: string;
   // @ts-ignore
   token: string;
+  // @ts-ignore
+  pwd:string;
   acc:Thongtincanhan=new Thongtincanhan();
   constructor(private quenmatkhauservice: QuenmatkhauService,
               private router:ActivatedRoute,
@@ -27,13 +30,17 @@ export class DoimatkhauComponent implements OnInit {
     // @ts-ignore
    this.token = this.router.snapshot.params['token'];
    console.log(this.token);
+   this.quenmatkhauservice.kiemtratoken(this.token);
   }
 
   doimatkhau(token: string,password: string){
     this.acc.reset_password_token=token;
     this.acc.password=password;
     this.quenmatkhauservice.doimatkhau(this.acc).subscribe();
-    this.thongbao.showSuccess("Đổi mật khẩu thành công!",this.appendTo)
+    this.thongbao.showSuccess("Đổi mật khẩu thành công!",this.appendTo);
+    this.isSuccessful = true;
   }
+
+
 
 }
