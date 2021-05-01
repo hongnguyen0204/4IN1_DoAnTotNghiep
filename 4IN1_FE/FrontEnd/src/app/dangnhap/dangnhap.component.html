@@ -16,15 +16,15 @@
                  required
                  #username="ngModel"
           >
-
           <div
             class="alert alert-danger"
             role="alert"
-            *ngIf="f.submitted && username.invalid"
-          >
-            Cần nhập vào tên đăng nhập!
+            *ngIf="f.submitted && username.invalid">
+            <div *ngIf="username.errors.required">Cần nhập vào tên đăng nhập!</div>
           </div>
-        </div>
+          <div class="alert alert-danger"
+               role="alert" *ngIf=" f.submitted && !check">Bạn cần vào mail để xác thực</div>
+          </div>
         <div class="wrap-input100 validate-input alert-validate" data-validate="Please enter password">
           <input class="input100" type="password" name="pass" placeholder="Mật khẩu"
                  [(ngModel)]="form.password"
@@ -48,7 +48,7 @@
           <input type="checkbox" id="save-pwd" class="save-pwd">
           <label for="save-pwd" class="label-save-pwd">Ghi nhớ mật khẩu</label>
           <a href="quenmatkhau" class="txt2">
-            Quên Mật khẩu?
+            QUÊN MẬT KHẨU?
           </a>
         </div>
         <div class="container-login100-form-btn">

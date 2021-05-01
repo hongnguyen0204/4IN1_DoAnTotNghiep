@@ -4,6 +4,7 @@ import {Sukien} from '../Model/sukien';
 import {SukienService} from '../Service/sukien.service';
 import {HttpClientModule} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {consolidateMessages} from '@angular/localize/src/tools/src/extract/translation_files/utils';
 
 @Component({
   selector: 'app-timkiemsukien',
@@ -16,13 +17,13 @@ export class TimkiemsukienComponent implements OnInit {
   // @ts-ignore
   sukiens: Sukien[];
   // @ts-ignore
-  searchText;
+  searchText = "";
   // @ts-ignore
   khoa;
   // @ts-ignore
   diadiem;
   // @ts-ignore
-  start;
+  start:Date;
   // @ts-ignore
   end:Date = new Date();
   // @ts-ignore
@@ -33,7 +34,16 @@ export class TimkiemsukienComponent implements OnInit {
   ngOnInit(): void {
     this.reloadData();
     // @ts-ignore
+    $('#txtDate').attr('min', minDate);
   }
+
+  validatengay(){
+    // @ts-ignore
+    this.start =this.datepipe.transform(this.start, 'yyyy-MM-dd');
+    // @ts-ignore
+    $('#txtTo').attr('min', this.start);
+  }
+
 
   // tslint:disable-next-line:typedef
   reloadData() {
@@ -49,16 +59,19 @@ export class TimkiemsukienComponent implements OnInit {
       this.sukienService.findByDay(start, end, searchtext).subscribe(data => {
         this.sukiens = data;
       });
-      console.log(start);
-      console.log(end);
-      console.log(this.sukiens);
   }
 
   // @ts-ignore
   timkiem(searchtext){
-    this.sukienService.findByText(searchtext).subscribe(data =>{
-      this.sukiens = data;
-    });
+    if(searchtext==""){
+      this.sukienService.findAllsk().subscribe(data => {
+        this.sukiens = data;
+      });
+    }else{
+      this.sukienService.findByText(searchtext).subscribe(data => {
+        this.sukiens = data;
+      });
+    }
     console.log(this.sukiens);
   }
 

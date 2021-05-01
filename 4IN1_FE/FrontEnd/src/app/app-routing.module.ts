@@ -23,7 +23,7 @@ import {NguoithamgiasukienComponent} from './nguoithamgiasukien/nguoithamgiasuki
 
 
 const routes: Routes = [
-  {path: 'dangkitochuc', component: DangkitochucsukienComponent,canActivate:[CustomerAuthService]},
+  {path: 'dangktsitochuc', component: DangkitochucsukienComponent,canActivate:[CustomerAuthService]},
   {path: 'dangkithamgia/:id', component: DangkithamgiasukienComponent},
   {path: 'trangchu', component: TrangchuComponent},
   {path: 'dangkicongtacvien/:id', component: DangkilamcongtacvienComponent,canActivate:[CustomerAuthService]},
