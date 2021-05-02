@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {DatePipe} from '@angular/common';
 import {QuanlytintucserviceService} from '../Service/quanlytintucservice.service';
 import {Quanlytintuc} from '../Model/quanlytintuc';
 
