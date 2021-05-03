@@ -8,15 +8,15 @@
     <div >
       <ul>
         <li *ngFor="let tt of tintuc | paginate: {itemsPerPage:5, currentPage:p};">
-              <div class="box-img">
-                <img  (click)="detailTT(tt.id)" [src]="tt.img"/>
-              </div>
-              <div class="box-content">
-                <h5>
-                  <a (click)="detailTT(tt.id)" >{{tt.title}} </a>
-                </h5>
-                <p>{{tt.describe_of_news}}</p>
-            </div>
+          <div class="box-img">
+            <img style="object-fit: cover; " (click)="detailTT(tt.id)" [src]="tt.img"/>
+          </div>
+          <div class="box-content">
+            <h5>
+              <a   (click)="detailTT(tt.id)" >{{tt.title}} </a>
+            </h5>
+            <p>{{tt.describe_of_news}}</p>
+          </div>
         </li>
         <pagination-controls style="text-align: center" previousLabel="Trước"
                              nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
@@ -25,12 +25,13 @@
   </div>
   <div id="right">
     <div class="right-header-news">
+      <span>CÁC TIN KHÁC</span>
       <span>BÀI VIẾT KHÁC</span>
     </div>
     <ul *ngFor="let tt of tintuc;let i=index">
-      <div  *ngIf="i % 4" >
+      <div  *ngIf="i % 6 && i <= 4" >
         <li>
-          <img (click)="detailTT(tt.id)" [src]="tt.img">
+          <img style="object-fit: cover; " (click)="detailTT(tt.id)" [src]="tt.img">
           <a (click)="detailTT(tt.id)" >{{tt.title}}</a>
         </li>
       </div>
