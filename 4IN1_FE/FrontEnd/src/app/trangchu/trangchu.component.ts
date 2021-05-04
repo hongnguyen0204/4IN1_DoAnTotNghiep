@@ -79,17 +79,28 @@ export class TrangchuComponent implements OnInit {
         var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
         var seconds = Math.floor((distance % (1000*60)) / 1000);
         this.demo = days + "d " + hours + "h " +minutes +"m " +seconds + "s ";
-        $("#days").html(days + "<span style='font-size: 30px; margin-top: -30px'>Days</span>");
-        $("#hours").html(hours + "<span style='font-size: 30px; margin-top: -30px'>Hours</span>");
-        $("#minutes").html(minutes + "<span style='font-size: 30px; margin-top: -30px'>Minutes</span>");
-        $("#seconds").html(seconds + "<span style='font-size: 30px; margin-top: -30px'>Seconds</span>");
+        if(days >=0 || hours >=0 || minutes >=0 || seconds >=0) {
+          $("#days").html(days + "<span style='font-size: 30px; margin-top: -30px'>Days</span>");
+          $("#hours").html(hours + "<span style='font-size: 30px; margin-top: -30px'>Hours</span>");
+          $("#minutes").html(minutes + "<span style='font-size: 30px; margin-top: -30px'>Minutes</span>");
+          $("#seconds").html(seconds + "<span style='font-size: 30px; margin-top: -30px'>Seconds</span>");
+        }else{
+          days = 0;
+          hours =0;
+          minutes =0;
+          seconds =0;
+          $("#days").html(days + "<span style='font-size: 30px; margin-top: -30px'>Days</span>");
+          $("#hours").html(hours + "<span style='font-size: 30px; margin-top: -30px'>Hours</span>");
+          $("#minutes").html(minutes + "<span style='font-size: 30px; margin-top: -30px'>Minutes</span>");
+          $("#seconds").html(seconds + "<span style='font-size: 30px; margin-top: -30px'>Seconds</span>");
+        }
       })
     });
-
   }
   // @ts-ignore
   guilienlac(){
     this.sukienService.sendmessage(this.message).subscribe();
   }
+
   }
 

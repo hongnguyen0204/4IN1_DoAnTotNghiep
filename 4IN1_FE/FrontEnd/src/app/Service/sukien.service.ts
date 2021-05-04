@@ -72,7 +72,6 @@ export class SukienService {
     return this.http.get<any>(`${'http://localhost:8080/quanlycongtacvien/theoid'}/${id}`);
   }
 
-
   // @ts-ignore
   getNTGbyid(id):Observable<any>{
     // @ts-ignore

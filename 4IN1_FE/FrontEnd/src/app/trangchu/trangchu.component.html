@@ -60,21 +60,21 @@
       </div> <!-- row -->
 
       <div class="row">
-        <div class="col-lg-4 col-sm-6" *ngFor="let tt of tintuc">
+        <div class="col-lg-4 col-sm-6" *ngFor="let tt of tintuc; let i = index">
+          <div *ngIf="i<=5">
           <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
             <div class="team-image">
-              <img (click)="detailTT(tt.id)" src="{{tt.img}}" alt="Team">
+              <img  (click)="detailTT(tt.id)" [src]="tt.img" alt="Team">
             </div>
             <div class="team-content">
-<!--              <div class="team-social">-->
-<!--                <ul class="social">-->
-<!--                  <li><a (click)="detailTT(tt.id)"><i class="lni-information"></i></a></li>-->
-<!--                </ul>-->
-<!--              </div>-->
-              <h4 class="team-name"><a (click)="detailTT(tt.id)">{{tt.title}}</a></h4>
+              <div class="team-social">
+
+              </div>
+              <h4 class="team-name"><a (click)="detailTT(tt.id)" >{{tt.title}}</a></h4>
             </div>
           </div> <!-- single team -->
-        </div>
+          </div>
+          </div>
       </div> <!-- row -->
 
 
@@ -149,13 +149,15 @@
                           <h4 class="event-title">{{sk.event_name}}</h4>
                           <p class="text">{{sk.describe_of_event}}</p>
                           <ul class="event-meta">
-                            <li>Start: {{sk.time_of_event}}</li>
-                            <li>End: {{sk.end_day}} </li>
+                            <li>Bắt đầu: {{sk.time_of_event}}</li>
+                            <li>Kết thúc: {{sk.end_day}} </li>
                             <li>Địa điểm: {{sk.place}}</li>
                           </ul>
                         </div>
                       </div>
                   </div><!-- single event -->
+                  <br>
+                  <br>
                   <pagination-controls style="text-align: center" previousLabel="Trước"
                                        nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
                 </div> <!-- event content -->
@@ -171,8 +173,8 @@
                           <h4 class="event-title">{{sk.event_name}}</h4>
                           <p class="text">{{sk.describe_of_event}}</p>
                           <ul class="event-meta">
-                            <li>Start: {{sk.time_of_event}}</li>
-                            <li>End: {{sk.end_day}} </li>
+                            <li>Bắt đầu: {{sk.time_of_event}}</li>
+                            <li>Kết thúc: {{sk.end_day}} </li>
                             <li>Địa điểm: {{sk.place}}</li>
                           </ul>
                         </div>
@@ -193,8 +195,8 @@
                           <h4 class="event-title">{{sk.event_name}}</h4>
                           <p class="text">{{sk.describe_of_event}}</p>
                           <ul class="event-meta">
-                            <li>Start: {{sk.time_of_event}}</li>
-                            <li>End: {{sk.end_day}} </li>
+                            <li>Bắt đầu: {{sk.time_of_event}}</li>
+                            <li>Kết thúc: {{sk.end_day}} </li>
                             <li>Địa điểm: {{sk.place}}</li>
                           </ul>
                         </div>
@@ -215,8 +217,8 @@
                           <h4 class="event-title">{{sk.event_name}}</h4>
                           <p class="text">{{sk.describe_of_event}}</p>
                           <ul class="event-meta">
-                            <li>Start: {{sk.time_of_event}}</li>
-                            <li>End: {{sk.end_day}} </li>
+                            <li>Bắt đầu: {{sk.time_of_event}}</li>
+                            <li>Kết thúc: {{sk.end_day}} </li>
                             <li>Địa điểm: {{sk.place}}</li>
                           </ul>
                         </div>
