@@ -61,6 +61,12 @@ export class DangkitochucsukienComponent implements OnInit {
     })
   }
 
+  huySK(){
+    this.sukien = new Sukien();
+    this.sukien.faculty="Tất cả";
+    this.sukien.place="Chọn địa điểm";
+  }
+
   save(event:any) {
     this.selectedFile = event.target.files[0];
     const name = this.selectedFile.name;

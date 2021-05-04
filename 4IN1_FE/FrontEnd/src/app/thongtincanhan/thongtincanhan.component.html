@@ -16,29 +16,36 @@
         </div>
         <form
           name="form"
-          (ngSubmit)="f.form.valid && save($event)"
+          (ngSubmit)="f.form.valid && users.faculty!='Chọn khoa' && save($event)"
           #f="ngForm"
           novalidate>
         <div class="row mt-3 ">
           <div class="col-md-12">
             <label class="labels">Họ và tên</label>
-            <input type="text" name="name" [(ngModel)]="users.fullname" class="form-control"
+            <input type="text" name="fullname" [(ngModel)]="users.fullname" class="form-control"
             required
             minlength="2"
             maxlength="30"
             #fullname = "ngModel"
+
             />
             <div class="alert-danger" *ngIf="fullname.invalid">
               <div *ngIf="fullname.errors.required">Vui lòng nhập tên</div>
               <div *ngIf="fullname.errors.minlength">Tên Không được dưới 2 kí tự</div>
-              <div *ngIf="fullname.errors.maxlenght">Tên Không được quá 30 kí tự</div>
+              <div *ngIf="fullname.errors.maxlength">Tên Không được quá 30 kí tự</div>
             </div>
           </div>
         </div>
         <div class="row mt-3 ">
           <div class="col-md-12">
             <label class="labels">Ngày sinh: </label>
-            <input value="{{users.day_of_birth | date: 'yyyy-MM-dd'}}" id="date" type="date" name="date"   class="form-control" />
+            <input value="{{users.day_of_birth | date: 'yyyy-MM-dd'}}" type="date" id="date" name="day_of_birth" class="form-control"/>
+            <div class="alert-danger" *ngIf="f.submitted && users.day_of_birth==null">
+            Cần chọn ngày sinh!
+          </div>
+            <div class="alert-danger" *ngIf="f.submitted && !this.checkDateOfBirth(this.users.day_of_birth)">
+              Phải lớn hơn hoặc bằng 17 tuổi!
+            </div>
           </div>
         </div>
         <div class="row mt-3 ">
@@ -56,7 +63,7 @@
           <div class="col-md-12">
             <label style="" class="labels">Số điện thoại</label>
 
-            <input   stype="text" name="phone"  [(ngModel)]="users.phone_number" class="form-control"
+            <input type="text" name="phone"  [(ngModel)]="users.phone_number" class="form-control"
             required
             pattern="(0)[0-9 ]{9}"
             #sdt = "ngModel"
@@ -70,15 +77,16 @@
             <input type="text" name="email" [(ngModel)]="users.email" class="form-control" disabled>
           </div>
           <div class="col-md-12"><label class="labels" style="margin-top: 2%;">Khoa</label>
-            <input type="text" name="faculty" [(ngModel)]="users.faculty" class="form-control"
-            required
-            minlength="5"
-            maxlength="50"
-            #khoa = "ngModel"/>
-            <div class="alert-danger" *ngIf="khoa.invalid">
-              <div *ngIf="khoa.errors.required">Không được để trống</div>
-              <div *ngIf="khoa.errors.minlength">vui lòng nhập đúng tên khoa</div>
-              <div *ngIf="khoa.errors.maxlength">vui lòng nhập đúng tên khoa</div>
+            <select  [(ngModel)]="users.faculty" name="faculty" class="form-control" required #faculty="ngModel">
+              <option value="Chọn khoa">Chọn khoa</option>
+              <option value="Công nghệ thông tin">Công nghệ thông tin</option>
+              <option value="Kế Toán">Kế Toán</option>
+              <option value="Y dược">Y dược</option>
+              <option value="Kiến Trúc">Kiến Trúc</option>
+              <option value="Ngoại ngữ">Ngoại ngữ</option>
+            </select>
+            <div class="alert-danger" *ngIf="f.submitted && users.faculty=='Chọn khoa'">
+             Bạn phải chọn khoa!
             </div>
           </div>
         </div>
