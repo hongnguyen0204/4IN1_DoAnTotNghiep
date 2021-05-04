@@ -14,8 +14,7 @@
             <h2 class="header-title">{{sukienhot.event_name}}</h2>
             <h3 class="sub-title">{{sukienhot.time_of_event}}, Tại {{sukienhot.place}}</h3>
             <ul class="header-btn">
-              <li><a class="main-btn main-btn-2" style="color: white;margin-bottom: 25px" (click)="detailSK(sukienhot.id)">Tham gia ngay</a></li>
-              <li><a class="main-btn" style="margin-bottom: 25px" (click)="detailSK(sukienhot.id)">Thông tin</a></li>
+              <li><a class="main-btn main-btn-2" style="color: white;margin-bottom: 25px" (click)="detailSK(sukienhot.id)">Thông tin</a></li>
             </ul>
           </div>  <!-- header content -->
         </div>
@@ -64,15 +63,15 @@
         <div class="col-lg-4 col-sm-6" *ngFor="let tt of tintuc">
           <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
             <div class="team-image">
-              <img src="{{tt.img}}" alt="Team">
+              <img (click)="detailTT(tt.id)" src="{{tt.img}}" alt="Team">
             </div>
             <div class="team-content">
-              <div class="team-social">
-                <ul class="social">
-                  <li><a href="#"><i class="lni-information"></i></a></li>
-                </ul>
-              </div>
-              <h4 class="team-name"><a href="#">{{tt.title}}</a></h4>
+<!--              <div class="team-social">-->
+<!--                <ul class="social">-->
+<!--                  <li><a (click)="detailTT(tt.id)"><i class="lni-information"></i></a></li>-->
+<!--                </ul>-->
+<!--              </div>-->
+              <h4 class="team-name"><a (click)="detailTT(tt.id)">{{tt.title}}</a></h4>
             </div>
           </div> <!-- single team -->
         </div>
