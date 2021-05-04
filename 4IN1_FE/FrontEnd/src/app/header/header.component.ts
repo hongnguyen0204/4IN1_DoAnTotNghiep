@@ -18,6 +18,8 @@ export class HeaderComponent implements OnInit {
   // @ts-ignore
   username: string;
   // @ts-ignore
+  fullname:string;
+  // @ts-ignore
   users:Thongtincanhan;
 
   constructor(private tokenStorageService: TokenStorageService,private accService:AccountService, private router:Router) { }
@@ -27,6 +29,7 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
+      this.fullname=this.tokenStorageService.getUser().fullName;
       this.roles = user.roles;
       this.username = user.username;
     }

@@ -53,6 +53,8 @@ export class DangkitochucsukienComponent implements OnInit {
 
   ngOnInit(): void {
     this.sukien = new Sukien();
+    this.sukien.faculty="Tất cả";
+    this.sukien.place="Chọn địa điểm";
     this.currentUser = this.token.getUser();
     this.accountService.findUser(this.currentUser.username).subscribe(data=>{
       this.users=data;

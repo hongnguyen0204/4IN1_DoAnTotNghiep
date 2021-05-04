@@ -385,7 +385,8 @@
               </div>
               <div class="col-md-6">
                 <div class="single-form">
-                  <select type="text" [(ngModel)]="message.subject" name="subject" placeholder="Ngành của bạn">
+                  <select  [(ngModel)]="message.subject" name="subject" >
+                    <option value="Chọn khoa">Chọn khoa</option>
                     <option value="Công nghệ thông tin">Công nghệ thông tin</option>
                     <option value="Kế Toán">Kế Toán</option>
                     <option value="Y dược">Y dược</option>

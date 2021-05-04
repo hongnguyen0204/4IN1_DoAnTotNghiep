@@ -76,10 +76,10 @@ export class ThongtincanhanComponent implements OnInit {
             });
             confirmDialog.afterClosed().subscribe(result => {
               if (result === true) {
-                this.toast.success("Sửa thành công");
                 this.thongtincanhanService.update(this.id, this.users).subscribe(data => {
                   this.users = data;
                   window.location.reload();
+                  this.toast.success("Sửa thành công");
                 });
               }
             });

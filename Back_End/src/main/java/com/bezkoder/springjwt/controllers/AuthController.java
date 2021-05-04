@@ -75,7 +75,8 @@ public class AuthController {
 												 userDetails.getEmail(), 
 												 roles,
 				  								 accRepository.GetStt_Acc(userDetails.getUsername()),
-												 accRepository.GetBan(userDetails.getUsername())));
+												 accRepository.GetBan(userDetails.getUsername()),
+												 accRepository.GetFullName(userDetails.getUsername())));
 	}
 
 	@PostMapping("/signup")
