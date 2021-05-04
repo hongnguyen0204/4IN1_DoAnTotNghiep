@@ -22,4 +22,7 @@ public interface AccRepository extends JpaRepository<Account,Integer> {
 
     @Query(value = "SELECT ban FROM account_information WHERE username=?1  ", nativeQuery = true)
     Boolean GetBan(String username);
+
+    @Query(value = "SELECT fullname FROM account_information WHERE username=?1  ", nativeQuery = true)
+    String GetFullName(String username);
 }

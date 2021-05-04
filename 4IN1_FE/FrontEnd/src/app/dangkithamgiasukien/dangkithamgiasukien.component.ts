@@ -92,7 +92,7 @@ export class DangkithamgiasukienComponent implements OnInit {
   }
 
   reloadData() {
-    this.sukienService.findAllsk().subscribe(data => {
+    this.sukienService.findSKDD().subscribe(data => {
       this.suKiens = data;
     })
   }
