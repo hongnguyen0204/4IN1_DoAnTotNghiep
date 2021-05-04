@@ -3,6 +3,7 @@ import {QuenmatkhauService} from '../Service/quenmatkhau.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Thongtincanhan} from '../Model/thongtincanhan';
 import {ThongbaoService} from '../_services/thongbao.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-doimatkhau',
@@ -24,7 +25,7 @@ export class DoimatkhauComponent implements OnInit {
   acc:Thongtincanhan=new Thongtincanhan();
   constructor(private quenmatkhauservice: QuenmatkhauService,
               private router:ActivatedRoute,
-              private thongbao:ThongbaoService) { }
+              private thongbao:ToastrService) { }
 
   ngOnInit(): void {
     // @ts-ignore
@@ -37,7 +38,7 @@ export class DoimatkhauComponent implements OnInit {
     this.acc.reset_password_token=token;
     this.acc.password=password;
     this.quenmatkhauservice.doimatkhau(this.acc).subscribe();
-    this.thongbao.showSuccess("Đổi mật khẩu thành công!",this.appendTo);
+    this.thongbao.success("Đổi mật khẩu thành công!");
     this.isSuccessful = true;
   }
 

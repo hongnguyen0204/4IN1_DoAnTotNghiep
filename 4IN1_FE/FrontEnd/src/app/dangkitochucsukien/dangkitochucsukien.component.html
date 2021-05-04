@@ -40,21 +40,22 @@
       <div class="item">
         <p>Địa điểm tổ chức<span class="required">*</span></p>
         <select name="place" [(ngModel)]="sukien.place" required #place="ngModel">
-          <option value="P-603 Quang Trung">P-603 Quang Trung</option>
+          <option value="Chọn địa điểm">Chọn địa điểm</option>
+          <option value="P-613 Quang Trung">P-613 Quang Trung</option>
           <option value="Hòa Khách Nam">Hòa Khách Nam</option>
           <option value="Phan Thanh">Phan Thanh</option>
         </select>
         <div
           class="alert-danger"
           role="alert"
-          *ngIf="f.submitted && place.invalid"
+          *ngIf="f.submitted && sukien.place=='Chọn địa điểm'"
         >
           Cần chọn địa điểm!
         </div>
       </div>
       <div class="item">
         <p>Ngày tổ chức <span class="required">*</span></p>
-        <input [(ngModel)]="sukien.time_of_event" [min]="localCompleteDate" type="datetime-local" name="date_start"
+        <input [(ngModel)]="sukien.time_of_event"  [min]="localCompleteDate" type="datetime-local" name="date_start"
                required
                #date_start="ngModel"/>
         <div class="alert-danger" *ngIf="f.submitted && date_start.invalid">
@@ -64,9 +65,9 @@
     </div>
     <div class="position-item">
       <div class="item">
-        <p>Khoa<span class="required">*</span></p>
+        <p>Khoa</p>
         <select name="khoa" [(ngModel)]="sukien.faculty" required>
-          <option value="Tất cả" selected>Tất cả</option>
+          <option value="Tất cả">Tất cả</option>
           <option value="Công nghệ thông tin">Công nghệ thông tin</option>
           <option value="Du lịch">Du lịch</option>
           <option value="Kiến trúc">Kiến trúc</option>
@@ -124,7 +125,7 @@
       <div class="alert-danger" *ngIf="f.submitted && selectedFile==null">Bạn phải chọn bảng kế hoạch</div>
     </div>
     <div class="question">
-      <p>Bạn có muốn tuyển cộng tác viên không?<span class="required">*</span></p>
+      <p>Bạn có muốn tuyển cộng tác viên không?</p>
       <div class="question-answer" (change)="kiemtra()">
         <div>
           <input type="radio" value="none" id="radio_1" name="status" required/>

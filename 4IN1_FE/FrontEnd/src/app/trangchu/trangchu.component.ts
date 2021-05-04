@@ -13,6 +13,7 @@ import {Quanlytintuc} from '../Model/quanlytintuc';
   providers: [SukienService,QuanlytintucserviceService]
 })
 export class TrangchuComponent implements OnInit {
+
   message: Message = new Message();
   // @ts-ignore
   tintuc:Quanlytintuc[];
@@ -42,6 +43,7 @@ export class TrangchuComponent implements OnInit {
     this.datahot();
     // @ts-ignore
     this.reloadData();
+    this.message.subject="Chọn khoa";
   }
 
   reloadData() {

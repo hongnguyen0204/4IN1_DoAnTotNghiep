@@ -21,7 +21,7 @@
                   <span class="toggler-icon"></span>
                   <span class="toggler-icon"></span>
                 </button>
-                <div style="max-width:21%" class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
+                <div style="max-width:25%" class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
                   <ul class="navbar-nav m-auto">
                     <li class="nav-item">
                       <a class="page-scroll" href="trangchu">Trang chủ</a>
@@ -35,7 +35,7 @@
                   </ul>
                 </div>
                 <div class="navbar-btn d-none d-sm-inline-block">
-                  <a style="margin-left: 400px;" class="main-btn" href="dangkitochuc">
+                  <a style="margin-left: 200px;" class="main-btn" href="dangkitochuc">
                     Đăng kí sự kiện</a>
                 </div>
                 <div class="login"  *ngIf="!isLoggedIn">
@@ -45,9 +45,9 @@
                 </div>
                 <div class="login" *ngIf="isLoggedIn">
                   <div class="dropdown">
-                    <button class="dropbtn">
+                    <a style="color: black" class="dropbtn">{{fullname}}
                       <img src="assets/images/mini.png">
-                    </button>
+                    </a>
                     <div class="dropdown-content">
                       <a style="color: black;" href="thongtincanhan">Thông tin cá nhân</a>
                       <a style="color: black;" href="quanlysukien">Quản lý sự kiện</a>
