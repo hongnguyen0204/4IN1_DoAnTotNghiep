@@ -51,6 +51,10 @@ export class TrangchuComponent implements OnInit {
     });
   }
 
+  detailTT(id:number){
+    this.router.navigate(['chitiettintuc',id]);
+  }
+
   detailSK(id:number){
     this.router.navigate(['dangkithamgia',id]);
   }
@@ -97,8 +101,6 @@ export class TrangchuComponent implements OnInit {
   guilienlac(){
     this.sukienService.sendmessage(this.message).subscribe();
   }
-  detailTT(id:number){
-    this.router.navigate(['chitiettintuc',id]);
-  }
+
   }
 
