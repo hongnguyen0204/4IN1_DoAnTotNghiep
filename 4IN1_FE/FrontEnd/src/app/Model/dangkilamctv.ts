@@ -7,4 +7,6 @@ export class Dangkilamctv {
   event_ID: number;
   // @ts-ignore
   status_col: boolean;
+  // @ts-ignore
+  strength:string;
 }

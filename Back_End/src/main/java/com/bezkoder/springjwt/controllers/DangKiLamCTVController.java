@@ -1,6 +1,8 @@
 package com.bezkoder.springjwt.controllers;
 
+import com.bezkoder.springjwt.models.Congtacvien;
 import com.bezkoder.springjwt.models.DangKiLamCTV;
+import com.bezkoder.springjwt.models.NguoiThamGia;
 import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.DangKiLamCTVRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,4 +33,15 @@ public class DangKiLamCTVController {
     public Integer KiemTra(@RequestBody DangKiLamCTV ctv){
         return dangKiLamCTVRepository.Check(ctv.getUser_ID(), ctv.getEvent_ID());
     }
+
+    @PostMapping("/delete")
+    public void delete(@RequestBody Congtacvien ctv) {
+        dangKiLamCTVRepository.HuyDK(ctv.getUser_ID(),ctv.getEvent_ID());
+    }
+
+    @PostMapping("/checkSoLuong")
+    public Integer KiemTraSoLuong(@RequestBody DangKiLamCTV ctv){
+        return dangKiLamCTVRepository.CheckSoLuongCTV(ctv.getEvent_ID());
+    }
+
 }

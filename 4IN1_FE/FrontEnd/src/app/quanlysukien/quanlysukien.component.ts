@@ -9,6 +9,8 @@ import {TokenStorageService} from '../_services/token-storage.service';
 import {LoadService} from '../_services/load.service';
 import {Subject} from 'rxjs';
 import {DangkilamctvService} from '../Service/dangkilamctv.service';
+import {Congtacvien} from '../Model/congtacvien';
+import {Dangkilamctv} from '../Model/dangkilamctv';
 
 @Component({
   selector: 'app-quanlysukien',
@@ -33,7 +35,7 @@ export class QuanlysukienComponent implements OnInit,OnDestroy {
   users: Thongtincanhan=new Thongtincanhan();
   // @ts-ignore
   infor : Dangkithamgia=new Dangkithamgia();
-
+  ctv:Dangkilamctv=new Dangkilamctv();
   constructor(private skService: SukienService,
               private route: ActivatedRoute,
               private router: Router,
@@ -79,4 +81,15 @@ export class QuanlysukienComponent implements OnInit,OnDestroy {
         error => console.log(error));
   }
 
+  deleteCTV(id:number){
+    this.ctv.user_ID = this.id;
+    this.ctv.event_ID=id;
+    console.log(this.ctv.user_ID);
+    console.log(this.ctv.event_ID)
+    this.skService.huyCTV(this.ctv).subscribe(
+      data => {
+        window.location.reload();
+      },
+      error => console.log(error));
+  }
 }

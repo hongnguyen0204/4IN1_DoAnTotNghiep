@@ -50,6 +50,9 @@ public class SuKienController {
     @PostMapping("/add")
     public void addSuKien(@RequestBody SuKien suKien){
        suKien.setStatus_of_event("Đang chờ");
+        long millis=System.currentTimeMillis();
+        java.sql.Date date=new java.sql.Date(millis);
+        suKien.setTime_upload(date);
        suKienRepository.save(suKien);
     }
 
@@ -128,6 +131,11 @@ public class SuKienController {
     @PostMapping("/kiemtra")
     public Integer KiemTra(@RequestBody SuKien suKien){
        return suKienRepository.KiemTra(suKien.getTime_of_event(),suKien.getPlace());
+    }
+
+    @GetMapping("/tongSuKienDangKi")
+    public Integer TongSuKienDangKiTrongNgay(){
+        return suKienRepository.SKDangKiTrongNgay();
     }
 
 }
