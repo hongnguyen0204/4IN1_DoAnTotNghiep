@@ -73,7 +73,6 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
 
   // @ts-ignore
   duyet(status: boolean, id: number){
-    console.log(status);
     if (status){
       this.ctvService.updatenotok(id).subscribe();
     }
