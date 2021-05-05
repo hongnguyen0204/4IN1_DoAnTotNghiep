@@ -19,5 +19,4 @@ public interface CongtacvienRepository extends JpaRepository<Congtacvien, Intege
             "FROM quanlysukien.account_information ac,quanlysukien.collaborator col " +
             "WHERE ac.id=col.user_id ", nativeQuery = true)
     List<Object> findbyCongtacvientest();
-
 }

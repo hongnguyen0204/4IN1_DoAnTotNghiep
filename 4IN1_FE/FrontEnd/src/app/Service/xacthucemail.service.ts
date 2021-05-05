@@ -19,4 +19,8 @@ export class XacthucemailService {
     // @ts-ignore
     return this.http.post(`${'http://localhost:8080/account/xacthucemail/'}${email}`);
   }
+  guimailbyusername(username: string){
+    // @ts-ignore
+    return this.http.post(`${'http://localhost:8080/account/xacthucemailbyusername/'}${username}`);
+  }
 }
