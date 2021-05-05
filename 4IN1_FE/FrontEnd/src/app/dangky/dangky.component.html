@@ -29,10 +29,10 @@
           </div>
         </div>
         <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-          <input class="input100" type="text" name="email" placeholder="Email"
+          <input class="input100" type="text" name="email" placeholder="Email (Phải là đuôi @dtu.edu.vn)"
                  [(ngModel)]="form.email"
                  required
-                 email
+                 pattern="^[a-z0-9_-]+@dtu.edu.vn"
                  #email="ngModel"
           >
           <div
@@ -41,8 +41,8 @@
             *ngIf="f.submitted && email.invalid"
           >
             <div *ngIf="email.errors.required">Cần nhập vào email!</div>
-            <div *ngIf="email.errors.email">
-              Sai định dạng email.
+            <div *ngIf="email.errors.pattern">
+              Phải là email của DTU!
             </div>
           </div>
         </div>

@@ -26,7 +26,11 @@ public class QuanLyTinTucController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<QuanLyTinTuc>getAll(){
+<<<<<<< HEAD
         return quanLyTInTucRepository.findAll(Sort.by(Sort.Direction.DESC, "ID"));
+=======
+        return quanLyTInTucRepository.findAll(Sort.by(Sort.Direction.DESC,"ID"));
+>>>>>>> 00017796a8e895e066bbd0046ffe158df0e9bb2d
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)

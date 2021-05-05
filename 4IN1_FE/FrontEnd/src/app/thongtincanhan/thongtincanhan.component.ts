@@ -30,6 +30,7 @@ export class ThongtincanhanComponent implements OnInit {
   users: Thongtincanhan = new Thongtincanhan();
   // @ts-ignore
   gender: string;
+
   // @ts-ignore
   public onSubmit(){
     console.log('onSubmit');
@@ -41,7 +42,7 @@ export class ThongtincanhanComponent implements OnInit {
               private route: ActivatedRoute,
               private accountService: AccountService,
               private token: TokenStorageService,
-              private toast:ToastrService,
+              private toast: ToastrService,
               private dialog: MatDialog) {
   }
 
@@ -49,63 +50,70 @@ export class ThongtincanhanComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
-    this.accountService.findUser(this.currentUser.username).subscribe(data=>{
+    this.accountService.findUser(this.currentUser.username).subscribe(data => {
       this.users = data;
+      if (this.users.faculty == null) {
+        this.users.faculty = "Chọn khoa";
+      }
       this.imageSrc = this.users.img;
       this.id = this.users.id;
     });
   }
+
   // tslint:disable-next-line:typedef
   save(event: any) {
     // @ts-ignore
     this.users.day_of_birth = document.getElementById("date").value;
-    // @ts-ignore
-    this.users.gender = document.querySelector('input[name="gender"]:checked').value;
-    if (this.selectedImage) {
-      const name = this.selectedImage.name;
-      const fileRef = this.storage.ref(name);
-      this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
-        finalize(() => {
-          fileRef.getDownloadURL().subscribe((url) => {
-            if (this.users.img != url) {
-              this.users.img = url;
-              console.log(this.users.img);
-            }
-            const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
-              data: {
-                title: 'Sửa thông tin',
-                message: 'Bạn chắc chắn muốn sửa hay không?'
+    if(this.checkDateOfBirth(this.users.day_of_birth)){
+      // @ts-ignore
+      this.users.gender = document.querySelector('input[name="gender"]:checked').value;
+      if (this.selectedImage) {
+        const name = this.selectedImage.name;
+        const fileRef = this.storage.ref(name);
+        this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe((url) => {
+              if (this.users.img != url) {
+                this.users.img = url;
+                console.log(this.users.img);
               }
+              const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+                data: {
+                  title: 'Sửa thông tin',
+                  message: 'Bạn chắc chắn muốn sửa hay không?'
+                }
+              });
+              confirmDialog.afterClosed().subscribe(result => {
+                if (result === true) {
+                  this.thongtincanhanService.update(this.id, this.users).subscribe(data => {
+                    this.users = data;
+                    window.location.reload();
+                    this.toast.success("Sửa thành công");
+                  });
+                }
+              });
             });
-            confirmDialog.afterClosed().subscribe(result => {
-              if (result === true) {
-                this.thongtincanhanService.update(this.id, this.users).subscribe(data => {
-                  this.users = data;
-                  window.location.reload();
-                  this.toast.success("Sửa thành công");
-                });
-              }
+          })).subscribe();
+      } else {
+        const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+          data: {
+            title: 'Sửa thông tin',
+            message: 'Bạn chắc chắn muốn sửa hay không?'
+          }
+        });
+        confirmDialog.afterClosed().subscribe(result => {
+          if (result === true) {
+            this.thongtincanhanService.update(this.id, this.users).subscribe(data => {
+              this.users = data;
+              window.location.reload();
+              this.toast.success("Sửa thành công");
             });
-          });
-        })).subscribe();
-    } else {
-      const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
-        data: {
-          title: 'Sửa thông tin',
-          message: 'Bạn chắc chắn muốn sửa hay không?'
-        }
-      });
-      confirmDialog.afterClosed().subscribe(result => {
-        if (result === true) {
-          this.toast.success("Sửa thành công");
-          this.thongtincanhanService.update(this.id, this.users).subscribe(data => {
-            this.users = data;
-            window.location.reload();
-          });
-        }
-      });
+          }
+        });
+      }
     }
   }
+
   // tslint:disable-next-line:typedef
   readURL(event: any): void {
     // @ts-ignore
@@ -118,14 +126,16 @@ export class ThongtincanhanComponent implements OnInit {
       reader.readAsDataURL(this.selectedImage);
     }
   }
+   // @ts-ignore
+  dateDiff(first, second) {
+    return Math.round((second - first) / (1000 * 60 * 60 * 24));
+  }
 
-
-
-  gioiTinh(gender:boolean){
-    if(gender){
-      return "Nam";
+   checkDateOfBirth(dateOfBirth:any) {
+    if (this.dateDiff(new Date(dateOfBirth), new Date()) > 6205 ) {
+      return true;
     } else {
-      return "Nữ"
+      return false;
     }
   }
 }
