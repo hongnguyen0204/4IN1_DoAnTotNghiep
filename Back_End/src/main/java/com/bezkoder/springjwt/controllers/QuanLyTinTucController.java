@@ -2,7 +2,9 @@ package com.bezkoder.springjwt.controllers;
 import com.bezkoder.springjwt.models.QuanLyTinTuc;
 import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.QuanLyTInTucRepository;
+import com.sun.mail.imap.protocol.ID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +26,7 @@ public class QuanLyTinTucController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<QuanLyTinTuc>getAll(){
-        return quanLyTInTucRepository.findAll();
+        return quanLyTInTucRepository.findAll(Sort.by(Sort.Direction.DESC, "ID"));
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
