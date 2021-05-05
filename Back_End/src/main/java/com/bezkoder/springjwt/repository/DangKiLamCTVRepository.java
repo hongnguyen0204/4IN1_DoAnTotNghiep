@@ -17,5 +17,4 @@ public interface DangKiLamCTVRepository extends JpaRepository <DangKiLamCTV,Inte
             "FROM collaborator  " +
             "WHERE user_ID=?1 AND event_ID=?2 ", nativeQuery = true)
     Integer Check(int id,int event_id);
-
 }
