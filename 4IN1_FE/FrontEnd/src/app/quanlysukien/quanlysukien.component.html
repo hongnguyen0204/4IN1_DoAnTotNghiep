@@ -76,7 +76,7 @@
                   <td>{{ctv[1]| date:'dd/MM/yyyy'}}</td>
                   <td>{{ctv[2]}}</td>
                   <td>
-                    <button class="btn btn-danger">Hủy</button>
+                    <button (click)="deleteCTV(ctv[3])" class="btn btn-danger">Hủy</button>
                   </td>
                 </tr>
                 </tbody>

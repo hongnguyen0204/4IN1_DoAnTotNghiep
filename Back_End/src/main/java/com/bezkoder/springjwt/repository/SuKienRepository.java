@@ -32,9 +32,11 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
     @Query(value = "SELECT * FROM event_information WHERE owner_event_id = ?1" , nativeQuery = true)
     List<SuKien> findByID(Integer id);
 
-
     @Query(value = "SELECT * FROM event_information WHERE status_of_event='Đang chờ' ", nativeQuery = true)
     List<SuKien> SKDangCho();
+
+    @Query(value = "SELECT COUNT(*) FROM event_information WHERE time_upload=DATE(NOW()) && status_of_event='Đang chờ' ", nativeQuery = true)
+    Integer SKDangKiTrongNgay();
 
     @Query(value = "SELECT * FROM event_information WHERE time_of_event>DATE(NOW()) and status_of_event='Đồng ý' ", nativeQuery = true)
     List<SuKien> SKDaDuyet();

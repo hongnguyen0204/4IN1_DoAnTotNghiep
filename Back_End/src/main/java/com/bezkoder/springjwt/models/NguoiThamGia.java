@@ -10,24 +10,16 @@ public class NguoiThamGia {
     private int ID;
     private int acc_ID;
     private int event_ID;
-    private String event_name;
+
 
     public NguoiThamGia() {
     }
 
-    public NguoiThamGia(int ID, int acc_ID, int event_ID, String event_name) {
+    public NguoiThamGia(int ID, int acc_ID, int event_ID) {
         this.ID = ID;
         this.acc_ID = acc_ID;
         this.event_ID = event_ID;
-        this.event_name = event_name;
-    }
 
-    public String getEvent_name() {
-        return event_name;
-    }
-
-    public void setEvent_name(String event_name) {
-        this.event_name = event_name;
     }
 
 
