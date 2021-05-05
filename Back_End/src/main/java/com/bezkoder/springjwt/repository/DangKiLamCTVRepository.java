@@ -2,10 +2,13 @@ package com.bezkoder.springjwt.repository;
 
 import com.bezkoder.springjwt.models.DangKiLamCTV;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Transactional
 public interface DangKiLamCTVRepository extends JpaRepository <DangKiLamCTV,Integer>{
 
     @Query(value = "SELECT ev.event_name, ev.time_of_event, ev.place, j.event_ID " +
@@ -18,4 +21,10 @@ public interface DangKiLamCTVRepository extends JpaRepository <DangKiLamCTV,Inte
             "WHERE user_ID=?1 AND event_ID=?2 ", nativeQuery = true)
     Integer Check(int id,int event_id);
 
+    @Modifying
+    @Query(value = "DELETE FROM collaborator WHERE user_ID=?1 AND event_ID=?2 ", nativeQuery = true)
+    void HuyDK(int acc_ID,int event_ID);
+
+    @Query(value = "SELECT COUNT(*) FROM collaborator where event_ID=?1", nativeQuery = true)
+    Integer CheckSoLuongCTV(int event_id);
 }

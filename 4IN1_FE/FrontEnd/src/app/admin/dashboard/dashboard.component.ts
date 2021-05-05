@@ -25,6 +25,8 @@ export class DashboardComponent implements OnInit {
   tsksdr:number;
   // @ts-ignore
   tongNguoi:number;
+  // @ts-ignore
+  tongSKTN:number;
   constructor(private dashboardService:DashboardService,
               private tokenStorageService: TokenStorageService) {
   }
@@ -52,6 +54,9 @@ export class DashboardComponent implements OnInit {
     });
     this.dashboardService.TongNguoi().subscribe(data=>{
       this.tongNguoi=data;
+    });
+    this.dashboardService.TongSKTN().subscribe(data=>{
+      this.tongSKTN=data;
     })
   }
 

@@ -1,8 +1,5 @@
-<<<<<<< HEAD
--- drop database quanlysukien;
-=======
+
 drop database quanlysukien;
->>>>>>> 0a5425776d7703395283c5f5e155214dbb5e2b7f
 create database quanlysukien;
 use quanlysukien;
 
