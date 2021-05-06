@@ -57,9 +57,10 @@ public class SuKienController {
     }
 
     @PutMapping("/duyet/{id}")
-    public void duyetSuKien(@PathVariable Integer id){
+    public void duyetSuKien(@PathVariable Integer id,@RequestBody SuKien sukien){
         SuKien sk =suKienRepository.findById(id).get();
         sk.setStatus_of_event("Đồng ý");
+        sk.setId_cencor(sukien.getId_cencor());
         suKienRepository.save(sk);
     }
 
@@ -136,6 +137,16 @@ public class SuKienController {
     @GetMapping("/tongSuKienDangKi")
     public Integer TongSuKienDangKiTrongNgay(){
         return suKienRepository.SKDangKiTrongNgay();
+    }
+
+    @GetMapping("/thongkenguoidangki")
+    public List<Object> thongKeNguoiDangKi(){
+        return suKienRepository.ThongKeNguoiDangKi();
+    }
+
+    @GetMapping("/thongkenguoiduyet")
+    public List<Object> thongKeNguoiDuyet(){
+        return suKienRepository.ThongKeNguoiDuyet();
     }
 
 }

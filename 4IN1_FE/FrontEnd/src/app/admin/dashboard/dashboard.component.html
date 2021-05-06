@@ -209,22 +209,22 @@
             <div class="card">
               <div class="card-header card-header-info">
                 <h4 class="card-title">Người đăng kí sự kiện</h4>
-                <p class="card-category">Ngày 21 tháng 3 năm 2021</p>
+                <p class="card-category">Tháng {{thang+1}} năm {{nam}}</p>
               </div>
               <div class="card-body table-responsive">
                 <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">
                   <thead>
                   <tr>
-                    <th>STT</th>
-                    <th>Tên sự kiện</th>
-                    <th>Người đăng kí</th>
+                    <th style="width: 8%">STT</th>
+                    <th style="width:50% ">Tên sự kiện</th>
+                    <th style="width: 25%">Người đăng kí</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Đá bóng</td>
-                    <td>Hìn</td>
+                  <tr *ngFor="let ndk of thongkenguoidangki;let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{ndk[0]}}</td>
+                    <td>{{ndk[1]}}</td>
                   </tr>
                   </tbody>
                 </table>
@@ -235,24 +235,22 @@
             <div class="card">
               <div class="card-header card-header-success">
                 <h4 class="card-title">Sự kiện đã duyệt</h4>
-                <p class="card-category">Tháng 3 năm 2021</p>
+                <p class="card-category">Tháng {{thang+1}} năm {{nam}}</p>
               </div>
               <div class="card-body table-responsive">
                 <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">
                   <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>Tên sự kiện</th>
-                    <th>Người tổ chức</th>
-                    <th>Người duyệt</th>
+                    <th style="width: 8%">ID</th>
+                    <th style="width: 50%">Tên sự kiện</th>
+                    <th style="width: 20%">Người duyệt</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Bóng đá khoa IT</td>
-                    <td>Diệu Hiền</td>
-                    <td>Trần Thị Thúy Trinh</td>
+                  <tr *ngFor="let nd of thongkenguoiduyet;let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{nd[0]}}</td>
+                    <td>{{nd[1]}}</td>
                   </tr>
                   </tbody>
                 </table>
@@ -335,5 +333,10 @@
 
 
 </body>
+<style>
+  td{
 
+    word-wrap: break-word;
+  }
+</style>
 
