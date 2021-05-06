@@ -69,6 +69,7 @@ public class AccController {
         accRepository.save(account);
         String link = "http://localhost:4200" + "/doimatkhau/"+ token;
         sendEmailtoresetpassword(email,link);
+        account.setPassword(account.getPassword());
         int i = 600;
         while (i>0){
             try {
@@ -89,6 +90,29 @@ public class AccController {
     public String processsendmessage(@RequestBody Message ms) throws UnsupportedEncodingException, MessagingException {
         sendEmailMessage(ms);
         return "Gửi qua mail thành công";
+    }
+
+    @PostMapping("/xacthucemailbyusername/{username}")
+    public void xacthucemailbyusername(@PathVariable String username) throws UnsupportedEncodingException, MessagingException {
+        String token = RandomString.make(50);
+        Account account = accRepository.findByusername(username);
+        account.setVerification_email_token(token);
+        accRepository.save(account);
+        String link = "http://localhost:4200" + "/xacthucemail/"+ token;
+        sendEmailtoverification(account.getEmail(),link);
+        int i = 600;
+        while (i>0){
+            try {
+                i--;
+                Thread.sleep(1000L);
+            }
+            catch (InterruptedException e) {
+            }
+        }
+        if(i==0){
+            account.setVerification_email_token("");
+            accRepository.save(account);
+        }
     }
 
     @PostMapping("/xacthucemail/{email}")

@@ -4,6 +4,7 @@ import {TokenStorageService} from '../_services/token-storage.service';
 import {Router} from '@angular/router';
 import {AccountService} from '../Service/account.service';
 import {Thongtincanhan} from '../Model/thongtincanhan';
+import {XacthucemailService} from '../Service/xacthucemail.service';
 
 @Component({
   selector: 'app-dangnhap',
@@ -21,6 +22,7 @@ export class DangnhapComponent implements OnInit {
   check=true;
 
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
+              private xacthucmailservice: XacthucemailService,
               private router:Router, private accountservice: AccountService) { }
 
   ngOnInit(): void {
@@ -35,6 +37,8 @@ export class DangnhapComponent implements OnInit {
       this.account = data;
       if(!this.account.status_acc){
           this.check=false;
+          console.log(this.form.username);
+          this.xacthucmailservice.guimailbyusername(this.form.username).subscribe();
       } else {
         this.authService.login(this.form).subscribe(
           data => {
