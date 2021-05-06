@@ -33,4 +33,6 @@ export class Sukien {
   hot: boolean;
   // @ts-ignore
   number_of_peoples:number;
+  // @ts-ignore
+  id_cencor:number;
 }

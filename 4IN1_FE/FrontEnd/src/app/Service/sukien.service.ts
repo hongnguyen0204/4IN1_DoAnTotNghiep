@@ -131,5 +131,6 @@ export class SukienService {
   CheckSoLuong(data){
     return this.http.post('http://localhost:8080/dangkilamctv/checkSoLuong',data)
   }
+
 }
 

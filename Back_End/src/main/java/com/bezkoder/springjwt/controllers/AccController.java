@@ -1,10 +1,7 @@
 package com.bezkoder.springjwt.controllers;
 
-
 import com.bezkoder.springjwt.models.Account;
 import com.bezkoder.springjwt.models.Message;
-import com.bezkoder.springjwt.models.SuKien;
-import com.bezkoder.springjwt.models.Thongtintaikhoan;
 import com.bezkoder.springjwt.repository.AccRepository;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +9,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
@@ -73,6 +69,7 @@ public class AccController {
         accRepository.save(account);
         String link = "http://localhost:4200" + "/doimatkhau/"+ token;
         sendEmailtoresetpassword(email,link);
+        account.setPassword(account.getPassword());
         int i = 600;
         while (i>0){
             try {
@@ -93,6 +90,29 @@ public class AccController {
     public String processsendmessage(@RequestBody Message ms) throws UnsupportedEncodingException, MessagingException {
         sendEmailMessage(ms);
         return "Gửi qua mail thành công";
+    }
+
+    @PostMapping("/xacthucemailbyusername/{username}")
+    public void xacthucemailbyusername(@PathVariable String username) throws UnsupportedEncodingException, MessagingException {
+        String token = RandomString.make(50);
+        Account account = accRepository.findByusername(username);
+        account.setVerification_email_token(token);
+        accRepository.save(account);
+        String link = "http://localhost:4200" + "/xacthucemail/"+ token;
+        sendEmailtoverification(account.getEmail(),link);
+        int i = 600;
+        while (i>0){
+            try {
+                i--;
+                Thread.sleep(1000L);
+            }
+            catch (InterruptedException e) {
+            }
+        }
+        if(i==0){
+            account.setVerification_email_token("");
+            accRepository.save(account);
+        }
     }
 
     @PostMapping("/xacthucemail/{email}")

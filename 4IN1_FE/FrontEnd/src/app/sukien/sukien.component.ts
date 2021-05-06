@@ -34,7 +34,6 @@ export class SukienComponent implements OnInit {
   dataMonth(id:number){
     this.sukienService.findByMonth(id).subscribe(data=>{
       this.sukiens=data;
-      console.log(this.sukiens);
     })
   }
 }

@@ -42,7 +42,17 @@ public class SuKien {
 
     private int owner_event_id;
 
+    private int id_cencor;
+
     private boolean hot;
+
+    public int getId_cencor() {
+        return id_cencor;
+    }
+
+    public void setId_cencor(int id_cencor) {
+        this.id_cencor = id_cencor;
+    }
 
     public Date getTime_upload() {
         return time_upload;
@@ -191,7 +201,7 @@ public class SuKien {
     public SuKien() {
     }
 
-    public SuKien(int ID, String event_name, String organizer, Date time_of_event, Date time_upload, String place, String faculty, String describe_of_event, String content, String img, String plan_file, int number_of_collaborators, int number_of_peoples, String criteria, Date end_day, String status_of_event, int owner_event_id, boolean hot) {
+    public SuKien(int ID, String event_name, String organizer, Date time_of_event, Date time_upload, String place, String faculty, String describe_of_event, String content, String img, String plan_file, int number_of_collaborators, int number_of_peoples, String criteria, Date end_day, String status_of_event, int owner_event_id, int id_cencor, boolean hot) {
         this.ID = ID;
         this.event_name = event_name;
         this.organizer = organizer;
@@ -209,8 +219,7 @@ public class SuKien {
         this.end_day = end_day;
         this.status_of_event = status_of_event;
         this.owner_event_id = owner_event_id;
+        this.id_cencor = id_cencor;
         this.hot = hot;
     }
-
-
 }
