@@ -84,8 +84,6 @@ export class QuanlysukienComponent implements OnInit,OnDestroy {
   deleteCTV(id:number){
     this.ctv.user_ID = this.id;
     this.ctv.event_ID=id;
-    console.log(this.ctv.user_ID);
-    console.log(this.ctv.event_ID)
     this.skService.huyCTV(this.ctv).subscribe(
       data => {
         window.location.reload();

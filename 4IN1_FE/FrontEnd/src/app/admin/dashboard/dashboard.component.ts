@@ -27,12 +27,26 @@ export class DashboardComponent implements OnInit {
   tongNguoi:number;
   // @ts-ignore
   tongSKTN:number;
+  date:Date=new Date();
+  // @ts-ignore
+  ngay:number;
+  // @ts-ignore
+  thang:number;
+  // @ts-ignore
+  nam:number;
+  thongkenguoidangki:any;
+  thongkenguoiduyet:any;
+
   constructor(private dashboardService:DashboardService,
               private tokenStorageService: TokenStorageService) {
   }
 
   ngOnInit(): void {
     // @ts-ignore
+    this.ngay=this.date.getDay();
+    this.thang=this.date.getMonth();
+    this.nam=this.date.getFullYear();
+
     this.dtOptions = {
       language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers'
@@ -57,7 +71,13 @@ export class DashboardComponent implements OnInit {
     });
     this.dashboardService.TongSKTN().subscribe(data=>{
       this.tongSKTN=data;
-    })
+    });
+    this.dashboardService.thongKeNguoiDangKi().subscribe(data=>{
+      this.thongkenguoidangki=data;
+    });
+    this.dashboardService.thongKeNguoiDuyet().subscribe(data=>{
+      this.thongkenguoiduyet=data;
+    });
   }
 
   logout(): void {
