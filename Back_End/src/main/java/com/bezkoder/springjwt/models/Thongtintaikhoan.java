@@ -13,7 +13,7 @@ public class Thongtintaikhoan {
     private String password;
     private String fullname;
     private String faculty;
-    private Date date_of_birth;
+    private Date day_of_birth;
     private String phone_number;
     private String advantages;
     private String img;
@@ -23,13 +23,13 @@ public class Thongtintaikhoan {
     public Thongtintaikhoan() {
     }
 
-    public Thongtintaikhoan(int ID, String username, String password, String fullname, String faculty, Date date_of_birth, String phone_number, String advantages, String img, boolean gender, boolean status_acc) {
+    public Thongtintaikhoan(int ID, String username, String password, String fullname, String faculty, Date day_of_birth, String phone_number, String advantages, String img, boolean gender, boolean status_acc) {
         this.ID = ID;
         this.username = username;
         this.password = password;
         this.fullname = fullname;
         this.faculty = faculty;
-        this.date_of_birth = date_of_birth;
+        this.day_of_birth = day_of_birth;
         this.phone_number = phone_number;
         this.advantages = advantages;
         this.img = img;
@@ -77,12 +77,12 @@ public class Thongtintaikhoan {
         this.faculty = faculty;
     }
 
-    public Date getDate_of_birth() {
-        return date_of_birth;
+    public Date getDay_of_birth() {
+        return day_of_birth;
     }
 
-    public void setDate_of_birth(Date date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setDay_of_birth(Date date_of_birth) {
+        this.day_of_birth = date_of_birth;
     }
 
     public String getPhone_number() {
