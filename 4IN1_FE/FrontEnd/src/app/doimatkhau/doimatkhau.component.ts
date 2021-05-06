@@ -38,7 +38,6 @@ export class DoimatkhauComponent implements OnInit {
     this.acc.reset_password_token=token;
     this.acc.password=password;
     this.quenmatkhauservice.doimatkhau(this.acc).subscribe();
-    this.thongbao.success("Đổi mật khẩu thành công!");
     this.isSuccessful = true;
   }
 
