@@ -167,18 +167,14 @@
 
               <label class="lb" style="color: #0b0b0b">Hình ảnh</label>
               <div class="file-input" style=" ">
-<<<<<<< HEAD
                 <input type='file' (change)="readURL($event);" id="file" class="file"/>
                 <img  id="blah"  [src]="imageSrc || 'http://placehold.it/180'" alt="your image"/>
-=======
-                <input type='file' accept="image/x-png,image/gif,image/jpeg" (change)="readURL($event);" id="file" class="file" />
-                <img  id="blah"  [src]="imageSrc || 'http://placehold.it/180'" alt="your image"  />
->>>>>>> 44db6d2bba1da0107233f282c66d6b8d6765dca8
+                <div class="alert-danger" *ngIf="f.submitted && imageSrc==null">Bạn phải chọn ảnh</div>
                 <label for="file" >Chọn và lưu ảnh</label>
               </div>
               <br>
               <div style="width: 30%;margin: 20px auto" class="row">
-                <button class="submit" (click)="save($event)" value="Thêm">Thêm</button>
+                <button class="submit" value="Thêm">Thêm</button>
               </div>
             </form>
           </div>
