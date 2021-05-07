@@ -1,5 +1,5 @@
 // @ts-ignore
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {QuanlytintucserviceService} from "../../Service/quanlytintucservice.service";
 import {Quanlytintuc} from "../../Model/quanlytintuc";
 // @ts-ignore
@@ -7,6 +7,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DatePipe} from "@angular/common";
 import {TokenStorageService} from '../../_services/token-storage.service';
 import {Subject} from 'rxjs';
+import {MatDialog} from '@angular/material/dialog';
+import {ConfirmDialogComponent} from '../../-helpers/confirm-dialog/confirm-dialog.component';
 
 
 // @ts-ignore
@@ -29,14 +31,14 @@ export class TintucComponent implements OnInit,OnDestroy {
               private route: ActivatedRoute,
               private router: Router,
               public datepipe: DatePipe,
-              private tokenStorageService: TokenStorageService) {
+              private tokenStorageService: TokenStorageService,
+              private dialog: MatDialog) {
       }
 
   ngOnInit(): void {
     this.dtOptions = {
       language: {url:'assets/Vietnamese.json'},
-      pagingType: 'full_numbers',
-      pageLength: 5
+      pagingType: 'full_numbers'
     };
     this.reloadData();
   }
@@ -55,13 +57,22 @@ export class TintucComponent implements OnInit,OnDestroy {
   }
 
   delete(id: number) {
+    const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Xóa',
+        message: 'Bạn có chắc chắn muốn xóa hay không?'
+      }
+    });
+    confirmDialog.afterClosed().subscribe(result => {
+      if (result === true) {
     this.quanLyTinTucService.delete(id)
       .subscribe(
         data => {
-          console.log(data);
-          this.reloadData();
+          window.location.reload();
         },
         error => console.log(error));
+  }
+    });
   }
 
   updateTinTuc(id: number){

@@ -43,6 +43,7 @@ public class AccController {
     public void LuuThongTin(@PathVariable int id,@RequestBody Account account){
         Account acc = accRepository.findById(id).get();
         acc=account;
+        acc.setIs_Update(true);
         accRepository.save(acc);
     }
 

@@ -29,4 +29,6 @@ export class Thongtincanhan {
   status_acc: boolean;
   // @ts-ignore
   ban:boolean;
+  // @ts-ignore
+  is_Update:boolean;
 }
