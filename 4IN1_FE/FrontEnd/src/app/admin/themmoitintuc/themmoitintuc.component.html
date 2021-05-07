@@ -138,7 +138,7 @@
               <ckeditor [(ngModel)]="tintuc.content" name="content" id="content"></ckeditor>
               <label class="lb" style="color: #0b0b0b">Hình ảnh</label>
               <div class="file-input" style=" ">
-                <input type='file' (change)="readURL($event);" id="file" class="file" />
+                <input type='file' accept="image/x-png,image/gif,image/jpeg" (change)="readURL($event);" id="file" class="file" />
                 <img  id="blah"  [src]="imageSrc || 'http://placehold.it/180'" alt="your image"  />
                 <label for="file" >Chọn và lưu ảnh</label>
               </div>
