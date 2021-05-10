@@ -15,14 +15,25 @@ public class Congtacvien {
     private int user_ID;
     private int event_ID;
     private int status_col;
+    private String strength;
+
     public Congtacvien() {
     }
 
-    public Congtacvien(int ID, int user_ID, int event_ID, int status_col) {
+    public Congtacvien(int ID, int user_ID, int event_ID, int status_col, String strength) {
         this.ID = ID;
         this.user_ID = user_ID;
         this.event_ID = event_ID;
         this.status_col = status_col;
+        this.strength = strength;
+    }
+
+    public String getStrength() {
+        return strength;
+    }
+
+    public void setStrength(String strength) {
+        this.strength = strength;
     }
 
     public int getID() {

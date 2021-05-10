@@ -50,13 +50,17 @@ public class SuKienController {
     @PostMapping("/add")
     public void addSuKien(@RequestBody SuKien suKien){
        suKien.setStatus_of_event("Đang chờ");
+        long millis=System.currentTimeMillis();
+        java.sql.Date date=new java.sql.Date(millis);
+        suKien.setTime_upload(date);
        suKienRepository.save(suKien);
     }
 
     @PutMapping("/duyet/{id}")
-    public void duyetSuKien(@PathVariable Integer id){
+    public void duyetSuKien(@PathVariable Integer id,@RequestBody SuKien sukien){
         SuKien sk =suKienRepository.findById(id).get();
         sk.setStatus_of_event("Đồng ý");
+        sk.setId_cencor(sukien.getId_cencor());
         suKienRepository.save(sk);
     }
 
@@ -163,6 +167,21 @@ public class SuKienController {
     @PostMapping("/kiemtra")
     public Integer KiemTra(@RequestBody SuKien suKien){
        return suKienRepository.KiemTra(suKien.getTime_of_event(),suKien.getPlace());
+    }
+
+    @GetMapping("/tongSuKienDangKi")
+    public Integer TongSuKienDangKiTrongNgay(){
+        return suKienRepository.SKDangKiTrongNgay();
+    }
+
+    @GetMapping("/thongkenguoidangki")
+    public List<Object> thongKeNguoiDangKi(){
+        return suKienRepository.ThongKeNguoiDangKi();
+    }
+
+    @GetMapping("/thongkenguoiduyet")
+    public List<Object> thongKeNguoiDuyet(){
+        return suKienRepository.ThongKeNguoiDuyet();
     }
 
 }

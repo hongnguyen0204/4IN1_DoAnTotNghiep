@@ -1,21 +1,14 @@
 <!--Bảng 1-->
 <title>Sự kiện của tôi</title>
-<div class="row" style="margin-top: 140px;">
-  <div class="col">
-    <a class="button" href="quanlysukien" style="margin-left: 9%;vertical-align:middle"><span>Quản lý sự kiện</span></a>
-  </div>
-  <div class="col">
-    <a class="button1" href="nguoithamgiasukien" style="margin-right: 5%;vertical-align:middle;float: right"><span>Người tham gia sự kiện</span></a>
-  </div>
-</div>
-<div class="content" style="margin-top: 40px">
+<div class="content" style="margin-top: 160px">
   <div class="container-fluid" style="position: relative;max-width: 80%;margin: 0px auto 40px auto;">
     <div class="row">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
 
-            <h4 class="card-title ">Cộng tác viên của sự kiện</h4>
+            <h4 class="card-title ">Sự kiện đã tổ chức</h4>
+
             <p class="card-category"></p>
           </div>
           <select (change)="tsk()" [(ngModel)]="idevent" name="tensukien"  style=" width: auto; height: 50px; outline:none;">
@@ -35,7 +28,11 @@
                 </tr>
                 </thead>
                 <tbody>
+<<<<<<< HEAD
                 <tr *ngFor="let ctv of qlcongtacviens, let i = index" >
+=======
+                <tr (change)="tsk()" *ngFor="let ctv of qlcongtacviens, let i = index" >
+>>>>>>> 1dfd526be5f8323a439313e7d1ffadd902a8d5f8
                   <td>{{i+1}}</td>
                   <td>{{ctv[0]}}</td>
                   <td>{{ctv[1]}}</td>

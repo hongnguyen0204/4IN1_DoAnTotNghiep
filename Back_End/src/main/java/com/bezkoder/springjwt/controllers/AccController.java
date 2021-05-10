@@ -1,10 +1,7 @@
 package com.bezkoder.springjwt.controllers;
 
-
 import com.bezkoder.springjwt.models.Account;
 import com.bezkoder.springjwt.models.Message;
-import com.bezkoder.springjwt.models.SuKien;
-import com.bezkoder.springjwt.models.Thongtintaikhoan;
 import com.bezkoder.springjwt.repository.AccRepository;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +9,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
@@ -47,6 +43,7 @@ public class AccController {
     public void LuuThongTin(@PathVariable int id,@RequestBody Account account){
         Account acc = accRepository.findById(id).get();
         acc=account;
+        acc.setIs_Update(true);
         accRepository.save(acc);
     }
 

@@ -20,6 +20,7 @@ public class Account {
     private boolean gender;
     private boolean status_acc;
     private boolean ban;
+    private boolean is_Update;
     private String password;
     private String advantages;
     private String reset_password_token;
@@ -30,7 +31,7 @@ public class Account {
     public Account() {
     }
 
-    public Account(int ID, String username, String email, String fullname, String faculty, Date day_of_birth, String phone_number, String img, boolean gender, boolean status_acc, boolean ban, String password, String advantages, String reset_password_token, String verification_email_token, LocalDateTime tokenCreationDate) {
+    public Account(int ID, String username, String email, String fullname, String faculty, Date day_of_birth, String phone_number, String img, boolean gender, boolean status_acc, boolean ban, boolean is_Update, String password, String advantages, String reset_password_token, String verification_email_token, LocalDateTime tokenCreationDate) {
         this.ID = ID;
         this.username = username;
         this.email = email;
@@ -42,11 +43,20 @@ public class Account {
         this.gender = gender;
         this.status_acc = status_acc;
         this.ban = ban;
+        this.is_Update = is_Update;
         this.password = password;
         this.advantages = advantages;
         this.reset_password_token = reset_password_token;
         this.verification_email_token = verification_email_token;
         this.tokenCreationDate = tokenCreationDate;
+    }
+
+    public boolean isIs_Update() {
+        return is_Update;
+    }
+
+    public void setIs_Update(boolean is_Update) {
+        this.is_Update = is_Update;
     }
 
     public boolean isBan() {
