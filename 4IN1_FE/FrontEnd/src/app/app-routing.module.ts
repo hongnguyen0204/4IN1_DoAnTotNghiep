@@ -20,7 +20,6 @@ import {XacthucemailComponent} from './xacthucemail/xacthucemail.component';
 import {ActiveService} from './_services/active.service';
 import {ChitiettintucComponent} from './chitiettintuc/chitiettintuc.component';
 import {NguoithamgiasukienComponent} from './nguoithamgiasukien/nguoithamgiasukien.component';
-import {ThongtinnhomComponent} from './thongtinnhom/thongtinnhom.component';
 
 
 const routes: Routes = [
@@ -43,7 +42,6 @@ const routes: Routes = [
   {path: 'doimatkhau/:token', component: DoimatkhauComponent},
   {path: 'xacthucemail/:token', component: XacthucemailComponent},
   {path: 'add', component: DangkyComponent},
-  {path: 'thongtinnhom', component: ThongtinnhomComponent},
   {path: '', redirectTo: '/trangchu', pathMatch: 'full' }
   ];
 

@@ -32,9 +32,6 @@ export class ThongtincanhanComponent implements OnInit {
   gender: string;
 
   // @ts-ignore
-  public onSubmit(){
-    console.log('onSubmit');
-  }
   constructor(private thongtincanhanService: ThongtincanhanService,
               @Inject(AngularFireStorage)
               private storage: AngularFireStorage,
@@ -75,6 +72,7 @@ export class ThongtincanhanComponent implements OnInit {
             fileRef.getDownloadURL().subscribe((url) => {
               if (this.users.img != url) {
                 this.users.img = url;
+                console.log(this.users.img);
               }
               const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
                 data: {

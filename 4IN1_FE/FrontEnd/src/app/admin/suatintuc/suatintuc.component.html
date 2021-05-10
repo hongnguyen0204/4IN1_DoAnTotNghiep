@@ -73,13 +73,17 @@
               <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
                 <i class="material-icons">notifications</i>
-                <span class="notification">1</span>
+                <span class="notification">5</span>
                 <p class="d-lg-none d-md-block">
                   Some Actions
                 </p>
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" >Bạn có 1 sự kiện mới cần phê duyệt</a>
+                <a class="dropdown-item" href="#">Mike John responded to your email</a>
+                <a class="dropdown-item" href="#">You have 5 new tasks</a>
+                <a class="dropdown-item" href="#">You're now friend with Andrew</a>
+                <a class="dropdown-item" href="#">Another Notification</a>
+                <a class="dropdown-item" href="#">Another One</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -115,22 +119,15 @@
         </div>
         <div class="row">
           <div class="container">
-            <form (ngSubmit)="f.form.valid && save($event)" #f="ngForm" novalidate>
+            <form action="">
+              <div class="row">
+              </div>
               <div class="row">
                 <div class="col-25">
-                  <label for="tentintuc" style="color: #0b0b0b">Tên Tin Tức</label>
+                  <label for="ftentintuc" style="color: #0b0b0b">Tên Tin Tức</label>
                 </div>
                 <div class="col-75">
-                  <input type="text" [(ngModel)]="tintuc.title" name="tentintuc" placeholder="" id="tentintuc"
-                         required
-                         minlength="20"
-                         maxlength="500"
-                         #title="ngModel">
-                </div>
-                <div class="alert-danger" *ngIf="f.submitted && title.invalid">
-                  <div *ngIf="title.errors.required">Vui lòng nhập tên tin tức</div>
-                  <div *ngIf="title.errors.minlength">Vui lòng nhập tối thiểu 20 kí tự</div>
-                  <div *ngIf="title.errors.maxlength">Vui lòng nhập ít hơn 500 kí tự</div>
+                  <input type="text" [(ngModel)]="tintuc.title" name="tentintuc" placeholder="" id="ftentintuc">
                 </div>
               </div>
               <div class="row">
@@ -138,41 +135,20 @@
                   <label for="fmota" style="color: #0b0b0b">Mô Tả</label>
                 </div>
                 <div class="col-75">
-                  <textarea id="fmota" [(ngModel)]="tintuc.describe_of_news" name="mota" placeholder="" style="height:200px"
-                            required
-                            minlength="20"
-                            maxlength="500"
-                            #describe_of_news="ngModel">
-                  </textarea>
-                </div>
-                <div class="alert-danger" *ngIf="f.submitted && describe_of_news.invalid">
-                  <div *ngIf="describe_of_news.errors.required">Vui lòng nhập mô tả</div>
-                  <div *ngIf="describe_of_news.errors.minlength">Vui lòng nhập tối thiểu 20 kí tự</div>
-                  <div *ngIf="describe_of_news.errors.maxlength">Vui lòng nhập ít hơn 500 kí tự</div>
+                  <textarea id="fmota" [(ngModel)]="tintuc.describe_of_news" name="mota" placeholder="" style="height:200px"></textarea>
                 </div>
               </div>
               <label class="lb" style="color: #0b0b0b">Tin tức</label>
-              <ckeditor [(ngModel)]="tintuc.content" name="ckeditor" id="txtckeditor"
-                        required
-                        minlength="100"
-                        maxlength="10000"
-                        #content="ngModel">
-              </ckeditor>
-              <div class="alert-danger" *ngIf="f.submitted && content.invalid">
-                <div *ngIf="content.errors.required">Vui lòng nhập nội dung</div>
-                <div *ngIf="content.errors.minlength">Vui lòng nhập tối thiểu 100 kí tự</div>
-                <div *ngIf="content.errors.maxlength">Vui lòng nhập ít hơn 10000 kí tự</div>
-              </div>
+              <ckeditor [(ngModel)]="tintuc.content" name="ckeditor" id="txtckeditor"></ckeditor>
               <label class="lb" style="color: #0b0b0b">Hình ảnh</label>
               <div class="file-input" style=" ">
                 <input type='file' (change)="readURL($event);" id="file" class="file" />
-                <img id="blah"   [src]="imageSrc || 'http://placehold.it/180' " alt="your image"/>
-                <div class="alert-danger" *ngIf="f.submitted && imageSrc==null">Bạn phải chọn ảnh</div>
+                <img id="blah"   [src]="imageSrc || 'http://placehold.it/180' " alt="your image"  />
                 <label for="file">Chọn ảnh</label>
               </div>
               <br>
               <div style="width: 30%;margin: 20px auto" class="row">
-                <button class="submit"  value="Thêm">Sửa</button>
+                <button class="submit" (click)="save($event)" value="Thêm">Sửa</button>
               </div>
             </form>
           </div>

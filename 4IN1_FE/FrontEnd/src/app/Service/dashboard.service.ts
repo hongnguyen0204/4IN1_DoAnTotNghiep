@@ -32,18 +32,4 @@ export class DashboardService {
   TongNguoi():Observable<number>{
     return this.http.get<number>('http://localhost:8080/sukien/tongNguoiThamGia');
   }
-
-  TongSKTN():Observable<number>{
-    return this.http.get<number>('http://localhost:8080/sukien/tongSuKienDangKi');
-  }
-  // @ts-ignore
-  thongKeNguoiDangKi():Observable<any>{
-    return this.http.get<any>('http://localhost:8080/sukien/thongkenguoidangki');
-  }
-
-  // @ts-ignore
-  thongKeNguoiDuyet():Observable<any>{
-    return this.http.get<any>('http://localhost:8080/sukien/thongkenguoiduyet');
-  }
-
 }

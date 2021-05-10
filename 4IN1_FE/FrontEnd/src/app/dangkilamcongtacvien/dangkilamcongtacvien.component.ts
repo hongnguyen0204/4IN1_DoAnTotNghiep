@@ -25,7 +25,7 @@ export class DangkilamcongtacvienComponent implements OnInit {
   // @ts-ignore
   users:Thongtincanhan;
   // @ts-ignore
-  dkctv : Dangkilamctv = new Dangkilamctv();
+  dkctv : Dangkilamctv=new Dangkilamctv();
   // @ts-ignore
   sukien: Sukien=new Sukien();
   // @ts-ignore
@@ -36,8 +36,7 @@ export class DangkilamcongtacvienComponent implements OnInit {
               private accountService:AccountService,
               private dangkilamctvService:DangkilamctvService,
               private toastr: ToastrService,
-              private sukienService:SukienService,
-              private route:Router) { }
+              private sukienService:SukienService) { }
 
 
   ngOnInit(): void {
@@ -55,10 +54,11 @@ export class DangkilamcongtacvienComponent implements OnInit {
 
    gui(){
     this.dkctv.event_ID = this.sukien.id;
+    console.log(this.dkctv.user_ID);
+    console.log(this.dkctv.event_ID);
     this.dangkilamctvService.create(this.dkctv).subscribe(data =>{
       this.dkctv = data;
-
+      this.toastr.success("Đăng kí đã được gửi!");
     });
-    this.toastr.success("Đăng kí thành công!");
   }
 }
