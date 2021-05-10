@@ -115,15 +115,23 @@
         </div>
         <div class="row">
           <div class="container">
-            <form>
+            <form (ngSubmit)="f.form.valid && save($event)" #f="ngForm" novalidate>
               <div class="row">
               </div>
               <div class="row">
                 <div class="col-25">
-                  <label for="ftentintuc" style="color: #0b0b0b">Tên Tin Tức</label>
+                  <label for="tentintuc" style="color: #0b0b0b">Tên Tin Tức</label>
                 </div>
                 <div class="col-75">
-                  <input type="text" name="tentintuc" [(ngModel)]="tintuc.title" placeholder="" id="ftentintuc">
+                  <input type="text" name="tentintuc" [(ngModel)]="tintuc.title" placeholder="" id="tentintuc"
+                  required
+                  maxlength="100"
+                  #title="ngModel"
+                  >
+                  <div class="alert-danger" *ngIf="f.submitted && title.invalid">
+                    <div *ngIf="title.errors.required">Vui lòng nhập tên tin tức</div>
+                    <div *ngIf="title.errors.maxlength">Vui lòng nhập ít hơn 100 kí tự</div>
+                  </div>
                 </div>
               </div>
               <div class="row">
@@ -131,20 +139,42 @@
                   <label for="fmota"  style="color: #0b0b0b">Mô Tả</label>
                 </div>
                 <div class="col-75">
-                  <textarea id="fmota" [(ngModel)]="tintuc.describe_of_news" name="mota" placeholder="" style="height:200px"></textarea>
+                  <textarea id="fmota" [(ngModel)]="tintuc.describe_of_news" name="mota" placeholder="" style="height:200px"
+                  required
+                  minlength="20"
+                  maxlength="200"
+                  #describe_of_news="ngModel"
+                  ></textarea>
+                  <div class="alert-danger" *ngIf="f.submitted && describe_of_news.invalid">
+                    <div *ngIf="describe_of_news.errors.required">Vui lòng nhập mô tả</div>
+                    <div *ngIf="describe_of_news.errors.minlength">Vui lòng nhập tối thiểu 20 kí tự</div>
+                    <div *ngIf="describe_of_news.errors.maxlength">Vui lòng nhập ít hơn 200 kí tự</div>
+                  </div>
                 </div>
               </div>
               <label class="lb" style="color: #0b0b0b">Thông tin</label>
-              <ckeditor [(ngModel)]="tintuc.content" name="content" id="content"></ckeditor>
+              <ckeditor [(ngModel)]="tintuc.content" name="content" id="content"
+              required
+              minlength="100"
+              maxlength="10000"
+              #content="ngModel"
+              ></ckeditor>
+              <div class="alert-danger" *ngIf="f.submitted && content.invalid">
+                <div *ngIf="content.errors.required">Vui lòng nhập nội dung</div>
+                <div *ngIf="content.errors.minlength">Vui lòng nhập tối thiểu 100 kí tự</div>
+                <div *ngIf="content.errors.maxlength">Vui lòng nhập ít hơn 10000 kí tự</div>
+              </div>
+
               <label class="lb" style="color: #0b0b0b">Hình ảnh</label>
               <div class="file-input" style=" ">
-                <input type='file' (change)="readURL($event);" id="file" class="file" />
-                <img  id="blah"  [src]="imageSrc || 'http://placehold.it/180'" alt="your image"  />
+                <input type='file' (change)="readURL($event);" id="file" class="file"/>
+                <img  id="blah"  [src]="imageSrc || 'http://placehold.it/180'" alt="your image"/>
+                <div class="alert-danger" *ngIf="f.submitted && imageSrc==null">Bạn phải chọn ảnh</div>
                 <label for="file" >Chọn và lưu ảnh</label>
               </div>
               <br>
               <div style="width: 30%;margin: 20px auto" class="row">
-                <button class="submit" (click)="save($event)" value="Thêm">Thêm</button>
+                <button class="submit" value="Thêm">Thêm</button>
               </div>
             </form>
           </div>

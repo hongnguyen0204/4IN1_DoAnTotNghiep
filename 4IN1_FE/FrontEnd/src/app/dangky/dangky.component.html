@@ -1,4 +1,4 @@
-<title>Đăng kí</title>
+<title>Đăng ký</title>
 <div class="limiter" style="position: relative;margin-top: 130px">
   <div class="container-login100">
     <div class="wrap-login100">
@@ -32,7 +32,7 @@
           <input class="input100" type="text" name="email" placeholder="Email (Phải là đuôi @dtu.edu.vn)"
                  [(ngModel)]="form.email"
                  required
-                 pattern="^[a-z0-9_-]+@dtu.edu.vn"
+                 pattern="^[a-z0-9_-]{8,15}$+@dtu.edu.vn"
                  #email="ngModel"
           >
           <div

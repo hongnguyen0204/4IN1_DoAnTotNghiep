@@ -49,8 +49,8 @@ export class ThemmoitintucComponent implements OnInit {
 
   save(event:any) {
     if (this.selectedImage==null){
-      this.toastr.warning("Bạn phải chọn 1 hình ảnh")
-    } else{
+
+    } else {
       const name = this.selectedImage.name;
       const fileRef = this.storage.ref(name);
       this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
