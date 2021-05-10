@@ -3,7 +3,7 @@
 </head>
 <div class="testbox" *ngIf="currentUser; else loggedOut" style="position: relative;margin-top: 130px">
   <form name="form"
-        (ngSubmit)="f.form.valid && sukien.place!='Chọn địa điểm' && imageSrc!=null && selectedFile!=null && add()"
+        (ngSubmit)="f.form.valid && sukien.place!='Chọn địa điểm' && add()"
         #f="ngForm"
         novalidate>
     <div class="banner">
@@ -114,14 +114,14 @@
       <br>
       <p>Hình ảnh<span class="required">*</span></p>
       <div class="file-input" style="">
-        <input accept="image/x-png,image/gif,image/jpeg" name="img_file" type='file' (change)="readURL($event);saveimg($event)" id="file" class="file" />
+        <input type='file' (change)="readURL($event);saveimg($event)" id="file" class="file" />
         <img id="blah" [src]="imageSrc ||'http://placehold.it/180'" alt="your image"  />
         <div class="alert-danger" *ngIf="f.submitted && imageSrc==null">Bạn phải chọn ảnh</div>
       </div>
       <br>
     <div class="item">
       <p>Bảng kế hoạch<span class="required">*</span></p>
-      <input accept=".doc,.docx"  type="file" (change)="save($event)" name="plan_file">
+      <input type="file" (change)="save($event)" name="file">
       <div class="alert-danger" *ngIf="f.submitted && selectedFile==null">Bạn phải chọn bảng kế hoạch</div>
     </div>
     <div class="question">

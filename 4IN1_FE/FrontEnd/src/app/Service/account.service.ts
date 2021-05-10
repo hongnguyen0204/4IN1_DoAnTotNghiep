@@ -15,6 +15,7 @@ export class AccountService {
     return this.http.get<any>(`${'http://localhost:8080/account/getAcc'}/${user}`)
   }
 
+
   findUserbyToken(token:string):Observable<any>{
     return this.http.get<any>(`${'http://localhost:8080/account/getAccTokenEmail'}/${token}`)
   }

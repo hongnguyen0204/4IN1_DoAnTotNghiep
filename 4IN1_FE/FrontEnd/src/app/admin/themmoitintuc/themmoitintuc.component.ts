@@ -7,9 +7,8 @@ import {finalize} from "rxjs/operators";
 import {TokenStorageService} from '../../_services/token-storage.service';
 import {Thongtincanhan} from '../../Model/thongtincanhan';
 import {AccountService} from '../../Service/account.service';
+import {ThongbaoService} from '../../_services/thongbao.service';
 import {ToastrService} from 'ngx-toastr';
-import {MatDialog} from '@angular/material/dialog';
-import {ConfirmDialogComponent} from '../../-helpers/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-themmoitintuc',
@@ -36,8 +35,7 @@ export class ThemmoitintucComponent implements OnInit {
               private router: Router,
               private tokenStorageService: TokenStorageService,
               private accountService:AccountService,
-              private toastr: ToastrService,
-              private dialog: MatDialog) { }
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorageService.getUser();
@@ -49,8 +47,8 @@ export class ThemmoitintucComponent implements OnInit {
 
   save(event:any) {
     if (this.selectedImage==null){
-
-    } else {
+      this.toastr.warning("Bạn phải chọn 1 hình ảnh")
+    } else{
       const name = this.selectedImage.name;
       const fileRef = this.storage.ref(name);
       this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
@@ -59,22 +57,14 @@ export class ThemmoitintucComponent implements OnInit {
             this.id = url;
             this.tintuc.img = this.id;
             this.tintuc.id_admin = this.admin_id;
-            const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
-              data: {
-                title: 'Thêm mới 1 tin tức',
-                message: 'Bạn có chắc chắn muốn thêm hay không?'
-              }
-            });
-            confirmDialog.afterClosed().subscribe(result => {
-              if (result === true) {
-                this.quanLyTinTucService.create(this.tintuc).subscribe(data => {
-                  this.toastr.success("Thêm thành công!");
-                  this.router.navigate(['/admin/tintuc']).then(() => {
-                    window.location.reload();
-                  });
+            if (confirm("Bạn chắc chắn muốn thêm hay không?")) {
+              this.quanLyTinTucService.create(this.tintuc).subscribe(data => {
+                this.toastr.success("Thêm thành công!");
+                this.router.navigate(['/admin/tintuc']).then(() => {
+                  window.location.reload();
                 });
-              }
-            });
+              });
+            }
           });
         })).subscribe();
     }

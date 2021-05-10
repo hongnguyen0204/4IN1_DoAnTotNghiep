@@ -1,6 +1,12 @@
 <!--Bảng 1-->
+<script src="../../jquery-3.6.0.min.js"></script>
 <title>Quản lý sự kiện</title>
-<div class="content" style="margin-top: 160px">
+<div class="row" style="margin-top: 140px;">
+  <div class="col-md-12">
+    <a class="button" href="sukiencuatoi" style="margin-right:5%;vertical-align:middle;float: right"><span>Sự kiện của bạn</span></a>
+  </div>
+</div>
+<div class="content" style="margin-top: 40px">
   <div class="container-fluid" style="position: relative;max-width: 80%;margin: 0px auto 40px auto;">
     <div class="row">
       <div class="col-md-12">
@@ -18,7 +24,7 @@
                   <th>Tên sự kiện</th>
                   <th>Thời gian</th>
                   <th>Địa điểm tổ chức</th>
-                  <th>Thao tác</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -60,7 +66,7 @@
                   <th>Tên sự kiện</th>
                   <th>Thời gian</th>
                   <th>Địa điểm tổ chức</th>
-                  <th>Thao tác</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -70,7 +76,7 @@
                   <td>{{ctv[1]| date:'dd/MM/yyyy'}}</td>
                   <td>{{ctv[2]}}</td>
                   <td>
-                    <button (click)="deleteCTV(ctv[3])" class="btn btn-danger">Hủy</button>
+                    <button class="btn btn-danger">Hủy</button>
                   </td>
                 </tr>
                 </tbody>

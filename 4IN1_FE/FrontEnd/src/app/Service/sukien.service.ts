@@ -24,8 +24,13 @@ export class SukienService {
   }
 
   // @ts-ignore
-  findByText(searchtext): Observable<Sukien[]>{
-    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theotext'}/${searchtext}`);
+  findByText(searchtext, record): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theotext'}/${searchtext}/${record}`);
+  }
+
+  // @ts-ignore
+  findByrecordoftext(searchtext): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/recordoftext'}/${searchtext}`);
   }
 
   // @ts-ignore
@@ -35,10 +40,18 @@ export class SukienService {
   }
 
   // @ts-ignore
-  findByDay(ngay1, ngay2, searchtext): Observable<Sukien[]>{
-    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theongay'}/${ngay1}/${ngay2}/${searchtext}`);
+  findByDayandtext(ngay1, ngay2, searchtext): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theongayvatext'}/${ngay1}/${ngay2}/${searchtext}`);
   }
 
+  // @ts-ignore
+  findByDay(ngay1, ngay2): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theongay'}/${ngay1}/${ngay2}`);
+  }
+
+  findrecord():Observable<number> {
+    return this.http.get<number>('http://localhost:8080/sukien/findrecord');
+  }
   // @ts-ignore
   findAll(): Observable<Sukien[]>{
     return this.http.get<Sukien[]>('http://localhost:8080/sukien/sukiendangcho');
@@ -46,6 +59,16 @@ export class SukienService {
 
   findAllsk(): Observable<Sukien[]>{
     return this.http.get<Sukien[]>('http://localhost:8080/sukien/all');
+  }
+
+  // @ts-ignore
+  findsk(record): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/top'}/${record}`);
+  }
+
+  // @ts-ignore
+  findpage(page): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/page'}/${page}`);
   }
 
   findSKDD(): Observable<Sukien[]>{
@@ -113,11 +136,6 @@ export class SukienService {
   }
 
   // @ts-ignore
-  huyCTV(data){
-    return this.http.post('http://localhost:8080/dangkilamctv/delete',data);
-  }
-
-  // @ts-ignore
   kiemTra(data){
     return this.http.post('http://localhost:8080/sukien/kiemtra',data);
   }
@@ -126,11 +144,5 @@ export class SukienService {
   kiemTraTG(data){
     return this.http.post('http://localhost:8080/nguoithamgia/kiemtrathamgia',data);
   }
-
-  // @ts-ignore
-  CheckSoLuong(data){
-    return this.http.post('http://localhost:8080/dangkilamctv/checkSoLuong',data)
-  }
-
 }
 

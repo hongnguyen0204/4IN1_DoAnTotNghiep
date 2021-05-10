@@ -35,7 +35,7 @@ export class DangkithamgiasukienComponent implements OnInit {
   dK: Dangkithamgia = new Dangkithamgia();
   // @ts-ignore
   dangKiCTV: Dangkilamctv = new Dangkilamctv();
-  checkCTV=false;
+
   constructor(private sukienService: SukienService,
               private route: ActivatedRoute,
               private router: Router,
@@ -48,21 +48,16 @@ export class DangkithamgiasukienComponent implements OnInit {
   ngOnInit(): void {
     this.reloadData();
     this.ev_id = this.route.snapshot.params['id'];
-    this.dangKiCTV.event_ID=this.ev_id;
-    //Loading
+    console.log(this.ev_id);
     this.sukienService.getSK(this.ev_id).subscribe(data => {
       this.sukien = data;
-      this.sukienService.CheckSoLuong(this.dangKiCTV).subscribe(data=>{
-        if(this.sukien.number_of_collaborators>0 && data != this.sukien.number_of_collaborators){
-          this.checkCTV=true;
-        };
-      });
     }, error => console.log(error));
 
     this.currentUser = this.token.getUser();
     this.accountService.findUser(this.currentUser.username).subscribe(data => {
       this.users = data;
       this.id = this.users.id;
+      console.log(this.id);
     });
   }
 
@@ -70,9 +65,6 @@ export class DangkithamgiasukienComponent implements OnInit {
   dangKi(id: number, idSK: number) {
     this.dK.acc_ID = id;
     this.dK.event_ID = idSK;
-    if(!this.users.is_Update){
-      this.toastr.warning("Bạn phải cập nhật thông tin cá nhân để thực hiện tính năng này!");
-    } else {
     this.sukienService.kiemTraTG(this.dK).subscribe(data => {
       if (data != 0) {
         this.toastr.warning("Bạn đã đăng kí tham gia sự kiện này rồi!");
@@ -82,24 +74,19 @@ export class DangkithamgiasukienComponent implements OnInit {
           window.location.reload();
         });
       }
-    });
-    }
+    })
   }
 
   updatesk(id: number) {
     this.dangKiCTV.user_ID = this.id;
     this.dangKiCTV.event_ID = id;
-    if(!this.users.is_Update){
-      this.toastr.warning("Bạn phải cập nhật thông tin cá nhân để thực hiện tính năng này!");
-    } else {
-      this.dangkiCTVSV.check(this.dangKiCTV).subscribe(data => {
-        if (data != 0) {
-          this.toastr.warning("Bạn đã đăng kí cộng tác viên cho sự kiện này rồi!");
-        } else {
-          this.router.navigate(['/dangkicongtacvien', id]);
-        }
-      });
-    }
+    this.dangkiCTVSV.check(this.dangKiCTV).subscribe(data => {
+      if (data != 0) {
+        this.toastr.warning("Bạn đã đăng kí cộng tác viên cho sự kiện này rồi!");
+      } else {
+        this.router.navigate(['/dangkicongtacvien', id]);
+      }
+    });
   }
 
   reloadData() {

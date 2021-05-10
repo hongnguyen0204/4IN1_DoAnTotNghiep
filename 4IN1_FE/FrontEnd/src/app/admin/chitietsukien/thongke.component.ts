@@ -17,8 +17,6 @@ export class ThongkeComponent implements OnInit {
   @ViewChild('appendTo', { read: ViewContainerRef }) public appendTo: ViewContainerRef;
   // @ts-ignore
   id:number;
-  // @ts-ignore
-  id_admin:number;
   sukien:Sukien=new Sukien();
   constructor(private skService: SukienService,private route: ActivatedRoute,
               private router: Router,
@@ -26,15 +24,15 @@ export class ThongkeComponent implements OnInit {
               private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.id_admin=this.tokenStorageService.getUser().id;
     this.id=this.route.snapshot.params['id'];
+    console.log(this.id);
     this.skService.getSK(this.id).subscribe(data=>{
       this.sukien=data;
     },error => console.log(error));
   }
   updateStudent(){
-    this.sukien.id_cencor=this.id_admin;
     this.skService.update(this.id,this.sukien).subscribe(data=>{
+      console.log(data);
       this.router.navigate(['admin/sukien']) .then(() => {
         this.toastr.success("Duyệt thành công!");
         window.location.reload();
@@ -42,8 +40,8 @@ export class ThongkeComponent implements OnInit {
     },error => console.log(error));
   }
   cancelStudent(){
-    this.sukien.id_cencor=this.id_admin;
     this.skService.cancel(this.id,this.sukien).subscribe(data=>{
+      console.log(data);
       this.router.navigate(['admin/sukien']) .then(() => {
         this.toastr.warning("Đã hủy sự kiện!");
         window.location.reload();

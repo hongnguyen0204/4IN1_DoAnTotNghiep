@@ -48,7 +48,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { ConfirmDialogComponent } from './-helpers/confirm-dialog/confirm-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NguoithamgiasukienComponent } from './nguoithamgiasukien/nguoithamgiasukien.component';
-import { ThongtinnhomComponent } from './thongtinnhom/thongtinnhom.component';
 
 // @ts-ignore
 @NgModule({
@@ -74,8 +73,7 @@ import { ThongtinnhomComponent } from './thongtinnhom/thongtinnhom.component';
     XacthucemailComponent,
     ChitiettintucComponent,
     ConfirmDialogComponent,
-    NguoithamgiasukienComponent,
-    ThongtinnhomComponent
+    NguoithamgiasukienComponent
   ],
   imports: [
         BrowserModule,
