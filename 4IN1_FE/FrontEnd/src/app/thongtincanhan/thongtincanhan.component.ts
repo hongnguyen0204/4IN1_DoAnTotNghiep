@@ -75,7 +75,6 @@ export class ThongtincanhanComponent implements OnInit {
             fileRef.getDownloadURL().subscribe((url) => {
               if (this.users.img != url) {
                 this.users.img = url;
-                console.log(this.users.img);
               }
               const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
                 data: {
