@@ -23,11 +23,29 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
     @Query(value = "SELECT * FROM event_information WHERE status_of_event='Đồng ý' ", nativeQuery = true)
     List<SuKien> findAll();
 
-    @Query(value = "SELECT * FROM event_information WHERE DAY(time_of_event) BETWEEN ?1 AND ?2 AND event_name LIKE ?3 ", nativeQuery = true)
-    List<SuKien> findByDay(String ngay1, String ngay2, String search);
+    @Query(value = "SELECT * FROM event_information WHERE time_of_event BETWEEN ?1 AND ?2 AND event_name LIKE ?3 ", nativeQuery = true)
+    List<SuKien> findByDayandtext(String ngay1, String ngay2, String search);
 
-    @Query(value = "SELECT * FROM event_information WHERE event_name LIKE ?1 ", nativeQuery = true)
-    List<SuKien> findBytext(String searchText);
+    @Query(value = "SELECT * FROM event_information WHERE time_of_event BETWEEN ?1 AND ?2", nativeQuery = true)
+    List<SuKien> findByDay(String ngay1, String ngay2);
+
+    @Query(value = "SELECT COUNT(ID) FROM event_information", nativeQuery = true)
+    int findrecord();
+
+    @Query(value = "SELECT COUNT(ID) FROM event_information WHERE event_name LIKE ?1 ", nativeQuery = true)
+    int findrecordoftext(String searchText);
+
+    @Query(value = "SELECT * FROM event_information WHERE event_name LIKE ?1 limit ?2", nativeQuery = true)
+    List<SuKien> findBytext(String searchText,String record);
+
+    @Query(value = "SELECT * FROM event_information WHERE event_name LIKE ?1 limit ?2", nativeQuery = true)
+    List<SuKien> findBytextoverfive(String searchText,String record);
+
+    @Query(value = "SELECT * FROM event_information limit ?1", nativeQuery = true)
+    List<SuKien> findtop(int record);
+
+    @Query(value = "SELECT * FROM event_information limit 5 offset ?1", nativeQuery = true)
+    List<SuKien> findpage(int record);
 
     @Query(value = "SELECT * FROM event_information WHERE owner_event_id = ?1" , nativeQuery = true)
     List<SuKien> findByID(Integer id);

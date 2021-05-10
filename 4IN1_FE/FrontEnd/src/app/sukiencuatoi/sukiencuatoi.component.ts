@@ -31,6 +31,8 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
   // @ts-ignore
   id: number;
   // @ts-ignore
+  checked: boolean;
+  // @ts-ignore
   idevent: number;
   qlcongtacviens: any;
 
@@ -50,9 +52,9 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
       dom: 'Bfrtip',
       // @ts-ignore
       buttons: [
-        'copy',
-        'print',
-        'excel',
+        { extend: 'copy', text: 'Sao chép' },
+        { extend: 'print', text: 'in' },
+        { extend: 'excel', text: 'Excel' }
       ]
     };
     this.currentUser = this.token.getUser();
@@ -73,11 +75,23 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
 
   // @ts-ignore
   duyet(status: boolean, id: number){
+<<<<<<< HEAD
+    console.log(status);
+    this.checked=status;
+    if (this.checked){
+=======
     if (status){
+>>>>>>> 1dfd526be5f8323a439313e7d1ffadd902a8d5f8
       this.ctvService.updatenotok(id).subscribe();
+      this.checked=false;
+      // @ts-ignore
+      // $("#hau").html(false);
     }
     else {
       this.ctvService.updateok(id).subscribe();
+      this.checked = true;
+      // @ts-ignore
+      // $("#hau").html(true);
     }
   }
 
