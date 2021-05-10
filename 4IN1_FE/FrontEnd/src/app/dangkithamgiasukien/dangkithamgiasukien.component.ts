@@ -34,8 +34,6 @@ export class DangkithamgiasukienComponent implements OnInit {
   // @ts-ignore
   dK: Dangkithamgia = new Dangkithamgia();
   // @ts-ignore
-  id: number;
-  // @ts-ignore
   dangKiCTV: Dangkilamctv = new Dangkilamctv();
 
   constructor(private sukienService: SukienService,
