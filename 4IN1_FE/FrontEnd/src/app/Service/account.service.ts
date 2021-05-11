@@ -15,6 +15,10 @@ export class AccountService {
     return this.http.get<any>(`${'http://localhost:8080/account/getAcc'}/${user}`)
   }
 
+  findUserbyEmail(email:string):Observable<any>{
+    return this.http.get<any>(`${'http://localhost:8080/account/getAccbyemail'}/${email}`)
+  }
+
   checkBan(user:string):Observable<any>{
     return this.http.get<any>(`${'http://localhost:8080/account/getBan'}/${user}`)
   }

@@ -16,7 +16,6 @@ export class QuenmatkhauComponent implements OnInit {
   }
 
   laymatkhauquaemail(email: string){
-    console.log(email);
     this.quenmatkhauservice.laymatkhauquaemail(email).subscribe();
     alert("Gửi thành công, vào mail để check!")
   }

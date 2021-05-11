@@ -53,19 +53,22 @@ export class DangkithamgiasukienComponent implements OnInit {
     this.ev_id = this.route.snapshot.params['id'];
     this.dangKiCTV.event_ID=this.ev_id;
     //Loading
-    this.sukienService.getSK(this.ev_id).subscribe(data => {
-      this.sukien = data;
+    this.reloadSK(this.ev_id);
       this.sukienService.CheckSoLuong(this.dangKiCTV).subscribe(data=>{
         if(this.sukien.number_of_collaborators>0 && data != this.sukien.number_of_collaborators){
           this.checkCTV=true;
         };
       });
-    }, error => console.log(error));
-
     this.currentUser = this.token.getUser();
     this.accountService.findUser(this.currentUser.username).subscribe(data => {
       this.users = data;
       this.id = this.users.id;
+    });
+  }
+
+  reloadSK(id:number){
+    this.sukienService.getSK(id).subscribe(data => {
+      this.sukien = data;
     });
   }
 
@@ -137,6 +140,7 @@ export class DangkithamgiasukienComponent implements OnInit {
   }
 
   detailSK(id: number) {
+    this.reloadSK(id);
     this.router.navigate(['dangkithamgia',id]).then(() => {
       window.scrollTo(0,0)
     })
