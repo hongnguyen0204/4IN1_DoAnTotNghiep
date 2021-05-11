@@ -64,6 +64,11 @@ public class AccController {
         return accRepository.GetBan(username);
     }
 
+    @GetMapping("/getAccbyemail/{email}")
+    public Account GetEmail(@PathVariable String email) {
+        return accRepository.Getemail(email);
+    }
+
     @GetMapping("/getAccToken/{token}")
     public Account GetAcctoken(@PathVariable String token) {
         return accRepository.findByToken(token);
@@ -168,7 +173,7 @@ public class AccController {
 
         mailSender.send(message);
 
-        return "đc nè";
+        return "gửi thành công";
 
     }
 

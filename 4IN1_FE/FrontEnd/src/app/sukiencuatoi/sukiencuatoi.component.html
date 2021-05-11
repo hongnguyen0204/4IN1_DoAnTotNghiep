@@ -28,14 +28,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr (change)="tsk()" *ngFor="let ctv of qlcongtacviens, let i = index" >
+                <tr *ngFor="let ctv of qlcongtacviens, let i = index" >
                   <td>{{i+1}}</td>
                   <td>{{ctv[0]}}</td>
                   <td>{{ctv[1]}}</td>
                   <td>{{ctv[2]}}</td>
                   <td>{{ctv[3]}}</td>
                   <td>
-                    <input id="hau" [(ngModel)]="ctv[4]" (change)="tsk()" (click)="duyet(ctv[4],ctv[5])" type="checkbox">
+                    <input id="hau" [(ngModel)]="ctv[4]" (click)="duyet(ctv[4],ctv[5])" type="checkbox">
                   </td>
                 </tr>
                 </tbody>
