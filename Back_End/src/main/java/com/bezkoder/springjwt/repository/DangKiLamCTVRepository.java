@@ -21,6 +21,12 @@ public interface DangKiLamCTVRepository extends JpaRepository <DangKiLamCTV,Inte
             "WHERE user_ID=?1 AND event_ID=?2 ", nativeQuery = true)
     Integer Check(int id,int event_id);
 
+    @Query(value = "SELECT ev.time_of_event  " +
+            "FROM collaborator j,event_information ev " +
+            "WHERE j.user_ID=?1 " +
+            "AND j.event_ID=ev.ID", nativeQuery = true)
+    List<Object> KiemTraThoiGian(int acc_ID);
+
     @Modifying
     @Query(value = "DELETE FROM collaborator WHERE user_ID=?1 AND event_ID=?2 ", nativeQuery = true)
     void HuyDK(int acc_ID,int event_ID);

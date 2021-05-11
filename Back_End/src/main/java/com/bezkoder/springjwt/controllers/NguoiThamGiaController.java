@@ -41,4 +41,9 @@ public class NguoiThamGiaController {
         return nguoiThamGiaRepository.KiemTraThamGia(nguoiThamGia.getAcc_ID(),nguoiThamGia.getEvent_ID());
     }
 
+    @PostMapping("/kiemtrathoigian")
+    public List<Object> KiemTraThoiGian(@RequestBody NguoiThamGia nguoiThamGia){
+        return nguoiThamGiaRepository.KiemTraThoiGian(nguoiThamGia.getAcc_ID());
+    }
+
 }

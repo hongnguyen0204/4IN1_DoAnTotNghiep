@@ -79,5 +79,4 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
             "FROM account_information ac,event_information ev " +
             "WHERE ac.ID=ev.id_cencor and month(ev.time_of_event)=month(DATE(NOW())) ", nativeQuery = true)
     List<Object> ThongKeNguoiDuyet();
-
 }

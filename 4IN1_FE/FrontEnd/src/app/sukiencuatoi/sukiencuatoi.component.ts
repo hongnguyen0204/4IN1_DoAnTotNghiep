@@ -42,7 +42,6 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
               private ctvService: CongtacvienService) {}
 
   ngOnInit(): void {
-
     this.dtOptions = {
       language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers',
