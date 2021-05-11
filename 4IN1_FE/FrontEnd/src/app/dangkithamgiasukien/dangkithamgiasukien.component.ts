@@ -121,7 +121,9 @@ export class DangkithamgiasukienComponent implements OnInit {
         if (data != 0) {
           this.toastr.warning("Bạn đã đăng kí cộng tác viên cho sự kiện này rồi!");
         } else {
-          this.router.navigate(['/dangkicongtacvien', id]);
+          this.router.navigate(['/dangkicongtacvien', id]).then(() => {
+            window.scrollTo(0,0)
+          });
         }
       });
     }
@@ -136,7 +138,7 @@ export class DangkithamgiasukienComponent implements OnInit {
 
   detailSK(id: number) {
     this.router.navigate(['dangkithamgia',id]).then(() => {
-      window.location.reload();
+      window.scrollTo(0,0)
     })
   }
 }

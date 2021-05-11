@@ -37,7 +37,7 @@ public class SuKien {
 
     private String criteria;
 
-    private Date end_day;
+    private LocalDateTime end_day;
 
     private String status_of_event;
 
@@ -167,11 +167,11 @@ public class SuKien {
         this.criteria = criteria;
     }
 
-    public Date getEnd_day() {
+    public LocalDateTime getEnd_day() {
         return end_day;
     }
 
-    public void setEnd_day(Date end_day) {
+    public void setEnd_day(LocalDateTime end_day) {
         this.end_day = end_day;
     }
 
@@ -202,7 +202,7 @@ public class SuKien {
     public SuKien() {
     }
 
-    public SuKien(int ID, String event_name, String organizer, LocalDateTime time_of_event, Date time_upload, String place, String faculty, String describe_of_event, String content, String img, String plan_file, int number_of_collaborators, int number_of_peoples, String criteria, Date end_day, String status_of_event, int owner_event_id, int id_cencor, boolean hot) {
+    public SuKien(int ID, String event_name, String organizer, LocalDateTime time_of_event, Date time_upload, String place, String faculty, String describe_of_event, String content, String img, String plan_file, int number_of_collaborators, int number_of_peoples, String criteria, LocalDateTime end_day, String status_of_event, int owner_event_id, int id_cencor, boolean hot) {
         this.ID = ID;
         this.event_name = event_name;
         this.organizer = organizer;

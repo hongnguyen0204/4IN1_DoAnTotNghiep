@@ -81,7 +81,9 @@ export class TintucComponent implements OnInit,OnDestroy {
   }
 
   updateTinTuc(id: number){
-    this.router.navigate(['/admin/suatintuc',id]);
+    this.router.navigate(['/admin/suatintuc',id]).then(() => {
+      window.scrollTo(0,0)
+    });
   }
 
   logout(): void {

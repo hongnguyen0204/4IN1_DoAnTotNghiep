@@ -56,11 +56,15 @@ export class TrangchuComponent implements OnInit {
   }
 
   detailTT(id:number){
-    this.router.navigate(['chitiettintuc',id]);
+    this.router.navigate(['chitiettintuc',id]).then(() => {
+      window.scrollTo(0,0)
+    });
   }
 
   detailSK(id:number){
-    this.router.navigate(['dangkithamgia',id]);
+    this.router.navigate(['dangkithamgia',id]).then(() => {
+      window.scrollTo(0,0)
+    });
   }
 
   dataMonth(id:number){
