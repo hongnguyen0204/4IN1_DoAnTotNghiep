@@ -46,8 +46,8 @@ img{
   max-width: 100%;
 }
 .event-tab .tab-content .event-content .single-event .event-image img{
-  max-height: 200px;
-  max-width: 200px;
+  height: 200px;
+  width: 200px;
 }
 
 a:focus,

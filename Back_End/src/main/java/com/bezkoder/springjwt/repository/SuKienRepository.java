@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -86,7 +87,7 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
             "AND status_of_event='Đồng ý' " +
             "AND DATE(time_of_event)=DATE(?1) " +
             "AND place=?2", nativeQuery = true)
-    Integer KiemTra(Date ngayToChuc,String diaDiem);
+    Integer KiemTra(LocalDateTime ngayToChuc, String diaDiem);
 
     @Query(value = "SELECT ev.event_name, ac.fullname " +
             "FROM account_information ac,event_information ev " +
@@ -97,5 +98,4 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
             "FROM account_information ac,event_information ev " +
             "WHERE ac.ID=ev.id_cencor and month(ev.time_of_event)=month(DATE(NOW())) ", nativeQuery = true)
     List<Object> ThongKeNguoiDuyet();
-
 }

@@ -20,6 +20,7 @@ export class TrangchuComponent implements OnInit {
   day:any;
   month:any;
   year:any;
+  time:any;
   p: number =1;
   // @ts-ignore
   sukien: Sukien[];
@@ -41,6 +42,7 @@ export class TrangchuComponent implements OnInit {
     this.dataMonth(this.month);
     // @ts-ignore
     this.datahot();
+
     // @ts-ignore
     this.reloadData();
     this.message.subject="Chọn khoa";

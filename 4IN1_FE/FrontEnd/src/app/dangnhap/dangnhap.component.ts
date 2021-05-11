@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {AccountService} from '../Service/account.service';
 import {Thongtincanhan} from '../Model/thongtincanhan';
 import {XacthucemailService} from '../Service/xacthucemail.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-dangnhap',
@@ -21,9 +22,12 @@ export class DangnhapComponent implements OnInit {
   // @ts-ignore
   check=true;
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
+  constructor(private authService: AuthService,
+              private tokenStorage: TokenStorageService,
               private xacthucmailservice: XacthucemailService,
-              private router:Router, private accountservice: AccountService) { }
+              private router:Router,
+              private accountservice: AccountService,
+              private toastr:ToastrService) { }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
@@ -37,8 +41,9 @@ export class DangnhapComponent implements OnInit {
       this.account = data;
       if(!this.account.status_acc){
           this.check=false;
-          console.log(this.form.username);
           this.xacthucmailservice.guimailbyusername(this.form.username).subscribe();
+      } else if(this.account.ban) {
+        this.toastr.error("Tài khoản của bạn đã bị cấm!");
       } else {
         this.authService.login(this.form).subscribe(
           data => {
