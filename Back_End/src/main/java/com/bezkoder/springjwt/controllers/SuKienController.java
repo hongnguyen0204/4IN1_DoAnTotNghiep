@@ -102,7 +102,10 @@ public class SuKienController {
        return suKienRepository.findByMonth(thang);
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
     @GetMapping(path ="/theongay/{ngay1}/{ngay2}")
     public List<SuKien> getSKbydaytoday(@PathVariable String ngay1,@PathVariable String ngay2){
         ngay1 = ngay1 + " 00:00:00";
@@ -111,7 +114,11 @@ public class SuKienController {
     }
 
     @GetMapping(path ="/theotext/{searchtext}/{record}")
+<<<<<<< HEAD
     public List<SuKien> getSKbytext(@PathVariable String searchtext,@PathVariable int record){
+=======
+    public List<SuKien> getSKbytext(@PathVariable String searchtext,@PathVariable Integer record){
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
         String search = "%" + searchtext + "%";
         return suKienRepository.findBytext(search, record);
     }
@@ -165,11 +172,28 @@ public class SuKienController {
         return suKienRepository.findrecordoftext(search);
     }
 
+<<<<<<< HEAD
     @GetMapping("/recordofday/{ngay1}/{ngay2}")
     public int getrecordofday(@PathVariable String ngay1, @PathVariable String ngay2){
         ngay1 = ngay1 + " 00:00:00";
         ngay2 = ngay2 + " 00:00:00";
         return suKienRepository.findrecordofday(ngay1, ngay2);
+=======
+    @GetMapping(path ="/theodayandtext/{ngay1}/{ngay2}/{searchtext}/{record}")
+    public List<SuKien> getSKbydayandtext(@PathVariable String ngay1,@PathVariable String ngay2,@PathVariable String searchtext,@PathVariable Integer record){
+        ngay1 = ngay1 + " 00:00:00";
+        ngay2 = ngay2 + " 00:00:00";
+        String search = "%" + searchtext + "%";
+        return suKienRepository.findByDayandtext(ngay1, ngay2, search, record);
+    }
+
+    @GetMapping(path ="/theodayandtextpage/{ngay1}/{ngay2}/{searchtext}/{page}")
+    public List<SuKien> getSKbydayandtextpage(@PathVariable String ngay1,@PathVariable String ngay2,@PathVariable String searchtext,@PathVariable Integer page){
+        ngay1 = ngay1 + " 00:00:00";
+        ngay2 = ngay2 + " 00:00:00";
+        String search = "%" + searchtext + "%";
+        return suKienRepository.findByDayandtextpage(ngay1, ngay2, search, page);
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
     }
 
     @GetMapping("/recordofdayandtext/{ngay1}/{ngay2}/{searchtext}")
@@ -178,6 +202,22 @@ public class SuKienController {
         ngay2 = ngay2 + " 00:00:00";
         String search = "%" + searchtext + "%";
         return suKienRepository.findrecordofdayandtext(ngay1, ngay2, search);
+<<<<<<< HEAD
+=======
+    }
+
+    @GetMapping("/recordofday/{ngay1}/{ngay2}")
+    public int getrecordofday(@PathVariable String ngay1, @PathVariable String ngay2){
+        ngay1 = ngay1 + " 00:00:00";
+        ngay2 = ngay2 + " 00:00:00";
+        return suKienRepository.findrecordofday(ngay1, ngay2);
+    }
+
+    @GetMapping(path ="/textofrecord/{searchtext}/{record}")
+    public List<SuKien> findBytextofrecord(@PathVariable String searchtext,@PathVariable Integer record){
+        String search = "%" + searchtext + "%";
+        return suKienRepository.findBytextofrecord(search, record);
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
     }
 
     @GetMapping("/tongSuKienDaToChuc")

@@ -16,10 +16,13 @@ export class AccountService {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
 >>>>>>> 8a603050f8056774f64fc5ed79dc23390326c148
+=======
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
   findUserbyEmail(email:string):Observable<any>{
     return this.http.get<any>(`${'http://localhost:8080/account/getAccbyemail'}/${email}`)
   }
@@ -28,10 +31,13 @@ export class AccountService {
     return this.http.get<any>(`${'http://localhost:8080/account/getBan'}/${user}`)
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> e9d1344cca0773e9561a3f518f8f366b5d34401f
 >>>>>>> 8a603050f8056774f64fc5ed79dc23390326c148
+=======
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
 
   findUserbyToken(token:string):Observable<any>{
     return this.http.get<any>(`${'http://localhost:8080/account/getAccTokenEmail'}/${token}`)

@@ -322,6 +322,7 @@
 
   <!--====== CONTACT PART START ======-->
 
+<<<<<<< HEAD
   <section id="contact" class="contact-area pt-80 pb-130">
     <div class="container">
       <div class="row">
@@ -419,6 +420,104 @@
             </form>
           </div> <!-- contact form -->
         </div>
+=======
+<section id="contact" class="contact-area pt-80 pb-130">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="contact-info pt-40">
+          <div class="section-title pb-10">
+            <h2 class="title">Phản hồi</h2>
+          </div> <!-- section title -->
+        </div> <!-- contact info -->
+      </div>
+      <div class="col-lg-8">
+        <div class="contact-form pt-20">
+          <form (ngSubmit)="f.form.valid && message.subject!='Chọn khoa' && guilienlac()" id="contact-form" action="assets/contact.php" method="post"
+          #f="ngForm" novalidate>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="single-form">
+                  <input [(ngModel)]="message.name" type="text" name="name" placeholder="Họ và tên" class="form-control"
+                  required
+                  minlength="2"
+                  maxlength="20"
+                  #name="ngModel">
+                  <div class="alert-danger" *ngIf="f.submitted && name.invalid">
+                    <div *ngIf="name.errors.required">Vui lòng nhập tên</div>
+                    <div *ngIf="name.errors.minlength">Tên không được nhập dưới 2 kí tự</div>
+                    <div *ngIf="name.errors.maxlength">Tên không được nhập quá 20 kí tự</div>
+                  </div>
+                  <i class="lni-user"></i>
+                </div> <!-- single form -->
+              </div>
+              <div class="col-md-6">
+                <div class="single-form">
+                  <input type="email" [(ngModel)]="message.email" name="email" placeholder="Email"
+                  required
+                  pattern="^[a-z0-9_-]{8,15}$"
+                  #email="ngModel">
+                  <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+                    <div *ngIf="email.errors.required">Vui lòng nhập email</div>
+                    <div *ngIf="email.errors.pattern">Vui lòng nhập đúng định dạng email</div>
+                  </div>
+                  <i class="lni-envelope"></i>
+                </div> <!-- single form -->
+              </div>
+              <div class="col-md-6">
+                <div class="single-form">
+                  <select  [(ngModel)]="message.subject" name="subject" class="form-control" required #subject="ngModel" >
+                    <option value="Chọn khoa">Chọn khoa</option>
+                    <option value="Công nghệ thông tin">Công nghệ thông tin</option>
+                    <option value="Kế Toán">Kế Toán</option>
+                    <option value="Y dược">Y dược</option>
+                    <option value="Kiến Trúc">Kiến Trúc</option>
+                    <option value="Ngoại ngữ">Ngoại ngữ</option>
+                  </select>
+                  <i class="lni-pencil-alt"></i>
+                  <div class="alert-danger" *ngIf="f.submitted && message.subject=='Chọn khoa'">
+                    Bạn phải chọn khoa
+                  </div>
+                </div> <!-- single form -->
+              </div>
+              <div class="col-md-6">
+                <div class="single-form">
+                  <input type="text" [(ngModel)]="message.sdt" name="sdt" placeholder="Số điện thoại" class="form-control"
+                  required
+                  pattern="(0)[0-9]{9}"
+                         #sdt="ngModel">
+                  <div class="alert-danger" *ngIf="f.submitted && sdt.invalid">
+                    <div *ngIf="sdt.errors.required">Vui lòng nhập số điện thoại</div>
+                    <div *ngIf="sdt.errors.pattern">Vui lòng nhập đúng định dạng</div>
+                  </div>
+                  <i class="lni-phone-handset"></i>
+                </div> <!-- single form -->
+              </div>
+              <div class="col-md-12">
+                <div class="single-form">
+                  <textarea name="message" [(ngModel)]="message.loinhan" placeholder="Lời nhắn của bạn"
+                  required
+                  minlength="20"
+                  maxlength="200"
+                  #loinhan="ngModel"></textarea>
+                  <div class="alert-danger" *ngIf="f.submitted && loinhan.invalid">
+                    <div *ngIf="loinhan.errors.required">Vui lòng nhập lời nhắn của bạn</div>
+                    <div *ngIf="loinhan.errors.minlength">Vui lòng nhập tối thiểu 20 kí tự</div>
+                    <div *ngIf="loinhan.errors.maxlength">Vui lòng nhập ít hơn 200 kí tự</div>
+                  </div>
+                  <i class="lni-comment-alt"></i>
+                </div> <!-- single form -->
+              </div>
+              <p class="form-message"></p>
+              <div class="col-md-12">
+                <div class="single-form">
+                  <button type="submit" class="main-btn main-btn-2" style="width: 150px">Gửi</button>
+                </div> <!-- single form -->
+              </div>
+            </div> <!-- row -->
+          </form>
+        </div> <!-- contact form -->
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
       </div>
     </div> <!-- container -->
   </section>

@@ -48,6 +48,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { ConfirmDialogComponent } from './-helpers/confirm-dialog/confirm-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NguoithamgiasukienComponent } from './nguoithamgiasukien/nguoithamgiasukien.component';
+<<<<<<< HEAD
+=======
+import { ThongtinnhomComponent } from './thongtinnhom/thongtinnhom.component';
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
 import { InfoDialogComponent } from './-helpers/info-dialog/info-dialog.component';
 
 // @ts-ignore

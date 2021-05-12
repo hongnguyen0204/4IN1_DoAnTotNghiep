@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {QuenmatkhauService} from '../Service/quenmatkhau.service';
-import {Thongtincanhan} from '../Model/thongtincanhan';
 
 @Component({
   selector: 'app-quenmatkhau',
@@ -9,6 +8,7 @@ import {Thongtincanhan} from '../Model/thongtincanhan';
   providers: [QuenmatkhauService]
 })
 export class QuenmatkhauComponent implements OnInit {
+<<<<<<< HEAD
 
   funcv(){
     // @ts-ignore
@@ -33,10 +33,10 @@ export class QuenmatkhauComponent implements OnInit {
   account: Thongtincanhan = new Thongtincanhan();
   form: any = {};
   isSuccessful= false;
+=======
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
   // @ts-ignore
   email: string;
-  // @ts-ignore
-  kiemtra=true;
   constructor(private quenmatkhauservice: QuenmatkhauService) { }
 
   ngOnInit(): void {
@@ -44,6 +44,7 @@ export class QuenmatkhauComponent implements OnInit {
   }
 
   laymatkhauquaemail(email: string){
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -68,5 +69,10 @@ export class QuenmatkhauComponent implements OnInit {
     alert("Gửi thành công, vào mail để check!")
 >>>>>>> e9d1344cca0773e9561a3f518f8f366b5d34401f
 >>>>>>> 8a603050f8056774f64fc5ed79dc23390326c148
+=======
+    this.quenmatkhauservice.laymatkhauquaemail(email).subscribe();
+    alert("Gửi thành công, vào mail để check!")
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
   }
+
 }

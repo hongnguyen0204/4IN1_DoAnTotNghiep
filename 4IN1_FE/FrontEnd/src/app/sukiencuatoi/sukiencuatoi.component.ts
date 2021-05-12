@@ -10,7 +10,6 @@ import {Sukien} from '../Model/sukien';
 import {Subject} from 'rxjs';
 import {DataTableDirective} from 'angular-datatables';
 import {MatDialog} from '@angular/material/dialog';
-import {ConfirmDialogComponent} from '../-helpers/confirm-dialog/confirm-dialog.component';
 import {InfoDialogComponent} from '../-helpers/info-dialog/info-dialog.component';
 
 @Component({
@@ -57,6 +56,7 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
       buttons: [
         { extend: 'copy', text: 'Sao chép' },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
         { extend: 'print', text: '   in   ' },
@@ -64,6 +64,8 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
       ]
 =======
 >>>>>>> 8a603050f8056774f64fc5ed79dc23390326c148
+=======
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
         { extend: 'print', text: 'in' },
         { extend: 'excel', text: 'Excel' }
       ],
@@ -76,9 +78,12 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
         return row;
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e9d1344cca0773e9561a3f518f8f366b5d34401f
 >>>>>>> 8a603050f8056774f64fc5ed79dc23390326c148
+=======
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
     };
     this.currentUser = this.token.getUser();
     this.accountService.findUser(this.currentUser.username).subscribe(data => {
@@ -111,12 +116,15 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
   // @ts-ignore
   duyet(status: boolean, id: number){
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
     console.log(status);
 =======
 >>>>>>> e9d1344cca0773e9561a3f518f8f366b5d34401f
 >>>>>>> 8a603050f8056774f64fc5ed79dc23390326c148
+=======
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
     this.checked=status;
     if (this.checked){
       this.ctvService.updatenotok(id).subscribe();
@@ -144,5 +152,4 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
       });
     });
   }
-
 }

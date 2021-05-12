@@ -1,9 +1,4 @@
-<div class="row" style="margin-top: 140px;">
-  <div class="col">
-    <a class="button" href="sukiencuatoi" style="margin-left:4%;vertical-align:middle"><span>Quản lý CTV</span></a>
-  </div>
-</div>
-<div class="content" style="margin-top: 40px">
+<div class="content" style="margin-top: 160px">
   <div class="container-fluid" style="position: relative;max-width: 80%;margin: 0px auto 40px auto;">
     <div class="row">
       <div class="col-md-12">
@@ -14,11 +9,7 @@
           </div>
           <select (change)="ntg()" [(ngModel)]="idevent" name="tensukien"  style=" width: auto; height: 50px; outline:none;">
             <option value="{{sk.id}}" *ngFor="let sk of sukiens">{{sk.event_name}}</option>
-
           </select>
-          <div class="guinhacnho">
-            <button id="guimailnhacnho" (click)="detailSK()">Gửi email nhắc nhở</button>
-          </div>
           <div class="card-body">
             <div class="table-responsive">
               <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">
