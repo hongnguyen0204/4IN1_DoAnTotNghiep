@@ -44,7 +44,6 @@ export class QuenmatkhauComponent implements OnInit {
   }
 
   laymatkhauquaemail(email: string){
-<<<<<<< HEAD
     this.quenmatkhauservice.findUserbyemail(email).subscribe(data=>{
       this.account = data;
       if(this.account == null){
@@ -56,9 +55,7 @@ export class QuenmatkhauComponent implements OnInit {
         this.isSuccessful = true;
       }
     });
-=======
     this.quenmatkhauservice.laymatkhauquaemail(email).subscribe();
     alert("Gửi thành công, vào mail để check!")
->>>>>>> e9d1344cca0773e9561a3f518f8f366b5d34401f
   }
 }

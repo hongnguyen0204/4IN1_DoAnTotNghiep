@@ -188,5 +188,11 @@ export class SukienService {
   kiemTraTG(data){
     return this.http.post('http://localhost:8080/nguoithamgia/kiemtrathamgia',data);
   }
+
+  // @ts-ignore
+  CheckSoLuong(data){
+    return this.http.post('http://localhost:8080/dangkilamctv/checkSoLuong',data)
+  }
+
 }
 
