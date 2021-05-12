@@ -25,7 +25,7 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
     List<SuKien> findAll();
 
     @Query(value = "SELECT * FROM event_information WHERE time_of_event BETWEEN ?1 AND ?2 AND event_name LIKE ?3 limit ?4 ", nativeQuery = true)
-    List<SuKien> findByDayandtext(String ngay1, String ngay2, String search,Integer record);
+    List<SuKien> findByDayandtext(String ngay1, String ngay2, String search, Integer record);
 
     @Query(value = "SELECT * FROM event_information WHERE time_of_event BETWEEN ?1 AND ?2 AND event_name LIKE ?3 limit 5 offset ?4", nativeQuery = true)
     List<SuKien> findByDayandtextpage(String ngay1, String ngay2, String search,Integer page);
@@ -52,7 +52,7 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
     int findrecordofdayandtext(String ngay1, String ngay2, String search);
 
     @Query(value = "SELECT * FROM event_information WHERE event_name LIKE ?1 limit ?2 ", nativeQuery = true)
-    List<SuKien> findBytext(String search,int record);
+    List<SuKien> findBytext(String search,Integer record);
 
     @Query(value = "SELECT * FROM event_information WHERE event_name LIKE ?1 limit 5 offset ?2", nativeQuery = true)
     List<SuKien> findBytextofrecord(String searchText,Integer record);
@@ -70,7 +70,7 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
     List<SuKien> findByID(Integer id);
 
     @Query(value = "SELECT time_of_event FROM event_information WHERE ID = ?1" , nativeQuery = true)
-    String findByIDjointime(Integer id);
+    LocalDateTime findByIDjointime(Integer id);
 
     @Query(value = "SELECT place FROM event_information WHERE ID = ?1" , nativeQuery = true)
     String findByIDjoinplace(Integer id);

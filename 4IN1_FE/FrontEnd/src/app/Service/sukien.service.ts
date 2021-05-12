@@ -170,6 +170,11 @@ export class SukienService {
   }
 
   // @ts-ignore
+  huyCTV(data){
+    return this.http.post('http://localhost:8080/dangkilamctv/delete',data);
+  }
+
+  // @ts-ignore
   kiemTra(data){
     return this.http.post('http://localhost:8080/sukien/kiemtra',data);
   }
@@ -194,5 +199,9 @@ export class SukienService {
     return this.http.post('http://localhost:8080/dangkilamctv/checkSoLuong',data)
   }
 
+  // @ts-ignore
+  CheckSoLuongNTG(data){
+    return this.http.post('http://localhost:8080/nguoithamgia/checkSoLuong',data)
+  }
 }
 

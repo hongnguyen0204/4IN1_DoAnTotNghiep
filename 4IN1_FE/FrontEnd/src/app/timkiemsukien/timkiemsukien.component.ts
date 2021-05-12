@@ -120,6 +120,7 @@ export class TimkiemsukienComponent implements OnInit {
             });}else{
             this.sukienService.findByText(searchtext, 5).subscribe(data => {
               this.sukiens = data;
+              console.log(this.sukiens);
               this.p =1;
             });
           }
@@ -148,18 +149,21 @@ export class TimkiemsukienComponent implements OnInit {
         this.sukienService.findByrecordDayandtext(start,end,searchtext).subscribe(data=>{
           // @ts-ignore
           this.record = data;
+          console.log(start);
+          console.log(end);
           if(this.record<=5){
             this.sukienService.findofdayandtext(start,end, searchtext, this.record).subscribe(data => {
               this.sukiens = data;
+              console.log(this.sukiens);
               this.p = 1;
             });}else{
             this.sukienService.findofdayandtext(start,end, searchtext, 5).subscribe(data => {
               this.sukiens = data;
+              console.log(this.sukiens);
               this.p =1;
             });
           }
           console.log("trường hợp cả 3 không null")
-          console.log(this.sukiens);
         });
     }
     }

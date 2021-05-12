@@ -10,17 +10,19 @@ public class NguoiThamGia {
     private int ID;
     private int acc_ID;
     private int event_ID;
-    private String tiket;
+    private String ticket;
+    private String checkticket;
 
 
     public NguoiThamGia() {
     }
 
-    public NguoiThamGia(int ID, int acc_ID, int event_ID, String tiket) {
+    public NguoiThamGia(int ID, int acc_ID, int event_ID, String ticket, String checkticket) {
         this.ID = ID;
         this.acc_ID = acc_ID;
         this.event_ID = event_ID;
-        this.tiket = tiket;
+        this.ticket = ticket;
+        this.checkticket = checkticket;
     }
 
     public int getID() {
@@ -47,11 +49,19 @@ public class NguoiThamGia {
         this.event_ID = event_ID;
     }
 
-    public String getTiket() {
-        return tiket;
+    public String getTicket() {
+        return ticket;
     }
 
-    public void setTiket(String tiket) {
-        this.tiket = tiket;
+    public void setTicket(String ticket) {
+        this.ticket = ticket;
+    }
+
+    public String getCheckticket() {
+        return checkticket;
+    }
+
+    public void setCheckticket(String checkticket) {
+        this.checkticket = checkticket;
     }
 }
