@@ -127,6 +127,7 @@ The above copyright notice and this permission notice shall be included in all c
                   <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">
                     <thead>
                     <tr>
+                      <th style="width: 40px">STT</th>
                       <th>Tên sự kiện</th>
                       <th>Người phụ trách</th>
                       <th>Địa điểm tổ chức</th>
@@ -135,11 +136,12 @@ The above copyright notice and this permission notice shall be included in all c
                     </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let sk of sukien">
+                      <tr *ngFor="let sk of sukien;let i=index">
+                        <td>{{i+1}}</td>
                         <td>{{sk.event_name}}</td>
                         <td>{{sk.organizer}}</td>
                         <td>{{sk.place}}</td>
-                        <td>{{sk.time_of_event}}</td>
+                        <td>{{sk.time_of_event|date:'dd-MM-yyyy h:mm a'}}</td>
                         <td>
                           <a class="text-primary" (click)="details(sk.id)" style="cursor: pointer;">Đang chờ</a>
                         </td>
@@ -161,6 +163,7 @@ The above copyright notice and this permission notice shall be included in all c
                   <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger1" style="table-layout:fixed" class="row-border hover" style="width:100%">
                     <thead>
                     <tr>
+                      <th style="width: 40px">STT</th>
                       <th>Tên sự kiện</th>
                       <th>Người phụ trách</th>
                       <th>Địa điểm tổ chức</th>
@@ -169,11 +172,12 @@ The above copyright notice and this permission notice shall be included in all c
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let sk of sukienDD">
+                    <tr *ngFor="let sk of sukienDD;let i=index">
+                      <td>{{i+1}}</td>
                       <td>{{sk.event_name}}</td>
                       <td>{{sk.organizer}}</td>
                       <td>{{sk.place}}</td>
-                      <td>{{sk.time_of_event}}</td>
+                      <td>{{sk.time_of_event|date:'dd-MM-yyyy h:mm a'}}</td>
                       <td>
                         <a>Đã duyệt</a>
                       </td>
@@ -195,6 +199,7 @@ The above copyright notice and this permission notice shall be included in all c
                   <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger2" style="table-layout:fixed" class="row-border hover" style="width:100%">
                     <thead>
                     <tr>
+                      <th style="width: 40px">STT</th>
                       <th>Tên sự kiện</th>
                       <th>Người phụ trách</th>
                       <th>Địa điểm tổ chức</th>
@@ -203,11 +208,12 @@ The above copyright notice and this permission notice shall be included in all c
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let sk of sukienDH">
+                    <tr *ngFor="let sk of sukienDH;let i=index">
+                      <td>{{i+1}}</td>
                       <td>{{sk.event_name}}</td>
                       <td>{{sk.organizer}}</td>
                       <td>{{sk.place}}</td>
-                      <td>{{sk.time_of_event}}</td>
+                      <td>{{sk.time_of_event|date:'dd-MM-yyyy h:mm a'}}</td>
                       <td>
                         <a>Đã hủy</a>
                       </td>

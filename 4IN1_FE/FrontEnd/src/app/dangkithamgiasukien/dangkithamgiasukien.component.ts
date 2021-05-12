@@ -36,6 +36,7 @@ export class DangkithamgiasukienComponent implements OnInit {
   // @ts-ignore
   dangKiCTV: Dangkilamctv = new Dangkilamctv();
   checkCTV=false;
+  checkNTG=false;
   checkThoiGian=0;
   constructor(private sukienService: SukienService,
               private route: ActivatedRoute,
@@ -75,30 +76,36 @@ export class DangkithamgiasukienComponent implements OnInit {
   dangKi(id: number, idSK: number) {
     this.dK.acc_ID = id;
     this.dK.event_ID = idSK;
-    this.sukienService.kiemTraThoiGian(this.dK).subscribe(data=>{
-      for(var val of data){
-        // @ts-ignore
-        if(this.datepipe.transform(this.sukien.time_of_event,'yyyy-MM-dd h:mm a')==this.datepipe.transform(val,'yyyy-MM-dd h:mm a')){
-          this.checkThoiGian++;
-        }
-      }
-      if(this.checkThoiGian>0){
-        this.toastr.error("Sự kiện này trùng thời gian với sự kiện mà bạn đã đăng kí!")
+    this.sukienService.CheckSoLuongNTG(this.dK).subscribe(data=>{
+      if(data == this.sukien.number_of_peoples){
+        this.toastr.warning("Sự kiện đã đủ người tham gia!");
       } else {
-        if(!this.users.is_Update){
-          this.toastr.warning("Bạn phải cập nhật thông tin cá nhân để thực hiện tính năng này!");
-        } else {
-          this.sukienService.kiemTraTG(this.dK).subscribe(data => {
-            if (data != 0) {
-              this.toastr.warning("Bạn đã đăng kí tham gia sự kiện này rồi!");
-            } else {
-              this.sukienService.dangKi(this.dK).subscribe();
-              this.router.navigate(['quanlysukien']).then(() => {
-                window.location.reload();
-              });
+        this.sukienService.kiemTraThoiGian(this.dK).subscribe(data=>{
+          for(var val of data){
+            // @ts-ignore
+            if(this.datepipe.transform(this.sukien.time_of_event,'yyyy-MM-dd h:mm a')==this.datepipe.transform(val,'yyyy-MM-dd h:mm a')){
+              this.checkThoiGian++;
             }
-          });
-        }
+          }
+          if(!this.users.is_Update){
+            this.toastr.warning("Bạn phải cập nhật thông tin cá nhân để thực hiện tính năng này!");
+          } else {
+            this.sukienService.kiemTraTG(this.dK).subscribe(data => {
+              if (data != 0) {
+                this.toastr.warning("Bạn đã đăng kí tham gia sự kiện này rồi!");
+              } else
+              {
+                if(this.checkThoiGian>0){
+                  this.toastr.error("Sự kiện này trùng thời gian với sự kiện mà bạn đã đăng kí!")
+                } else {
+                  this.sukienService.dangKi(this.dK).subscribe(data=>{
+                    this.toastr.success("Bạn đã đăng kí tham gia thành công!",'',{timeOut:5000});
+                  });
+                }
+              }
+            });
+          }
+        });
       }
     });
   }
@@ -113,15 +120,14 @@ export class DangkithamgiasukienComponent implements OnInit {
           this.checkThoiGian++;
         }
       }
-      if(this.checkThoiGian>0){
-        this.toastr.error("Sự kiện này trùng thời gian với sự kiện mà bạn đã đăng kí!")
-      } else
         if(!this.users.is_Update){
       this.toastr.warning("Bạn phải cập nhật thông tin cá nhân để thực hiện tính năng này!");
     } else {
       this.dangkiCTVSV.check(this.dangKiCTV).subscribe(data => {
         if (data != 0) {
           this.toastr.warning("Bạn đã đăng kí cộng tác viên cho sự kiện này rồi!");
+        } else if(this.checkThoiGian>0){
+          this.toastr.error("Sự kiện này trùng thời gian với sự kiện mà bạn đã đăng kí!")
         } else {
           this.router.navigate(['/dangkicongtacvien', id]).then(() => {
             window.scrollTo(0,0)
@@ -141,7 +147,8 @@ export class DangkithamgiasukienComponent implements OnInit {
   detailSK(id: number) {
     this.reloadSK(id);
     this.router.navigate(['dangkithamgia',id]).then(() => {
-      window.scrollTo(0,0)
+      window.scrollTo(0,0);
+      window.location.reload();
     })
   }
 }

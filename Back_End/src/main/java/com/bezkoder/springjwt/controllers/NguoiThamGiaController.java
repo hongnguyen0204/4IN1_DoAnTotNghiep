@@ -1,5 +1,6 @@
 package com.bezkoder.springjwt.controllers;
 
+import com.bezkoder.springjwt.models.DangKiLamCTV;
 import com.bezkoder.springjwt.models.NguoiThamGia;
 import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.NguoiThamGiaRepository;
@@ -44,6 +45,11 @@ public class NguoiThamGiaController {
     @PostMapping("/kiemtrathoigian")
     public List<Object> KiemTraThoiGian(@RequestBody NguoiThamGia nguoiThamGia){
         return nguoiThamGiaRepository.KiemTraThoiGian(nguoiThamGia.getAcc_ID());
+    }
+
+    @PostMapping("/checkSoLuong")
+    public Integer KiemTraSoLuong(@RequestBody NguoiThamGia nguoiThamGia){
+        return nguoiThamGiaRepository.CheckSoLuongNTG(nguoiThamGia.getEvent_ID());
     }
 
 }

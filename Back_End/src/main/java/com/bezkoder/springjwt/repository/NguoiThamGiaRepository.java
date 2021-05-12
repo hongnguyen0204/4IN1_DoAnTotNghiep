@@ -31,5 +31,6 @@ public interface NguoiThamGiaRepository extends JpaRepository<NguoiThamGia,Integ
             "AND j.event_ID=ev.ID", nativeQuery = true)
     List<Object> KiemTraThoiGian(int acc_ID);
 
-
+    @Query(value = "SELECT COUNT(*) FROM join_register where event_ID=?1", nativeQuery = true)
+    Integer CheckSoLuongNTG(int event_id);
 }

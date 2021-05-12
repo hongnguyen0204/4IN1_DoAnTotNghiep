@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DashboardService} from '../../Service/dashboard.service';
 import {TokenStorageService} from '../../_services/token-storage.service';
 import {LoadService} from '../../_services/load.service';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,8 +10,9 @@ import {LoadService} from '../../_services/load.service';
   styleUrls: ['./dashboard.component.scss'],
   providers:[DashboardService]
 })
-export class DashboardComponent implements OnInit {
-
+export class DashboardComponent implements OnInit,OnDestroy {
+  dtTrigger: Subject<any> = new Subject<any>();
+  dtTrigger1: Subject<any> = new Subject<any>();
   // @ts-ignore
   dtOptions: any = {};
   // @ts-ignore
@@ -74,10 +76,18 @@ export class DashboardComponent implements OnInit {
     });
     this.dashboardService.thongKeNguoiDangKi().subscribe(data=>{
       this.thongkenguoidangki=data;
+      this.dtTrigger.next();
     });
     this.dashboardService.thongKeNguoiDuyet().subscribe(data=>{
       this.thongkenguoiduyet=data;
+      this.dtTrigger1.next();
     });
+  }
+
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
+    this.dtTrigger1.unsubscribe();
   }
 
   logout(): void {
