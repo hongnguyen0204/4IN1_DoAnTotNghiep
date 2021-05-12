@@ -50,7 +50,9 @@ export class SukienComponent implements OnInit {
   }
 
   details(id: number){
-    this.router.navigate(['admin/chitietsukien',id])
+    this.router.navigate(['admin/chitietsukien',id]).then(() => {
+      window.scrollTo(0,0)
+    })
   }
 
   reload(){

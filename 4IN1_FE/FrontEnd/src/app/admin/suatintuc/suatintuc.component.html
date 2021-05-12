@@ -139,7 +139,19 @@
                 </div>
               </div>
               <label class="lb" style="color: #0b0b0b">Tin tức</label>
+<<<<<<< HEAD
               <ckeditor [(ngModel)]="tintuc.content" name="ckeditor" id="txtckeditor"></ckeditor>
+=======
+              <ckeditor [(ngModel)]="tintuc.content" name="ckeditor" id="txtckeditor"
+                        required
+                        minlength="100"
+                        #content="ngModel">
+              </ckeditor>
+              <div class="alert-danger" *ngIf="f.submitted && content.invalid">
+                <div *ngIf="content.errors.required">Vui lòng nhập nội dung</div>
+                <div *ngIf="content.errors.minlength">Vui lòng nhập tối thiểu 100 kí tự</div>
+              </div>
+>>>>>>> e9d1344cca0773e9561a3f518f8f366b5d34401f
               <label class="lb" style="color: #0b0b0b">Hình ảnh</label>
               <div class="file-input" style=" ">
                 <input type='file' (change)="readURL($event);" id="file" class="file" />

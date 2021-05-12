@@ -20,7 +20,9 @@ export class XacthucemailComponent implements OnInit {
   // @ts-ignore
   trangthai: string;
 
-  constructor(private xacthuceamilservice: XacthucemailService,private accountservice: AccountService,private router:ActivatedRoute) { }
+  constructor(private xacthuceamilservice: XacthucemailService,
+              private accountservice: AccountService,
+              private router:ActivatedRoute) { }
 
   // @ts-ignore
   ngOnInit(): void {

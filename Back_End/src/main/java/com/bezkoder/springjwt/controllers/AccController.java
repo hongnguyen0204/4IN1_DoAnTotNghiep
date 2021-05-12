@@ -33,9 +33,16 @@ public class AccController {
     }
 
     @PutMapping("/ban/{id}")
-    public void duyetSuKien(@PathVariable Integer id){
+    public void banTK(@PathVariable Integer id){
         Account acc =accRepository.findById(id).get();
         acc.setBan(true);
+        accRepository.save(acc);
+    }
+
+    @PutMapping("/unban/{id}")
+    public void unBanTK(@PathVariable Integer id){
+        Account acc =accRepository.findById(id).get();
+        acc.setBan(false);
         accRepository.save(acc);
     }
 
@@ -50,6 +57,11 @@ public class AccController {
     @GetMapping("/getAcc/{username}")
     public Account GetAcc(@PathVariable String username) {
         return accRepository.GetIF(username);
+    }
+
+    @GetMapping("/getBan/{username}")
+    public Boolean Getban(@PathVariable String username) {
+        return accRepository.GetBan(username);
     }
 
     @GetMapping("/getAccbyemail/{email}")

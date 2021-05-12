@@ -15,6 +15,16 @@ export class AccountService {
     return this.http.get<any>(`${'http://localhost:8080/account/getAcc'}/${user}`)
   }
 
+<<<<<<< HEAD
+=======
+  findUserbyEmail(email:string):Observable<any>{
+    return this.http.get<any>(`${'http://localhost:8080/account/getAccbyemail'}/${email}`)
+  }
+
+  checkBan(user:string):Observable<any>{
+    return this.http.get<any>(`${'http://localhost:8080/account/getBan'}/${user}`)
+  }
+>>>>>>> e9d1344cca0773e9561a3f518f8f366b5d34401f
 
   findUserbyToken(token:string):Observable<any>{
     return this.http.get<any>(`${'http://localhost:8080/account/getAccTokenEmail'}/${token}`)
@@ -23,6 +33,11 @@ export class AccountService {
   // @ts-ignore
   banUser(id, data): Observable<any> {
     return this.http.put(`${'http://localhost:8080/account/ban'}/${id}`, data);
+  }
+
+  // @ts-ignore
+  unBanUser(id, data): Observable<any> {
+    return this.http.put(`${'http://localhost:8080/account/unban'}/${id}`, data);
   }
 
   findAll(): Observable<Thongtincanhan[]>{

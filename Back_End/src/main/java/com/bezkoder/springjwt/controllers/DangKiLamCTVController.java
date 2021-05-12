@@ -44,4 +44,9 @@ public class DangKiLamCTVController {
         return dangKiLamCTVRepository.CheckSoLuongCTV(ctv.getEvent_ID());
     }
 
+    @PostMapping("/kiemtrathoigian")
+    public List<Object> KiemTraThoiGian(@RequestBody DangKiLamCTV ctv){
+        return dangKiLamCTVRepository.KiemTraThoiGian(ctv.getUser_ID());
+    }
+
 }

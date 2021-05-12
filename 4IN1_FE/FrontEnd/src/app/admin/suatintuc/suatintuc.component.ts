@@ -5,6 +5,9 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {ActivatedRoute, Router} from '@angular/router';
 import {finalize} from 'rxjs/operators';
 import {TokenStorageService} from '../../_services/token-storage.service';
+import {MatDialog} from '@angular/material/dialog';
+import {ConfirmDialogComponent} from '../../-helpers/confirm-dialog/confirm-dialog.component';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-suatintuc',
@@ -27,7 +30,9 @@ export class SuatintucComponent implements OnInit {
               private storage: AngularFireStorage,
               private router: Router,
               private route: ActivatedRoute,
-              private tokenStorageService: TokenStorageService) {
+              private tokenStorageService: TokenStorageService,
+              private dialog: MatDialog,
+              private toastr:ToastrService) {
   }
 
   ngOnInit(): void {
@@ -49,27 +54,43 @@ export class SuatintucComponent implements OnInit {
             if (this.tintuc.img != url) {
               this.tintuc.img = url;
             }
-            if (confirm("Bạn chắc chắn muốn sửa hay không?")) {
-              this.quanLyTinTucService.update(this.id, this.tintuc).subscribe(data => {
-                this.tintuc = data;
-                alert("Sửa thành công");
-                this.router.navigate(['/admin/tintuc']).then(() => {
-                  window.location.reload();
+            const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+              data: {
+                title: 'Sửa',
+                message: 'Bạn có chắc chắn muốn sửa hay không?'
+              }
+            });
+            confirmDialog.afterClosed().subscribe(result => {
+              if (result === true) {
+                this.quanLyTinTucService.update(this.id, this.tintuc).subscribe(data => {
+                  this.tintuc = data;
+                  this.toastr.success("Sửa thành công!");
+                  this.router.navigate(['/admin/tintuc']).then(() => {
+                    window.location.reload();
+                  });
                 });
-              });
-            }
+              }
+            });
           });
         })).subscribe();
     } else {
-      if (confirm("Bạn chắc chắn muốn sửa hay không?")) {
-        this.quanLyTinTucService.update(this.id, this.tintuc).subscribe(data => {
-          this.tintuc = data;
-          alert("Sửa thành công");
-          this.router.navigate(['/admin/tintuc']).then(() => {
-            window.location.reload();
+      const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+        data: {
+          title: 'Sửa',
+          message: 'Bạn có chắc chắn muốn sửa hay không?'
+        }
+      });
+      confirmDialog.afterClosed().subscribe(result => {
+        if (result === true) {
+          this.quanLyTinTucService.update(this.id, this.tintuc).subscribe(data => {
+            this.tintuc = data;
+            this.toastr.success("Sửa thành công!");
+            this.router.navigate(['/admin/tintuc']).then(() => {
+              window.location.reload();
+            });
           });
-        });
-      }
+        }
+      });
     }
   }
   // tslint:disable-next-line:typedef
