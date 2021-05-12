@@ -95,4 +95,17 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
       });
     });
   }
+
+  reloadData() {
+    this.skService.findSKDD().subscribe(data => {
+      this.sukiens = data;
+    })
+  }
+
+  detailSK() {
+    this.router.navigate(['guimailnhacnho']).then(() => {
+      window.location.reload();
+    });
+  }
+
 }
