@@ -120,7 +120,10 @@ export class TimkiemsukienComponent implements OnInit {
             });}else{
             this.sukienService.findByText(searchtext, 5).subscribe(data => {
               this.sukiens = data;
+<<<<<<< HEAD
+=======
               console.log(this.sukiens);
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
               this.p =1;
             });
           }
@@ -149,21 +152,34 @@ export class TimkiemsukienComponent implements OnInit {
         this.sukienService.findByrecordDayandtext(start,end,searchtext).subscribe(data=>{
           // @ts-ignore
           this.record = data;
+<<<<<<< HEAD
+          if(this.record<=5){
+            this.sukienService.findofdayandtext(start,end, searchtext, this.record).subscribe(data => {
+              this.sukiens = data;
+=======
           console.log(start);
           console.log(end);
           if(this.record<=5){
             this.sukienService.findofdayandtext(start,end, searchtext, this.record).subscribe(data => {
               this.sukiens = data;
               console.log(this.sukiens);
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
               this.p = 1;
             });}else{
             this.sukienService.findofdayandtext(start,end, searchtext, 5).subscribe(data => {
               this.sukiens = data;
+<<<<<<< HEAD
+=======
               console.log(this.sukiens);
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
               this.p =1;
             });
           }
           console.log("trường hợp cả 3 không null")
+<<<<<<< HEAD
+          console.log(this.sukiens);
+=======
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
         });
     }
     }

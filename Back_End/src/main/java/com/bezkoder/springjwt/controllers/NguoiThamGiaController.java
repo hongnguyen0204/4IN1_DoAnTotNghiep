@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.*;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
+<<<<<<< HEAD
+=======
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
 import java.util.List;
 
 @RestController
@@ -50,12 +53,18 @@ public class NguoiThamGiaController {
     @PostMapping("/dangki")
     public void dangKi(@RequestBody NguoiThamGia nguoiThamGia) throws UnsupportedEncodingException, MessagingException {
         String tiket = RandomString.make(30);
+<<<<<<< HEAD
+        nguoiThamGia.setTiket(tiket);
+        nguoiThamGiaRepository.save(nguoiThamGia);
+        String time = suKienRepository.findByIDjointime(nguoiThamGia.getEvent_ID());
+=======
         nguoiThamGia.setTicket(tiket);
         nguoiThamGiaRepository.save(nguoiThamGia);
         String DATE_FORMATTER= "dd-MM-yyyy HH:mm";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMATTER);
         LocalDateTime time = suKienRepository.findByIDjointime(nguoiThamGia.getEvent_ID());
         String formatDateTime = time.format(formatter);
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
         String diadiem = suKienRepository.findByIDjoinplace(nguoiThamGia.getEvent_ID());
         String name = suKienRepository.findByIDjoinname(nguoiThamGia.getEvent_ID());
         String content =  "<div style=\"text-align: center\" class=\"m_7644547431822981386wrapper\">\n" +
@@ -70,7 +79,11 @@ public class NguoiThamGiaController {
                 "    <div style=\"margin-left: 30%\">Địa điểm</div>\n" +
                 "  </div>\n" +
                 "  <div style=\"display: flex;\" class=\"m_6904495966517424000content-description\">\n" +
+<<<<<<< HEAD
+                "    <div style=\"margin-left: 30%; color: orangered\">"+time+"</div>\n" +
+=======
                 "    <div style=\"margin-left: 30%; color: orangered\">"+formatDateTime+"</div>\n" +
+>>>>>>> a1b85d70a69f244c9bf787180e67d0e225597140
                 "    <div style=\"margin-left: 22%; color: orangered\">"+ diadiem  +"</div>\n" +
                 "  </div>\n" +
                 "    <div class=\"m_6904495966517424000qr-code\">\n" + "<br>"+

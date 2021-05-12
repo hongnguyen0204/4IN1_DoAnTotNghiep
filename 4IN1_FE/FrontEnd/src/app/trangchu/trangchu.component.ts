@@ -110,5 +110,4 @@ export class TrangchuComponent implements OnInit {
     this.sukienService.sendmessage(this.message).subscribe();
   }
 
-  }
-
+}
