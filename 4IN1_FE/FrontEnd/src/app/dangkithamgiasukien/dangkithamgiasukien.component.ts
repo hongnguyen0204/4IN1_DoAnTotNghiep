@@ -98,8 +98,9 @@ export class DangkithamgiasukienComponent implements OnInit {
                 if(this.checkThoiGian>0){
                   this.toastr.error("Sự kiện này trùng thời gian với sự kiện mà bạn đã đăng kí!")
                 } else {
+                  this.toastr.success("Bạn đã đăng kí tham gia thành công! Vé đã được gửi vào email của bạn.",'',{timeOut:5000});
                   this.sukienService.dangKi(this.dK).subscribe(data=>{
-                    this.toastr.success("Bạn đã đăng kí tham gia thành công!",'',{timeOut:5000});
+
                   });
                 }
               }
