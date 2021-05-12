@@ -36,4 +36,7 @@ public interface NguoiThamGiaRepository extends JpaRepository<NguoiThamGia,Integ
 
     @Query(value = "SELECT COUNT(*) FROM join_register where event_ID=?1", nativeQuery = true)
     Integer CheckSoLuongNTG(int event_id);
+
+    @Query(value = "SELECT COUNT(*) FROM join_register where ticket=?1", nativeQuery = true)
+    Integer Kiemtrave(String qrcode);
 }

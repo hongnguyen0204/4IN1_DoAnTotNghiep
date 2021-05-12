@@ -196,12 +196,17 @@ export class SukienService {
 
   // @ts-ignore
   CheckSoLuong(data){
-    return this.http.post('http://localhost:8080/dangkilamctv/checkSoLuong',data)
+    return this.http.post('http://localhost:8080/dangkilamctv/checkSoLuong',data);
   }
 
   // @ts-ignore
   CheckSoLuongNTG(data){
-    return this.http.post('http://localhost:8080/nguoithamgia/checkSoLuong',data)
+    return this.http.post('http://localhost:8080/nguoithamgia/checkSoLuong',data);
+  }
+
+  // @ts-ignore
+  CheckVe(data){
+    return this.http.post('http://localhost:8080/nguoithamgia/checkve',data);
   }
 }
 

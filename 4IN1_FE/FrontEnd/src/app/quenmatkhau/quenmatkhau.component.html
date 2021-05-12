@@ -1,24 +1,66 @@
 <title>Quên mật khẩu</title>
-<div class="container-login100" style="position: relative;margin-top: 130px">
+<div class="container-login100" *ngIf="!isSuccessful" style="position: relative;margin-top: 130px">
   <div class="wrap-login100">
-    <form (ngSubmit)="laymatkhauquaemail(email)" class="login100-form validate-form p-l-55 p-r-55 p-t-178">
-                        <span class="login100-form-title">
-                           Quên mật khẩu
-                        </span>
-      <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-        <input class="input100" [(ngModel)]="email" type="text" name="email" placeholder="Nhập địa chỉ Email">
-        <span class="focus-input100"></span>
+    <form class="login100-form validate-form p-l-55 p-r-55 p-t-178"
+          *ngIf="!isSuccessful"
+          name="form"
+          (ngSubmit)="f.form.valid && laymatkhauquaemail(form.email)"
+          #f="ngForm"
+          novalidate
+    >
+      <span class="login100-form-title">Đổi mật khẩu</span>
+      <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter email">
+        <input class="input100" type="text" name="email" placeholder="Email (Phải là đuôi @dtu.edu.vn)"
+               [(ngModel)]="form.email"
+               required
+               pattern="^[a-z0-9_-]+@dtu.edu.vn"
+               #email="ngModel"
+        >
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && email.invalid"
+        >
+          <div *ngIf="email.errors.required">Cần nhập vào email!</div>
+          <div *ngIf="email.errors.pattern">
+            Phải là email của DTU!
+          </div>
+
+        </div>
+        <div id="kiemtra" class="alert alert-danger"
+             role="alert" *ngIf="!kiemtra">
+          Không tìm thấy email !
+        </div>
       </div>
       <div class="container-login100-form-btn">
-        <button type="submit" name="email" class="login100-form-btn" >
+        <button type="submit" class="login100-form-btn">
           Gửi mật khẩu qua email
         </button>
-      </div>
-      <div class="flex-col-c p-t-170 p-b-40">
-        <a href="dangnhap" class="txt3">
-          Quay lại
-        </a>
+        <br>
+        <br>
+        <br>
       </div>
     </form>
   </div>
 </div>
+<div class="container-login100" *ngIf="isSuccessful" style="position: relative;margin-top: 130px">
+  <div style="margin-top: -330px" class="alert alert-success" *ngIf="isSuccessful">
+    Gửi mail thành công, bạn vui lòng check mail để đổi mật khẩu.
+  </div>
+</div>
+
+<script type="text/javascript">
+  let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+  scanner.addListener('scan', function (content) {
+    alert(content);
+  });
+  Instascan.Camera.getCameras().then(function (cameras) {
+    if (cameras.length > 0) {
+      scanner.start(cameras[0]);
+    } else {
+      console.error('No cameras found.');
+    }
+  }).catch(function (e) {
+    console.error(e);
+  });
+</script>

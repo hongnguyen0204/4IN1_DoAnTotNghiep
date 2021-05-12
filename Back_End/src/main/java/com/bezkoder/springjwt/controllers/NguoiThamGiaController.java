@@ -115,5 +115,15 @@ public class NguoiThamGiaController {
         return nguoiThamGiaRepository.CheckSoLuongNTG(nguoiThamGia.getEvent_ID());
     }
 
+    @RequestMapping(value = "/checkve", method = RequestMethod.POST)
+    public boolean KiemTrave(@RequestBody String qrcode){
+        int record = nguoiThamGiaRepository.Kiemtrave(qrcode);
+        if(record == 0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
 
 }

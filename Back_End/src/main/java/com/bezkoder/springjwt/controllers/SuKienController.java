@@ -222,7 +222,7 @@ public class SuKienController {
 
     @PostMapping("/kiemtrave")
     public void KiemTra(@RequestBody String qrcode){
-       
+
     }
 
 }

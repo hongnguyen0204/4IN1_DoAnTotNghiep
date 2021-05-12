@@ -10,6 +10,10 @@ export class QuenmatkhauService {
 
   constructor(private http: HttpClient) { }
 
+  findUserbyemail(email:string):Observable<any>{
+    return this.http.get<any>(`${'http://localhost:8080/account/getAccbyemail'}/${email}`)
+  }
+
   // @ts-ignore
   laymatkhauquaemail(email:string){
     // @ts-ignore
