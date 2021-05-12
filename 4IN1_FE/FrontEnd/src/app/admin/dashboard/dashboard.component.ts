@@ -92,5 +92,4 @@ export class DashboardComponent implements OnInit,OnDestroy {
     this.tokenStorageService.signOut();
     window.location.reload();
   }
-
 }
