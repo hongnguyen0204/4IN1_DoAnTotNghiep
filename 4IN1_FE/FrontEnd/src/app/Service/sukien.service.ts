@@ -29,8 +29,37 @@ export class SukienService {
   }
 
   // @ts-ignore
+  findofday(start, end, record): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theoday'}/${start}/${end}/${record}`);
+  }
+  // @ts-ignore
+  findofdayandtext(start, end, searchtext, record): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theodayandtext'}/${start}/${end}/${searchtext}/${record}`);
+  }
+
+  // @ts-ignore
+  findofdaypage(start, end, page): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theodaypage'}/${start}/${end}/${page}`);
+  }
+
+  // @ts-ignore
+  findofdayandtextpage(start, end, searchtext, page): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theodayandtextpage'}/${start}/${end}/${searchtext}/${page}`);
+  }
+
+  // @ts-ignore
   findByrecordoftext(searchtext): Observable<Sukien[]>{
     return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/recordoftext'}/${searchtext}`);
+  }
+
+  // @ts-ignore
+  findByrecordofday(start,end): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/recordofday'}/${start}/${end}`);
+  }
+
+  // @ts-ignore
+  findByrecordDayandtext(start,end,searchtext): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/recordofdayandtext'}/${start}/${end}/${searchtext}`);
   }
 
   // @ts-ignore
@@ -64,6 +93,11 @@ export class SukienService {
   // @ts-ignore
   findsk(record): Observable<Sukien[]>{
     return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/top'}/${record}`);
+  }
+
+  // @ts-ignore
+  findBytextofrecord(searchtext, page): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/textofrecord'}/${searchtext}/${page}`);
   }
 
   // @ts-ignore

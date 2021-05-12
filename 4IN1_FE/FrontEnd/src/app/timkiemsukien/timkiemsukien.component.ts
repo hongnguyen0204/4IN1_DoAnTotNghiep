@@ -42,14 +42,42 @@ export class TimkiemsukienComponent implements OnInit {
   }
 
   // @ts-ignore
-  pageChanged(event){
+  pageChanged(event) {
     this.p = event;
     console.log(event);
-    event = (event*5)-5;
-    this.sukienService.findpage(event).subscribe(data => {
-      this.sukiens = data;
-      console.log(this.sukiens);
+    this.page = (event * 5) - 5;
+    if (this.searchText == "" && this.start == null && this.end == null) {
+      this.sukienService.findpage(this.page).subscribe(data => {
+        this.sukiens = data;
+        console.log(this.sukiens);
+      });
+    } else if (this.page >= 5 && this.start == null && this.end == null) {
+      // @ts-ignore
+      this.sukienService.findBytextofrecord(this.searchText, this.page).subscribe(data => {
+        this.sukiens = data;
+        console.log(this.sukiens);
+        this.p = event;
+      });
+    }else if(this.searchText == "" && this.start != null && this.end != null){
+      // @ts-ignore
+      // @ts-ignore
+      this.start =this.datepipe.transform(this.start, 'yyyy-MM-dd');
+      // @ts-ignore
+      this.end =this.datepipe.transform(this.end, 'yyyy-MM-dd');
+      this.sukienService.findofdaypage(this.start, this.end, this.page).subscribe(data=>{
+        this.sukiens = data;
+        this.p = event;
+      });
+    }else{
+      // @ts-ignore
+      this.start =this.datepipe.transform(this.start, 'yyyy-MM-dd');
+      // @ts-ignore
+      this.end =this.datepipe.transform(this.end, 'yyyy-MM-dd');
+      this.sukienService.findofdayandtextpage(this.start,this.end, this.searchText, this.page).subscribe(data => {
+        this.sukiens = data;
+        this.p =event;
     });
+  }
   }
 
   validatengay(){
@@ -74,6 +102,7 @@ export class TimkiemsukienComponent implements OnInit {
   }
   // @ts-ignore
   timkiem(start, end, searchtext){
+    this.p = 1;
     if(start == null && end == null && searchtext == "")
     {
         this.reloadData();
@@ -84,33 +113,54 @@ export class TimkiemsukienComponent implements OnInit {
         this.sukienService.findByrecordoftext(searchtext).subscribe(data=>{
           // @ts-ignore
           this.record = data;
-          if(this.record<5){
+          if(this.record<=5){
             this.sukienService.findByText(searchtext, this.record).subscribe(data => {
               this.sukiens = data;
+              this.p = 1;
             });}else{
-            this.sukienService.findsk(5).subscribe(data => {
+            this.sukienService.findByText(searchtext, 5).subscribe(data => {
               this.sukiens = data;
+              this.p =1;
             });
           }
-          console.log("trường hợp text không null và ngày null")
-          console.log(this.sukiens);
+          console.log("trường hợp text không null và ngày null");
         });
     }else if(searchtext == "" && start != null && end != null){
       start =this.datepipe.transform(start, 'yyyy-MM-dd');
       end =this.datepipe.transform(end, 'yyyy-MM-dd');
-      this.sukienService.findByDay(start,end).subscribe(data => {
-        this.sukiens = data;
-        console.log("trường hợp text null ngày không null")
-        console.log(start);
-        console.log(end);
-        console.log(this.sukiens);
+      this.sukienService.findByrecordofday(start,end).subscribe(data=>{
+          // @ts-ignore
+        this.record = data;
+        if(this.record<=5){
+          this.sukienService.findofday(start,end, this.record).subscribe(data => {
+            this.sukiens = data;
+            this.p = 1;
+          });}else{
+          this.sukienService.findofday(start,end, 5).subscribe(data => {
+            this.sukiens = data;
+            this.p =1;
+          });
+        }
       });
     }else{
-        this.sukienService.findByDayandtext(start,end,searchtext).subscribe(data=>{
-          this.sukiens = data;
+      start =this.datepipe.transform(start, 'yyyy-MM-dd');
+      end =this.datepipe.transform(end, 'yyyy-MM-dd');
+        this.sukienService.findByrecordDayandtext(start,end,searchtext).subscribe(data=>{
+          // @ts-ignore
+          this.record = data;
+          if(this.record<=5){
+            this.sukienService.findofdayandtext(start,end, searchtext, this.record).subscribe(data => {
+              this.sukiens = data;
+              this.p = 1;
+            });}else{
+            this.sukienService.findofdayandtext(start,end, searchtext, 5).subscribe(data => {
+              this.sukiens = data;
+              this.p =1;
+            });
+          }
           console.log("trường hợp cả 3 không null")
           console.log(this.sukiens);
-        })
+        });
     }
     }
 

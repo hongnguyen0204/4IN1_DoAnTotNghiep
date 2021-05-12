@@ -1,5 +1,6 @@
 package com.bezkoder.springjwt.repository;
 
+import com.bezkoder.springjwt.models.Account;
 import com.bezkoder.springjwt.models.NguoiThamGia;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -24,6 +25,9 @@ public interface NguoiThamGiaRepository extends JpaRepository<NguoiThamGia,Integ
             "WHERE acc_ID=?1 " +
             "AND event_ID=?2", nativeQuery = true)
     Integer KiemTraThamGia(int acc_ID, int event_ID);
+
+    @Query(value = "SELECT email FROM account_information WHERE ID=?1 ", nativeQuery = true)
+    String getemailbyid(Integer id);
 
 
 }

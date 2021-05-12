@@ -9,6 +9,27 @@ import {Thongtincanhan} from '../Model/thongtincanhan';
   providers: [QuenmatkhauService]
 })
 export class QuenmatkhauComponent implements OnInit {
+
+  funcv(){
+    // @ts-ignore
+    let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+    // @ts-ignore
+    scanner.addListener('scan', function (content) {
+      alert(content);
+    });
+    // @ts-ignore
+    // @ts-ignore
+    Instascan.Camera.getCameras().then(function (cameras) {
+      if (cameras.length > 0) {
+        scanner.start(cameras[0]);
+      } else {
+        console.error('No cameras found.');
+      }
+      // @ts-ignore
+    }).catch(function (e) {
+      console.error(e);
+    });
+  }
   account: Thongtincanhan = new Thongtincanhan();
   form: any = {};
   isSuccessful= false;
@@ -19,6 +40,7 @@ export class QuenmatkhauComponent implements OnInit {
   constructor(private quenmatkhauservice: QuenmatkhauService) { }
 
   ngOnInit(): void {
+    this.funcv();
   }
 
   laymatkhauquaemail(email: string){
