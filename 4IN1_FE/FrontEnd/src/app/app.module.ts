@@ -48,12 +48,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { ConfirmDialogComponent } from './-helpers/confirm-dialog/confirm-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NguoithamgiasukienComponent } from './nguoithamgiasukien/nguoithamgiasukien.component';
-<<<<<<< HEAD
-=======
 import { ThongtinnhomComponent } from './thongtinnhom/thongtinnhom.component';
-import { GuimailnhacnhoComponent } from './guimailnhacnho/guimailnhacnho.component';
 import { InfoDialogComponent } from './-helpers/info-dialog/info-dialog.component';
->>>>>>> e9d1344cca0773e9561a3f518f8f366b5d34401f
 
 // @ts-ignore
 @NgModule({
@@ -79,36 +75,31 @@ import { InfoDialogComponent } from './-helpers/info-dialog/info-dialog.componen
     XacthucemailComponent,
     ChitiettintucComponent,
     ConfirmDialogComponent,
-<<<<<<< HEAD
-    NguoithamgiasukienComponent
-=======
     NguoithamgiasukienComponent,
     ThongtinnhomComponent,
-    GuimailnhacnhoComponent
     InfoDialogComponent
->>>>>>> e9d1344cca0773e9561a3f518f8f366b5d34401f
   ],
   imports: [
-        BrowserModule,
-        AppRoutingModule,
-        CKEditorModule,
-        FormsModule,
-        AdminModule,
-        HttpClientModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig),
-        DataTablesModule,
-        Ng2SearchPipeModule,
-        BrowserAnimationsModule,
-        NotificationModule,
-        ToastrModule.forRoot({
-          timeOut: 3000,
-          positionClass: 'toast-top-center',
-          preventDuplicates: true,
-        }),
-        MatSnackBarModule,
-        NgxPaginationModule,
-        MatDialogModule
-    ],
+    BrowserModule,
+    AppRoutingModule,
+    CKEditorModule,
+    FormsModule,
+    AdminModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    DataTablesModule,
+    Ng2SearchPipeModule,
+    BrowserAnimationsModule,
+    NotificationModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-center',
+      preventDuplicates: true,
+    }),
+    MatSnackBarModule,
+    NgxPaginationModule,
+    MatDialogModule
+  ],
   providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService,DatePipe],
   bootstrap: [AppComponent]
 })
