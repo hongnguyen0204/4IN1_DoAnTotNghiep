@@ -56,6 +56,14 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
       // @ts-ignore
       buttons: [
         { extend: 'copy', text: 'Sao chép' },
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        { extend: 'print', text: '   in   ' },
+        { extend: 'excel', text: '  Excel  ' }
+      ]
+=======
+>>>>>>> 8a603050f8056774f64fc5ed79dc23390326c148
         { extend: 'print', text: 'in' },
         { extend: 'excel', text: 'Excel' }
       ],
@@ -67,6 +75,10 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
         });
         return row;
       }
+<<<<<<< HEAD
+=======
+>>>>>>> e9d1344cca0773e9561a3f518f8f366b5d34401f
+>>>>>>> 8a603050f8056774f64fc5ed79dc23390326c148
     };
     this.currentUser = this.token.getUser();
     this.accountService.findUser(this.currentUser.username).subscribe(data => {
@@ -98,6 +110,13 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
 
   // @ts-ignore
   duyet(status: boolean, id: number){
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    console.log(status);
+=======
+>>>>>>> e9d1344cca0773e9561a3f518f8f366b5d34401f
+>>>>>>> 8a603050f8056774f64fc5ed79dc23390326c148
     this.checked=status;
     if (this.checked){
       this.ctvService.updatenotok(id).subscribe();
