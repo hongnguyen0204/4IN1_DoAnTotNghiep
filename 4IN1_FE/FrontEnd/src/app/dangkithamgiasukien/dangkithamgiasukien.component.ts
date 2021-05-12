@@ -6,7 +6,6 @@ import {Dangkithamgia} from '../Model/dangkithamgia';
 import {Thongtincanhan} from '../Model/thongtincanhan';
 import {AccountService} from '../Service/account.service';
 import {TokenStorageService} from '../_services/token-storage.service';
-import {ThongbaoService} from '../_services/thongbao.service';
 import {ToastrService} from 'ngx-toastr';
 import {Dangkilamctv} from '../Model/dangkilamctv';
 import {DangkilamctvService} from '../Service/dangkilamctv.service';
@@ -79,7 +78,7 @@ export class DangkithamgiasukienComponent implements OnInit {
     this.sukienService.kiemTraThoiGian(this.dK).subscribe(data=>{
       for(var val of data){
         // @ts-ignore
-        if(this.sukien.time_of_event==this.datepipe.transform(val,'yyyy-MM-dd')){
+        if(this.datepipe.transform(this.sukien.time_of_event,'yyyy-MM-dd h:mm a')==this.datepipe.transform(val,'yyyy-MM-dd h:mm a')){
           this.checkThoiGian++;
         }
       }
@@ -110,7 +109,7 @@ export class DangkithamgiasukienComponent implements OnInit {
     this.sukienService.kiemTraThoiGianCTV(this.dangKiCTV).subscribe(data=>{
       for(var val of data){
         // @ts-ignore
-        if(this.sukien.time_of_event==this.datepipe.transform(val,'yyyy-MM-dd')){
+        if(this.datepipe.transform(this.sukien.time_of_event,'yyyy-MM-dd h:mm a')==this.datepipe.transform(val,'yyyy-MM-dd')){
           this.checkThoiGian++;
         }
       }
