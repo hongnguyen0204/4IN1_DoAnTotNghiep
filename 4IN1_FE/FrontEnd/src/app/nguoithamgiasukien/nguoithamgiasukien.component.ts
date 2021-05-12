@@ -97,6 +97,7 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
       });
     });
   }
+<<<<<<< HEAD
   // @ts-ignore
   guimail(){
     this.skService.getemail(this.idevent).subscribe(data=>{
@@ -106,4 +107,19 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
       }
     });
   }
+=======
+
+  reloadData() {
+    this.skService.findSKDD().subscribe(data => {
+      this.sukiens = data;
+    })
+  }
+
+  detailSK() {
+    this.router.navigate(['guimailnhacnho']).then(() => {
+      window.location.reload();
+    });
+  }
+
+>>>>>>> e9d1344cca0773e9561a3f518f8f366b5d34401f
 }

@@ -1,0 +1,89 @@
+*{
+  font-family: Arial;
+}
+.main {
+  margin: 0px;
+}
+
+.main-boder {
+  margin:150px 152px 100px 152px;
+  border: solid 1px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: rgb(218, 215, 215);
+}
+.title {
+  height: 70px;
+  margin: -10px 0px 0px 0px;
+  background-color: rgba(0,0,0,.03);;
+}
+
+h2 {
+  font-size: 25px;
+  margin: 10px 0px 0px 20px;
+  padding: 20px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+button {
+  padding: 6px;
+  width: 100px;
+  height: 35px;
+  background-color: #1863ff;
+  border-radius: 3px;
+  border: none;
+  font-size: 15px;
+  color: white;
+}
+
+.btn-send {
+  margin:5px 0px 5px 850px;
+}
+
+.btn-send:hover {
+  background: -webkit-linear-gradient(left, #102baf 0%, #1664ff 100%);
+  background: -o-linear-gradient(left, #102baf 0%, #1664ff 100%);
+  background: linear-gradient(to right, #102baf 0%, #1664ff 100%);
+}
+
+.page {
+  font-family: arial, sans-serif;
+  margin: 20px 0px 30px 20px;
+}
+
+#page-present {
+  margin: 20px 0px 30px 350px;
+}
+
+#page-present-head {
+  margin: 0px 15px 0px 0px;
+}
+
+#page-present-front {
+  margin: 0px 15px 0px 0px;
+}
+
+#page-present-button {
+  margin: 0px 15px 0px 0px;
+  width: 40px;
+}
+
+#page-present-next {
+  margin: 0px 15px 0px 0px;
+}
+
+#page-present-last {
+  margin: 0px 15px 0px 0px;
+}

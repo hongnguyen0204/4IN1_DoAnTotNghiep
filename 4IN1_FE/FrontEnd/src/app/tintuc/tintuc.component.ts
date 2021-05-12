@@ -27,6 +27,8 @@ export class TintucComponent implements OnInit {
   }
 
   detailTT(id:number){
-    this.router.navigate(['chitiettintuc',id]);
+    this.router.navigate(['chitiettintuc',id]).then(() => {
+      window.scrollTo(0,0)
+    });
   }
 }

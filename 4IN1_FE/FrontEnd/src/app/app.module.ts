@@ -49,6 +49,8 @@ import { ConfirmDialogComponent } from './-helpers/confirm-dialog/confirm-dialog
 import {MatDialogModule} from '@angular/material/dialog';
 import { NguoithamgiasukienComponent } from './nguoithamgiasukien/nguoithamgiasukien.component';
 import { ThongtinnhomComponent } from './thongtinnhom/thongtinnhom.component';
+import { GuimailnhacnhoComponent } from './guimailnhacnho/guimailnhacnho.component';
+import { InfoDialogComponent } from './-helpers/info-dialog/info-dialog.component';
 
 // @ts-ignore
 @NgModule({
@@ -75,7 +77,9 @@ import { ThongtinnhomComponent } from './thongtinnhom/thongtinnhom.component';
     ChitiettintucComponent,
     ConfirmDialogComponent,
     NguoithamgiasukienComponent,
-    ThongtinnhomComponent
+    ThongtinnhomComponent,
+    GuimailnhacnhoComponent
+    InfoDialogComponent
   ],
   imports: [
         BrowserModule,

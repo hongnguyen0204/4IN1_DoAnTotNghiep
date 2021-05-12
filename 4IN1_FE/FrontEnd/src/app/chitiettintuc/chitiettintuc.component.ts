@@ -21,21 +21,25 @@ export class ChitiettintucComponent implements OnInit {
 
   ngOnInit(): void {
     this.tt_id=this.route.snapshot.params['id'];
-    this.quanLyTinTucService.get(this.tt_id).subscribe(data=>{
-      this.tintuc=data;
-    },error => console.log(error));
+    this.reload(this.tt_id);
     this.quanLyTinTucService.findAll().subscribe(data=>{
       this.tintucs=data;
     },error => console.log(error));
-    console.log(this.tintucs);
   }
 
+  reload(tt:number){
+  this.quanLyTinTucService.get(tt).subscribe(data=>{
+    this.tintuc=data;
+  },error => console.log(error));
+}
   detailTT(id:number){
     // @ts-ignore
-    this.router.navigate(['chitiettintuc', id]);
+    this.tt_id=id;
+    this.reload(this.tt_id);
+    this.router.navigate(['chitiettintuc', id]).then(() => {
+      window.scrollTo(0,0)
+    });
 
   }
-  refresh(): void {
-    window.location.reload();
-  }
+
 }

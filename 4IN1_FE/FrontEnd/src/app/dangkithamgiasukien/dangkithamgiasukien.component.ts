@@ -6,10 +6,10 @@ import {Dangkithamgia} from '../Model/dangkithamgia';
 import {Thongtincanhan} from '../Model/thongtincanhan';
 import {AccountService} from '../Service/account.service';
 import {TokenStorageService} from '../_services/token-storage.service';
-import {ThongbaoService} from '../_services/thongbao.service';
 import {ToastrService} from 'ngx-toastr';
 import {Dangkilamctv} from '../Model/dangkilamctv';
 import {DangkilamctvService} from '../Service/dangkilamctv.service';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-dangkithamgiasukien',
@@ -36,13 +36,15 @@ export class DangkithamgiasukienComponent implements OnInit {
   // @ts-ignore
   dangKiCTV: Dangkilamctv = new Dangkilamctv();
   checkCTV=false;
+  checkThoiGian=0;
   constructor(private sukienService: SukienService,
               private route: ActivatedRoute,
               private router: Router,
               private accountService: AccountService,
               private token: TokenStorageService,
               private toastr: ToastrService,
-              private dangkiCTVSV: DangkilamctvService) {
+              private dangkiCTVSV: DangkilamctvService,
+              public datepipe: DatePipe) {
   }
 
   ngOnInit(): void {
@@ -50,15 +52,12 @@ export class DangkithamgiasukienComponent implements OnInit {
     this.ev_id = this.route.snapshot.params['id'];
     this.dangKiCTV.event_ID=this.ev_id;
     //Loading
-    this.sukienService.getSK(this.ev_id).subscribe(data => {
-      this.sukien = data;
+    this.reloadSK(this.ev_id);
       this.sukienService.CheckSoLuong(this.dangKiCTV).subscribe(data=>{
         if(this.sukien.number_of_collaborators>0 && data != this.sukien.number_of_collaborators){
           this.checkCTV=true;
         };
       });
-    }, error => console.log(error));
-
     this.currentUser = this.token.getUser();
     this.accountService.findUser(this.currentUser.username).subscribe(data => {
       this.users = data;
@@ -66,40 +65,71 @@ export class DangkithamgiasukienComponent implements OnInit {
     });
   }
 
+  reloadSK(id:number){
+    this.sukienService.getSK(id).subscribe(data => {
+      this.sukien = data;
+    });
+  }
+
   // @ts-ignore
   dangKi(id: number, idSK: number) {
     this.dK.acc_ID = id;
     this.dK.event_ID = idSK;
-    if(!this.users.is_Update){
-      this.toastr.warning("Bạn phải cập nhật thông tin cá nhân để thực hiện tính năng này!");
-    } else {
-    this.sukienService.kiemTraTG(this.dK).subscribe(data => {
-      if (data != 0) {
-        this.toastr.warning("Bạn đã đăng kí tham gia sự kiện này rồi!");
+    this.sukienService.kiemTraThoiGian(this.dK).subscribe(data=>{
+      for(var val of data){
+        // @ts-ignore
+        if(this.datepipe.transform(this.sukien.time_of_event,'yyyy-MM-dd h:mm a')==this.datepipe.transform(val,'yyyy-MM-dd h:mm a')){
+          this.checkThoiGian++;
+        }
+      }
+      if(this.checkThoiGian>0){
+        this.toastr.error("Sự kiện này trùng thời gian với sự kiện mà bạn đã đăng kí!")
       } else {
-        this.sukienService.dangKi(this.dK).subscribe();
-        this.router.navigate(['quanlysukien']).then(() => {
-          window.location.reload();
-        });
+        if(!this.users.is_Update){
+          this.toastr.warning("Bạn phải cập nhật thông tin cá nhân để thực hiện tính năng này!");
+        } else {
+          this.sukienService.kiemTraTG(this.dK).subscribe(data => {
+            if (data != 0) {
+              this.toastr.warning("Bạn đã đăng kí tham gia sự kiện này rồi!");
+            } else {
+              this.sukienService.dangKi(this.dK).subscribe();
+              this.router.navigate(['quanlysukien']).then(() => {
+                window.location.reload();
+              });
+            }
+          });
+        }
       }
     });
-    }
   }
 
   updatesk(id: number) {
     this.dangKiCTV.user_ID = this.id;
     this.dangKiCTV.event_ID = id;
-    if(!this.users.is_Update){
+    this.sukienService.kiemTraThoiGianCTV(this.dangKiCTV).subscribe(data=>{
+      for(var val of data){
+        // @ts-ignore
+        if(this.datepipe.transform(this.sukien.time_of_event,'yyyy-MM-dd h:mm a')==this.datepipe.transform(val,'yyyy-MM-dd')){
+          this.checkThoiGian++;
+        }
+      }
+      if(this.checkThoiGian>0){
+        this.toastr.error("Sự kiện này trùng thời gian với sự kiện mà bạn đã đăng kí!")
+      } else
+        if(!this.users.is_Update){
       this.toastr.warning("Bạn phải cập nhật thông tin cá nhân để thực hiện tính năng này!");
     } else {
       this.dangkiCTVSV.check(this.dangKiCTV).subscribe(data => {
         if (data != 0) {
           this.toastr.warning("Bạn đã đăng kí cộng tác viên cho sự kiện này rồi!");
         } else {
-          this.router.navigate(['/dangkicongtacvien', id]);
+          this.router.navigate(['/dangkicongtacvien', id]).then(() => {
+            window.scrollTo(0,0)
+          });
         }
       });
     }
+    });
   }
 
   reloadData() {
@@ -109,8 +139,9 @@ export class DangkithamgiasukienComponent implements OnInit {
   }
 
   detailSK(id: number) {
+    this.reloadSK(id);
     this.router.navigate(['dangkithamgia',id]).then(() => {
-      window.location.reload();
+      window.scrollTo(0,0)
     })
   }
 }

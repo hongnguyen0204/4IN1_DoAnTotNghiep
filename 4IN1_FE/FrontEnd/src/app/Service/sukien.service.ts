@@ -124,6 +124,16 @@ export class SukienService {
   }
 
   // @ts-ignore
+  kiemTraThoiGian(data):Observable<any>{
+    return this.http.post('http://localhost:8080/nguoithamgia/kiemtrathoigian',data);
+  }
+
+  // @ts-ignore
+  kiemTraThoiGianCTV(data):Observable<any>{
+    return this.http.post('http://localhost:8080/dangkilamctv/kiemtrathoigian',data);
+  }
+
+  // @ts-ignore
   kiemTraTG(data){
     return this.http.post('http://localhost:8080/nguoithamgia/kiemtrathamgia',data);
   }

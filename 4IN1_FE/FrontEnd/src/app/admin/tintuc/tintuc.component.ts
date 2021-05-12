@@ -9,6 +9,7 @@ import {TokenStorageService} from '../../_services/token-storage.service';
 import {Subject} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import {ConfirmDialogComponent} from '../../-helpers/confirm-dialog/confirm-dialog.component';
+import {ToastrService} from 'ngx-toastr';
 
 
 // @ts-ignore
@@ -32,13 +33,16 @@ export class TintucComponent implements OnInit,OnDestroy {
               private router: Router,
               public datepipe: DatePipe,
               private tokenStorageService: TokenStorageService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private toastr:ToastrService) {
       }
 
   ngOnInit(): void {
     this.dtOptions = {
       language: {url:'assets/Vietnamese.json'},
-      pagingType: 'full_numbers'
+      pagingType: 'full_numbers',
+      retrieve: true,
+      destroy: true,
     };
     this.reloadData();
   }
@@ -67,7 +71,8 @@ export class TintucComponent implements OnInit,OnDestroy {
       if (result === true) {
     this.quanLyTinTucService.delete(id).subscribe(
         data => {
-          window.location.reload();
+          this.toastr.success("Đã xóa thành công!")
+          this.reloadData();
         },
         error => console.log(error));
   }
@@ -75,7 +80,9 @@ export class TintucComponent implements OnInit,OnDestroy {
   }
 
   updateTinTuc(id: number){
-    this.router.navigate(['/admin/suatintuc',id]);
+    this.router.navigate(['/admin/suatintuc',id]).then(() => {
+      window.scrollTo(0,0)
+    });
   }
 
   logout(): void {

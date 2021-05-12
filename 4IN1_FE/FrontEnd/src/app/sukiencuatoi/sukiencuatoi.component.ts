@@ -9,6 +9,9 @@ import {CongtacvienService} from '../Service/congtacvien.service';
 import {Sukien} from '../Model/sukien';
 import {Subject} from 'rxjs';
 import {DataTableDirective} from 'angular-datatables';
+import {MatDialog} from '@angular/material/dialog';
+import {ConfirmDialogComponent} from '../-helpers/confirm-dialog/confirm-dialog.component';
+import {InfoDialogComponent} from '../-helpers/info-dialog/info-dialog.component';
 
 @Component({
   selector: 'app-sukiencuatoi',
@@ -41,10 +44,10 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
               private router: Router,
               private accountService: AccountService,
               private token: TokenStorageService,
-              private ctvService: CongtacvienService) {}
+              private ctvService: CongtacvienService,
+              private dialog: MatDialog) {}
 
   ngOnInit(): void {
-
     this.dtOptions = {
       language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers',
@@ -55,7 +58,15 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
         { extend: 'copy', text: 'Sao chép' },
         { extend: 'print', text: 'in' },
         { extend: 'excel', text: 'Excel' }
-      ]
+      ],
+      rowCallback: (row: Node, data: any[] | Object, index: number) => {
+        const self = this;
+        $('td', row).off('click');
+        $('td', row).on('click', () => {
+          self.infomation(data);
+        });
+        return row;
+      }
     };
     this.currentUser = this.token.getUser();
     this.accountService.findUser(this.currentUser.username).subscribe(data => {
@@ -68,6 +79,18 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
     });
   }
 
+  // @ts-ignore
+  infomation(data){
+  this.accountService.findUserbyEmail(data[2]).subscribe(db=>{
+    const confirmDialog = this.dialog.open(InfoDialogComponent, {
+      data: {
+        title: "Khoa: " + db.faculty,
+        img: db.img
+      }
+    });
+  })
+  }
+
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
@@ -75,19 +98,19 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
 
   // @ts-ignore
   duyet(status: boolean, id: number){
+<<<<<<< HEAD
     console.log(status);
+=======
+>>>>>>> e9d1344cca0773e9561a3f518f8f366b5d34401f
     this.checked=status;
     if (this.checked){
       this.ctvService.updatenotok(id).subscribe();
       this.checked=false;
-      // @ts-ignore
-      // $("#hau").html(false);
+
     }
     else {
       this.ctvService.updateok(id).subscribe();
       this.checked = true;
-      // @ts-ignore
-      // $("#hau").html(true);
     }
   }
 
