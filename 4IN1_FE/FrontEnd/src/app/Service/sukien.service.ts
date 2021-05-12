@@ -150,7 +150,7 @@ export class SukienService {
   }
 
   // @ts-ignore
-  dangKi(data):Observable<any>{
+  dangKi(data): Observable<any>{
     return this.http.post<Dangkithamgia>('http://localhost:8080/nguoithamgia/dangki', data);
   }
 

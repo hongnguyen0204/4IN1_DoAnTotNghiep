@@ -21,6 +21,7 @@ import {ActiveService} from './_services/active.service';
 import {ChitiettintucComponent} from './chitiettintuc/chitiettintuc.component';
 import {NguoithamgiasukienComponent} from './nguoithamgiasukien/nguoithamgiasukien.component';
 import {ThongtinnhomComponent} from './thongtinnhom/thongtinnhom.component';
+import {KiemtraveComponent} from "./kiemtrave/kiemtrave.component";
 
 
 const routes: Routes = [
@@ -44,6 +45,7 @@ const routes: Routes = [
   {path: 'xacthucemail/:token', component: XacthucemailComponent},
   {path: 'add', component: DangkyComponent},
   {path: 'thongtinnhom', component: ThongtinnhomComponent},
+  {path: 'kiemtrave', component: KiemtraveComponent},
   {path: '', redirectTo: '/trangchu', pathMatch: 'full' }
   ];
 

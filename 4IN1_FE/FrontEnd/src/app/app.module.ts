@@ -50,6 +50,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { NguoithamgiasukienComponent } from './nguoithamgiasukien/nguoithamgiasukien.component';
 import { ThongtinnhomComponent } from './thongtinnhom/thongtinnhom.component';
 import { InfoDialogComponent } from './-helpers/info-dialog/info-dialog.component';
+import { KiemtraveComponent } from './kiemtrave/kiemtrave.component';
 
 // @ts-ignore
 @NgModule({
@@ -77,7 +78,8 @@ import { InfoDialogComponent } from './-helpers/info-dialog/info-dialog.componen
     ConfirmDialogComponent,
     NguoithamgiasukienComponent,
     ThongtinnhomComponent,
-    InfoDialogComponent
+    InfoDialogComponent,
+    KiemtraveComponent
   ],
   imports: [
         BrowserModule,

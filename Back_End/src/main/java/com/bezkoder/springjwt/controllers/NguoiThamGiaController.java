@@ -114,4 +114,6 @@ public class NguoiThamGiaController {
     public Integer KiemTraSoLuong(@RequestBody NguoiThamGia nguoiThamGia){
         return nguoiThamGiaRepository.CheckSoLuongNTG(nguoiThamGia.getEvent_ID());
     }
+
+
 }
