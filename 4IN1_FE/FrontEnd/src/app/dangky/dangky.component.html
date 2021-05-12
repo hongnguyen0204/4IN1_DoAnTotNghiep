@@ -32,7 +32,9 @@
           <input class="input100" type="text" name="email" placeholder="Email (Phải là đuôi @dtu.edu.vn)"
                  [(ngModel)]="form.email"
                  required
-                 pattern="^[a-z0-9_-]+@dtu.edu.vn"
+                 
+                 pattern="^[a-z0-9_-]+@dtu.edu.vn$"
+
                  #email="ngModel"
           >
           <div

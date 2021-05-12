@@ -15,7 +15,7 @@
         <div class="d-flex justify-content-between align-items-center mb-3">
           <h4 class="text-right">Thông tin cá nhân</h4>
         </div>
-        <form
+        <form (ngSubmit)="onSubmit()" #formttcn= "ngForm"
           name="form"
           (ngSubmit)="f.form.valid && users.faculty!='Chọn khoa' && imageSrc!=null && save($event)"
           #f="ngForm"
@@ -61,7 +61,6 @@
         <div class="row mt-3">
           <div class="col-md-12">
             <label style="" class="labels">Số điện thoại</label>
-
             <input type="text" name="phone"  [(ngModel)]="users.phone_number" class="form-control"
             required
             pattern="(0)[0-9 ]{9}"
@@ -90,7 +89,7 @@
           </div>
         </div>
         <div class="mt-5 text-center">
-          <button class="btn btn-primary profile-button" type="submit">Lưu</button>
+          <button class="btn btn-primary profile-button" type="submit" [disabled]="!formttcn.form.valid">Lưu</button>
         </div>
         </form>
       </div>

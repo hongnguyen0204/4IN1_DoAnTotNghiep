@@ -17,9 +17,9 @@
       <ul *ngFor="let tt of tintucs,let i=index">
         <div  *ngIf="i % 7 && i<8" >
           <li>
-            <img (click)="detailTT(tt.id)" (click)="refresh()"
+            <img (click)="detailTT(tt.id)"
             [src]="tt.img">
-            <a (click)="detailTT(tt.id)" (click)="refresh()" >
+            <a (click)="detailTT(tt.id)">
               {{tt.title}}
             </a>
           </li>

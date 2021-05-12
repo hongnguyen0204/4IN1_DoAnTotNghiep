@@ -63,9 +63,9 @@
                       <h4 class="event-title">{{sk.event_name}}</h4>
                       <p class="text">{{sk.describe_of_event}}</p>
                       <ul class="event-meta">
-                        <li>Bắt đầu: {{sk.time_of_event}}</li>
-                        <li>{{sk.faculty}}</li>
-                        <li>Kết thúc: {{sk.end_day}} </li>
+                        <li>Thời gian: {{sk.time_of_event|date:'dd-MM-yyyy h:mm a'}}</li>
+                        <li>Khoa: {{sk.faculty}}</li>
+<!--                        <li>Kết thúc: {{sk.end_day}} </li>-->
                         <li>Địa điểm: {{sk.place}}</li>
                       </ul>
                     </div>

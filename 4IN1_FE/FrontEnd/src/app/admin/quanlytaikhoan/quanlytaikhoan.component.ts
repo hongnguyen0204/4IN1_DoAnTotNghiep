@@ -26,14 +26,20 @@ export class QuanlytaikhoanComponent implements OnInit,OnDestroy {
               ) {}
 
   ngOnInit(): void {
+   this.reloadData();
+    this.dtOptions = {
+      language: {url:'assets/Vietnamese.json'},
+      pagingType: 'full_numbers',
+      retrieve: true,
+      destroy: true,
+    };
+  }
+
+  reloadData(){
     this.accountService.findAll().subscribe(data => {
       this.listAcc = data;
       this.dtTrigger.next();
     });
-    this.dtOptions = {
-      language: {url:'assets/Vietnamese.json'},
-      pagingType: 'full_numbers'
-    };
   }
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
@@ -44,11 +50,21 @@ export class QuanlytaikhoanComponent implements OnInit,OnDestroy {
     this.tokenStorageService.signOut();
     window.location.reload();
   }
+
   BanTK(id:number){
     this.accountService.banUser(id,"").subscribe(data=>{
       this.router.navigate(['admin/quanlytaikhoan']) .then(() => {
-        window.location.reload();
         this.toastr.success("Đã cấm tài khoản!");
+        this.reloadData();
+      });
+    },error => console.log(error));
+  }
+
+  unBanTK(id:number){
+    this.accountService.unBanUser(id,"").subscribe(data=>{
+      this.router.navigate(['admin/quanlytaikhoan']) .then(() => {
+        this.toastr.warning("Đã bỏ cấm tài khoản!");
+        this.reloadData();
       });
     },error => console.log(error));
   }

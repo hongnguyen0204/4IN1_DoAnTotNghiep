@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -23,11 +24,29 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
     @Query(value = "SELECT * FROM event_information WHERE status_of_event='Đồng ý' ", nativeQuery = true)
     List<SuKien> findAll();
 
-    @Query(value = "SELECT * FROM event_information WHERE DAY(time_of_event) BETWEEN ?1 AND ?2 AND event_name LIKE ?3 ", nativeQuery = true)
-    List<SuKien> findByDay(String ngay1, String ngay2, String search);
+    @Query(value = "SELECT * FROM event_information WHERE time_of_event BETWEEN ?1 AND ?2 AND event_name LIKE ?3 ", nativeQuery = true)
+    List<SuKien> findByDayandtext(String ngay1, String ngay2, String search);
 
-    @Query(value = "SELECT * FROM event_information WHERE event_name LIKE ?1 ", nativeQuery = true)
-    List<SuKien> findBytext(String searchText);
+    @Query(value = "SELECT * FROM event_information WHERE time_of_event BETWEEN ?1 AND ?2", nativeQuery = true)
+    List<SuKien> findByDay(String ngay1, String ngay2);
+
+    @Query(value = "SELECT COUNT(ID) FROM event_information", nativeQuery = true)
+    int findrecord();
+
+    @Query(value = "SELECT COUNT(ID) FROM event_information WHERE event_name LIKE ?1 ", nativeQuery = true)
+    int findrecordoftext(String searchText);
+
+    @Query(value = "SELECT * FROM event_information WHERE event_name LIKE ?1 limit ?2", nativeQuery = true)
+    List<SuKien> findBytext(String searchText,String record);
+
+    @Query(value = "SELECT * FROM event_information WHERE event_name LIKE ?1 limit ?2", nativeQuery = true)
+    List<SuKien> findBytextoverfive(String searchText,String record);
+
+    @Query(value = "SELECT * FROM event_information limit ?1", nativeQuery = true)
+    List<SuKien> findtop(int record);
+
+    @Query(value = "SELECT * FROM event_information limit 5 offset ?1", nativeQuery = true)
+    List<SuKien> findpage(int record);
 
     @Query(value = "SELECT * FROM event_information WHERE owner_event_id = ?1" , nativeQuery = true)
     List<SuKien> findByID(Integer id);
@@ -68,7 +87,7 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
             "AND status_of_event='Đồng ý' " +
             "AND DATE(time_of_event)=DATE(?1) " +
             "AND place=?2", nativeQuery = true)
-    Integer KiemTra(Date ngayToChuc,String diaDiem);
+    Integer KiemTra(LocalDateTime ngayToChuc, String diaDiem);
 
     @Query(value = "SELECT ev.event_name, ac.fullname " +
             "FROM account_information ac,event_information ev " +
@@ -79,5 +98,4 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
             "FROM account_information ac,event_information ev " +
             "WHERE ac.ID=ev.id_cencor and month(ev.time_of_event)=month(DATE(NOW())) ", nativeQuery = true)
     List<Object> ThongKeNguoiDuyet();
-
 }

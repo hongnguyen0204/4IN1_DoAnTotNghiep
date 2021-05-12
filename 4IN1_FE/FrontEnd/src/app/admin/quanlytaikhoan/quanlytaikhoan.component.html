@@ -130,7 +130,10 @@
                       <td>{{acc.email}}</td>
                       <td>{{acc.phone_number}}</td>
                       <td>
-                        <a class="btn btn-danger" (click)="BanTK(acc.id)">Cấm</a>
+                        <a *ngIf="!acc.ban;else UnBan" class="btn btn-danger" (click)="BanTK(acc.id)">Cấm</a>
+                        <ng-template #UnBan>
+                          <a class="btn btn-info" (click)="unBanTK(acc.id)">Bỏ Cấm</a>
+                        </ng-template>
                       </td>
                     </tr>
                     </tbody>

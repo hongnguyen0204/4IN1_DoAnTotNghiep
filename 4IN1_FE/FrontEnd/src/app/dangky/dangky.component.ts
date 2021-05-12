@@ -37,7 +37,6 @@ export class DangkyComponent{
 
   }
     guimail(email:string){
-    console.log(this.form.email);
       this.xacthucmailservice.guimail(email).subscribe();
     }
 }
