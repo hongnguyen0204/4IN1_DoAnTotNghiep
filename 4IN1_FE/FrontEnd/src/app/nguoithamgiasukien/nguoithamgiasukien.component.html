@@ -8,8 +8,11 @@
             <p class="card-category"></p>
           </div>
           <select (change)="ntg()" [(ngModel)]="idevent" name="tensukien"  style=" width: auto; height: 50px; outline:none;">
-            <option value="{{sk.id}}" *ngFor="let sk of sukiens">{{sk.event_name}}</option>
+            <option  value="{{sk.id}}" *ngFor="let sk of sukiens">{{sk.event_name}}</option>
           </select>
+          <div class="guinhacnho">
+            <button (click)="guimail()" style="text-align:center;background-color:  red; width: 215px;height: 35px; border: none; margin-top: 15px; margin-left: 20px">Gửi email nhắc nhở</button>
+          </div>
           <div class="card-body">
             <div class="table-responsive">
               <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">

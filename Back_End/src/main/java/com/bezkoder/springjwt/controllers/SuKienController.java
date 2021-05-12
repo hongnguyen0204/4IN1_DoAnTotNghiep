@@ -77,6 +77,15 @@ public class SuKienController {
         return sk;
     }
 
+//    @GetMapping("/getlistemail/{id}")
+//    //Khúc ni thắng tự định nghĩa ra cái list<emaill>, rồi thế vô cái list<Sukien>
+//    public List<SuKien> getlistmail get(@PathVariable Integer id) {
+//        // chổ ni sẽ là email em = emailRepository.findlistemail(id)   cái findlistemail là tên mình ưa đặt chi đó đặt, rồi qua bên kia viết query cho hắn.
+//        SuKien sk = suKienRepository.findById(id).get();
+//        return
+//    }
+
+
     @GetMapping("/theoid/{id}")
     public List<SuKien> getSKbyid(@PathVariable Integer id){
         return suKienRepository.findByID(id);

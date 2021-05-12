@@ -29,6 +29,8 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
   // @ts-ignore
   id: number;
   // @ts-ignore
+  id_event;
+  // @ts-ignore
   idevent: number;
   nguoithamgias:any;
 
@@ -93,6 +95,15 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
         this.nguoithamgias = data;
         this.dtTrigger.next();
       });
+    });
+  }
+  // @ts-ignore
+  guimail(){
+    this.skService.getemail(this.idevent).subscribe(data=>{
+      for(var val of data){
+        // email là val[1] this.mailService.guimail(val[1]).subscribe();
+        console.log(val[1])
+      }
     });
   }
 }

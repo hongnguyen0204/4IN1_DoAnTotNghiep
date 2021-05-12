@@ -14,6 +14,7 @@ export class SukienService {
 
   constructor(private http: HttpClient) { }
 
+
 // @ts-ignore
   findByMonth(thang): Observable<Sukien[]>{
     return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theothang'}/${thang}`);
@@ -131,6 +132,9 @@ export class SukienService {
   CheckSoLuong(data){
     return this.http.post('http://localhost:8080/dangkilamctv/checkSoLuong',data)
   }
-
+// @ts-ignore
+  email(data): Observable<any>{
+    return this.http.post<any>('http://localhost:8080/sukien/NguoiDangKiSuKien/email',data);
+  }
 }
 
