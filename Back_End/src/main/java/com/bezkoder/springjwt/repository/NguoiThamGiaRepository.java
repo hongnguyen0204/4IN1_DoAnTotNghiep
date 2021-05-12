@@ -26,8 +26,16 @@ public interface NguoiThamGiaRepository extends JpaRepository<NguoiThamGia,Integ
             "AND event_ID=?2", nativeQuery = true)
     Integer KiemTraThamGia(int acc_ID, int event_ID);
 
+<<<<<<< HEAD
     @Query(value = "SELECT email FROM account_information WHERE ID=?1 ", nativeQuery = true)
     String getemailbyid(Integer id);
+=======
+    @Query(value = "SELECT ev.time_of_event  " +
+            "FROM join_register j,event_information ev " +
+            "WHERE acc_ID=?1 " +
+            "AND j.event_ID=ev.ID", nativeQuery = true)
+    List<Object> KiemTraThoiGian(int acc_ID);
+>>>>>>> e9d1344cca0773e9561a3f518f8f366b5d34401f
 
 
 }

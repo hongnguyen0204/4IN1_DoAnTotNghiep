@@ -2,6 +2,24 @@
   word-wrap: break-word;
 }
 
+
+#guimailnhacnho {
+  text-align:center;
+  background-color: #1863ff;
+  width: 200px;
+  border: none;
+  margin-top: 15px;
+  margin-left: 20px;
+  border-radius: 3px;
+  color: white;
+  height: 35px;
+}
+
+#guimailnhacnho:hover {
+  background: -webkit-linear-gradient(left, #102baf 0%, #1664ff 100%);
+  background: -o-linear-gradient(left, #102baf 0%, #1664ff 100%);
+  background: linear-gradient(to right, #102baf 0%, #1664ff 100%);
+}
 .button {
   display: inline-block;
   border-radius: 4px;

@@ -12,7 +12,7 @@
           </div>
           <div class="header-content text-center">
             <h2 class="header-title">{{sukienhot.event_name}}</h2>
-            <h3 class="sub-title">{{sukienhot.time_of_event}}, Tại {{sukienhot.place}}</h3>
+            <h3 class="sub-title">{{sukienhot.time_of_event|date:'dd-MM-yyyy'}} {{sukienhot.time_of_event |date:'shortTime'}}, Tại {{sukienhot.place}}</h3>
             <ul class="header-btn">
               <li><a class="main-btn main-btn-2" style="color: white;margin-bottom: 25px" (click)="detailSK(sukienhot.id)">Thông tin</a></li>
             </ul>
@@ -37,7 +37,7 @@
 
             <p class="text mt-30"> {{sukienhot.describe_of_event}}</p>
             <br>
-            <p class="date">Ngày diễn ra: {{sukienhot.time_of_event|date:'dd/MM/yyyy'}}</p>
+            <p class="date">Ngày diễn ra: {{sukienhot.time_of_event|date:'dd-MM-yyyy'}}</p>
           </div> <!-- about content -->
         </div>
       </div> <!-- row -->
@@ -149,8 +149,8 @@
                           <h4 class="event-title">{{sk.event_name}}</h4>
                           <p class="text">{{sk.describe_of_event}}</p>
                           <ul class="event-meta">
-                            <li>Bắt đầu: {{sk.time_of_event}}</li>
-                            <li>Kết thúc: {{sk.end_day}} </li>
+                            <li>Thời gian: {{sk.time_of_event|date:'dd-MM-yyyy h:mm a'}}</li>
+<!--                            <li>Kết thúc: {{sk.end_day}} </li>-->
                             <li>Địa điểm: {{sk.place}}</li>
                           </ul>
                         </div>
@@ -173,8 +173,8 @@
                           <h4 class="event-title">{{sk.event_name}}</h4>
                           <p class="text">{{sk.describe_of_event}}</p>
                           <ul class="event-meta">
-                            <li>Bắt đầu: {{sk.time_of_event}}</li>
-                            <li>Kết thúc: {{sk.end_day}} </li>
+                            <li>Thời gian: {{sk.time_of_event|date:'dd-MM-yyyy h:mm a'}}</li>
+<!--                            <li>Kết thúc: {{sk.end_day}} </li>-->
                             <li>Địa điểm: {{sk.place}}</li>
                           </ul>
                         </div>
@@ -195,8 +195,8 @@
                           <h4 class="event-title">{{sk.event_name}}</h4>
                           <p class="text">{{sk.describe_of_event}}</p>
                           <ul class="event-meta">
-                            <li>Bắt đầu: {{sk.time_of_event}}</li>
-                            <li>Kết thúc: {{sk.end_day}} </li>
+                            <li>Thời gian: {{sk.time_of_event|date:'dd-MM-yyyy h:mm a'}}</li>
+<!--                            <li>Kết thúc: {{sk.end_day}} </li>-->
                             <li>Địa điểm: {{sk.place}}</li>
                           </ul>
                         </div>
@@ -217,8 +217,8 @@
                           <h4 class="event-title">{{sk.event_name}}</h4>
                           <p class="text">{{sk.describe_of_event}}</p>
                           <ul class="event-meta">
-                            <li>Bắt đầu: {{sk.time_of_event}}</li>
-                            <li>Kết thúc: {{sk.end_day}} </li>
+                            <li>Thời gian: {{sk.time_of_event|date:'dd-MM-yyyy h:mm a'}}</li>
+<!--                            <li>Kết thúc: {{sk.end_day}} </li>-->
                             <li>Địa điểm: {{sk.place}}</li>
                           </ul>
                         </div>

@@ -20,6 +20,7 @@ export class TrangchuComponent implements OnInit {
   day:any;
   month:any;
   year:any;
+  time:any;
   p: number =1;
   // @ts-ignore
   sukien: Sukien[];
@@ -41,6 +42,7 @@ export class TrangchuComponent implements OnInit {
     this.dataMonth(this.month);
     // @ts-ignore
     this.datahot();
+
     // @ts-ignore
     this.reloadData();
     this.message.subject="Chọn khoa";
@@ -54,11 +56,15 @@ export class TrangchuComponent implements OnInit {
   }
 
   detailTT(id:number){
-    this.router.navigate(['chitiettintuc',id]);
+    this.router.navigate(['chitiettintuc',id]).then(() => {
+      window.scrollTo(0,0)
+    });
   }
 
   detailSK(id:number){
-    this.router.navigate(['dangkithamgia',id]);
+    this.router.navigate(['dangkithamgia',id]).then(() => {
+      window.scrollTo(0,0)
+    });
   }
 
   dataMonth(id:number){
