@@ -40,15 +40,13 @@ export class DashboardComponent implements OnInit,OnDestroy {
   thongkenguoiduyet:any;
 
   constructor(private dashboardService:DashboardService,
-              private tokenStorageService: TokenStorageService) {
-  }
+              private tokenStorageService: TokenStorageService) {}
 
   ngOnInit(): void {
     // @ts-ignore
     this.ngay=this.date.getDay();
     this.thang=this.date.getMonth();
     this.nam=this.date.getFullYear();
-
     this.dtOptions = {
       language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers'
