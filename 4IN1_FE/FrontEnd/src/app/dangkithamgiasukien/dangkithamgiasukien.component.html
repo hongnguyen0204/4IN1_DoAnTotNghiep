@@ -25,8 +25,6 @@
       </ul>
     </div>
   </div>
-  </div>
-  <br>
   <br>
   <div class="text-center">
     <ul style="display: flex">
@@ -35,9 +33,14 @@
       </li>
       <li style="width: 100px;">
       </li>
-      <li>
+      <li *ngIf="checkCTV; else CTV">
         <a class="animated-btn text-white" style="margin-bottom: 50px;" (click)="updatesk(sukien.id)" >Đăng kí cộng tác viên</a>
       </li>
+      <ng-template #CTV>
+        <li>
+          <a class="animated-btn text-white" style="margin-bottom: 50px;pointer-events: none;cursor: default" (click)="updatesk(sukien.id)" >Đăng kí cộng tác viên</a>
+        </li>
+      </ng-template>
     </ul>
   </div>
 </div>

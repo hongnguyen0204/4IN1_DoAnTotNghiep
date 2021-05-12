@@ -54,7 +54,7 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
     @Query(value = "SELECT * FROM event_information WHERE status_of_event='Đang chờ' ", nativeQuery = true)
     List<SuKien> SKDangCho();
 
-    @Query(value = "SELECT COUNT(*) FROM event_information WHERE time_upload=DATE(NOW()) && status_of_event='Đang chờ' ", nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) FROM event_information WHERE time_upload=DATE(NOW()) ", nativeQuery = true)
     Integer SKDangKiTrongNgay();
 
     @Query(value = "SELECT * FROM event_information WHERE time_of_event>DATE(NOW()) and status_of_event='Đồng ý' ", nativeQuery = true)
@@ -78,7 +78,7 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
     @Query(value = "SELECT Count(*) FROM event_information WHERE time_of_event>DATE(NOW()) AND status_of_event='Đồng ý' ", nativeQuery = true)
     Integer SuKienSapToChuc();
 
-    @Query(value = "SELECT SUM(number_of_peoples) FROM event_information WHERE time_of_event<DATE(NOW()) AND status_of_event='Đồng ý' ", nativeQuery = true)
+    @Query(value = "SELECT SUM(number_of_peoples) FROM event_information WHERE time_of_event>DATE(NOW()) AND status_of_event='Đồng ý' ", nativeQuery = true)
     Integer TongNguoiThamGia();
 
     @Query(value = "SELECT Count(*) " +
@@ -91,11 +91,11 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
 
     @Query(value = "SELECT ev.event_name, ac.fullname " +
             "FROM account_information ac,event_information ev " +
-            "WHERE ac.ID=ev.owner_event_id and month(ev.time_of_event)=month(DATE(NOW())) ", nativeQuery = true)
+            "WHERE ac.ID=ev.owner_event_id and month(ev.time_upload)=month(DATE(NOW())) ", nativeQuery = true)
     List<Object> ThongKeNguoiDangKi();
 
     @Query(value = "SELECT ev.event_name, ac.fullname " +
             "FROM account_information ac,event_information ev " +
-            "WHERE ac.ID=ev.id_cencor and month(ev.time_of_event)=month(DATE(NOW())) ", nativeQuery = true)
+            "WHERE ac.ID=ev.id_cencor and month(ev.time_upload)=month(DATE(NOW())) ", nativeQuery = true)
     List<Object> ThongKeNguoiDuyet();
 }

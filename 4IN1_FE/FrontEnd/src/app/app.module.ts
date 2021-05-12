@@ -80,26 +80,26 @@ import { InfoDialogComponent } from './-helpers/info-dialog/info-dialog.componen
     InfoDialogComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CKEditorModule,
-    FormsModule,
-    AdminModule,
-    HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    DataTablesModule,
-    Ng2SearchPipeModule,
-    BrowserAnimationsModule,
-    NotificationModule,
-    ToastrModule.forRoot({
-      timeOut: 3000,
-      positionClass: 'toast-top-center',
-      preventDuplicates: true,
-    }),
-    MatSnackBarModule,
-    NgxPaginationModule,
-    MatDialogModule
-  ],
+        BrowserModule,
+        AppRoutingModule,
+        CKEditorModule,
+        FormsModule,
+        AdminModule,
+        HttpClientModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        DataTablesModule,
+        Ng2SearchPipeModule,
+        BrowserAnimationsModule,
+        NotificationModule,
+        ToastrModule.forRoot({
+          timeOut: 3000,
+          positionClass: 'toast-top-center',
+          preventDuplicates: true,
+        }),
+        MatSnackBarModule,
+        NgxPaginationModule,
+        MatDialogModule
+    ],
   providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService,DatePipe],
   bootstrap: [AppComponent]
 })
