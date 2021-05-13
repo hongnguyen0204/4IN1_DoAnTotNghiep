@@ -356,11 +356,10 @@
                 <div class="single-form">
                   <input type="email" [(ngModel)]="message.email" name="email" placeholder="Email"
                   required
-                  pattern="^[a-z0-9_-]{8,15}$"
                   #email="ngModel">
                   <div class="alert-danger" *ngIf="f.submitted && email.invalid">
                     <div *ngIf="email.errors.required">Vui lòng nhập email</div>
-                    <div *ngIf="email.errors.pattern">Vui lòng nhập đúng định dạng email</div>
+                    <div *ngIf="email.errors.email">Vui lòng nhập đúng định dạng email</div>
                   </div>
                   <i class="lni-envelope"></i>
                 </div> <!-- single form -->

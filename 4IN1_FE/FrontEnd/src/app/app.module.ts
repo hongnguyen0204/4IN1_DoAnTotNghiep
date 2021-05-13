@@ -51,7 +51,17 @@ import { NguoithamgiasukienComponent } from './nguoithamgiasukien/nguoithamgiasu
 import { ThongtinnhomComponent } from './thongtinnhom/thongtinnhom.component';
 import { InfoDialogComponent } from './-helpers/info-dialog/info-dialog.component';
 import { KiemtraveComponent } from './kiemtrave/kiemtrave.component';
+import {FullCalendarModule} from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin
+import { LichsukienComponent } from './lichsukien/lichsukien.component';
+import { EventDialogComponent } from './-helpers/event-dialog/event-dialog.component'; // a plugin
 
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+
+]);
 // @ts-ignore
 @NgModule({
   declarations: [
@@ -79,7 +89,9 @@ import { KiemtraveComponent } from './kiemtrave/kiemtrave.component';
     NguoithamgiasukienComponent,
     ThongtinnhomComponent,
     InfoDialogComponent,
-    KiemtraveComponent
+    KiemtraveComponent,
+    LichsukienComponent,
+    EventDialogComponent
   ],
   imports: [
         BrowserModule,
@@ -100,7 +112,8 @@ import { KiemtraveComponent } from './kiemtrave/kiemtrave.component';
         }),
         MatSnackBarModule,
         NgxPaginationModule,
-        MatDialogModule
+        MatDialogModule,
+        FullCalendarModule
     ],
   providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService,DatePipe],
   bootstrap: [AppComponent]
