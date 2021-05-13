@@ -78,7 +78,7 @@ import { InfoDialogComponent } from './-helpers/info-dialog/info-dialog.componen
     ConfirmDialogComponent,
     NguoithamgiasukienComponent,
     ThongtinnhomComponent,
-    GuimailnhacnhoComponent
+    GuimailnhacnhoComponent,
     InfoDialogComponent
   ],
   imports: [

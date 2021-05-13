@@ -97,29 +97,23 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
       });
     });
   }
-<<<<<<< HEAD
   // @ts-ignore
-  guimail(){
-    this.skService.getemail(this.idevent).subscribe(data=>{
-      for(var val of data){
-        // email là val[1] this.mailService.guimail(val[1]).subscribe();
-        console.log(val[1])
-      }
+  laydsntg(){
+    this.skService.email(this.idevent).subscribe(data=>{
+      console.log(this.idevent);
     });
   }
-=======
-
   reloadData() {
     this.skService.findSKDD().subscribe(data => {
       this.sukiens = data;
     })
   }
 
-  detailSK() {
-    this.router.navigate(['guimailnhacnho']).then(() => {
-      window.location.reload();
+  detailGNN() {
+    this.laydsntg();
+    this.router.navigate(['guimailnhacnho',this.idevent]).then(() => {
+      window.scrollTo(0,0)
     });
-  }
 
->>>>>>> e9d1344cca0773e9561a3f518f8f366b5d34401f
+  }
 }

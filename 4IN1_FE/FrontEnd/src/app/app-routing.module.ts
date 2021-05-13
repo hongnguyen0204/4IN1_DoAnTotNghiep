@@ -40,7 +40,7 @@ const routes: Routes = [
   {path: 'quanlycongtacvien', component: QuanlycongtacvienComponent,canActivate:[CustomerAuthService]},
   {path: 'quanlysukien', component: QuanlysukienComponent,canActivate:[CustomerAuthService]},
   {path: 'sukiencuatoi', component: SukiencuatoiComponent,canActivate:[CustomerAuthService]},
-  {path: 'guimailnhacnho', component: GuimailnhacnhoComponent,canActivate:[CustomerAuthService]},
+  {path: 'guimailnhacnho/:idevent', component: GuimailnhacnhoComponent,canActivate:[CustomerAuthService]},
   {path: 'nguoithamgiasukien', component: NguoithamgiasukienComponent,canActivate:[CustomerAuthService]},
   {path: 'doimatkhau/:token', component: DoimatkhauComponent},
   {path: 'xacthucemail/:token', component: XacthucemailComponent},

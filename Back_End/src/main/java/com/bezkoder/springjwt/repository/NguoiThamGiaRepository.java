@@ -1,5 +1,6 @@
 package com.bezkoder.springjwt.repository;
 
+import com.bezkoder.springjwt.models.Account;
 import com.bezkoder.springjwt.models.NguoiThamGia;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -30,6 +31,5 @@ public interface NguoiThamGiaRepository extends JpaRepository<NguoiThamGia,Integ
             "WHERE acc_ID=?1 " +
             "AND j.event_ID=ev.ID", nativeQuery = true)
     List<Object> KiemTraThoiGian(int acc_ID);
-
 
 }

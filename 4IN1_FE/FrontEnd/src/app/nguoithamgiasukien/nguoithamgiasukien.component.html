@@ -8,24 +8,16 @@
             <p class="card-category"></p>
           </div>
           <select (change)="ntg()" [(ngModel)]="idevent" name="tensukien"  style=" width: auto; height: 50px; outline:none;">
-<<<<<<< HEAD
-            <option  value="{{sk.id}}" *ngFor="let sk of sukiens">{{sk.event_name}}</option>
-          </select>
-          <div class="guinhacnho">
-            <button (click)="guimail()" style="text-align:center;background-color:  red; width: 215px;height: 35px; border: none; margin-top: 15px; margin-left: 20px">Gửi email nhắc nhở</button>
-=======
             <option value="{{sk.id}}" *ngFor="let sk of sukiens">{{sk.event_name}}</option>
-
           </select>
-          <div class="guinhacnho">
-            <button id="guimailnhacnho" (click)="detailSK()">Gửi email nhắc nhở</button>
->>>>>>> e9d1344cca0773e9561a3f518f8f366b5d34401f
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">
-                <thead>
-                <tr>
+                  <div class="guinhacnho">
+                    <button id="guimailnhacnho" (click)=" detailGNN()">Gửi email nhắc nhở</button>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">
+                        <thead>
+                        <tr>
                   <th>STT</th>
                   <th>Họ & Tên</th>
                   <th>Email</th>

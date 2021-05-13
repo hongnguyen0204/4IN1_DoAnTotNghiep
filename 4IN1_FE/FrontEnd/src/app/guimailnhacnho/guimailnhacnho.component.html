@@ -18,29 +18,15 @@
       </div>
       <table>
         <tr>
-          <th>Id</th>
+          <th>Stt</th>
           <th>Tên</th>
           <th>Gmail</th>
-        <tr>
-          <td>1</td>
-          <td>Ngô Minh Cường</td>
-          <td>MinhCuong080799@gmail.com</td>
+        <tr *ngFor=" let acc of acc,let i = index">
+          <td>{{i+1}}</td>
+          <td>{{acc[0]}}</td>
+          <td>{{acc[1]}}</td>
         </tr>
-        <tr>
-          <td>2</td>
-          <td>Võ Văn Thắng</td>
-          <td>ThangVo@gmail.com</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Nguyễn Văn Hồng</td>
-          <td>HongNguyen020499@gmail.com</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Nguyễn Hậu</td>
-          <td>HauNguyen@gmail.com</td>
-        </tr>
+
       </table>
       <div class="page">
         <label>Bạn đang xem <label>1</label> đến <label>1</label> trong tổng số <label>1</label> mục</label>

@@ -1,4 +1,6 @@
 package com.bezkoder.springjwt.controllers;
+import com.bezkoder.springjwt.models.Account;
+import com.bezkoder.springjwt.models.NguoiThamGia;
 import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.SuKienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -193,4 +195,8 @@ public class SuKienController {
         return suKienRepository.ThongKeNguoiDuyet();
     }
 
+    @GetMapping("/NguoiDangKiSuKienTheoEvent/{id}")
+    public List<Object> laytaikhoantuid(@PathVariable Integer id){
+        return suKienRepository.getaccountByeventID(id);
+    }
 }

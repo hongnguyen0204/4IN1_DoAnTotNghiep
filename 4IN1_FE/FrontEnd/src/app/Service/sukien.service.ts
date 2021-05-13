@@ -117,22 +117,10 @@ export class SukienService {
   huyCTV(data){
     return this.http.post('http://localhost:8080/dangkilamctv/delete',data);
   }
-
   // @ts-ignore
   kiemTra(data){
     return this.http.post('http://localhost:8080/sukien/kiemtra',data);
   }
-
-  // @ts-ignore
-  kiemTraThoiGian(data):Observable<any>{
-    return this.http.post('http://localhost:8080/nguoithamgia/kiemtrathoigian',data);
-  }
-
-  // @ts-ignore
-  kiemTraThoiGianCTV(data):Observable<any>{
-    return this.http.post('http://localhost:8080/dangkilamctv/kiemtrathoigian',data);
-  }
-
   // @ts-ignore
   kiemTraTG(data){
     return this.http.post('http://localhost:8080/nguoithamgia/kiemtrathamgia',data);
@@ -143,8 +131,17 @@ export class SukienService {
     return this.http.post('http://localhost:8080/dangkilamctv/checkSoLuong',data)
   }
 // @ts-ignore
-  email(data): Observable<any>{
-    return this.http.post<any>('http://localhost:8080/sukien/NguoiDangKiSuKien/email',data);
+  email(id): Observable<any>{
+    return this.http.get<any>(`${'http://localhost:8080/sukien/NguoiDangKiSuKien'}/${id}`);
+  }
+  // @ts-ignore
+  kiemTraThoiGian(data):Observable<any>{
+    return this.http.post('http://localhost:8080/nguoithamgia/kiemtrathoigian',data);
+  }
+
+  // @ts-ignore
+  kiemTraThoiGianCTV(data):Observable<any>{
+    return this.http.post('http://localhost:8080/dangkilamctv/kiemtrathoigian',data);
   }
 }
 
