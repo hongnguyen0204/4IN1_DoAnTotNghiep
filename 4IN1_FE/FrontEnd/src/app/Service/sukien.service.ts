@@ -34,7 +34,11 @@ export class SukienService {
     // @ts-ignore
     return this.http.post('http://localhost:8080/account/guilienlac',message);
   }
-
+  // @ts-ignore
+  guimailnn(id, content){
+    // @ts-ignore
+    return this.http.post(`${'http://localhost:8080/account/guimailnhacnho'}/${id}`,content);
+  }
   // @ts-ignore
   findByDay(ngay1, ngay2, searchtext): Observable<Sukien[]>{
     return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theongay'}/${ngay1}/${ngay2}/${searchtext}`);
@@ -132,7 +136,7 @@ export class SukienService {
   }
 // @ts-ignore
   email(id): Observable<any>{
-    return this.http.get<any>(`${'http://localhost:8080/sukien/NguoiDangKiSuKien'}/${id}`);
+    return this.http.get<any>(`${'http://localhost:8080/sukien/NguoiDangKiSuKienTheoEvent'}/${id}`);
   }
   // @ts-ignore
   kiemTraThoiGian(data):Observable<any>{

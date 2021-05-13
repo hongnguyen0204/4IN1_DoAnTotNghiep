@@ -174,7 +174,6 @@ public class AccController {
         mailSender.send(message);
 
         return "gửi thành công";
-
     }
 
     public void sendEmailtoresetpassword(String recipientEmail, String link) throws UnsupportedEncodingException, MessagingException {
@@ -216,8 +215,6 @@ public class AccController {
         mailSender.send(message);
 
     }
-
-
 
     @PostMapping("/reset_password")
     public String processResetPassword(@RequestBody Account acc) {

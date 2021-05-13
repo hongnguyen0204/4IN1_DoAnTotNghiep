@@ -7,6 +7,7 @@ import {AccountService} from '../Service/account.service';
 import {Subject} from 'rxjs';
 import {ThongtincanhanService} from '../Service/thongtincanhan.service';
 
+
 @Component({
   selector: 'app-guimailnhacnho',
   templateUrl: './guimailnhacnho.component.html',
@@ -15,9 +16,13 @@ import {ThongtincanhanService} from '../Service/thongtincanhan.service';
 })
 export class GuimailnhacnhoComponent implements OnInit {
   // @ts-ignore
+  content :String;
+  // @ts-ignore
   acc;
   // @ts-ignore
   id;
+  // @ts-ignore
+  idevent: number;
   constructor(private sk :SukienService,
               private route:ActivatedRoute) { }
 
@@ -27,7 +32,9 @@ export class GuimailnhacnhoComponent implements OnInit {
       this.acc=data;
       console.log(this.acc);
     });
-
   }
-
+  guiamailnhacnho(){
+    // @ts-ignore
+    this.sk.guimailnn(this.guinhacnhac).subscribe();
+  }
 }
