@@ -22,6 +22,7 @@ import {ChitiettintucComponent} from './chitiettintuc/chitiettintuc.component';
 import {NguoithamgiasukienComponent} from './nguoithamgiasukien/nguoithamgiasukien.component';
 import {ThongtinnhomComponent} from './thongtinnhom/thongtinnhom.component';
 import {KiemtraveComponent} from "./kiemtrave/kiemtrave.component";
+import {LichsukienComponent} from './lichsukien/lichsukien.component';
 
 
 const routes: Routes = [
@@ -46,6 +47,7 @@ const routes: Routes = [
   {path: 'add', component: DangkyComponent},
   {path: 'thongtinnhom', component: ThongtinnhomComponent},
   {path: 'kiemtrave', component: KiemtraveComponent},
+  {path: 'lichsukien', component: LichsukienComponent},
   {path: '', redirectTo: '/trangchu', pathMatch: 'full' }
   ];
 
