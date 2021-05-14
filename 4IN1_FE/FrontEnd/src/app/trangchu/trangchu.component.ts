@@ -108,6 +108,7 @@ export class TrangchuComponent implements OnInit {
   // @ts-ignore
   guilienlac(){
     this.sukienService.sendmessage(this.message).subscribe();
+    console.log("có chạy");
   }
 
   }
