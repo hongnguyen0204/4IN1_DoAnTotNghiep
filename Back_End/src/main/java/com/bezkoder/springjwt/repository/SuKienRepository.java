@@ -19,7 +19,7 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
             "WHERE j.acc_ID=ac.ID AND j.event_ID=?1 ", nativeQuery = true)
     List<Object> NguoiThamGia(int id);
 
-    @Query(value = "SELECT * FROM event_information WHERE MONTH(time_of_event) = ?1 AND status_of_event='Đồng ý' ORDER BY ID DESC ", nativeQuery = true)
+    @Query(value = "SELECT * FROM event_information WHERE MONTH(time_of_event) = ?1 AND status_of_event='Đồng ý' ORDER BY time_of_event ASC", nativeQuery = true)
     List<SuKien> findByMonth(Integer thang);
 
     @Query(value = "SELECT * FROM event_information WHERE status_of_event='Đồng ý' ", nativeQuery = true)
@@ -85,7 +85,7 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
     @Query(value = "SELECT COUNT(*) FROM event_information WHERE time_upload=DATE(NOW()) && status_of_event='Đang chờ' ", nativeQuery = true)
     Integer SKDangKiTrongNgay();
 
-    @Query(value = "SELECT * FROM event_information WHERE time_of_event>DATE(NOW()) and status_of_event='Đồng ý' ", nativeQuery = true)
+    @Query(value = "SELECT * FROM event_information WHERE time_of_event>DATE(NOW()) and status_of_event='Đồng ý' ORDER BY time_of_event ASC ", nativeQuery = true)
     List<SuKien> SKDaDuyet();
 
     @Query(value = "SELECT * FROM event_information WHERE status_of_event='Từ chối' ", nativeQuery = true)
@@ -127,15 +127,12 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
             "WHERE ac.ID=ev.id_cencor and month(ev.time_of_event)=month(DATE(NOW())) ", nativeQuery = true)
     List<Object> ThongKeNguoiDuyet();
 
-<<<<<<< HEAD
     @Query(value = "SELECT account_information.fullname,account_information.email from account_information,join_register where join_register.acc_ID = account_information.ID and join_register.event_ID =?1",nativeQuery = true)
-    List<Object> getaccountByeventID(int id);
+    List<Object> getaccountByeventID1(int id);
 
     @Query(value = "SELECT account_information.email from account_information,join_register where join_register.acc_ID = account_information.ID and join_register.event_ID =?1",nativeQuery = true)
     String[] getemailbyidevent(int id);
 
-=======
     @Query(value = "SELECT * from account_information,join_register where join_register.acc_ID = account_information.ID and join_register.event_ID = ?1 ",nativeQuery = true)
     List<Object> getaccountByeventID(int event_id);
->>>>>>> 90219032fe47fde10f6c65d3e341008dd38cf62e
 }

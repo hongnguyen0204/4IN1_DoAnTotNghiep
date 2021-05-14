@@ -1,10 +1,7 @@
 package com.bezkoder.springjwt.controllers;
 import com.bezkoder.springjwt.models.Account;
-<<<<<<< HEAD
 import com.bezkoder.springjwt.models.Message;
 import com.bezkoder.springjwt.models.NguoiThamGia;
-=======
->>>>>>> 90219032fe47fde10f6c65d3e341008dd38cf62e
 import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.AccRepository;
 import com.bezkoder.springjwt.repository.SuKienRepository;
@@ -232,11 +229,6 @@ public class SuKienController {
         return suKienRepository.ThongKeNguoiDuyet();
     }
 
-<<<<<<< HEAD
-    @GetMapping("/NguoiDangKiSuKienTheoEvent/{id}")
-    public List<Object> laytaikhoantuid(@PathVariable int id){
-        return suKienRepository.getaccountByeventID(id);
-    }
     @RequestMapping(value = "/guimailnhacnho/{id}", method = RequestMethod.POST)
     public String[] getemailbyeventid(@RequestBody String content,@PathVariable int id) throws UnsupportedEncodingException, MessagingException {
         String[] email;
@@ -263,10 +255,10 @@ public class SuKienController {
 
         return "gửi thành công";
     }
-=======
+
     @GetMapping("/NguoiDangKiSuKientheoevent/{id}")
     public List<Object> laytaikhoantuid(@PathVariable int id){
-        return suKienRepository.getaccountByeventID(id);
+        return suKienRepository.getaccountByeventID1(id);
     }
 
     @PostMapping("/kiemtrave")
@@ -274,5 +266,4 @@ public class SuKienController {
 
     }
 
->>>>>>> 90219032fe47fde10f6c65d3e341008dd38cf62e
 }
