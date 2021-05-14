@@ -1,8 +1,10 @@
 package com.bezkoder.springjwt.controllers;
 
 import com.bezkoder.springjwt.models.Account;
+import com.bezkoder.springjwt.models.DangKiLamCTV;
 import com.bezkoder.springjwt.models.Message;
 import com.bezkoder.springjwt.repository.AccRepository;
+import com.bezkoder.springjwt.repository.SuKienRepository;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -26,6 +28,9 @@ public class AccController {
 
     @Autowired
     private AccRepository accRepository;
+
+    @Autowired
+    private SuKienRepository suKienRepository;
 
     @GetMapping("/getFullAcc")
     public List<Account> GetFullAcc() {
@@ -234,4 +239,6 @@ public class AccController {
         account.setStatus_acc(true);
         accRepository.save(account);
     }
+
+
 }

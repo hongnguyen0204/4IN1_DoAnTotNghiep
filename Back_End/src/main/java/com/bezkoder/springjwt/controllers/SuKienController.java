@@ -1,12 +1,20 @@
 package com.bezkoder.springjwt.controllers;
 import com.bezkoder.springjwt.models.Account;
+import com.bezkoder.springjwt.models.Message;
 import com.bezkoder.springjwt.models.NguoiThamGia;
 import com.bezkoder.springjwt.models.SuKien;
+import com.bezkoder.springjwt.repository.AccRepository;
 import com.bezkoder.springjwt.repository.SuKienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -16,8 +24,13 @@ import java.util.Locale;
 @CrossOrigin (origins = "http://localhost:4200")
 @RequestMapping(value = "/sukien")
 public class SuKienController {
+
    @Autowired
    private SuKienRepository suKienRepository;
+
+    @Autowired
+    private JavaMailSender mailSender;
+
 
     @GetMapping("/NguoiDangKiSuKien/{id}")
     public List<Object> findall(@PathVariable int id){
@@ -78,15 +91,6 @@ public class SuKienController {
         SuKien sk = suKienRepository.findById(id).get();
         return sk;
     }
-
-//    @GetMapping("/getlistemail/{id}")
-//    //Khúc ni thắng tự định nghĩa ra cái list<emaill>, rồi thế vô cái list<Sukien>
-//    public List<SuKien> getlistmail get(@PathVariable Integer id) {
-//        // chổ ni sẽ là email em = emailRepository.findlistemail(id)   cái findlistemail là tên mình ưa đặt chi đó đặt, rồi qua bên kia viết query cho hắn.
-//        SuKien sk = suKienRepository.findById(id).get();
-//        return
-//    }
-
 
     @GetMapping("/theoid/{id}")
     public List<SuKien> getSKbyid(@PathVariable Integer id){
@@ -196,7 +200,33 @@ public class SuKienController {
     }
 
     @GetMapping("/NguoiDangKiSuKienTheoEvent/{id}")
-    public List<Object> laytaikhoantuid(@PathVariable Integer id){
+    public List<Object> laytaikhoantuid(@PathVariable int id){
         return suKienRepository.getaccountByeventID(id);
+    }
+    @RequestMapping(value = "/guimailnhacnho/{id}", method = RequestMethod.POST)
+    public String[] getemailbyeventid(@RequestBody String content,@PathVariable int id) throws UnsupportedEncodingException, MessagingException {
+        String[] email;
+        email = suKienRepository.getemailbyidevent(id);
+        guimailnhacnho(email, content);
+        return email;
+
+    }
+    public String guimailnhacnho(String[] email,String content) throws UnsupportedEncodingException, MessagingException {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
+        helper.setFrom("shonepro123@gmail.com", "Nhắc nhở tham gia sự kiện");
+        helper.setTo(email);
+
+        String subject1 = "Người dùng phản hồi:";
+
+        String content1 =  content;
+
+        helper.setSubject(subject1);
+
+        helper.setText(content1, true);
+
+        mailSender.send(message);
+
+        return "gửi thành công";
     }
 }

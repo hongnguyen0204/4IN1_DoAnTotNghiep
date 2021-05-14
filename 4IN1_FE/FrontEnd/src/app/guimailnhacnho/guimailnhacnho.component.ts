@@ -16,7 +16,9 @@ import {ThongtincanhanService} from '../Service/thongtincanhan.service';
 })
 export class GuimailnhacnhoComponent implements OnInit {
   // @ts-ignore
-  content :String;
+  email: string;
+  // @ts-ignore
+  content :string;
   // @ts-ignore
   acc;
   // @ts-ignore
@@ -25,7 +27,6 @@ export class GuimailnhacnhoComponent implements OnInit {
   idevent: number;
   constructor(private sk :SukienService,
               private route:ActivatedRoute) { }
-
   ngOnInit(): void {
     this.id=this.route.snapshot.params['idevent'];
     this.acc = this.sk.email(this.id).subscribe(data=>{
@@ -33,8 +34,10 @@ export class GuimailnhacnhoComponent implements OnInit {
       console.log(this.acc);
     });
   }
+  // @ts-ignore
   guiamailnhacnho(){
     // @ts-ignore
-    this.sk.guimailnn(this.guinhacnhac).subscribe();
+    console.log(this.content);
+    this.sk.guimailnn(this.id, this.content).subscribe();
   }
 }

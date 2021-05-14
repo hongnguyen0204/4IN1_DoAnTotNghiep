@@ -6,16 +6,18 @@ public class Message {
     private String subject;
     private String sdt;
     private String loinhan;
+    private String content;
 
     public Message() {
     }
 
-    public Message(String name, String email, String subject, String sdt, String loinhan) {
+    public Message(String name, String email, String subject, String sdt, String loinhan, String content) {
         this.name = name;
         this.email = email;
         this.subject = subject;
         this.sdt = sdt;
         this.loinhan = loinhan;
+        this.content = content;
     }
 
     public String getName() {
@@ -56,5 +58,13 @@ public class Message {
 
     public void setLoinhan(String loinhan) {
         this.loinhan = loinhan;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

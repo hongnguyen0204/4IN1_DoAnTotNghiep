@@ -99,7 +99,11 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
             "FROM account_information ac,event_information ev " +
             "WHERE ac.ID=ev.id_cencor and month(ev.time_of_event)=month(DATE(NOW())) ", nativeQuery = true)
     List<Object> ThongKeNguoiDuyet();
+
     @Query(value = "SELECT account_information.fullname,account_information.email from account_information,join_register where join_register.acc_ID = account_information.ID and join_register.event_ID =?1",nativeQuery = true)
-    List<Object> getaccountByeventID(Integer event_id);
+    List<Object> getaccountByeventID(int id);
+
+    @Query(value = "SELECT account_information.email from account_information,join_register where join_register.acc_ID = account_information.ID and join_register.event_ID =?1",nativeQuery = true)
+    String[] getemailbyidevent(int id);
 
 }

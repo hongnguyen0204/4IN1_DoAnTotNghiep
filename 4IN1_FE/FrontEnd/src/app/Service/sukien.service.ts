@@ -35,9 +35,9 @@ export class SukienService {
     return this.http.post('http://localhost:8080/account/guilienlac',message);
   }
   // @ts-ignore
-  guimailnn(id, content){
+  guimailnn(id,content) {
     // @ts-ignore
-    return this.http.post(`${'http://localhost:8080/account/guimailnhacnho'}/${id}`,content);
+    return this.http.post(`${'http://localhost:8080/sukien/guimailnhacnho'}/${id}`,content);
   }
   // @ts-ignore
   findByDay(ngay1, ngay2, searchtext): Observable<Sukien[]>{
