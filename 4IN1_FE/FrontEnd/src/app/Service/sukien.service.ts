@@ -25,8 +25,42 @@ export class SukienService {
   }
 
   // @ts-ignore
-  findByText(searchtext): Observable<Sukien[]>{
-    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theotext'}/${searchtext}`);
+  findByText(searchtext, record): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theotext'}/${searchtext}/${record}`);
+  }
+
+  // @ts-ignore
+  findofday(start, end, record): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theoday'}/${start}/${end}/${record}`);
+  }
+  // @ts-ignore
+  findofdayandtext(start, end, searchtext, record): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theodayandtext'}/${start}/${end}/${searchtext}/${record}`);
+  }
+
+  // @ts-ignore
+  findofdaypage(start, end, page): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theodaypage'}/${start}/${end}/${page}`);
+  }
+
+  // @ts-ignore
+  findofdayandtextpage(start, end, searchtext, page): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theodayandtextpage'}/${start}/${end}/${searchtext}/${page}`);
+  }
+
+  // @ts-ignore
+  findByrecordoftext(searchtext): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/recordoftext'}/${searchtext}`);
+  }
+
+  // @ts-ignore
+  findByrecordofday(start,end): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/recordofday'}/${start}/${end}`);
+  }
+
+  // @ts-ignore
+  findByrecordDayandtext(start,end,searchtext): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/recordofdayandtext'}/${start}/${end}/${searchtext}`);
   }
 
   // @ts-ignore
@@ -40,10 +74,18 @@ export class SukienService {
     return this.http.post(`${'http://localhost:8080/sukien/guimailnhacnho'}/${id}`,content);
   }
   // @ts-ignore
-  findByDay(ngay1, ngay2, searchtext): Observable<Sukien[]>{
-    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theongay'}/${ngay1}/${ngay2}/${searchtext}`);
+  findByDayandtext(ngay1, ngay2, searchtext): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theongayvatext'}/${ngay1}/${ngay2}/${searchtext}`);
   }
 
+  // @ts-ignore
+  findByDay(ngay1, ngay2): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theongay'}/${ngay1}/${ngay2}`);
+  }
+
+  findrecord():Observable<number> {
+    return this.http.get<number>('http://localhost:8080/sukien/findrecord');
+  }
   // @ts-ignore
   findAll(): Observable<Sukien[]>{
     return this.http.get<Sukien[]>('http://localhost:8080/sukien/sukiendangcho');
@@ -51,6 +93,21 @@ export class SukienService {
 
   findAllsk(): Observable<Sukien[]>{
     return this.http.get<Sukien[]>('http://localhost:8080/sukien/all');
+  }
+
+  // @ts-ignore
+  findsk(record): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/top'}/${record}`);
+  }
+
+  // @ts-ignore
+  findBytextofrecord(searchtext, page): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/textofrecord'}/${searchtext}/${page}`);
+  }
+
+  // @ts-ignore
+  findpage(page): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/page'}/${page}`);
   }
 
   findSKDD(): Observable<Sukien[]>{
@@ -98,7 +155,7 @@ export class SukienService {
   }
 
   // @ts-ignore
-  dangKi(data):Observable<any>{
+  dangKi(data): Observable<any>{
     return this.http.post<Dangkithamgia>('http://localhost:8080/nguoithamgia/dangki', data);
   }
 
@@ -132,7 +189,7 @@ export class SukienService {
 
   // @ts-ignore
   CheckSoLuong(data){
-    return this.http.post('http://localhost:8080/dangkilamctv/checkSoLuong',data)
+    return this.http.post('http://localhost:8080/dangkilamctv/checkSoLuong',data);
   }
 // @ts-ignore
   email(id): Observable<any>{
@@ -144,8 +201,18 @@ export class SukienService {
   }
 
   // @ts-ignore
+<<<<<<< HEAD
   kiemTraThoiGianCTV(data):Observable<any>{
     return this.http.post('http://localhost:8080/dangkilamctv/kiemtrathoigian',data);
+=======
+  CheckSoLuongNTG(data){
+    return this.http.post('http://localhost:8080/nguoithamgia/checkSoLuong',data);
+  }
+
+  // @ts-ignore
+  CheckVe(data){
+    return this.http.post('http://localhost:8080/nguoithamgia/checkve',data);
+>>>>>>> 90219032fe47fde10f6c65d3e341008dd38cf62e
   }
 }
 

@@ -10,6 +10,7 @@
           <select (change)="ntg()" [(ngModel)]="idevent" name="tensukien"  style=" width: auto; height: 50px; outline:none;">
             <option value="{{sk.id}}" *ngFor="let sk of sukiens">{{sk.event_name}}</option>
           </select>
+<<<<<<< HEAD
                   <div class="guinhacnho">
                     <button id="guimailnhacnho" (click)=" detailGNN()">Gửi email nhắc nhở</button>
                   </div>
@@ -19,8 +20,16 @@
                         <thead>
                         <tr>
                   <th>STT</th>
+=======
+          <div class="card-body">
+            <div class="table-responsive">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">
+                <thead>
+                <tr>
+                  <th style="width: 30px">STT</th>
+>>>>>>> 90219032fe47fde10f6c65d3e341008dd38cf62e
                   <th>Họ & Tên</th>
-                  <th>Email</th>
+                  <th style="width: 500px">Email</th>
                   <th>Số Điện Thoại</th>
                 </tr>
                 </thead>

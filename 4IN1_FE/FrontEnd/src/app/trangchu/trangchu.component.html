@@ -62,19 +62,19 @@
       <div class="row">
         <div class="col-lg-4 col-sm-6" *ngFor="let tt of tintuc; let i = index">
           <div *ngIf="i<=5">
-          <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
-            <div class="team-image">
-              <img  (click)="detailTT(tt.id)" [src]="tt.img" alt="Team">
-            </div>
-            <div class="team-content">
-              <div class="team-social">
-
+            <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
+              <div class="team-image">
+                <img  (click)="detailTT(tt.id)" [src]="tt.img" alt="Team">
               </div>
-              <h4 class="team-name"><a (click)="detailTT(tt.id)" >{{tt.title}}</a></h4>
-            </div>
-          </div> <!-- single team -->
+              <div class="team-content">
+                <div class="team-social">
+
+                </div>
+                <h4 class="team-name"><a (click)="detailTT(tt.id)" >{{tt.title}}</a></h4>
+              </div>
+            </div> <!-- single team -->
           </div>
-          </div>
+        </div>
       </div> <!-- row -->
 
 
@@ -141,20 +141,20 @@
               <div class="tab-pane fade show active" id="day-1" role="tabpanel" aria-labelledby="day-1-tab">
                 <div class="event-content pt-40">
                   <div *ngFor="let sk of sukien | paginate: {itemsPerPage:5, currentPage:p};">
-                      <div (click)="detailSK(sk.id)" class="single-event d-md-flex mt-30">
-                        <div class="event-image">
-                          <img (click)="detailSK(sk.id)" [src]="sk.img" alt="Event">
-                        </div>
-                        <div class="event-content media-body">
-                          <h4 class="event-title">{{sk.event_name}}</h4>
-                          <p class="text">{{sk.describe_of_event}}</p>
-                          <ul class="event-meta">
-                            <li>Thời gian: {{sk.time_of_event|date:'dd-MM-yyyy h:mm a'}}</li>
-<!--                            <li>Kết thúc: {{sk.end_day}} </li>-->
-                            <li>Địa điểm: {{sk.place}}</li>
-                          </ul>
-                        </div>
+                    <div (click)="detailSK(sk.id)" class="single-event d-md-flex mt-30">
+                      <div class="event-image">
+                        <img (click)="detailSK(sk.id)" [src]="sk.img" alt="Event">
                       </div>
+                      <div class="event-content media-body">
+                        <h4 class="event-title">{{sk.event_name}}</h4>
+                        <p class="text">{{sk.describe_of_event}}</p>
+                        <ul class="event-meta">
+                          <li>Thời gian: {{sk.time_of_event|date:'dd-MM-yyyy h:mm a'}}</li>
+                          <!--                            <li>Kết thúc: {{sk.end_day}} </li>-->
+                          <li>Địa điểm: {{sk.place}}</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div><!-- single event -->
                   <br>
                   <br>
@@ -165,20 +165,20 @@
               <div class="tab-pane fade" id="day-2" role="tabpanel" aria-labelledby="day-2-tab">
                 <div class="event-content pt-40">
                   <div *ngFor="let sk of sukien | paginate: {itemsPerPage:5, currentPage:p};">
-                      <div (click)="detailSK(sk.id)" class="single-event d-md-flex mt-30">
-                        <div class="event-image">
-                          <img (click)="detailSK(sk.id)" [src]="sk.img" alt="Event">
-                        </div>
-                        <div class="event-content media-body">
-                          <h4 class="event-title">{{sk.event_name}}</h4>
-                          <p class="text">{{sk.describe_of_event}}</p>
-                          <ul class="event-meta">
-                            <li>Thời gian: {{sk.time_of_event|date:'dd-MM-yyyy h:mm a'}}</li>
-<!--                            <li>Kết thúc: {{sk.end_day}} </li>-->
-                            <li>Địa điểm: {{sk.place}}</li>
-                          </ul>
-                        </div>
+                    <div (click)="detailSK(sk.id)" class="single-event d-md-flex mt-30">
+                      <div class="event-image">
+                        <img (click)="detailSK(sk.id)" [src]="sk.img" alt="Event">
                       </div>
+                      <div class="event-content media-body">
+                        <h4 class="event-title">{{sk.event_name}}</h4>
+                        <p class="text">{{sk.describe_of_event}}</p>
+                        <ul class="event-meta">
+                          <li>Thời gian: {{sk.time_of_event|date:'dd-MM-yyyy h:mm a'}}</li>
+                          <!--                            <li>Kết thúc: {{sk.end_day}} </li>-->
+                          <li>Địa điểm: {{sk.place}}</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div> <!-- single event -->
                   <pagination-controls style="text-align: center" previousLabel="Trước"
                                        nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
@@ -187,20 +187,20 @@
               <div class="tab-pane fade" id="day-3" role="tabpanel" aria-labelledby="day-3-tab">
                 <div class="event-content pt-40">
                   <div *ngFor="let sk of sukien | paginate: {itemsPerPage:5, currentPage:p};">
-                      <div (click)="detailSK(sk.id)" class="single-event d-md-flex mt-30">
-                        <div class="event-image">
-                          <img (click)="detailSK(sk.id)" [src]="sk.img" alt="Event">
-                        </div>
-                        <div class="event-content media-body">
-                          <h4 class="event-title">{{sk.event_name}}</h4>
-                          <p class="text">{{sk.describe_of_event}}</p>
-                          <ul class="event-meta">
-                            <li>Thời gian: {{sk.time_of_event|date:'dd-MM-yyyy h:mm a'}}</li>
-<!--                            <li>Kết thúc: {{sk.end_day}} </li>-->
-                            <li>Địa điểm: {{sk.place}}</li>
-                          </ul>
-                        </div>
+                    <div (click)="detailSK(sk.id)" class="single-event d-md-flex mt-30">
+                      <div class="event-image">
+                        <img (click)="detailSK(sk.id)" [src]="sk.img" alt="Event">
                       </div>
+                      <div class="event-content media-body">
+                        <h4 class="event-title">{{sk.event_name}}</h4>
+                        <p class="text">{{sk.describe_of_event}}</p>
+                        <ul class="event-meta">
+                          <li>Thời gian: {{sk.time_of_event|date:'dd-MM-yyyy h:mm a'}}</li>
+                          <!--                            <li>Kết thúc: {{sk.end_day}} </li>-->
+                          <li>Địa điểm: {{sk.place}}</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div> <!-- single event -->
                   <pagination-controls style="text-align: center" previousLabel="Trước"
                                        nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
@@ -209,149 +209,75 @@
               <div class="tab-pane fade" id="day-4" role="tabpanel" aria-labelledby="day-4-tab">
                 <div class="event-content pt-40">
                   <div *ngFor="let sk of sukien | paginate: {itemsPerPage:5, currentPage:p};">
-                      <div (click)="detailSK(sk.id)" class="single-event d-md-flex mt-30">
-                        <div class="event-image">
-                          <img (click)="detailSK(sk.id)" [src]="sk.img" alt="Event">
-                        </div>
-                        <div class="event-content media-body">
-                          <h4 class="event-title">{{sk.event_name}}</h4>
-                          <p class="text">{{sk.describe_of_event}}</p>
-                          <ul class="event-meta">
-                            <li>Thời gian: {{sk.time_of_event|date:'dd-MM-yyyy h:mm a'}}</li>
-<!--                            <li>Kết thúc: {{sk.end_day}} </li>-->
-                            <li>Địa điểm: {{sk.place}}</li>
-                          </ul>
-                        </div>
+                    <div (click)="detailSK(sk.id)" class="single-event d-md-flex mt-30">
+                      <div class="event-image">
+                        <img (click)="detailSK(sk.id)" [src]="sk.img" alt="Event">
+                      </div>
+                      <div class="event-content media-body">
+                        <h4 class="event-title">{{sk.event_name}}</h4>
+                        <p class="text">{{sk.describe_of_event}}</p>
+                        <ul class="event-meta">
+                          <li>Thời gian: {{sk.time_of_event|date:'dd-MM-yyyy h:mm a'}}</li>
+                          <!--                            <li>Kết thúc: {{sk.end_day}} </li>-->
+                          <li>Địa điểm: {{sk.place}}</li>
+                        </ul>
                       </div>
                     </div>
-                  </div> <!-- single event -->
+                  </div>
+                </div> <!-- single event -->
                 <pagination-controls style="text-align: center" previousLabel="Trước"
                                      nextLabel="Sau" (pageChange)="p = $event"></pagination-controls>
-                </div> <!-- event content -->
-              </div>
+              </div> <!-- event content -->
             </div>
           </div>
-        </div> <!-- event tab -->
+        </div>
+      </div> <!-- event tab -->
     </div> <!-- row -->
     <!-- container -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="gallery-btn pt-60 text-center">
-        <a class="main-btn main-btn-2" href="sukien">Xem tất cả</a>
-      </div>
-    </div>
-  </div> <!-- row -->
-</div>
-</section>
-
-<!--====== EVENT SCHEDULE PART ENDS ======-->
-
-<!--====== GALLERY PART START ======-->
-<section id="gallery" style="margin-top: 30px" class="event-gallery pt-115 pb-130 gray-bg">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <div class="section-title text-center pb-50">
-          <h2 class="title">Thư viện</h2>
-          <p class="text">Lưu trữ những khoảnh khắc đáng nhớ</p>
-        </div> <!-- section title -->
-      </div>
-    </div> <!-- row -->
-  </div> <!-- container -->
-  <div class="row no-gutters">
-    <div class="col-lg-6">
-      <div class="single-gallery1">
-        <div class="gallery-image">
-          <img src="assets/images/event (1).jpg" alt="Gallery">
-        </div>
-        <div class="gallery-content">
-          <a class="image-popup" href="assets/images/event (1).jpg"><i class="lni-plus"></i></a>
-        </div>
-      </div> <!-- single gallery -->
-    </div>
-    <div class="col-lg-6">
-      <div class="row no-gutters">
-        <div class="col-sm-6">
-          <div class="single-gallery">
-            <div class="gallery-image">
-              <img src="assets/images/event (2).jpg" alt="Gallery">
-            </div>
-            <div class="gallery-content">
-              <a class="image-popup" href="assets/images/event (2).jpg"><i class="lni-plus"></i></a>
-            </div>
-          </div> <!-- single gallery -->
-        </div>
-        <div class="col-sm-6">
-          <div class="single-gallery">
-            <div class="gallery-image">
-              <img src="assets/images/event (3).jpg" alt="Gallery">
-            </div>
-            <div class="gallery-content">
-              <a class="image-popup" href="assets/images/event (3).jpg"><i class="lni-plus"></i></a>
-            </div>
-          </div> <!-- single gallery -->
-        </div>
-        <div class="col-sm-6">
-          <div class="single-gallery">
-            <div class="gallery-image">
-              <img src="assets/images/event (4).jpg" alt="Gallery">
-            </div>
-            <div class="gallery-content">
-              <a class="image-popup" href="assets/images/event (4).jpg"><i class="lni-plus"></i></a>
-            </div>
-          </div> <!-- single gallery -->
-        </div>
-        <div class="col-sm-6">
-          <div class="single-gallery">
-            <div class="gallery-image">
-              <img src="assets/images/event (5).jpg" alt="Gallery">
-            </div>
-            <div class="gallery-content">
-              <a class="image-popup" href="assets/images/event (5).jpg"><i class="lni-plus"></i></a>
-            </div>
-          </div> <!-- single gallery -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="gallery-btn pt-60 text-center">
+            <a class="main-btn main-btn-2" href="sukien">Xem tất cả</a>
+          </div>
         </div>
       </div> <!-- row -->
     </div>
-  </div> <!-- row -->
+  </section>
 
-</section>
+  <!--====== EVENT SCHEDULE PART ENDS ======-->
 
-<!--====== GALLERY PART ENDS ======-->
-
-<!--====== CONTACT PART START ======-->
-
-<section id="contact" class="contact-area pt-80 pb-130">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="contact-info pt-40">
-          <div class="section-title pb-10">
-            <h2 class="title">Phản hồi</h2>
+  <!--====== GALLERY PART START ======-->
+  <section id="gallery" style="margin-top: 30px" class="event-gallery pt-115 pb-130 gray-bg">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="section-title text-center pb-50">
+            <h2 class="title">Thư viện</h2>
+            <p class="text">Lưu trữ những khoảnh khắc đáng nhớ</p>
           </div> <!-- section title -->
-        </div> <!-- contact info -->
+        </div>
+      </div> <!-- row -->
+    </div> <!-- container -->
+    <div class="row no-gutters">
+      <div class="col-lg-6">
+        <div class="single-gallery1">
+          <div class="gallery-image">
+            <img src="assets/images/event (1).jpg" alt="Gallery">
+          </div>
+          <div class="gallery-content">
+            <a class="image-popup" href="assets/images/event (1).jpg"><i class="lni-plus"></i></a>
+          </div>
+        </div> <!-- single gallery -->
       </div>
-      <div class="col-lg-8">
-        <div class="contact-form pt-20">
-          <form (ngSubmit)="f.form.valid && message.subject!='Chọn khoa' && guilienlac()" id="contact-form" action="assets/contact.php" method="post"
-          #f="ngForm" novalidate>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="single-form">
-                  <input [(ngModel)]="message.name" type="text" name="name" placeholder="Họ và tên" class="form-control"
-                  required
-                  minlength="2"
-                  maxlength="20"
-                  #name="ngModel">
-                  <div class="alert-danger" *ngIf="f.submitted && name.invalid">
-                    <div *ngIf="name.errors.required">Vui lòng nhập tên</div>
-                    <div *ngIf="name.errors.minlength">Tên không được nhập dưới 2 kí tự</div>
-                    <div *ngIf="name.errors.maxlength">Tên không được nhập quá 20 kí tự</div>
-                  </div>
-                  <i class="lni-user"></i>
-                </div> <!-- single form -->
+      <div class="col-lg-6">
+        <div class="row no-gutters">
+          <div class="col-sm-6">
+            <div class="single-gallery">
+              <div class="gallery-image">
+                <img src="assets/images/event (2).jpg" alt="Gallery">
               </div>
+<<<<<<< HEAD
               <div class="col-md-6">
                 <div class="single-form">
                   <input type="email" [(ngModel)]="message.email" name="email" placeholder="Email"
@@ -362,65 +288,152 @@
                   </div>
                   <i class="lni-envelope"></i>
                 </div> <!-- single form -->
+=======
+              <div class="gallery-content">
+                <a class="image-popup" href="assets/images/event (2).jpg"><i class="lni-plus"></i></a>
+>>>>>>> 90219032fe47fde10f6c65d3e341008dd38cf62e
               </div>
-              <div class="col-md-6">
-                <div class="single-form">
-                  <select  [(ngModel)]="message.subject" name="subject" class="form-control" required #subject="ngModel" >
-                    <option value="Chọn khoa">Chọn khoa</option>
-                    <option value="Công nghệ thông tin">Công nghệ thông tin</option>
-                    <option value="Kế Toán">Kế Toán</option>
-                    <option value="Y dược">Y dược</option>
-                    <option value="Kiến Trúc">Kiến Trúc</option>
-                    <option value="Ngoại ngữ">Ngoại ngữ</option>
-                  </select>
-                  <i class="lni-pencil-alt"></i>
-                  <div class="alert-danger" *ngIf="f.submitted && message.subject=='Chọn khoa'">
-                    Bạn phải chọn khoa
-                  </div>
-                </div> <!-- single form -->
+            </div> <!-- single gallery -->
+          </div>
+          <div class="col-sm-6">
+            <div class="single-gallery">
+              <div class="gallery-image">
+                <img src="assets/images/event (3).jpg" alt="Gallery">
               </div>
-              <div class="col-md-6">
-                <div class="single-form">
-                  <input type="text" [(ngModel)]="message.sdt" name="sdt" placeholder="Số điện thoại" class="form-control"
-                  required
-                  pattern="(0)[0-9]{9}"
-                         #sdt="ngModel">
-                  <div class="alert-danger" *ngIf="f.submitted && sdt.invalid">
-                    <div *ngIf="sdt.errors.required">Vui lòng nhập số điện thoại</div>
-                    <div *ngIf="sdt.errors.pattern">Vui lòng nhập đúng định dạng</div>
-                  </div>
-                  <i class="lni-phone-handset"></i>
-                </div> <!-- single form -->
+              <div class="gallery-content">
+                <a class="image-popup" href="assets/images/event (3).jpg"><i class="lni-plus"></i></a>
               </div>
-              <div class="col-md-12">
-                <div class="single-form">
-                  <textarea name="message" [(ngModel)]="message.loinhan" placeholder="Lời nhắn của bạn"
-                  required
-                  minlength="20"
-                  maxlength="200"
-                  #loinhan="ngModel"></textarea>
-                  <div class="alert-danger" *ngIf="f.submitted && loinhan.invalid">
-                    <div *ngIf="loinhan.errors.required">Vui lòng nhập lời nhắn của bạn</div>
-                    <div *ngIf="loinhan.errors.minlength">Vui lòng nhập tối thiểu 20 kí tự</div>
-                    <div *ngIf="loinhan.errors.maxlength">Vui lòng nhập ít hơn 200 kí tự</div>
-                  </div>
-                  <i class="lni-comment-alt"></i>
-                </div> <!-- single form -->
+            </div> <!-- single gallery -->
+          </div>
+          <div class="col-sm-6">
+            <div class="single-gallery">
+              <div class="gallery-image">
+                <img src="assets/images/event (4).jpg" alt="Gallery">
               </div>
-              <p class="form-message"></p>
-              <div class="col-md-12">
-                <div class="single-form">
-                  <button type="submit" class="main-btn main-btn-2" style="width: 150px">Gửi</button>
-                </div> <!-- single form -->
+              <div class="gallery-content">
+                <a class="image-popup" href="assets/images/event (4).jpg"><i class="lni-plus"></i></a>
               </div>
-            </div> <!-- row -->
-          </form>
-        </div> <!-- contact form -->
+            </div> <!-- single gallery -->
+          </div>
+          <div class="col-sm-6">
+            <div class="single-gallery">
+              <div class="gallery-image">
+                <img src="assets/images/event (5).jpg" alt="Gallery">
+              </div>
+              <div class="gallery-content">
+                <a class="image-popup" href="assets/images/event (5).jpg"><i class="lni-plus"></i></a>
+              </div>
+            </div> <!-- single gallery -->
+          </div>
+        </div> <!-- row -->
       </div>
-    </div>
-  </div> <!-- container -->
-</section>
+    </div> <!-- row -->
 
-<!--====== CONTACT PART ENDS ======-->
+  </section>
+
+  <!--====== GALLERY PART ENDS ======-->
+
+  <!--====== CONTACT PART START ======-->
+
+  <section id="contact" class="contact-area pt-80 pb-130">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="contact-info pt-40">
+            <div class="section-title pb-10">
+              <h2 class="title">Phản hồi</h2>
+            </div> <!-- section title -->
+          </div> <!-- contact info -->
+        </div>
+        <div class="col-lg-8">
+          <div class="contact-form pt-20">
+            <form (ngSubmit)="f.form.valid && message.subject!='Chọn khoa' && guilienlac()" id="contact-form" action="assets/contact.php" method="post"
+                  #f="ngForm" novalidate>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="single-form">
+                    <input [(ngModel)]="message.name" type="text" name="name" placeholder="Họ và tên" class="form-control"
+                           required
+                           minlength="2"
+                           maxlength="20"
+                           #name="ngModel">
+                    <div class="alert-danger" *ngIf="f.submitted && name.invalid">
+                      <div *ngIf="name.errors.required">Vui lòng nhập tên</div>
+                      <div *ngIf="name.errors.minlength">Tên không được nhập dưới 2 kí tự</div>
+                      <div *ngIf="name.errors.maxlength">Tên không được nhập quá 20 kí tự</div>
+                    </div>
+                    <i class="lni-user"></i>
+                  </div> <!-- single form -->
+                </div>
+                <div class="col-md-6">
+                  <div class="single-form">
+                    <input type="email" [(ngModel)]="message.email" name="email" placeholder="Email"
+                           required
+                           #email="ngModel">
+                    <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+                      <div *ngIf="email.errors.required">Vui lòng nhập email</div>
+                      <div *ngIf="email.errors.email">Vui lòng nhập đúng định dạng email</div>
+                    </div>
+                    <i class="lni-envelope"></i>
+                  </div> <!-- single form -->
+                </div>
+                <div class="col-md-6">
+                  <div class="single-form">
+                    <select  [(ngModel)]="message.subject" name="subject" class="form-control" required #subject="ngModel" >
+                      <option value="Chọn khoa">Chọn khoa</option>
+                      <option value="Công nghệ thông tin">Công nghệ thông tin</option>
+                      <option value="Kế Toán">Kế Toán</option>
+                      <option value="Y dược">Y dược</option>
+                      <option value="Kiến Trúc">Kiến Trúc</option>
+                      <option value="Ngoại ngữ">Ngoại ngữ</option>
+                    </select>
+                    <i class="lni-pencil-alt"></i>
+                    <div class="alert-danger" *ngIf="f.submitted && message.subject=='Chọn khoa'">
+                      Bạn phải chọn khoa
+                    </div>
+                  </div> <!-- single form -->
+                </div>
+                <div class="col-md-6">
+                  <div class="single-form">
+                    <input type="text" [(ngModel)]="message.sdt" name="sdt" placeholder="Số điện thoại" class="form-control"
+                           required
+                           pattern="(0)[0-9]{9}"
+                           #sdt="ngModel">
+                    <div class="alert-danger" *ngIf="f.submitted && sdt.invalid">
+                      <div *ngIf="sdt.errors.required">Vui lòng nhập số điện thoại</div>
+                      <div *ngIf="sdt.errors.pattern">Vui lòng nhập đúng định dạng</div>
+                    </div>
+                    <i class="lni-phone-handset"></i>
+                  </div> <!-- single form -->
+                </div>
+                <div class="col-md-12">
+                  <div class="single-form">
+                  <textarea name="message" [(ngModel)]="message.loinhan" placeholder="Lời nhắn của bạn"
+                            required
+                            minlength="20"
+                            maxlength="200"
+                            #loinhan="ngModel"></textarea>
+                    <div class="alert-danger" *ngIf="f.submitted && loinhan.invalid">
+                      <div *ngIf="loinhan.errors.required">Vui lòng nhập lời nhắn của bạn</div>
+                      <div *ngIf="loinhan.errors.minlength">Vui lòng nhập tối thiểu 20 kí tự</div>
+                      <div *ngIf="loinhan.errors.maxlength">Vui lòng nhập ít hơn 200 kí tự</div>
+                    </div>
+                    <i class="lni-comment-alt"></i>
+                  </div> <!-- single form -->
+                </div>
+                <p class="form-message"></p>
+                <div class="col-md-12">
+                  <div class="single-form">
+                    <button type="submit" class="main-btn main-btn-2" style="width: 150px">Gửi</button>
+                  </div> <!-- single form -->
+                </div>
+              </div> <!-- row -->
+            </form>
+          </div> <!-- contact form -->
+        </div>
+      </div>
+    </div> <!-- container -->
+  </section>
+
+  <!--====== CONTACT PART ENDS ======-->
 </div>
-

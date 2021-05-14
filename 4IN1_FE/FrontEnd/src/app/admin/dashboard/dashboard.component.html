@@ -210,7 +210,7 @@
                 <p class="card-category">Tháng {{thang+1}} năm {{nam}}</p>
               </div>
               <div class="card-body table-responsive">
-                <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">
                   <thead>
                   <tr>
                     <th style="width: 8%">STT</th>
@@ -236,7 +236,7 @@
                 <p class="card-category">Tháng {{thang+1}} năm {{nam}}</p>
               </div>
               <div class="card-body table-responsive">
-                <table datatable [dtOptions]="dtOptions" style="table-layout:fixed" class="row-border hover" style="width:100%">
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger1" style="table-layout:fixed" class="row-border hover" style="width:100%">
                   <thead>
                   <tr>
                     <th style="width: 8%">ID</th>

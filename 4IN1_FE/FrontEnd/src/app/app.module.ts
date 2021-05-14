@@ -49,9 +49,19 @@ import { ConfirmDialogComponent } from './-helpers/confirm-dialog/confirm-dialog
 import {MatDialogModule} from '@angular/material/dialog';
 import { NguoithamgiasukienComponent } from './nguoithamgiasukien/nguoithamgiasukien.component';
 import { ThongtinnhomComponent } from './thongtinnhom/thongtinnhom.component';
-import { GuimailnhacnhoComponent } from './guimailnhacnho/guimailnhacnho.component';
 import { InfoDialogComponent } from './-helpers/info-dialog/info-dialog.component';
+import { KiemtraveComponent } from './kiemtrave/kiemtrave.component';
+import {FullCalendarModule} from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin
+import { LichsukienComponent } from './lichsukien/lichsukien.component';
+import { EventDialogComponent } from './-helpers/event-dialog/event-dialog.component'; // a plugin
 
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+
+]);
 // @ts-ignore
 @NgModule({
   declarations: [
@@ -78,8 +88,15 @@ import { InfoDialogComponent } from './-helpers/info-dialog/info-dialog.componen
     ConfirmDialogComponent,
     NguoithamgiasukienComponent,
     ThongtinnhomComponent,
+<<<<<<< HEAD
     GuimailnhacnhoComponent,
     InfoDialogComponent
+=======
+    InfoDialogComponent,
+    KiemtraveComponent,
+    LichsukienComponent,
+    EventDialogComponent
+>>>>>>> 90219032fe47fde10f6c65d3e341008dd38cf62e
   ],
   imports: [
         BrowserModule,
@@ -100,7 +117,8 @@ import { InfoDialogComponent } from './-helpers/info-dialog/info-dialog.componen
         }),
         MatSnackBarModule,
         NgxPaginationModule,
-        MatDialogModule
+        MatDialogModule,
+        FullCalendarModule
     ],
   providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService,DatePipe],
   bootstrap: [AppComponent]

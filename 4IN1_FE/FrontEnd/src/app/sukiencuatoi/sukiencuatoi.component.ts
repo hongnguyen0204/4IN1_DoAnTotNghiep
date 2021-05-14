@@ -10,7 +10,6 @@ import {Sukien} from '../Model/sukien';
 import {Subject} from 'rxjs';
 import {DataTableDirective} from 'angular-datatables';
 import {MatDialog} from '@angular/material/dialog';
-import {ConfirmDialogComponent} from '../-helpers/confirm-dialog/confirm-dialog.component';
 import {InfoDialogComponent} from '../-helpers/info-dialog/info-dialog.component';
 
 @Component({
@@ -125,5 +124,4 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
       });
     });
   }
-
 }

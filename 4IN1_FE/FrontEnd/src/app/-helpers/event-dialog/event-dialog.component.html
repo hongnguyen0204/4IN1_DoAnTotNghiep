@@ -1,0 +1,9 @@
+<body style="width: 500px">
+<h1 style="margin: 0;word-wrap: break-word" mat-dialog-title><strong>Tiêu đề: </strong>{{data.title}}</h1>
+<div mat-dialog-content>
+  <img style=" width: 200px;height: 200px;margin: 10px 30%;" src="{{data.img}}">
+  <p style="color: black">Thời gian: {{data.date|date:'dd-MM-yyyy h:mm a'}} </p>
+  <p style="color: black">Địa điểm: {{data.place}} </p>
+</div>
+</body>
+

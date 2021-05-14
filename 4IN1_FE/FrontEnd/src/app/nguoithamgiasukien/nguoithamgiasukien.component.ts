@@ -97,6 +97,7 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
       });
     });
   }
+<<<<<<< HEAD
   // @ts-ignore
   laydsntg(){
     this.skService.email(this.idevent).subscribe(data=>{
@@ -116,4 +117,6 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
     });
 
   }
+=======
+>>>>>>> 90219032fe47fde10f6c65d3e341008dd38cf62e
 }

@@ -166,7 +166,7 @@ public class AccController {
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
         helper.setFrom("shonepro123@gmail.com", "Người dùng phản hồi liên lạc");
-        helper.setTo(ms.getEmail());
+        helper.setTo("shonepro123@gmail.com");
 
         String subject1 = "Người dùng phản hồi:";
 

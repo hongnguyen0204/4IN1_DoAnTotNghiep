@@ -16,7 +16,7 @@
       </div>
       <ul *ngFor="let sK of suKiens, let i = index">
         <div *ngIf="i%4">
-          <li (click)="detailSK(sK.id)" style="display:flex">
+          <li (click)="detailSK(sK.id)" style="display:flex;cursor: pointer">
             <img [src]="sK.img">
             <a>{{sK.event_name}}</a>
           </li>
