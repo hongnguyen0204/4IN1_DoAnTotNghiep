@@ -32,8 +32,7 @@ public interface NguoiThamGiaRepository extends JpaRepository<NguoiThamGia,Integ
             "AND j.event_ID=ev.ID", nativeQuery = true)
     List<Object> KiemTraThoiGian(int acc_ID);
 
-<<<<<<< HEAD
-=======
+
     @Query(value = "SELECT email FROM account_information WHERE ID=?1 ", nativeQuery = true)
     String getemailbyid(Integer id);
 
@@ -42,5 +41,4 @@ public interface NguoiThamGiaRepository extends JpaRepository<NguoiThamGia,Integ
 
     @Query(value = "SELECT COUNT(*) FROM join_register where ticket=?1", nativeQuery = true)
     Integer Kiemtrave(String qrcode);
->>>>>>> 90219032fe47fde10f6c65d3e341008dd38cf62e
 }

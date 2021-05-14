@@ -113,7 +113,7 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
             "FROM event_information " +
             "WHERE time_of_event>DATE(NOW()) " +
             "AND status_of_event='Đồng ý' " +
-            "AND DATE(time_of_event)=DATE(?1) " +
+            "AND time_of_event=?1 " +
             "AND place=?2", nativeQuery = true)
     Integer KiemTra(LocalDateTime ngayToChuc, String diaDiem);
 
