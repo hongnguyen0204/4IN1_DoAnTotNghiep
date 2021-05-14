@@ -23,6 +23,7 @@ import {NguoithamgiasukienComponent} from './nguoithamgiasukien/nguoithamgiasuki
 import {ThongtinnhomComponent} from './thongtinnhom/thongtinnhom.component';
 import {KiemtraveComponent} from "./kiemtrave/kiemtrave.component";
 import {LichsukienComponent} from './lichsukien/lichsukien.component';
+import {GuimailnhacnhoComponent} from './guimailnhacnho/guimailnhacnho.component';
 
 
 const routes: Routes = [
@@ -41,10 +42,7 @@ const routes: Routes = [
   {path: 'quanlycongtacvien', component: QuanlycongtacvienComponent,canActivate:[CustomerAuthService]},
   {path: 'quanlysukien', component: QuanlysukienComponent,canActivate:[CustomerAuthService]},
   {path: 'sukiencuatoi', component: SukiencuatoiComponent,canActivate:[CustomerAuthService]},
-<<<<<<< HEAD
   {path: 'guimailnhacnho/:idevent', component: GuimailnhacnhoComponent,canActivate:[CustomerAuthService]},
-=======
->>>>>>> 90219032fe47fde10f6c65d3e341008dd38cf62e
   {path: 'nguoithamgiasukien', component: NguoithamgiasukienComponent,canActivate:[CustomerAuthService]},
   {path: 'doimatkhau/:token', component: DoimatkhauComponent},
   {path: 'xacthucemail/:token', component: XacthucemailComponent},

@@ -55,7 +55,8 @@ import {FullCalendarModule} from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
 import interactionPlugin from '@fullcalendar/interaction'; // a plugin
 import { LichsukienComponent } from './lichsukien/lichsukien.component';
-import { EventDialogComponent } from './-helpers/event-dialog/event-dialog.component'; // a plugin
+import { EventDialogComponent } from './-helpers/event-dialog/event-dialog.component';
+import {GuimailnhacnhoComponent} from './guimailnhacnho/guimailnhacnho.component'; // a plugin
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -88,15 +89,11 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ConfirmDialogComponent,
     NguoithamgiasukienComponent,
     ThongtinnhomComponent,
-<<<<<<< HEAD
-    GuimailnhacnhoComponent,
-    InfoDialogComponent
-=======
     InfoDialogComponent,
     KiemtraveComponent,
     LichsukienComponent,
-    EventDialogComponent
->>>>>>> 90219032fe47fde10f6c65d3e341008dd38cf62e
+    EventDialogComponent,
+    GuimailnhacnhoComponent
   ],
   imports: [
         BrowserModule,

@@ -201,18 +201,16 @@ export class SukienService {
   }
 
   // @ts-ignore
-<<<<<<< HEAD
   kiemTraThoiGianCTV(data):Observable<any>{
     return this.http.post('http://localhost:8080/dangkilamctv/kiemtrathoigian',data);
-=======
-  CheckSoLuongNTG(data){
+  }
+  // @ts-ignore
+    CheckSoLuongNTG(data){
     return this.http.post('http://localhost:8080/nguoithamgia/checkSoLuong',data);
   }
 
   // @ts-ignore
   CheckVe(data){
     return this.http.post('http://localhost:8080/nguoithamgia/checkve',data);
->>>>>>> 90219032fe47fde10f6c65d3e341008dd38cf62e
   }
 }
-
