@@ -6,6 +6,7 @@ import {Message} from '../Model/message';
 import {QuanlytintucserviceService} from '../Service/quanlytintucservice.service';
 import {Quanlytintuc} from '../Model/quanlytintuc';
 
+
 @Component({
   selector: 'app-trangchu',
   templateUrl: './trangchu.component.html',
