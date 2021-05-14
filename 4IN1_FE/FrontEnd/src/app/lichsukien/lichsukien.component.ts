@@ -43,7 +43,7 @@ export class LichsukienComponent implements OnInit {
     this.skService.findSKDD().subscribe(data=>{
       for(var val of data){
         // @ts-ignore
-        this.date =this.datepipe.transform(val.time_of_event,'yyyy-MM-dd');
+        this.date =this.datepipe.transform(val.time_of_event,'yyyy-MM-ddTHH:mmZ');
         this.infor.id=val.id;
         this.infor.title=val.event_name;
         this.infor.date=this.date;
@@ -52,17 +52,23 @@ export class LichsukienComponent implements OnInit {
         this.infor=new IFEV();
       }
 
-
       this.calendarOptions = {
         plugins: [dayGridPlugin, interactionPlugin],
         editable: true,
         headerToolbar: {
           left: 'prev,next today',
           center: 'title',
-          right: 'dayGridMonth'
+          right: 'dayGridDay,dayGridWeek,dayGridMonth'
         },
         events:this.list,
-        eventMouseEnter:this.handleEventClick.bind(this)
+        eventTimeFormat: {
+          hour: '2-digit',
+          minute: '2-digit',
+          meridiem: true
+        },
+        eventColor: '#378006',
+        eventBackgroundColor:'#2E2EFE',
+        eventClick:this.handleEventClick.bind(this)
       };
     });
     forwardRef(() => Calendar);

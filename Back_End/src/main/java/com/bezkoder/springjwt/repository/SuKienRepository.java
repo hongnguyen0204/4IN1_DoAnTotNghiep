@@ -19,7 +19,7 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
             "WHERE j.acc_ID=ac.ID AND j.event_ID=?1 ", nativeQuery = true)
     List<Object> NguoiThamGia(int id);
 
-    @Query(value = "SELECT * FROM event_information WHERE MONTH(time_of_event) = ?1 AND status_of_event='Đồng ý' ORDER BY ID DESC ", nativeQuery = true)
+    @Query(value = "SELECT * FROM event_information WHERE MONTH(time_of_event) = ?1 AND status_of_event='Đồng ý' ORDER BY time_of_event ASC", nativeQuery = true)
     List<SuKien> findByMonth(Integer thang);
 
     @Query(value = "SELECT * FROM event_information WHERE status_of_event='Đồng ý' ", nativeQuery = true)
@@ -85,7 +85,7 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
     @Query(value = "SELECT COUNT(*) FROM event_information WHERE time_upload=DATE(NOW()) && status_of_event='Đang chờ' ", nativeQuery = true)
     Integer SKDangKiTrongNgay();
 
-    @Query(value = "SELECT * FROM event_information WHERE time_of_event>DATE(NOW()) and status_of_event='Đồng ý' ", nativeQuery = true)
+    @Query(value = "SELECT * FROM event_information WHERE time_of_event>DATE(NOW()) and status_of_event='Đồng ý' ORDER BY time_of_event ASC ", nativeQuery = true)
     List<SuKien> SKDaDuyet();
 
     @Query(value = "SELECT * FROM event_information WHERE status_of_event='Từ chối' ", nativeQuery = true)
