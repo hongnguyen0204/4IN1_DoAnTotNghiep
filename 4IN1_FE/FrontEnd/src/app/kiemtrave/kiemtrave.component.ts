@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {SukienService} from '../Service/sukien.service';
 import {scan} from 'rxjs/operators';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-kiemtrave',
@@ -8,22 +9,51 @@ import {scan} from 'rxjs/operators';
   styleUrls: ['./kiemtrave.component.scss'],
   providers: [SukienService]
 })
-export class KiemtraveComponent implements OnInit {
+export class KiemtraveComponent implements OnInit,AfterViewInit {
+  isSuccessful= false;
   // @ts-ignore
-  constructor(private sukienService: SukienService) { }
-
+  @ViewChild('hiddenInput1') hiddenInput1:ElementRef;
+  ngAfterViewInit() {
+    // @ts-ignore
+    $(this.hiddenInput1.nativeElement).on('change', (e) => {
+      // @ts-ignore
+      this.mave =  window.sessionStorage.getItem('code');
+      console.log(this.mave);
+      this.sukienService.CheckVe(this.mave).subscribe(data=>{
+          if(data){
+            // @ts-ignore
+            this.toastr.success("Vé Hợp lệ");
+          }else{
+            this.toastr.error("Vé Không hợp lệ");
+          }
+      });
+    });
+  }
+  // @ts-ignore
+  constructor(private sukienService: SukienService, private toastr: ToastrService) { }
+  // @ts-ignore
+  mave:string;
   ngOnInit(): void {
     this.funcv();
   }
-  // @ts-ignore
+
+
   funcv(){
     // @ts-ignore
-    const scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+    var scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
     // @ts-ignore
     scanner.addListener('scan', function(content) {
-        alert(content);
+      Gui(content);
+      $("#content").val(content).trigger('change');
+      // @ts-ignore
     });
     // @ts-ignore
+    function Gui(content){
+      // @ts-ignore
+      window.sessionStorage.setItem('code',content);
+      // @ts-ignore
+    }
+
     // @ts-ignore
     Instascan.Camera.getCameras().then(function(cameras) {
       if (cameras.length > 0) {
@@ -35,16 +65,5 @@ export class KiemtraveComponent implements OnInit {
     }).catch(function(e) {
       console.error(e);
     });
-  }
-// @ts-ignore
-  kiemtra(){
-    alert();
-    // this.sukienService.CheckVe(this.funcv()).subscribe(data => {
-    //   if (data){
-    //     alert('Hợp lệ');
-    //   }else{
-    //     alert('Không hợp lệ');
-    //   }
-    // });
   }
 }

@@ -29,6 +29,8 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
   // @ts-ignore
   id: number;
   // @ts-ignore
+  id_event;
+  // @ts-ignore
   idevent: number;
   nguoithamgias:any;
 
@@ -94,5 +96,24 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
         this.dtTrigger.next();
       });
     });
+  }
+  // @ts-ignore
+  laydsntg(){
+    this.skService.email(this.idevent).subscribe(data=>{
+      console.log(this.idevent);
+    });
+  }
+  reloadData() {
+    this.skService.findSKDD().subscribe(data => {
+      this.sukiens = data;
+    })
+  }
+
+  detailGNN() {
+    this.laydsntg();
+    this.router.navigate(['guimailnhacnho',this.idevent]).then(() => {
+      window.scrollTo(0,0)
+    });
+
   }
 }

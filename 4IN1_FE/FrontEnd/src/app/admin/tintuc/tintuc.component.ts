@@ -69,8 +69,7 @@ export class TintucComponent implements OnInit,OnDestroy {
     });
     confirmDialog.afterClosed().subscribe(result => {
       if (result === true) {
-    this.quanLyTinTucService.delete(id)
-      .subscribe(
+    this.quanLyTinTucService.delete(id).subscribe(
         data => {
           this.toastr.success("Đã xóa thành công!")
           this.reloadData();

@@ -14,6 +14,7 @@ export class SukienService {
 
   constructor(private http: HttpClient) { }
 
+
 // @ts-ignore
   findByMonth(thang): Observable<Sukien[]>{
     return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theothang'}/${thang}`);
@@ -67,7 +68,11 @@ export class SukienService {
     // @ts-ignore
     return this.http.post('http://localhost:8080/account/guilienlac',message);
   }
-
+  // @ts-ignore
+  guimailnn(id,content) {
+    // @ts-ignore
+    return this.http.post(`${'http://localhost:8080/sukien/guimailnhacnho'}/${id}`,content);
+  }
   // @ts-ignore
   findByDayandtext(ngay1, ngay2, searchtext): Observable<Sukien[]>{
     return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theongayvatext'}/${ngay1}/${ngay2}/${searchtext}`);
@@ -173,22 +178,10 @@ export class SukienService {
   huyCTV(data){
     return this.http.post('http://localhost:8080/dangkilamctv/delete',data);
   }
-
   // @ts-ignore
   kiemTra(data){
     return this.http.post('http://localhost:8080/sukien/kiemtra',data);
   }
-
-  // @ts-ignore
-  kiemTraThoiGian(data):Observable<any>{
-    return this.http.post('http://localhost:8080/nguoithamgia/kiemtrathoigian',data);
-  }
-
-  // @ts-ignore
-  kiemTraThoiGianCTV(data):Observable<any>{
-    return this.http.post('http://localhost:8080/dangkilamctv/kiemtrathoigian',data);
-  }
-
   // @ts-ignore
   kiemTraTG(data){
     return this.http.post('http://localhost:8080/nguoithamgia/kiemtrathamgia',data);
@@ -198,9 +191,21 @@ export class SukienService {
   CheckSoLuong(data){
     return this.http.post('http://localhost:8080/dangkilamctv/checkSoLuong',data);
   }
+// @ts-ignore
+  email(id): Observable<any>{
+    return this.http.get<any>(`${'http://localhost:8080/sukien/NguoiDangKiSuKienTheoEvent'}/${id}`);
+  }
+  // @ts-ignore
+  kiemTraThoiGian(data):Observable<any>{
+    return this.http.post('http://localhost:8080/nguoithamgia/kiemtrathoigian',data);
+  }
 
   // @ts-ignore
-  CheckSoLuongNTG(data){
+  kiemTraThoiGianCTV(data):Observable<any>{
+    return this.http.post('http://localhost:8080/dangkilamctv/kiemtrathoigian',data);
+  }
+  // @ts-ignore
+    CheckSoLuongNTG(data){
     return this.http.post('http://localhost:8080/nguoithamgia/checkSoLuong',data);
   }
 
@@ -209,4 +214,3 @@ export class SukienService {
     return this.http.post('http://localhost:8080/nguoithamgia/checkve',data);
   }
 }
-
