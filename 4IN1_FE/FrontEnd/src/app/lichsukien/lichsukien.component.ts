@@ -8,6 +8,8 @@ import {DatePipe} from '@angular/common';
 import {MatDialog} from '@angular/material/dialog';
 import {InfoDialogComponent} from '../-helpers/info-dialog/info-dialog.component';
 import {EventDialogComponent} from '../-helpers/event-dialog/event-dialog.component';
+import {Sukien} from '../Model/sukien';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-lichsukien',
   templateUrl: './lichsukien.component.html',
@@ -36,11 +38,12 @@ export class LichsukienComponent implements OnInit {
   // };
   constructor(private skService:SukienService,
               public datepipe: DatePipe,
-              public dialog:MatDialog) { }
+              public dialog:MatDialog,
+              public router:Router) { }
 
   ngOnInit(): void {
     // need for load calendar bundle first
-    this.skService.findSKDD().subscribe(data=>{
+    this.skService.findSKDDFull().subscribe(data=>{
       for(var val of data){
         // @ts-ignore
         this.date =this.datepipe.transform(val.time_of_event,'yyyy-MM-ddTHH:mmZ');
@@ -81,11 +84,17 @@ export class LichsukienComponent implements OnInit {
           title: db.event_name,
           img: db.img,
           date:db.time_of_event,
-          place:db.place
+          place:db.place,
+          id:arg.event.id
+        }
+      });
+      confirmDialog.afterClosed().subscribe(result => {
+        if (result === true) {
+          this.router.navigate(['dangkithamgia',arg.event.id]).then(() => {
+            window.scrollTo(0,0);
+          });
         }
       });
     });
-
   }
-
 }

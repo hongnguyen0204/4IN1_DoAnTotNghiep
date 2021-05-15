@@ -88,6 +88,9 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
     @Query(value = "SELECT * FROM event_information WHERE time_of_event>DATE(NOW()) and status_of_event='Đồng ý' ORDER BY time_of_event ASC ", nativeQuery = true)
     List<SuKien> SKDaDuyet();
 
+    @Query(value = "SELECT * FROM event_information WHERE status_of_event='Đồng ý' ORDER BY time_of_event ASC ", nativeQuery = true)
+    List<SuKien> SKDaDuyetFull();
+
     @Query(value = "SELECT * FROM event_information WHERE status_of_event='Từ chối' ", nativeQuery = true)
     List<SuKien> SKDaHuy();
 
@@ -113,7 +116,8 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
             "FROM event_information " +
             "WHERE time_of_event>DATE(NOW()) " +
             "AND status_of_event='Đồng ý' " +
-            "AND time_of_event=?1 " +
+            "AND date(time_of_event)=date(?1) " +
+            "AND time(time_of_event)=time(?1) " +
             "AND place=?2", nativeQuery = true)
     Integer KiemTra(LocalDateTime ngayToChuc, String diaDiem);
 

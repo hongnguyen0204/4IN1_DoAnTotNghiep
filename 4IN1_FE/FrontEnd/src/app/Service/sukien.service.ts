@@ -114,6 +114,10 @@ export class SukienService {
     return this.http.get<Sukien[]>('http://localhost:8080/sukien/sukiendaduyet');
   }
 
+  findSKDDFull(): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>('http://localhost:8080/sukien/sukiendaduyetfull');
+  }
+
   findSKDH(): Observable<Sukien[]>{
     return this.http.get<Sukien[]>('http://localhost:8080/sukien/sukiendahuy');
   }

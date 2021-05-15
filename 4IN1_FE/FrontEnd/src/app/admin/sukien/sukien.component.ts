@@ -52,7 +52,7 @@ export class SukienComponent implements OnInit,OnDestroy {
       this.sukien=data;
       this.dtTrigger.next();
     });
-    this.skService.findSKDD().subscribe(data=>{
+    this.skService.findSKDDFull().subscribe(data=>{
       this.sukienDD=data;
       this.dtTrigger1.next();
     });
