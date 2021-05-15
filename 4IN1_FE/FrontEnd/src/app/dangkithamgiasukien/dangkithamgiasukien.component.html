@@ -1,3 +1,32 @@
+<!--<div class="textbox" >-->
+<!--  <title>{{sukien.event_name}}</title>-->
+<!--  <div id="left">-->
+<!--    <div class="main-desc">-->
+<!--      <div class="main-title">-->
+<!--        <span>{{sukien.event_name}}</span>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <div class="" [innerHtml]='sukien.content'>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div id="right">-->
+<!--      <div class="right-header-news">-->
+<!--        <span>SỰ KIỆN KHÁC</span>-->
+<!--      </div>-->
+<!--      <ul *ngFor="let sK of suKiens, let i = index">-->
+<!--        <div *ngIf="i%4">-->
+<!--          <li (click)="detailSK(sK.id)" style="display:flex;cursor: pointer">-->
+<!--            <img [src]="sK.img">-->
+<!--            <a>{{sK.event_name}}</a>-->
+<!--          </li>-->
+<!--        </div>-->
+<!--        <br>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <br>-->
+<!--</div>-->
 <div class="textbox" >
   <title>{{sukien.event_name}}</title>
   <div id="left">
@@ -15,32 +44,33 @@
         <span>SỰ KIỆN KHÁC</span>
       </div>
       <ul *ngFor="let sK of suKiens, let i = index">
-        <div *ngIf="i%4">
-          <li (click)="detailSK(sK.id)" style="display:flex;cursor: pointer">
-            <img [src]="sK.img">
-            <a>{{sK.event_name}}</a>
+        <div  *ngIf="i < 5 && sK.id!=sukien.id" >
+          <li>
+            <img (click)="detailSK(sK.id)"
+                 [src]="sK.img">
+            <a (click)="detailSK(sK.id)">
+              {{sK.event_name}}
+            </a>
           </li>
         </div>
-        <br>
       </ul>
     </div>
   </div>
-  <br>
-  <div class="text-center">
-    <ul style="display: flex">
+</div>
+<div class="text-center">
+  <ul style="display: flex">
+    <li>
+      <a class="animated-btn text-white" style="margin-bottom: 50px;" (click)="dangKi(id,ev_id)" >Tham gia ngay</a>
+    </li>
+    <li style="width: 100px;">
+    </li>
+    <li *ngIf="checkCTV; else CTV">
+      <a class="animated-btn text-white" style="margin-bottom: 50px;" (click)="updatesk(sukien.id)" >Đăng kí cộng tác viên</a>
+    </li>
+    <ng-template #CTV>
       <li>
-        <a class="animated-btn text-white" style="margin-bottom: 50px;" (click)="dangKi(id,ev_id)" >Tham gia ngay</a>
+        <a class="animated-btn text-white" style="margin-bottom: 50px;pointer-events: none;cursor: default" (click)="updatesk(sukien.id)" >Đăng kí cộng tác viên</a>
       </li>
-      <li style="width: 100px;">
-      </li>
-      <li *ngIf="checkCTV; else CTV">
-        <a class="animated-btn text-white" style="margin-bottom: 50px;" (click)="updatesk(sukien.id)" >Đăng kí cộng tác viên</a>
-      </li>
-      <ng-template #CTV>
-        <li>
-          <a class="animated-btn text-white" style="margin-bottom: 50px;pointer-events: none;cursor: default" (click)="updatesk(sukien.id)" >Đăng kí cộng tác viên</a>
-        </li>
-      </ng-template>
-    </ul>
-  </div>
+    </ng-template>
+  </ul>
 </div>
