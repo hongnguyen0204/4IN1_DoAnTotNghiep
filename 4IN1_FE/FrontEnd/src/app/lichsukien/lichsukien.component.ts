@@ -6,8 +6,8 @@ import {SukienService} from '../Service/sukien.service';
 import {IFEV} from '../Model/IFEV';
 import {DatePipe} from '@angular/common';
 import {MatDialog} from '@angular/material/dialog';
-import {InfoDialogComponent} from '../-helpers/info-dialog/info-dialog.component';
-import {EventDialogComponent} from '../-helpers/event-dialog/event-dialog.component';
+import {Router} from '@angular/router';
+import tippy, {animateFill} from 'tippy.js';
 @Component({
   selector: 'app-lichsukien',
   templateUrl: './lichsukien.component.html',
@@ -25,22 +25,15 @@ export class LichsukienComponent implements OnInit {
   date:string;
   // @ts-ignore
   list=[];
-  // = {
-  //   initialView: 'dayGridMonth',
-  //   // @ts-ignore
-  //   dateClick: this.handleDateClick.bind(this), // bind is important!
-  //   events: [
-  //     { title: 'event 1', date: '2021-05-01' },
-  //     { title: 'event 2', date: '2021-05-02' }
-  //   ]
-  // };
+
   constructor(private skService:SukienService,
               public datepipe: DatePipe,
-              public dialog:MatDialog) { }
+              public dialog:MatDialog,
+              public router:Router) { }
 
   ngOnInit(): void {
     // need for load calendar bundle first
-    this.skService.findSKDD().subscribe(data=>{
+    this.skService.findSKDDFull().subscribe(data=>{
       for(var val of data){
         // @ts-ignore
         this.date =this.datepipe.transform(val.time_of_event,'yyyy-MM-ddTHH:mmZ');
@@ -60,6 +53,19 @@ export class LichsukienComponent implements OnInit {
           center: 'title',
           right: 'dayGridDay,dayGridWeek,dayGridMonth'
         },
+        eventDidMount: (info) => {
+          this.skService.getSK(info.event.id).subscribe(db=>{
+          tippy(info.el, {
+            content: '<a style="font-family: Roboto;font-size: 22px;text-align:center;margin-bottom:10px"><strong>'+db.event_name+'</strong></a>'
+              +'<br><i style="font-family: Roboto;font-size: 18px" class="lni lni-alarm-clock"> '+this.datepipe.transform(db.time_of_event,'yyyy-MM-dd h:mm a')+'</i>'
+              +'<br><i style="font-family: Roboto;font-size: 18px;" class="lni lni-money-location"> '+db.place
+              +'</i><img style="height:200px;width: 100%;margin: 10px auto" src="'+db.img+'">',
+            duration: 0,
+            theme:'light',
+            allowHTML: true,
+          });
+          });
+        },
         events:this.list,
         eventTimeFormat: {
           hour: '2-digit',
@@ -75,17 +81,8 @@ export class LichsukienComponent implements OnInit {
   }
   // @ts-ignore
   handleEventClick(arg) {
-    this.skService.getSK(arg.event.id).subscribe(db=>{
-      const confirmDialog = this.dialog.open(EventDialogComponent, {
-        data: {
-          title: db.event_name,
-          img: db.img,
-          date:db.time_of_event,
-          place:db.place
-        }
-      });
-    });
-
+          this.router.navigate(['dangkithamgia',arg.event.id]).then(() => {
+            window.scrollTo(0,0);
+          });
   }
-
 }
