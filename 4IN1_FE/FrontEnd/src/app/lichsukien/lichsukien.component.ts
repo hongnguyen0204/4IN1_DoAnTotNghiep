@@ -56,8 +56,10 @@ export class LichsukienComponent implements OnInit {
         eventDidMount: (info) => {
           this.skService.getSK(info.event.id).subscribe(db=>{
           tippy(info.el, {
-            content: '<strong>'+db.event_name+'</strong>'+'<br><p>Thời gian:</p>'+this.datepipe.transform(db.time_of_event,'yyyy-MM-dd h:mm a')
-              +'<br><p>Địa chỉ:</p>' +db.place,
+            content: '<a style="font-family: Roboto;font-size: 22px;text-align:center;margin-bottom:10px"><strong>'+db.event_name+'</strong></a>'
+              +'<br><i style="font-family: Roboto;font-size: 18px" class="lni lni-alarm-clock"> '+this.datepipe.transform(db.time_of_event,'yyyy-MM-dd h:mm a')+'</i>'
+              +'<br><i style="font-family: Roboto;font-size: 18px;" class="lni lni-money-location"> '+db.place
+              +'</i><img style="height:200px;width: 100%;margin: 10px auto" src="'+db.img+'">',
             duration: 0,
             theme:'light',
             allowHTML: true,
