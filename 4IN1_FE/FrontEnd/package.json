@@ -25,6 +25,7 @@
     "@angular/router": "~11.2.5",
     "@fullcalendar/angular": "^5.7.0",
     "@fullcalendar/daygrid": "^5.7.0",
+    "@fullcalendar/interaction": "latest",
     "@material/snackbar": "^10.0.0",
     "@progress/kendo-angular-common": "^2.0.0",
     "@progress/kendo-angular-l10n": "^3.0.0",
@@ -32,6 +33,7 @@
     "@progress/kendo-licensing": "^1.0.2",
     "@progress/kendo-theme-default": "latest",
     "angular-datatables": "^11.0.0",
+    "angular-tippy": "0.0.3",
     "ckeditor4-angular": "^2.1.0",
     "ckeditor4-dev": "^4.16.0",
     "datatables.net": "^1.10.20",
@@ -46,9 +48,9 @@
     "ngx-toastr": "^13.2.1",
     "rxjs": "~6.6.0",
     "save": "^2.4.0",
+    "tippy.js": "^6.3.1",
     "tslib": "^2.0.0",
-    "zone.js": "~0.11.3",
-    "@fullcalendar/interaction": "latest"
+    "zone.js": "~0.11.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1102.3",

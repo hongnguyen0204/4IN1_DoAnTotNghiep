@@ -6,10 +6,8 @@ import {SukienService} from '../Service/sukien.service';
 import {IFEV} from '../Model/IFEV';
 import {DatePipe} from '@angular/common';
 import {MatDialog} from '@angular/material/dialog';
-import {InfoDialogComponent} from '../-helpers/info-dialog/info-dialog.component';
-import {EventDialogComponent} from '../-helpers/event-dialog/event-dialog.component';
-import {Sukien} from '../Model/sukien';
 import {Router} from '@angular/router';
+import tippy, {animateFill} from 'tippy.js';
 @Component({
   selector: 'app-lichsukien',
   templateUrl: './lichsukien.component.html',
@@ -27,15 +25,7 @@ export class LichsukienComponent implements OnInit {
   date:string;
   // @ts-ignore
   list=[];
-  // = {
-  //   initialView: 'dayGridMonth',
-  //   // @ts-ignore
-  //   dateClick: this.handleDateClick.bind(this), // bind is important!
-  //   events: [
-  //     { title: 'event 1', date: '2021-05-01' },
-  //     { title: 'event 2', date: '2021-05-02' }
-  //   ]
-  // };
+
   constructor(private skService:SukienService,
               public datepipe: DatePipe,
               public dialog:MatDialog,
@@ -63,6 +53,17 @@ export class LichsukienComponent implements OnInit {
           center: 'title',
           right: 'dayGridDay,dayGridWeek,dayGridMonth'
         },
+        eventDidMount: (info) => {
+          this.skService.getSK(info.event.id).subscribe(db=>{
+          tippy(info.el, {
+            content: '<strong>'+db.event_name+'</strong>'+'<br><p>Thời gian:</p>'+this.datepipe.transform(db.time_of_event,'yyyy-MM-dd h:mm a')
+              +'<br><p>Địa chỉ:</p>' +db.place,
+            duration: 0,
+            theme:'light',
+            allowHTML: true,
+          });
+          });
+        },
         events:this.list,
         eventTimeFormat: {
           hour: '2-digit',
@@ -78,23 +79,8 @@ export class LichsukienComponent implements OnInit {
   }
   // @ts-ignore
   handleEventClick(arg) {
-    this.skService.getSK(arg.event.id).subscribe(db=>{
-      const confirmDialog = this.dialog.open(EventDialogComponent, {
-        data: {
-          title: db.event_name,
-          img: db.img,
-          date:db.time_of_event,
-          place:db.place,
-          id:arg.event.id
-        }
-      });
-      confirmDialog.afterClosed().subscribe(result => {
-        if (result === true) {
           this.router.navigate(['dangkithamgia',arg.event.id]).then(() => {
             window.scrollTo(0,0);
           });
-        }
-      });
-    });
   }
 }
