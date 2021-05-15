@@ -57,6 +57,11 @@ public class SuKienController {
         return suKienRepository.SKDaDuyet();
     }
 
+    @GetMapping("/sukiendaduyetfull")
+    public List<SuKien> SKDDFull() {
+        return suKienRepository.SKDaDuyetFull();
+    }
+
     @GetMapping("/sukiendahuy")
     public List<SuKien> SKDH() {
         return suKienRepository.SKDaHuy();
