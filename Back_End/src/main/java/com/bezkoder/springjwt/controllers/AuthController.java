@@ -33,7 +33,7 @@ import com.bezkoder.springjwt.repository.UserRepository;
 import com.bezkoder.springjwt.security.jwt.JwtUtils;
 import com.bezkoder.springjwt.security.services.UserDetailsImpl;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "**")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -55,6 +55,7 @@ public class AuthController {
 	@Autowired
 	JwtUtils jwtUtils;
 
+	@CrossOrigin (origins = "http://sukiendtu.edu.vn")
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 

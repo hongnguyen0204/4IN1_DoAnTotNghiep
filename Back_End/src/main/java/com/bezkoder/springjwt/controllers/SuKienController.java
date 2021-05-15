@@ -21,7 +21,7 @@ import java.util.Locale;
 
 
 @RestController
-@CrossOrigin (origins = "http://localhost:4200")
+@CrossOrigin (origins = "http://sukiendtu.edu.vn")
 @RequestMapping(value = "/sukien")
 public class SuKienController {
 

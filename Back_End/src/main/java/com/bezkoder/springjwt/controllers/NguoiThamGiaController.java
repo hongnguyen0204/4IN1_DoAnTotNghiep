@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://sukiendtu.edu.vn")
 @RequestMapping(value = "/nguoithamgia")
 public class NguoiThamGiaController {
 
@@ -89,7 +89,7 @@ public class NguoiThamGiaController {
                 "            <tr>\n" +
                 "              <td>\n" +
                 "                <div>\n" +
-                "                  <img src=\"https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.15752-9/s2048x2048/184703038_1241668892941356_1988666661846089266_n.png?_nc_cat=111&ccb=1-3&_nc_sid=ae9488&_nc_ohc=p92KL1Lz-iAAX9r01Je&_nc_ht=scontent.fsgn2-6.fna&tp=30&oh=c47f5885a90a3b8d4c23343c7afc0b57&oe=60C36A05\" height=\"100%\" width=\"100%\" class=\"m_6347430949454947394emailImage CToWUd a6T\" style=\"height:auto\" tabindex=\"0\"><div class=\"a6S\" dir=\"ltr\" style=\"opacity: 0.01; left: 1004px; top: 349px;\"><div id=\":4t\" class=\"T-I J-J5-Ji aQv T-I-ax7 L3 a5q\" role=\"button\" tabindex=\"0\" aria-label=\"Tải xuống tệp đính kèm \" data-tooltip-class=\"a1V\" data-tooltip=\"Tải xuống\"><div class=\"akn\"><div class=\"aSK J-J5-Ji aYr\"></div></div></div></div>\n" +
+                "                  <img src=\"https://scontent-hkt1-2.xx.fbcdn.net/v/t1.15752-9/s2048x2048/184703038_1241668892941356_1988666661846089266_n.png?_nc_cat=111&ccb=1-3&_nc_sid=ae9488&_nc_ohc=p92KL1Lz-iAAX-7vULl&_nc_ht=scontent-hkt1-2.xx&tp=30&oh=aecdaf9795644d3971d1ab55f4ac406c&oe=60C75E85\" height=\"100%\" width=\"100%\" class=\"m_6347430949454947394emailImage CToWUd a6T\" style=\"height:auto\" tabindex=\"0\"><div class=\"a6S\" dir=\"ltr\" style=\"opacity: 0.01; left: 1004px; top: 349px;\"><div id=\":4t\" class=\"T-I J-J5-Ji aQv T-I-ax7 L3 a5q\" role=\"button\" tabindex=\"0\" aria-label=\"Tải xuống tệp đính kèm \" data-tooltip-class=\"a1V\" data-tooltip=\"Tải xuống\"><div class=\"akn\"><div class=\"aSK J-J5-Ji aYr\"></div></div></div></div>\n" +
                 "                </div>\n" +
                 "              </td>\n" +
                 "            </tr>\n" +
