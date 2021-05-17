@@ -1,9 +1,5 @@
 package com.bezkoder.springjwt.controllers;
-import com.bezkoder.springjwt.models.Account;
-import com.bezkoder.springjwt.models.Message;
-import com.bezkoder.springjwt.models.NguoiThamGia;
 import com.bezkoder.springjwt.models.SuKien;
-import com.bezkoder.springjwt.repository.AccRepository;
 import com.bezkoder.springjwt.repository.SuKienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -13,11 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 
 @RestController
@@ -45,6 +37,11 @@ public class SuKienController {
     @GetMapping("/sukienhot")
     public SuKien getSuKienhot() {
         return suKienRepository.sukienhot();
+    }
+
+    @GetMapping("/sukienthuong")
+    public SuKien getSuKienThuong() {
+        return suKienRepository.sukienthuong();
     }
 
     @GetMapping("/sukiendangcho")
@@ -268,7 +265,20 @@ public class SuKienController {
 
     @PostMapping("/kiemtrave")
     public void KiemTra(@RequestBody String qrcode){
+    }
 
+    @PutMapping("/sethot/{id}")
+    public void setHot(@PathVariable Integer id){
+        SuKien sk =suKienRepository.findById(id).get();
+        sk.setHot(true);
+        suKienRepository.save(sk);
+    }
+
+    @PutMapping("/huyhot/{id}")
+    public void HuyHot(@PathVariable Integer id){
+        SuKien sk =suKienRepository.findById(id).get();
+        sk.setHot(false);
+        suKienRepository.save(sk);
     }
 
 }
