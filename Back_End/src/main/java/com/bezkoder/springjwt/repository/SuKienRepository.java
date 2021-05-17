@@ -1,20 +1,18 @@
 package com.bezkoder.springjwt.repository;
 
 
-import com.bezkoder.springjwt.models.Account;
 import com.bezkoder.springjwt.models.SuKien;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Repository
 public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
 
-    @Query(value = "SELECT ac.fullname, ac.email, ac.phone_number " +
+    @Query(value = "SELECT ac.fullname, ac.email, ac.phone_number, j.checkticket " +
             "FROM account_information ac,join_register j " +
             "WHERE j.acc_ID=ac.ID AND j.event_ID=?1 ", nativeQuery = true)
     List<Object> NguoiThamGia(int id);

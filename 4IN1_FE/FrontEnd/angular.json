@@ -96,7 +96,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "host": "sukiendtu.edu.vn",
-            "port": 80,
+            "sslKey": "code.key",
+            "sslCert": "code.crt",
+            "ssl": true,
+            "port": 443,
             "browserTarget": "FrontEnd:build"
           },
           "configurations": {
