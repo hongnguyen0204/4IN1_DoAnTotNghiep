@@ -36,8 +36,8 @@ export class ThongkeComponent implements OnInit {
     this.sukien.id_cencor=this.id_admin;
     this.skService.update(this.id,this.sukien).subscribe(data=>{
       this.router.navigate(['admin/sukien']) .then(() => {
-        this.toastr.success("Duyệt thành công!");
         window.location.reload();
+        this.toastr.success("Duyệt thành công!");
       });
     },error => console.log(error));
   }

@@ -77,33 +77,65 @@ export class TrangchuComponent implements OnInit {
   datahot(){
     // @ts-ignore
     this.sukienService.findByhot().subscribe(data=>{
-      this.sukienhot=data;
-      this.countDownDate = new Date(this.sukienhot.time_of_event).getTime();
-      this.x= setInterval(()=>{
-        var now = new Date().getTime();
-        // @ts-ignore
-        var distance = this.countDownDate - now;
-        var days = Math.floor(distance/(1000*60*60*24));
-        var hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-        var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-        var seconds = Math.floor((distance % (1000*60)) / 1000);
-        this.demo = days + "d " + hours + "h " +minutes +"m " +seconds + "s ";
-        if(days >=0 || hours >=0 || minutes >=0 || seconds >=0) {
-          $("#days").html(days + "<span style='font-size: 30px; margin-top: -30px'>Days</span>");
-          $("#hours").html(hours + "<span style='font-size: 30px; margin-top: -30px'>Hours</span>");
-          $("#minutes").html(minutes + "<span style='font-size: 30px; margin-top: -30px'>Minutes</span>");
-          $("#seconds").html(seconds + "<span style='font-size: 30px; margin-top: -30px'>Seconds</span>");
-        }else{
-          days = 0;
-          hours =0;
-          minutes =0;
-          seconds =0;
-          $("#days").html(days + "<span style='font-size: 30px; margin-top: -30px'>Days</span>");
-          $("#hours").html(hours + "<span style='font-size: 30px; margin-top: -30px'>Hours</span>");
-          $("#minutes").html(minutes + "<span style='font-size: 30px; margin-top: -30px'>Minutes</span>");
-          $("#seconds").html(seconds + "<span style='font-size: 30px; margin-top: -30px'>Seconds</span>");
-        }
-      })
+      if(data==null){
+        this.sukienService.findSKThuong().subscribe(data=>{
+          this.sukienhot=data;
+          this.countDownDate = new Date(this.sukienhot.time_of_event).getTime();
+          this.x= setInterval(()=>{
+            var now = new Date().getTime();
+            // @ts-ignore
+            var distance = this.countDownDate - now;
+            var days = Math.floor(distance/(1000*60*60*24));
+            var hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+            var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+            var seconds = Math.floor((distance % (1000*60)) / 1000);
+            this.demo = days + "d " + hours + "h " +minutes +"m " +seconds + "s ";
+            if(days >=0 || hours >=0 || minutes >=0 || seconds >=0) {
+              $("#days").html(days + "<span style='font-size: 30px; margin-top: -30px'>Days</span>");
+              $("#hours").html(hours + "<span style='font-size: 30px; margin-top: -30px'>Hours</span>");
+              $("#minutes").html(minutes + "<span style='font-size: 30px; margin-top: -30px'>Minutes</span>");
+              $("#seconds").html(seconds + "<span style='font-size: 30px; margin-top: -30px'>Seconds</span>");
+            }else{
+              days = 0;
+              hours =0;
+              minutes =0;
+              seconds =0;
+              $("#days").html(days + "<span style='font-size: 30px; margin-top: -30px'>Days</span>");
+              $("#hours").html(hours + "<span style='font-size: 30px; margin-top: -30px'>Hours</span>");
+              $("#minutes").html(minutes + "<span style='font-size: 30px; margin-top: -30px'>Minutes</span>");
+              $("#seconds").html(seconds + "<span style='font-size: 30px; margin-top: -30px'>Seconds</span>");
+            }
+          })
+        });
+      } else {
+        this.sukienhot=data;
+        this.countDownDate = new Date(this.sukienhot.time_of_event).getTime();
+        this.x= setInterval(()=>{
+          var now = new Date().getTime();
+          // @ts-ignore
+          var distance = this.countDownDate - now;
+          var days = Math.floor(distance/(1000*60*60*24));
+          var hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+          var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+          var seconds = Math.floor((distance % (1000*60)) / 1000);
+          this.demo = days + "d " + hours + "h " +minutes +"m " +seconds + "s ";
+          if(days >=0 || hours >=0 || minutes >=0 || seconds >=0) {
+            $("#days").html(days + "<span style='font-size: 30px; margin-top: -30px'>Days</span>");
+            $("#hours").html(hours + "<span style='font-size: 30px; margin-top: -30px'>Hours</span>");
+            $("#minutes").html(minutes + "<span style='font-size: 30px; margin-top: -30px'>Minutes</span>");
+            $("#seconds").html(seconds + "<span style='font-size: 30px; margin-top: -30px'>Seconds</span>");
+          }else{
+            days = 0;
+            hours =0;
+            minutes =0;
+            seconds =0;
+            $("#days").html(days + "<span style='font-size: 30px; margin-top: -30px'>Days</span>");
+            $("#hours").html(hours + "<span style='font-size: 30px; margin-top: -30px'>Hours</span>");
+            $("#minutes").html(minutes + "<span style='font-size: 30px; margin-top: -30px'>Minutes</span>");
+            $("#seconds").html(seconds + "<span style='font-size: 30px; margin-top: -30px'>Seconds</span>");
+          }
+        })
+      }
     });
   }
   // @ts-ignore

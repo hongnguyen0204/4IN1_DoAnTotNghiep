@@ -29,7 +29,7 @@ span{
   width: 60%;
   margin-left: 10%;
   background: #f1f1f1;
-  min-height: 500px;
+  min-height: 518px;
 }
 
 div #left ul {
@@ -89,24 +89,30 @@ div #left ul li p {
   max-width: 314px;
   background: white;
   min-height: 500px;
-
+  margin-left: 20px;
 }
 
 .right-header-news {
   height: 30px;
   width: 314px;
   margin-bottom: 10px;
-  margin-left: 15px;
+  margin-left: 5px;
   text-align: center;
   line-height: 30px;
   padding-right: 5px;
   background-color: #1863ff
-
 }
 
 #right ul {
   list-style-type: none;
-  margin-left: 25px;
+}
+
+#right ul li {
+  display: inline-flex;
+  margin-bottom: -40px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 #right ul li a:hover {
@@ -117,17 +123,17 @@ div #left ul li p {
 #right ul li img {
   Object-fit: cover;
   cursor: pointer;
-  max-width: 230px;
-  max-height: 200px;
+  width: 130px;
+  height: 100px;
   border: 1px solid #ccc;
   padding: 2px;
-  margin-bottom: 5px;
+  margin: 5px;
 }
 
 #right ul li a {
   text-decoration: none;
   color: #333;
-  margin-bottom: 30px;
+  font-size: 14px;
 }
 .right-header-reviews {
   height: 30px;
@@ -140,4 +146,3 @@ div #left ul li p {
   line-height: 30px;
   padding-right: 5px;
 }
-

@@ -47,6 +47,11 @@ public class SuKienController {
         return suKienRepository.sukienhot();
     }
 
+    @GetMapping("/sukienthuong")
+    public SuKien getSuKienThuong() {
+        return suKienRepository.sukienthuong();
+    }
+
     @GetMapping("/sukiendangcho")
     public List<SuKien> SKDC() {
         return suKienRepository.SKDangCho();
@@ -268,7 +273,20 @@ public class SuKienController {
 
     @PostMapping("/kiemtrave")
     public void KiemTra(@RequestBody String qrcode){
+    }
 
+    @PutMapping("/sethot/{id}")
+    public void setHot(@PathVariable Integer id){
+        SuKien sk =suKienRepository.findById(id).get();
+        sk.setHot(true);
+        suKienRepository.save(sk);
+    }
+
+    @PutMapping("/huyhot/{id}")
+    public void HuyHot(@PathVariable Integer id){
+        SuKien sk =suKienRepository.findById(id).get();
+        sk.setHot(false);
+        suKienRepository.save(sk);
     }
 
 }
