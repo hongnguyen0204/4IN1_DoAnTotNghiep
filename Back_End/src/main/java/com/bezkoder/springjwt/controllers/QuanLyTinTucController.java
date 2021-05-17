@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 //Kích hoạt CORS trên máy chủ
-@CrossOrigin (origins = "http://sukiendtu.edu.vn")
+@CrossOrigin (origins = "https://sukiendtu.edu.vn")
 @RequestMapping(value = "/quanlytintuc")
 
 

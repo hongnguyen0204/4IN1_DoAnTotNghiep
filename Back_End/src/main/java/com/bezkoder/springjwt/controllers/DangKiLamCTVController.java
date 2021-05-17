@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://sukiendtu.edu.vn")
+@CrossOrigin(origins = "https://sukiendtu.edu.vn")
 @RequestMapping(value = "/dangkilamctv")
 public class DangKiLamCTVController {
 

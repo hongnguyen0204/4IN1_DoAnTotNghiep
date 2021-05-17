@@ -20,7 +20,7 @@ export class KiemtraveComponent implements OnInit,AfterViewInit {
       this.mave =  window.sessionStorage.getItem('code');
       console.log(this.mave);
       this.sukienService.CheckVe(this.mave).subscribe(data=>{
-          if(data){
+          if(data == "Vé hợp lệ"){
             // @ts-ignore
             this.toastr.success("Vé Hợp lệ");
           }else{

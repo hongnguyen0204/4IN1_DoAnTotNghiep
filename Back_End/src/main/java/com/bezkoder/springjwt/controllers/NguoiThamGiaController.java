@@ -1,7 +1,6 @@
 package com.bezkoder.springjwt.controllers;
 
 import com.bezkoder.springjwt.models.NguoiThamGia;
-import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.NguoiThamGiaRepository;
 import com.bezkoder.springjwt.repository.SuKienRepository;
 import net.bytebuddy.utility.RandomString;
@@ -15,11 +14,10 @@ import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://sukiendtu.edu.vn")
+@CrossOrigin(origins = "https://sukiendtu.edu.vn")
 @RequestMapping(value = "/nguoithamgia")
 public class NguoiThamGiaController {
 
