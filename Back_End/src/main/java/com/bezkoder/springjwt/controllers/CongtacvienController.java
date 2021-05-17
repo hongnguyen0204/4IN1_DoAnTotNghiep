@@ -1,7 +1,6 @@
 package com.bezkoder.springjwt.controllers;
 
 import com.bezkoder.springjwt.models.Congtacvien;
-import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.CongtacvienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

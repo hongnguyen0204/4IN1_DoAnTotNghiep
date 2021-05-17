@@ -192,13 +192,17 @@ public class NguoiThamGiaController {
         return nguoiThamGiaRepository.CheckSoLuongNTG(nguoiThamGia.getEvent_ID());
     }
 
-    @RequestMapping(value = "/checkve", method = RequestMethod.POST)
-    public boolean KiemTrave(@RequestBody String qrcode){
-        int record = nguoiThamGiaRepository.Kiemtrave(qrcode);
-        if(record == 0){
-            return false;
+    @RequestMapping(value = "/checkve/{id}", method = RequestMethod.POST)
+    public Integer KiemTrave(@RequestBody String qrcode, @PathVariable int id){
+        int vetontai = nguoiThamGiaRepository.Kiemtrave(qrcode, id);
+        boolean checked = nguoiThamGiaRepository.Kiemtracheckin(qrcode);
+        if(vetontai == 1 && checked){
+            return 1;
+        }else if(vetontai == 1 && !checked){
+            nguoiThamGiaRepository.timnguoi(qrcode);
+            return 2;
         }else{
-            return true;
+            return 3;
         }
     }
 
