@@ -5,7 +5,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Sukien} from '../Model/sukien';
 import {Dangkithamgia} from '../Model/dangkithamgia';
-import {Congtacvien} from '../Model/congtacvien';
 
 
 // @ts-ignore
@@ -15,13 +14,17 @@ export class SukienService {
   constructor(private http: HttpClient) { }
 
 
-// @ts-ignore
+  // @ts-ignore
   findByMonth(thang): Observable<Sukien[]>{
     return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theothang'}/${thang}`);
   }
 
-    findByhot(): Observable<Sukien>{
+  findByhot(): Observable<Sukien>{
     return this.http.get<Sukien>('http://localhost:8080/sukien/sukienhot');
+  }
+
+  findSKThuong(): Observable<Sukien>{
+    return this.http.get<Sukien>('http://localhost:8080/sukien/sukienthuong');
   }
 
   // @ts-ignore
@@ -216,5 +219,15 @@ export class SukienService {
   // @ts-ignore
   CheckVe(data){
     return this.http.post('http://localhost:8080/nguoithamgia/checkve',data);
+  }
+
+  // @ts-ignore
+  setHot(id, data): Observable<any> {
+    return this.http.put(`${'http://localhost:8080/sukien/sethot'}/${id}`, data);
+  }
+
+  // @ts-ignore
+  HuyHot(id, data): Observable<any> {
+    return this.http.put(`${'http://localhost:8080/sukien/huyhot'}/${id}`, data);
   }
 }
