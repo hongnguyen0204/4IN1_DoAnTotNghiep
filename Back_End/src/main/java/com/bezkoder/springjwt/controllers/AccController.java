@@ -17,7 +17,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://sukiendtu.edu.vn")
+@CrossOrigin(origins = "https://sukiendtu.edu.vn")
 @RequestMapping(value = "/account")
 public class AccController {
     @Autowired

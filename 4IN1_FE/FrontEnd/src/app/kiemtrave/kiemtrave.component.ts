@@ -2,6 +2,7 @@ import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/
 import {SukienService} from '../Service/sukien.service';
 import {scan} from 'rxjs/operators';
 import {ToastrService} from "ngx-toastr";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-kiemtrave',
@@ -12,6 +13,8 @@ import {ToastrService} from "ngx-toastr";
 export class KiemtraveComponent implements OnInit,AfterViewInit {
   isSuccessful= false;
   // @ts-ignore
+  ev_id: number;
+  // @ts-ignore
   @ViewChild('hiddenInput1') hiddenInput1:ElementRef;
   ngAfterViewInit() {
     // @ts-ignore
@@ -19,9 +22,12 @@ export class KiemtraveComponent implements OnInit,AfterViewInit {
       // @ts-ignore
       this.mave =  window.sessionStorage.getItem('code');
       console.log(this.mave);
-      this.sukienService.CheckVe(this.mave).subscribe(data=>{
-          if(data){
-            // @ts-ignore
+      // @ts-ignore
+      this.sukienService.CheckVe(this.mave, this.ev_id).subscribe(data=>{
+        console.log(data);
+          if(data == 1) {
+            this.toastr.warning("Vé đã được quét!");
+          }else if(data == 2){
             this.toastr.success("Vé Hợp lệ");
           }else{
             this.toastr.error("Vé Không hợp lệ");
@@ -30,10 +36,11 @@ export class KiemtraveComponent implements OnInit,AfterViewInit {
     });
   }
   // @ts-ignore
-  constructor(private sukienService: SukienService, private toastr: ToastrService) { }
+  constructor(private sukienService: SukienService, private toastr: ToastrService, private route: ActivatedRoute) { }
   // @ts-ignore
   mave:string;
   ngOnInit(): void {
+    this.ev_id = this.route.snapshot.params['id'];
     this.funcv();
   }
 

@@ -217,8 +217,8 @@ export class SukienService {
   }
 
   // @ts-ignore
-  CheckVe(data){
-    return this.http.post('http://localhost:8080/nguoithamgia/checkve',data);
+  CheckVe(mave, id): Observable<any>{
+    return this.http.post(`${'http://localhost:8080/nguoithamgia/checkve'}/${id}`,mave);
   }
 
   // @ts-ignore
@@ -230,4 +230,7 @@ export class SukienService {
   HuyHot(id, data): Observable<any> {
     return this.http.put(`${'http://localhost:8080/sukien/huyhot'}/${id}`, data);
   }
+
+  // @ts-ignore
+
 }

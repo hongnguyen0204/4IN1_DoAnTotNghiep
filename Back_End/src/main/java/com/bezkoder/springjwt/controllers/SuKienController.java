@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin (origins = "http://sukiendtu.edu.vn")
+@CrossOrigin (origins = "https://sukiendtu.edu.vn")
 @RequestMapping(value = "/sukien")
 public class SuKienController {
 

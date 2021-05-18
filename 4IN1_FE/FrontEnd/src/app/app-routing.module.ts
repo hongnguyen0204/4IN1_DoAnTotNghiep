@@ -48,7 +48,7 @@ const routes: Routes = [
   {path: 'xacthucemail/:token', component: XacthucemailComponent},
   {path: 'add', component: DangkyComponent},
   {path: 'thongtinnhom', component: ThongtinnhomComponent},
-  {path: 'kiemtrave', component: KiemtraveComponent},
+  {path: 'kiemtrave/:id', component: KiemtraveComponent},
   {path: 'lichsukien', component: LichsukienComponent},
   {path: '', redirectTo: '/trangchu', pathMatch: 'full' }
   ];

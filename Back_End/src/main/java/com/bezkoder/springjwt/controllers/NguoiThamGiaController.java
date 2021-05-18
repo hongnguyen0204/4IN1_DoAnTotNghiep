@@ -1,7 +1,6 @@
 package com.bezkoder.springjwt.controllers;
 
 import com.bezkoder.springjwt.models.NguoiThamGia;
-import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.NguoiThamGiaRepository;
 import com.bezkoder.springjwt.repository.SuKienRepository;
 import net.bytebuddy.utility.RandomString;
@@ -15,11 +14,10 @@ import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://sukiendtu.edu.vn")
+@CrossOrigin(origins = "https://sukiendtu.edu.vn")
 @RequestMapping(value = "/nguoithamgia")
 public class NguoiThamGiaController {
 
@@ -194,13 +192,17 @@ public class NguoiThamGiaController {
         return nguoiThamGiaRepository.CheckSoLuongNTG(nguoiThamGia.getEvent_ID());
     }
 
-    @RequestMapping(value = "/checkve", method = RequestMethod.POST)
-    public boolean KiemTrave(@RequestBody String qrcode){
-        int record = nguoiThamGiaRepository.Kiemtrave(qrcode);
-        if(record == 0){
-            return false;
+    @RequestMapping(value = "/checkve/{id}", method = RequestMethod.POST)
+    public Integer KiemTrave(@RequestBody String qrcode, @PathVariable int id){
+        int vetontai = nguoiThamGiaRepository.Kiemtrave(qrcode, id);
+        boolean checked = nguoiThamGiaRepository.Kiemtracheckin(qrcode);
+        if(vetontai == 1 && checked){
+            return 1;
+        }else if(vetontai == 1 && !checked){
+            nguoiThamGiaRepository.timnguoi(qrcode);
+            return 2;
         }else{
-            return true;
+            return 3;
         }
     }
 

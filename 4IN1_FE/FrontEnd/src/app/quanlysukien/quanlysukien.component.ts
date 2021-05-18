@@ -90,4 +90,11 @@ export class QuanlysukienComponent implements OnInit,OnDestroy {
       },
       error => console.log(error));
   }
+
+  soatve(id:number){
+    this.router.navigate(['kiemtrave',id]).then(() => {
+      window.scrollTo(0,0);
+      window.location.reload();
+    })
+  }
 }

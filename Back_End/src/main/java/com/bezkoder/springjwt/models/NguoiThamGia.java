@@ -11,13 +11,13 @@ public class NguoiThamGia {
     private int acc_ID;
     private int event_ID;
     private String ticket;
-    private String checkticket;
+    private Boolean checkticket;
 
 
     public NguoiThamGia() {
     }
 
-    public NguoiThamGia(int ID, int acc_ID, int event_ID, String ticket, String checkticket) {
+    public NguoiThamGia(int ID, int acc_ID, int event_ID, String ticket, Boolean checkticket) {
         this.ID = ID;
         this.acc_ID = acc_ID;
         this.event_ID = event_ID;
@@ -57,11 +57,11 @@ public class NguoiThamGia {
         this.ticket = ticket;
     }
 
-    public String getCheckticket() {
+    public Boolean getCheckticket() {
         return checkticket;
     }
 
-    public void setCheckticket(String checkticket) {
+    public void setCheckticket(Boolean checkticket) {
         this.checkticket = checkticket;
     }
 }
