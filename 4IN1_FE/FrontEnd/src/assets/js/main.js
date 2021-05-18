@@ -61,57 +61,8 @@ $(function() {
 
     //===== Magnific Popup
 
-    $('.image-popup').magnificPopup({
-      type: 'image',
-      gallery:{
-        enabled:true
-      }
-    });
-
 
     //===== Counter Up
-
-    $('.counter').counterUp({
-        delay: 10,
-        time: 2000
-    });
-
-
-    $('.client-active').slick({
-        dots: false,
-        arrows: false,
-        infinite: true,
-        autoplay: true,
-        speed: 800,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        responsive: [
-            {
-              breakpoint: 1200,
-              settings: {
-                slidesToShow: 3,
-              }
-            },
-            {
-              breakpoint: 992,
-              settings: {
-                slidesToShow: 2,
-              }
-            },
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 2,
-              }
-            },
-            {
-              breakpoint: 576,
-              settings: {
-                slidesToShow: 1,
-              }
-            }
-        ]
-        });
 
 
     //===== Back to top

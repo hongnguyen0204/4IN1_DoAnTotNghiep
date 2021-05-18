@@ -19,12 +19,13 @@
               <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">
                 <thead>
                 <tr>
-                  <th>STT</th>
-                  <th>Họ & Tên</th>
+                  <th style="width: 30px">STT</th>
+                  <th style="width: 170px">Họ & Tên</th>
                   <th>Email</th>
                   <th>Điểm mạnh</th>
-                  <th>Số Điện Thoại</th>
-                  <th>Trạng thái</th>
+                  <th style="width: 108px">Số Điện Thoại</th>
+                  <th style="width: 90px">Thông tin</th>
+                  <th style="width: 91px">Trạng thái</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -34,7 +35,8 @@
                   <td>{{ctv[1]}}</td>
                   <td>{{ctv[2]}}</td>
                   <td>{{ctv[3]}}</td>
-                  <td>
+                  <td align="center"><button class="btn btn-info" (click)="infomation(ctv[1])">Xem</button></td>
+                  <td align="center">
                     <input id="hau" [(ngModel)]="ctv[4]" (click)="duyet(ctv[4],ctv[5])" type="checkbox">
                   </td>
                 </tr>

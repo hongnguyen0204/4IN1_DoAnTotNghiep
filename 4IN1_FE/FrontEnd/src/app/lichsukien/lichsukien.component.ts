@@ -48,6 +48,13 @@ export class LichsukienComponent implements OnInit {
       this.calendarOptions = {
         plugins: [dayGridPlugin, interactionPlugin],
         editable: true,
+        buttonText:{
+          today:    'Hôm nay',
+          month:    'Tháng',
+          week:     'Tuần',
+          day:      'Ngày'
+        },
+        locale: 'vi',
         headerToolbar: {
           left: 'prev,next today',
           center: 'title',

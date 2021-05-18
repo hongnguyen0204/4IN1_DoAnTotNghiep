@@ -28,12 +28,12 @@
                   <td>{{nguoithamgia[0]}}</td>
                   <td>{{nguoithamgia[1]}}</td>
                   <td>{{nguoithamgia[2]}}</td>
-                  <div *ngIf="nguoithamgia[3]">
-                    <button disabled class="btn btn-danger"  >Chưa tham gia</button>
-                  </div>
-                  <div *ngIf="!nguoithamgia[3]">
+                  <td *ngIf="!nguoithamgia[3]">
+                    <button disabled class="btn btn-danger">Chưa tham gia</button>
+                  </td>
+                  <td *ngIf="nguoithamgia[3]">
                     <button disabled class="btn btn-success" style="width: 147.59px;">Đã tham gia</button>
-                  </div>
+                  </td>
                 </tr>
                 </tbody>
               </table>
