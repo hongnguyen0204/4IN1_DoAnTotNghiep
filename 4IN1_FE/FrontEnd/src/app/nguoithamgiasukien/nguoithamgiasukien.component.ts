@@ -8,7 +8,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AccountService} from '../Service/account.service';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {CongtacvienService} from '../Service/congtacvien.service';
+import {DatePipe} from '@angular/common';
 
+// @ts-ignore
 @Component({
   selector: 'app-nguoithamgiasukien',
   templateUrl: './nguoithamgiasukien.component.html',
@@ -25,18 +27,43 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
   currentUser: any;
   users: Thongtincanhan = new Thongtincanhan();
   // @ts-ignore
+  name;
+  // @ts-ignore
+  sogio: string;
+  // @ts-ignore
+  outime;
+  // @ts-ignore
+  outtime1;
+  hour = 24;
+  // @ts-ignore
+  day: number;
+  // @ts-ignore
+  time_of_event;
+  // @ts-ignore
+  time_of_event_2;
+  // @ts-ignore
+  time_of_event_3;
+  // @ts-ignore
   sukiens: Sukien[];
   // @ts-ignore
   id: number;
   // @ts-ignore
-  id_event;
+  email: string;
   // @ts-ignore
   idevent: number;
+  // @ts-ignore
+  content :string;
   nguoithamgias:any;
+  // @ts-ignore
+  acc;
+
+  // @ts-ignore
+  event_name: String;
 
   constructor(private skService: SukienService,
               private route: ActivatedRoute,
               private router: Router,
+              public datepipe: DatePipe,
               private accountService: AccountService,
               private token: TokenStorageService,
               private ctvService: CongtacvienService) {}
@@ -85,8 +112,24 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
   ngAfterViewInit(): void {
     this.dtTrigger.next();
   }
+  // @ts-ignore
+  time_of_event_1;
 
   ntg(){
+    this.skService.gettimeofevent(this.idevent).subscribe(data =>{
+      console.log(data);
+      this.time_of_event = data;
+      let dte = new Date(this.time_of_event);
+      dte.setDate(dte.getDate() - 1);
+      this.time_of_event_1 = dte.toString();
+      dte.setDate(dte.getDate() - 1);
+      this.time_of_event_2 = dte.toString();
+      dte.setDate(dte.getDate() - 1);
+      this.time_of_event_3 = dte.toString();
+      this.time_of_event_1 =this.datepipe.transform(this.time_of_event_1, 'dd-MM-yyyy');
+      this.time_of_event_2 =this.datepipe.transform(this.time_of_event_2, 'dd-MM-yyyy');
+      this.time_of_event_3 =this.datepipe.transform(this.time_of_event_3, 'dd-MM-yyyy');
+    });
     this.skService.getNTGbyid(this.idevent).subscribe(data =>{
       // @ts-ignore
       this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
@@ -98,22 +141,35 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
     });
   }
   // @ts-ignore
-  laydsntg(){
-    this.skService.email(this.idevent).subscribe(data=>{
-      console.log(this.idevent);
-    });
-  }
   reloadData() {
     this.skService.findSKDD().subscribe(data => {
       this.sukiens = data;
+    });
+  }
+  // @ts-ignore
+  day_event;
+  getID_Event(){
+    // @ts-ignore
+    this.acc = this.skService.email(this.idevent).subscribe(data=>{
+      this.acc=data;
+    });
+  }
+  // @ts-ignore
+  dayev;
+  get_day(){
+    if(this.outtime1 == 1){
+      this.outime = this.time_of_event_3;
+    }else if(this.outtime1 == 2){
+      this.outime = this.time_of_event_2;
+    }else{
+      this.outime = this.time_of_event_1;
+    }
+    this.dayev= this.outime + " " +this.sogio+ ":00:00";
+    this.dayev = this.dayev.toString();
+    console.log(this.dayev);
+    this.skService.email(this.idevent,this.dayev).subscribe(data =>{
+      this.dayev= data;
     })
   }
 
-  detailGNN() {
-    this.laydsntg();
-    this.router.navigate(['guimailnhacnho',this.idevent]).then(() => {
-      window.scrollTo(0,0)
-    });
-
-  }
 }

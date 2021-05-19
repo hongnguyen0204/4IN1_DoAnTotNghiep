@@ -1,34 +1,30 @@
 package com.bezkoder.springjwt.controllers;
-import com.bezkoder.springjwt.models.Account;
-<<<<<<< HEAD
-import com.bezkoder.springjwt.models.Message;
 import com.bezkoder.springjwt.models.NguoiThamGia;
-=======
->>>>>>> 90219032fe47fde10f6c65d3e341008dd38cf62e
 import com.bezkoder.springjwt.models.SuKien;
-import com.bezkoder.springjwt.repository.AccRepository;
+import com.bezkoder.springjwt.repository.NguoiThamGiaRepository;
 import com.bezkoder.springjwt.repository.SuKienRepository;
+import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.*;
-
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 
 @RestController
 @CrossOrigin (origins = "http://localhost:4200")
 @RequestMapping(value = "/sukien")
 public class SuKienController {
-
-   @Autowired
+    @Autowired
    private SuKienRepository suKienRepository;
 
     @Autowired
@@ -232,29 +228,119 @@ public class SuKienController {
         return suKienRepository.ThongKeNguoiDuyet();
     }
 
-<<<<<<< HEAD
-    @GetMapping("/NguoiDangKiSuKienTheoEvent/{id}")
-    public List<Object> laytaikhoantuid(@PathVariable int id){
-        return suKienRepository.getaccountByeventID(id);
-    }
-    @RequestMapping(value = "/guimailnhacnho/{id}", method = RequestMethod.POST)
-    public String[] getemailbyeventid(@RequestBody String content,@PathVariable int id) throws UnsupportedEncodingException, MessagingException {
+
+    @RequestMapping(value = "/NguoiDangKiSuKienTheoEvent/{id}/{ngay}", method = RequestMethod.GET)
+    public String[] getemailbyeventid(@PathVariable int id, @PathVariable String ngay) throws UnsupportedEncodingException, MessagingException {
         String[] email;
         email = suKienRepository.getemailbyidevent(id);
-        guimailnhacnho(email, content);
-        return email;
+        String name = suKienRepository.findByIDjoinname(id);
+        String place = suKienRepository.findByIDjoinplace(id);
+        String ngayhen = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(Calendar.getInstance().getTime()); // Ngày giờ họ thực hiện hành động, cái ni mặc định, auto máy tự nhận giờ hệ thống
+        SimpleDateFormat format = new SimpleDateFormat("ydd-MM-yyyy HH:mm:ss");
+        Date d1 = null;
+        Date d2 = null;
+        System.out.println(ngay);
+        System.out.println(ngayhen);
+        try {
+            d1 = format.parse(ngay);
+            d2 = format.parse(ngayhen);
+        } catch (ParseException e) {
+        }
+        long demnguoc = (d1.getTime() - d2.getTime())/1000;
+        System.out.println(demnguoc);
+        while (demnguoc>0){
+            try {
+                demnguoc--;
+                Thread.sleep(1000L);
+            }
+            catch (InterruptedException e) {
+            }
+        }
+        if(demnguoc==0){
+            System.out.println("Đã gửi");
+            guimailnhacnho(email, name, place);
+        }
 
+        return email;
     }
-    public String guimailnhacnho(String[] email,String content) throws UnsupportedEncodingException, MessagingException {
+    public void dangKi(@RequestBody NguoiThamGia nguoiThamGia) throws UnsupportedEncodingException, MessagingException { String name = suKienRepository.findByIDjoinname(nguoiThamGia.getEvent_ID());
+    }
+        public String guimailnhacnho(String[] email,String name,String place) throws UnsupportedEncodingException, MessagingException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
         helper.setFrom("shonepro123@gmail.com", "Nhắc nhở tham gia sự kiện");
         helper.setTo(email);
-
-        String subject1 = "Người dùng phản hồi:";
-
-        String content1 =  content;
-
+        String subject1 = "Nhắc nhở lịch tham gia sự kiện";
+        String content1 ="<div class=\"\"><div class=\"aHl\"></div><div id=\":2v\" tabindex=\"-1\"></div><div id=\":2k\" class=\"ii gt\"><div id=\":2j\" class=\"a3s aiL msg6347430949454947394\"><u></u>\n" +
+                "\n" +
+                "  \n" +
+                "    \n" +
+                "    \n" +
+                "    \n" +
+                "\n" +
+                "  \n" +
+                "  <div bgcolor=\"#f1f1f1\" style=\"margin:0;padding:0;min-width:100%!important\">\n" +
+                "    <table width=\"100%\" bgcolor=\"#f1f1f1\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n" +
+                "      <tbody><tr>\n" +
+                "        <td>\n" +
+                "          \n" +
+                "          <table bgcolor=\"#f1f1f1\" class=\"m_6347430949454947394content\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:90%;max-width:600px\">\n" +
+                "            <tbody><tr>\n" +
+                "              <td bgcolor=\"#f1f1f1\" class=\"m_6347430949454947394header\" style=\"padding:20px 30px\">\n" +
+                "                <table align=\"left\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n" +
+                "                  <tbody><tr>\n" +
+                "                    \n" +
+                "                  </tr>\n" +
+                "                </tbody></table>\n" +
+                "                \n" +
+                "                \n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "              <td>\n" +
+                "                <div>\n" +
+                "                  <img src=\"https://scontent-hkt1-2.xx.fbcdn.net/v/t1.15752-9/s2048x2048/184703038_1241668892941356_1988666661846089266_n.png?_nc_cat=111&ccb=1-3&_nc_sid=ae9488&_nc_ohc=p92KL1Lz-iAAX-7vULl&_nc_ht=scontent-hkt1-2.xx&tp=30&oh=aecdaf9795644d3971d1ab55f4ac406c&oe=60C75E85\" height=\"100%\" width=\"100%\" class=\"m_6347430949454947394emailImage CToWUd a6T\" style=\"height:auto\" tabindex=\"0\"><div class=\"a6S\" dir=\"ltr\" style=\"opacity: 0.01; left: 1004px; top: 349px;\"><div id=\":4t\" class=\"T-I J-J5-Ji aQv T-I-ax7 L3 a5q\" role=\"button\" tabindex=\"0\" aria-label=\"Tải xuống tệp đính kèm \" data-tooltip-class=\"a1V\" data-tooltip=\"Tải xuống\"><div class=\"akn\"><div class=\"aSK J-J5-Ji aYr\"></div></div></div></div>\n" +
+                "                </div>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "              <td class=\"m_6347430949454947394innerpadding\" bgcolor=\"#ffffff\" style=\"padding-top:20px;padding:30px\">\n" +
+                "                <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n" +
+                "                  <tbody><tr>\n" +
+                "                    <td class=\"m_6347430949454947394bodycopy\" style=\"color:#4a4a4a;font-family:Roboto,sans-serif;font-size:16px;line-height:26px;padding:10px 0\">Chào bạn! Sự kiện bạn đã đăng ký sắp được diễn ra!</td>\n" +
+                "                  </tr>\n" +
+                "                  <tr>\n" +
+                "                    \n" +
+                "                    <td class=\"m_6347430949454947394bodycopy\" style=\"color:#4a4a4a;font-family:Roboto,sans-serif;font-size:16px;line-height:26px;padding:10px 0\"><b>Sự kiện:</b> <a style=\"color:#25a9e0;font-weight:bold;text-decoration:none\">"+name+"</a></td>\n" +
+                "                  </tr>\n" +
+                "                  <tr>\n" +
+                "                    \n" +
+                "                    <td class=\"m_6347430949454947394bodycopy\" style=\"color:#4a4a4a;font-family:Roboto,sans-serif;font-size:16px;line-height:26px;padding:10px 0\"><b>Đại điểm:</b> <a style=\"color:black;text-decoration:none\">"+place+"</a></td>\n" +
+                "                  </tr>\n" +
+                "                  <tr>\n" +
+                "                    <td class=\"m_6347430949454947394bodycopy\" style=\"color:#4a4a4a;font-family:Roboto,sans-serif;font-size:16px;line-height:26px;padding:10px 0\">Sự hiện diện của bạn góp phần tạo thành công cho sự kiện</td>\n" +
+                "                  </tr>\n" +
+                "                  <tr>\n" +
+                "                    <td class=\"m_6347430949454947394bodycopy\" style=\"color:#4a4a4a;font-family:Roboto,sans-serif;font-size:16px;line-height:26px;padding:10px 0\">Trân trọng cảm ơn !</td>\n" +
+                "                </tbody></table>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "              <td class=\"m_6347430949454947394footer\" bgcolor=\"#f1f1f1\" style=\"padding-top:10px!important;padding:20px 30px 15px\">\n" +
+                "                <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n" +
+                "                  <tbody><tr>\n" +
+                "                    \n" +
+                "                  </tr>\n" +
+                "                </tbody></table>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "          </tbody></table>\n" +
+                "          \n" +
+                "        </td>\n" +
+                "      </tr>\n" +
+                "    </tbody></table>\n" +
+                "              <img src=\"https://ci6.googleusercontent.com/proxy/vYXiJujKubAFNJwdRBDULUzz-HAY-DCGNwQUrTgfep-mChZEz1ItQGuslUPUOGSBuHn1l_tqT7v9OGBEzQfCMd9ZO6AC-wUjEGtUE-sfVUGNOEdhhsQqU0QfKlZH1sHuQ1b5lYNkBjZTnSY1B9CAX-mRxrVyLuwgZD4sVy1bLr00ZYQ9=s0-d-e1-ft#https://kms-technology.us11.list-manage.com/track/open.php?u=03d948e74144eb877961fe02c&amp;id=e679a73992&amp;e=8cf5f209f6\" height=\"1\" width=\"1\" class=\"CToWUd\"></div><div class=\"yj6qo\"></div><div class=\"adL\">\n" +
+                "</div></div></div><div id=\":2z\" class=\"ii gt\" style=\"display:none\"><div id=\":30\" class=\"a3s aiL \"></div></div><div class=\"hi\"></div></div>";
         helper.setSubject(subject1);
 
         helper.setText(content1, true);
@@ -263,16 +349,13 @@ public class SuKienController {
 
         return "gửi thành công";
     }
-=======
-    @GetMapping("/NguoiDangKiSuKientheoevent/{id}")
-    public List<Object> laytaikhoantuid(@PathVariable int id){
-        return suKienRepository.getaccountByeventID(id);
+    @GetMapping("/gettimeofevent/{id}")
+    public Date getday(@PathVariable int id){
+        return suKienRepository.findByDayEvent(id);
     }
 
     @PostMapping("/kiemtrave")
     public void KiemTra(@RequestBody String qrcode){
-
     }
 
->>>>>>> 90219032fe47fde10f6c65d3e341008dd38cf62e
 }

@@ -28,16 +28,19 @@ export class GuimailnhacnhoComponent implements OnInit {
   constructor(private sk :SukienService,
               private route:ActivatedRoute) { }
   ngOnInit(): void {
-    this.id=this.route.snapshot.params['idevent'];
-    this.acc = this.sk.email(this.id).subscribe(data=>{
-      this.acc=data;
-      console.log(this.acc);
-    });
+   // this.layidevent();
   }
-  // @ts-ignore
-  guiamailnhacnho(){
-    // @ts-ignore
-    console.log(this.content);
-    this.sk.guimailnn(this.id, this.content).subscribe();
-  }
+  // layidevent(){
+  //   this.id=this.route.snapshot.params['idevent'];
+  //   this.acc = this.sk.email(this.id).subscribe(data=>{
+  //     this.acc=data;
+  //     console.log(this.acc);
+  //   });
+  // }
+  // // @ts-ignore
+  // guiamailnhacnho(){
+  //   // @ts-ignore
+  //   //   console.log(this.content);
+  //   //   this.sk.guimailnn(this.id, this.content).subscribe();
+  //   // }
 }

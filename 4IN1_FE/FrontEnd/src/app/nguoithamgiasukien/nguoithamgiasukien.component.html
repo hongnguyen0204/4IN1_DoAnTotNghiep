@@ -7,9 +7,28 @@
             <h4 class="card-title ">Người tham gia sự kiện</h4>
             <p class="card-category"></p>
           </div>
-          <select (change)="ntg()" [(ngModel)]="idevent" name="tensukien"  style=" width: auto; height: 50px; outline:none;">
-            <option value="{{sk.id}}" *ngFor="let sk of sukiens">{{sk.event_name}}</option>
+          <select  (change)="ntg()" [(ngModel)]="idevent" name="tensukien"  style=" width: auto; height: 50px; outline:none;">
+            <option value="{{sk.id}}"  *ngFor="let sk of sukiens" >{{sk.event_name}}</option>
           </select>
+          <div style="display: flex">
+            <button class="btn-send" style="width: 200px;" (click)="get_day()">Gửi mail nhắc nhở lúc</button>
+            <select [(ngModel)]="outtime1" style=" width: 150px; height: 40px; outline:none;margin-top: 15px">
+              <option selected value="1">
+                {{time_of_event_3}}
+              </option>
+              <option value="2">
+                {{time_of_event_2}}
+              </option>
+              <option value="3">
+                {{time_of_event_1}}
+              </option>
+            </select>
+            <select [(ngModel)]="sogio" style=" width: 150px; height: 40px; outline:none;margin-top: 15px">
+              <option value="{{number}}" *ngFor="let number of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]">
+                {{number}}:00
+              </option>
+            </select>
+          </div>
           <div class="card-body">
             <div class="table-responsive">
               <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">
