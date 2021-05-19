@@ -3,7 +3,7 @@
 </head>
 <div class="testbox" *ngIf="currentUser; else loggedOut" style="position: relative;margin-top: 130px">
   <form name="form"
-        (ngSubmit)="f.form.valid && sukien.place!='Chọn địa điểm' && imageSrc!=null && selectedFile!=null && add()"
+        (ngSubmit)="f.form.valid && sukien.place!='Chọn địa điểm' && imageSrc!=null && selectedFile!=null && this.checkTime(this.sukien.time_of_event) && add()"
         #f="ngForm"
         novalidate>
     <div class="banner">
@@ -60,6 +60,9 @@
                #date_start="ngModel"/>
         <div class="alert-danger" *ngIf="f.submitted && date_start.invalid">
           <div *ngIf="date_start.errors.required">Không được để trống</div>
+        </div>
+        <div class="alert-danger" *ngIf="f.submitted && !this.checkTime(this.sukien.time_of_event)">
+          Không được nhỏ hơn ngày hiện tại!
         </div>
       </div>
     </div>

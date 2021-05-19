@@ -30,11 +30,6 @@ export class ThongtincanhanComponent implements OnInit {
   users: Thongtincanhan = new Thongtincanhan();
   // @ts-ignore
   gender: string;
-
-  // @ts-ignore
-  public onSubmit(){
-    console.log('onSubmit');
-  }
   constructor(private thongtincanhanService: ThongtincanhanService,
               @Inject(AngularFireStorage)
               private storage: AngularFireStorage,

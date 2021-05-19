@@ -145,5 +145,18 @@ export class DangkitochucsukienComponent implements OnInit {
       $('#congtac').css('display', 'none');
     }
   }
+
+  // @ts-ignore
+  dateDiff(first, second) {
+    return Math.round((second - first) / (1000 * 60 * 60 * 24));
+  }
+
+  checkTime(time:any) {
+    if(this.dateDiff(new Date(), new Date(time)) >= 1 ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
