@@ -10,6 +10,7 @@
           <select (change)="ntg()" [(ngModel)]="idevent" name="tensukien"  style=" width: auto; height: 50px; outline:none;">
             <option value="{{sk.id}}" *ngFor="let sk of sukiens">{{sk.event_name}}</option>
           </select>
+          <button (click)="soatve(idevent)" style="margin:10px 0px 0px 10px;width: 100px" class="btn btn-primary">Soát vé</button>
           <div class="card-body">
             <div class="table-responsive">
               <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">
