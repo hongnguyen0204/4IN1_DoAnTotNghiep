@@ -152,17 +152,17 @@
       <div class="item">
         <p>Tiêu chí</p>
         <textarea name="tieuchi" [(ngModel)]="sukien.criteria"
-                  minlength="50"
-                  maxlength="500"
+                  minlength="10"
+                  maxlength="200"
                   #tieuchi="ngModel"
                   id="tieuchi" rows="2">
         </textarea>
         <div class="alert-danger" *ngIf="f.submitted && tieuchi.invalid">
           <div *ngIf="tieuchi.errors.minlength">
-            Tiêu chí phải nhiều hơn 20 kí tự
+            Tiêu chí phải nhiều hơn 10 kí tự
           </div>
           <div *ngIf="tieuchi.errors.maxlength">
-            Tiêu chí phải ít hơn 50 kí tự
+            Tiêu chí phải ít hơn 200 kí tự
           </div>
         </div>
       </div>
