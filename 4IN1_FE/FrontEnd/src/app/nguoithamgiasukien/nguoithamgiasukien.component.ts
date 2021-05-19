@@ -8,6 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AccountService} from '../Service/account.service';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {CongtacvienService} from '../Service/congtacvien.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-nguoithamgiasukien',
@@ -39,20 +40,20 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
               private router: Router,
               private accountService: AccountService,
               private token: TokenStorageService,
-              private ctvService: CongtacvienService) {}
+              private ctvService: CongtacvienService,
+              private toast:ToastrService) {}
 
   ngOnInit(): void {
-
+    // @ts-ignore
     this.dtOptions = {
       language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers',
       pageLength: 5,
       dom: 'Bfrtip',
-      // @ts-ignore
       buttons: [
         'copy',
         'print',
-        'excel',
+        'excel'
       ]
     };
     this.currentUser = this.token.getUser();
@@ -114,6 +115,16 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
     this.router.navigate(['guimailnhacnho',this.idevent]).then(() => {
       window.scrollTo(0,0)
     });
+  }
 
+  soatve(id:number):void{
+    if(id==undefined){
+      this.toast.warning("Bạn chưa chọn sự kiện");
+    } else {
+      this.router.navigate(['kiemtrave',id]).then(() => {
+        window.scrollTo(0,0);
+        window.location.reload();
+      })
+    }
   }
 }
