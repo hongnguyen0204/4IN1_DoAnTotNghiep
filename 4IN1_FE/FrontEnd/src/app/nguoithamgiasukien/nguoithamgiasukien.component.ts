@@ -8,7 +8,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AccountService} from '../Service/account.service';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {CongtacvienService} from '../Service/congtacvien.service';
+<<<<<<< HEAD
 import {DatePipe} from '@angular/common';
+=======
+import {ToastrService} from 'ngx-toastr';
+>>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
 
 // @ts-ignore
 @Component({
@@ -66,20 +70,20 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
               public datepipe: DatePipe,
               private accountService: AccountService,
               private token: TokenStorageService,
-              private ctvService: CongtacvienService) {}
+              private ctvService: CongtacvienService,
+              private toast:ToastrService) {}
 
   ngOnInit(): void {
-
+    // @ts-ignore
     this.dtOptions = {
       language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers',
       pageLength: 5,
       dom: 'Bfrtip',
-      // @ts-ignore
       buttons: [
         'copy',
         'print',
-        'excel',
+        'excel'
       ]
     };
     this.currentUser = this.token.getUser();
@@ -153,6 +157,20 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
     this.acc = this.skService.email(this.idevent).subscribe(data=>{
       this.acc=data;
     });
+<<<<<<< HEAD
+=======
+  }
+
+  soatve(id:number):void{
+    if(id==undefined){
+      this.toast.warning("Bạn chưa chọn sự kiện");
+    } else {
+      this.router.navigate(['kiemtrave',id]).then(() => {
+        window.scrollTo(0,0);
+        window.location.reload();
+      })
+    }
+>>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
   }
   // @ts-ignore
   dayev;

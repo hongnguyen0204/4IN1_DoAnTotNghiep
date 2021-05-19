@@ -10,12 +10,12 @@
         <div class="alert-danger" *ngIf="f.submitted && imageSrc==null">Bạn phải chọn ảnh</div>
       </div>
     </div>
-    <div class="col-md-6 border-right"z>
+    <div class="col-md-6 border-right">
       <div class="p-3 py-5">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <h4 class="text-right">Thông tin cá nhân</h4>
         </div>
-        <form (ngSubmit)="onSubmit()" #formttcn= "ngForm"
+        <form
           name="form"
           (ngSubmit)="f.form.valid && users.faculty!='Chọn khoa' && imageSrc!=null && save($event)"
           #f="ngForm"
@@ -89,7 +89,7 @@
           </div>
         </div>
         <div class="mt-5 text-center">
-          <button class="btn btn-primary profile-button" type="submit" [disabled]="!formttcn.form.valid">Lưu</button>
+          <button class="btn btn-primary profile-button" type="submit" [disabled]="!f.form.valid">Lưu</button>
         </div>
         </form>
       </div>

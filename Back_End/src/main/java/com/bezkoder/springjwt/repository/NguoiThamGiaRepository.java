@@ -1,13 +1,11 @@
 package com.bezkoder.springjwt.repository;
 
-import com.bezkoder.springjwt.models.Account;
 import com.bezkoder.springjwt.models.NguoiThamGia;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 @Transactional
 public interface NguoiThamGiaRepository extends JpaRepository<NguoiThamGia,Integer> {
@@ -32,13 +30,29 @@ public interface NguoiThamGiaRepository extends JpaRepository<NguoiThamGia,Integ
             "AND j.event_ID=ev.ID", nativeQuery = true)
     List<Object> KiemTraThoiGian(int acc_ID);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
     @Query(value = "SELECT email FROM account_information WHERE ID=?1 ", nativeQuery = true)
     String getemailbyid(Integer id);
 
     @Query(value = "SELECT COUNT(*) FROM join_register where event_ID=?1", nativeQuery = true)
     Integer CheckSoLuongNTG(int event_id);
 
+<<<<<<< HEAD
     @Query(value = "SELECT COUNT(*) FROM join_register where ticket=?1", nativeQuery = true)
     Integer Kiemtrave(String qrcode);
 
+=======
+    @Query(value = "SELECT COUNT(*) FROM join_register where ticket=?1 and event_ID = ?2", nativeQuery = true)
+    Integer Kiemtrave(String qrcode, int id);
+
+    @Query(value = "SELECT checkticket FROM join_register where ticket=?1", nativeQuery = true)
+    Boolean Kiemtracheckin(String qrcode);
+
+    @Modifying
+    @Query(value = "UPDATE join_register SET checkticket=true where ticket=?1", nativeQuery = true)
+    void timnguoi(String qrcode);
+>>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
 }

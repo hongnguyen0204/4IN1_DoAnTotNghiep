@@ -10,6 +10,7 @@
           <select  (change)="ntg()" [(ngModel)]="idevent" name="tensukien"  style=" width: auto; height: 50px; outline:none;">
             <option value="{{sk.id}}"  *ngFor="let sk of sukiens" >{{sk.event_name}}</option>
           </select>
+<<<<<<< HEAD
           <div style="display: flex">
             <button class="btn-send" style="width: 200px;" (click)="get_day()">Gửi mail nhắc nhở lúc</button>
             <select [(ngModel)]="outtime1" style=" width: 150px; height: 40px; outline:none;margin-top: 15px">
@@ -29,15 +30,19 @@
               </option>
             </select>
           </div>
+=======
+          <button (click)="soatve(idevent)" style="margin:10px 0px 0px 10px;width: 100px" class="btn btn-primary">Soát vé</button>
+>>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
           <div class="card-body">
             <div class="table-responsive">
               <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">
                 <thead>
                 <tr>
                   <th style="width: 30px">STT</th>
-                  <th>Họ & Tên</th>
+                  <th style="width: 200px">Họ & Tên</th>
                   <th style="width: 500px">Email</th>
                   <th>Số Điện Thoại</th>
+                  <th style="width: 140px">Trạng thái</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -46,6 +51,12 @@
                   <td>{{nguoithamgia[0]}}</td>
                   <td>{{nguoithamgia[1]}}</td>
                   <td>{{nguoithamgia[2]}}</td>
+                  <td *ngIf="!nguoithamgia[3]">
+                    <button disabled class="btn btn-danger">Chưa tham gia</button>
+                  </td>
+                  <td *ngIf="nguoithamgia[3]">
+                    <button disabled class="btn btn-success" style="width: 147.59px;">Đã tham gia</button>
+                  </td>
                 </tr>
                 </tbody>
               </table>

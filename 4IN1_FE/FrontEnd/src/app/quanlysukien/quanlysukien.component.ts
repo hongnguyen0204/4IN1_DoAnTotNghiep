@@ -11,6 +11,8 @@ import {Subject} from 'rxjs';
 import {DangkilamctvService} from '../Service/dangkilamctv.service';
 import {Congtacvien} from '../Model/congtacvien';
 import {Dangkilamctv} from '../Model/dangkilamctv';
+import {DatePipe} from '@angular/common';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-quanlysukien',
@@ -41,7 +43,9 @@ export class QuanlysukienComponent implements OnInit,OnDestroy {
               private router: Router,
               private accountService:AccountService,
               private token: TokenStorageService,
-              private ctvService:DangkilamctvService) {}
+              private ctvService:DangkilamctvService,
+              public datepipe: DatePipe,
+              private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -89,5 +93,17 @@ export class QuanlysukienComponent implements OnInit,OnDestroy {
         window.location.reload();
       },
       error => console.log(error));
+  }
+
+  soatve(id:number){
+    this.router.navigate(['kiemtrave',id]).then(() => {
+      window.scrollTo(0,0);
+      window.location.reload();
+    })
+  }
+
+  ktTime(time:Date):boolean{
+    // @ts-ignore
+    return this.datepipe.transform(time, 'yyyy-MM-dd h:mm a') < this.datepipe.transform(new Date(), 'yyyy-MM-dd h:mm a');
   }
 }

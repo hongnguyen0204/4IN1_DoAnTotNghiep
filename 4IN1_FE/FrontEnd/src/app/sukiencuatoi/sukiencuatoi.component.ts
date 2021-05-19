@@ -57,15 +57,7 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
         { extend: 'copy', text: 'Sao chép' },
         { extend: 'print', text: 'in' },
         { extend: 'excel', text: 'Excel' }
-      ],
-      rowCallback: (row: Node, data: any[] | Object, index: number) => {
-        const self = this;
-        $('td', row).off('click');
-        $('td', row).on('click', () => {
-          self.infomation(data);
-        });
-        return row;
-      }
+      ]
     };
     this.currentUser = this.token.getUser();
     this.accountService.findUser(this.currentUser.username).subscribe(data => {
@@ -80,7 +72,7 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
 
   // @ts-ignore
   infomation(data){
-  this.accountService.findUserbyEmail(data[2]).subscribe(db=>{
+  this.accountService.findUserbyEmail(data).subscribe(db=>{
     const confirmDialog = this.dialog.open(InfoDialogComponent, {
       data: {
         title: "Khoa: " + db.faculty,

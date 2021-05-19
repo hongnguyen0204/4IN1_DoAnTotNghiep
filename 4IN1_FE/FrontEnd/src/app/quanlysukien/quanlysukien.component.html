@@ -16,16 +16,16 @@
                 <tr>
                   <th>STT</th>
                   <th>Tên sự kiện</th>
-                  <th>Thời gian</th>
-                  <th>Địa điểm tổ chức</th>
-                  <th>Thao tác</th>
+                  <th style="width: 150px;">Thời gian</th>
+                  <th style="width: 155px;">Địa điểm tổ chức</th>
+                  <th style="width: 65px;">Thao tác</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let ng of dangkithamgia ; let i=index">
                   <td>{{i+1}}</td>
                   <td>{{ng[0]}}</td>
-                  <td>{{ng[1] | date:'dd/MM/yyyy'}}</td>
+                  <td>{{ng[1] | date:'dd/MM/yyyy h:mm a'}}</td>
                   <td>{{ng[2]}}</td>
                   <td>
                     <button (click)="delete(ng[3])" class="btn btn-danger">Hủy</button>
@@ -58,20 +58,27 @@
                 <tr>
                   <th>STT</th>
                   <th>Tên sự kiện</th>
-                  <th>Thời gian</th>
-                  <th>Địa điểm tổ chức</th>
-                  <th>Thao tác</th>
+                  <th style="width: 150px;">Thời gian</th>
+                  <th style="width: 155px;">Địa điểm tổ chức</th>
+                  <th style="width: 150px;">Thao tác</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let ctv of congtacviens ;let i=index">
                   <td>{{i+1}}</td>
                   <td>{{ctv[0]}}</td>
-                  <td>{{ctv[1]| date:'dd/MM/yyyy'}}</td>
+                  <td>{{ctv[1]| date:'dd/MM/yyyy h:mm a'}}</td>
                   <td>{{ctv[2]}}</td>
-                  <td>
+                  <td *ngIf="!ktTime(ctv[1]);else out">
                     <button (click)="deleteCTV(ctv[3])" class="btn btn-danger">Hủy</button>
+                    <button (click)="soatve(ctv[3])" style="margin-left: 10px; color: whitesmoke;" class="btn btn-success">Soát vé</button>
                   </td>
+                  <ng-template #out>
+                    <td>
+                      <button (click)="deleteCTV(ctv[3])" class="btn btn-danger" disabled>Hủy</button>
+                      <button (click)="soatve(ctv[3])" style="margin-left: 10px; color: whitesmoke;" class="btn btn-success" disabled>Soát vé</button>
+                    </td>
+                  </ng-template>
                 </tr>
                 </tbody>
               </table>

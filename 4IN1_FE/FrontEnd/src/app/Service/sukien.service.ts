@@ -5,7 +5,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Sukien} from '../Model/sukien';
 import {Dangkithamgia} from '../Model/dangkithamgia';
-import {Congtacvien} from '../Model/congtacvien';
 
 
 // @ts-ignore
@@ -15,13 +14,17 @@ export class SukienService {
   constructor(private http: HttpClient) { }
 
 
-// @ts-ignore
+  // @ts-ignore
   findByMonth(thang): Observable<Sukien[]>{
     return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theothang'}/${thang}`);
   }
 
-    findByhot(): Observable<Sukien>{
+  findByhot(): Observable<Sukien>{
     return this.http.get<Sukien>('http://localhost:8080/sukien/sukienhot');
+  }
+
+  findSKThuong(): Observable<Sukien>{
+    return this.http.get<Sukien>('http://localhost:8080/sukien/sukienthuong');
   }
 
   // @ts-ignore
@@ -109,6 +112,10 @@ export class SukienService {
 
   findSKDD(): Observable<Sukien[]>{
     return this.http.get<Sukien[]>('http://localhost:8080/sukien/sukiendaduyet');
+  }
+
+  findSKDDFull(): Observable<Sukien[]>{
+    return this.http.get<Sukien[]>('http://localhost:8080/sukien/sukiendaduyetfull');
   }
 
   findSKDH(): Observable<Sukien[]>{
@@ -203,9 +210,10 @@ export class SukienService {
   }
 
   // @ts-ignore
-  CheckVe(data){
-    return this.http.post('http://localhost:8080/nguoithamgia/checkve',data);
+  CheckVe(mave, id): Observable<any>{
+    return this.http.post(`${'http://localhost:8080/nguoithamgia/checkve'}/${id}`,mave);
   }
+<<<<<<< HEAD
   // @ts-ignore
   email(id,ngay): Observable<any>{
     return this.http.get<any>(`${'http://localhost:8080/sukien/NguoiDangKiSuKienTheoEvent'}/${id}/${ngay}`);
@@ -215,4 +223,19 @@ export class SukienService {
     return this.http.get<any>(`${'http://localhost:8080/sukien/gettimeofevent/'}${id}`);
   }
  
+=======
+
+  // @ts-ignore
+  setHot(id, data): Observable<any> {
+    return this.http.put(`${'http://localhost:8080/sukien/sethot'}/${id}`, data);
+  }
+
+  // @ts-ignore
+  HuyHot(id, data): Observable<any> {
+    return this.http.put(`${'http://localhost:8080/sukien/huyhot'}/${id}`, data);
+  }
+
+  // @ts-ignore
+
+>>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
 }

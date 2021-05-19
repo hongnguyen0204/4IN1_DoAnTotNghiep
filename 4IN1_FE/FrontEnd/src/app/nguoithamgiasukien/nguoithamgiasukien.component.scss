@@ -41,6 +41,7 @@
   opacity: 1;
   left: 0;
 }
+<<<<<<< HEAD
 .btn-send {
   width: 300px;
   height: 40px;
@@ -54,4 +55,8 @@
   background: -webkit-linear-gradient(left, #102baf 0%, #1664ff 100%);
   background: -o-linear-gradient(left, #102baf 0%, #1664ff 100%);
   background: linear-gradient(to right, #102baf 0%, #1664ff 100%);
+=======
+button:disabled{
+  opacity: 1;
+>>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
 }

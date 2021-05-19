@@ -1,7 +1,11 @@
 package com.bezkoder.springjwt.controllers;
+<<<<<<< HEAD
 import com.bezkoder.springjwt.models.NguoiThamGia;
 import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.NguoiThamGiaRepository;
+=======
+import com.bezkoder.springjwt.models.SuKien;
+>>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
 import com.bezkoder.springjwt.repository.SuKienRepository;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,17 +15,20 @@ import org.springframework.web.bind.annotation.*;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
+<<<<<<< HEAD
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+=======
+>>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
 import java.util.List;
 
 
 @RestController
-@CrossOrigin (origins = "http://localhost:4200")
+@CrossOrigin (origins = "https://sukiendtu.edu.vn")
 @RequestMapping(value = "/sukien")
 public class SuKienController {
     @Autowired
@@ -46,6 +53,11 @@ public class SuKienController {
         return suKienRepository.sukienhot();
     }
 
+    @GetMapping("/sukienthuong")
+    public SuKien getSuKienThuong() {
+        return suKienRepository.sukienthuong();
+    }
+
     @GetMapping("/sukiendangcho")
     public List<SuKien> SKDC() {
         return suKienRepository.SKDangCho();
@@ -54,6 +66,11 @@ public class SuKienController {
     @GetMapping("/sukiendaduyet")
     public List<SuKien> SKDD() {
         return suKienRepository.SKDaDuyet();
+    }
+
+    @GetMapping("/sukiendaduyetfull")
+    public List<SuKien> SKDDFull() {
+        return suKienRepository.SKDaDuyetFull();
     }
 
     @GetMapping("/sukiendahuy")
@@ -228,9 +245,14 @@ public class SuKienController {
         return suKienRepository.ThongKeNguoiDuyet();
     }
 
+<<<<<<< HEAD
 
     @RequestMapping(value = "/NguoiDangKiSuKienTheoEvent/{id}/{ngay}", method = RequestMethod.GET)
     public String[] getemailbyeventid(@PathVariable int id, @PathVariable String ngay) throws UnsupportedEncodingException, MessagingException {
+=======
+    @RequestMapping(value = "/guimailnhacnho/{id}", method = RequestMethod.POST)
+    public String[] getemailbyeventid(@RequestBody String content,@PathVariable int id) throws UnsupportedEncodingException, MessagingException {
+>>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
         String[] email;
         email = suKienRepository.getemailbyidevent(id);
         String name = suKienRepository.findByIDjoinname(id);
@@ -349,13 +371,37 @@ public class SuKienController {
 
         return "gửi thành công";
     }
+<<<<<<< HEAD
     @GetMapping("/gettimeofevent/{id}")
     public Date getday(@PathVariable int id){
         return suKienRepository.findByDayEvent(id);
+=======
+
+    @GetMapping("/NguoiDangKiSuKientheoevent/{id}")
+    public List<Object> laytaikhoantuid(@PathVariable int id){
+        return suKienRepository.getaccountByeventID1(id);
+>>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
     }
 
     @PostMapping("/kiemtrave")
     public void KiemTra(@RequestBody String qrcode){
+<<<<<<< HEAD
+=======
+    }
+
+    @PutMapping("/sethot/{id}")
+    public void setHot(@PathVariable Integer id){
+        SuKien sk =suKienRepository.findById(id).get();
+        sk.setHot(true);
+        suKienRepository.save(sk);
+    }
+
+    @PutMapping("/huyhot/{id}")
+    public void HuyHot(@PathVariable Integer id){
+        SuKien sk =suKienRepository.findById(id).get();
+        sk.setHot(false);
+        suKienRepository.save(sk);
+>>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
     }
 
 }
