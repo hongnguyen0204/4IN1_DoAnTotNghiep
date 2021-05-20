@@ -30,7 +30,6 @@ export class DoimatkhauComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
    this.token = this.router.snapshot.params['token'];
-   console.log(this.token);
    this.quenmatkhauservice.kiemtratoken(this.token);
   }
 

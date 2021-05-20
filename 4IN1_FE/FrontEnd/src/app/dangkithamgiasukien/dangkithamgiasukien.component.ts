@@ -77,7 +77,7 @@ export class DangkithamgiasukienComponent implements OnInit {
     this.dK.acc_ID = id;
     this.dK.event_ID = idSK;
     this.sukienService.CheckSoLuongNTG(this.dK).subscribe(data=>{
-      if(data == this.sukien.number_of_peoples){
+      if(this.sukien.number_of_peoples!=0 && data == this.sukien.number_of_peoples){
         this.toastr.warning("Sự kiện đã đủ người tham gia!");
       } else {
         this.sukienService.kiemTraThoiGian(this.dK).subscribe(data=>{

@@ -28,8 +28,6 @@ export class ThongtincanhanComponent implements OnInit {
   currentUser: any;
   // @ts-ignore
   users: Thongtincanhan = new Thongtincanhan();
-  // @ts-ignore
-  gender: string;
   constructor(private thongtincanhanService: ThongtincanhanService,
               @Inject(AngularFireStorage)
               private storage: AngularFireStorage,
@@ -79,10 +77,9 @@ export class ThongtincanhanComponent implements OnInit {
               });
               confirmDialog.afterClosed().subscribe(result => {
                 if (result === true) {
+                  this.toast.success("Sửa thành công");
                   this.thongtincanhanService.update(this.id, this.users).subscribe(data => {
                     this.users = data;
-                    window.location.reload();
-                    this.toast.success("Sửa thành công");
                   });
                 }
               });
@@ -97,10 +94,9 @@ export class ThongtincanhanComponent implements OnInit {
         });
         confirmDialog.afterClosed().subscribe(result => {
           if (result === true) {
+            this.toast.success("Sửa thành công");
             this.thongtincanhanService.update(this.id, this.users).subscribe(data => {
               this.users = data;
-              window.location.reload();
-              this.toast.success("Sửa thành công");
             });
           }
         });

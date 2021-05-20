@@ -90,7 +90,7 @@ public class AccController {
         Account account = accRepository.findByEmail(email);
         account.setReset_password_token(token);
         accRepository.save(account);
-        String link = "http://localhost:4200" + "/doimatkhau/"+ token;
+        String link = "https://sukiendtu.edu.vn" + "/doimatkhau/"+ token;
         sendEmailtoresetpassword(email,link);
         account.setPassword(account.getPassword());
         int i = 600;
@@ -121,7 +121,7 @@ public class AccController {
         Account account = accRepository.findByusername(username);
         account.setVerification_email_token(token);
         accRepository.save(account);
-        String link = "http://localhost:4200" + "/xacthucemail/"+ token;
+        String link = "https://sukiendtu.edu.vn" + "/xacthucemail/"+ token;
         sendEmailtoverification(account.getEmail(),link);
         int i = 600;
         while (i>0){
@@ -144,7 +144,7 @@ public class AccController {
         Account account = accRepository.findByEmail(email);
         account.setVerification_email_token(token);
         accRepository.save(account);
-        String link = "http://localhost:4200" + "/xacthucemail/"+ token; //tạo ra đường dẫn có chứa token
+        String link = "https://sukiendtu.edu.vn" + "/xacthucemail/"+ token; //tạo ra đường dẫn có chứa token
         sendEmailtoverification(email,link);
         int i = 600;
         while (i>0){
