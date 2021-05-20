@@ -1,21 +1,18 @@
 package com.bezkoder.springjwt.controllers;
 import com.bezkoder.springjwt.models.NguoiThamGia;
-import com.bezkoder.springjwt.models.SuKien;
-import com.bezkoder.springjwt.repository.NguoiThamGiaRepository;
+import com.bezkoder.springjwt.models.Notification;
 import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.SuKienRepository;
-import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.*;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -79,6 +76,15 @@ public class SuKienController {
         java.sql.Date date=new java.sql.Date(millis);
         suKien.setTime_upload(date);
        suKienRepository.save(suKien);
+        Notification notification = new Notification();
+        notification.setAccount_id(suKien.getOwner_event_id());
+        String name = suKienRepository.findByIDjoinname(suKien.g);
+        notification.setContent("Bạn đã hủy tham gia sự kiện: "+ name);
+        notification.setStatus(false);
+        Date date=java.util.Calendar.getInstance().getTime();
+        notification.setTime_notification(date);
+        notification.setHref("https://sukiendtu.edu.vn/quanlysukien");
+        notificationRepository.save(notification);
     }
 
     @PutMapping("/duyet/{id}")
