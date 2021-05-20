@@ -72,10 +72,7 @@ export class SukienService {
     return this.http.post('http://localhost:8080/account/guilienlac',message);
   }
   // @ts-ignore
-  guimailnn(id,content) {
-    // @ts-ignore
-    return this.http.post(`${'http://localhost:8080/sukien/guimailnhacnho'}/${id}`,content);
-  }
+
   // @ts-ignore
   findByDayandtext(ngay1, ngay2, searchtext): Observable<Sukien[]>{
     return this.http.get<Sukien[]>(`${'http://localhost:8080/sukien/theongayvatext'}/${ngay1}/${ngay2}/${searchtext}`);
@@ -198,15 +195,11 @@ export class SukienService {
   CheckSoLuong(data){
     return this.http.post('http://localhost:8080/dangkilamctv/checkSoLuong',data);
   }
-// @ts-ignore
-  email(id): Observable<any>{
-    return this.http.get<any>(`${'http://localhost:8080/sukien/NguoiDangKiSuKienTheoEvent'}/${id}`);
-  }
+
   // @ts-ignore
   kiemTraThoiGian(data):Observable<any>{
     return this.http.post('http://localhost:8080/nguoithamgia/kiemtrathoigian',data);
   }
-
   // @ts-ignore
   kiemTraThoiGianCTV(data):Observable<any>{
     return this.http.post('http://localhost:8080/dangkilamctv/kiemtrathoigian',data);
@@ -215,10 +208,17 @@ export class SukienService {
     CheckSoLuongNTG(data){
     return this.http.post('http://localhost:8080/nguoithamgia/checkSoLuong',data);
   }
-
   // @ts-ignore
   CheckVe(mave, id): Observable<any>{
     return this.http.post(`${'http://localhost:8080/nguoithamgia/checkve'}/${id}`,mave);
+  }
+  // @ts-ignore
+  email(id,ngay): Observable<any>{
+    return this.http.get<any>(`${'http://localhost:8080/sukien/NguoiDangKiSuKienTheoEvent'}/${id}/${ngay}`);
+  }
+  // @ts-ignore
+  gettimeofevent(id): Observable<any>{
+    return this.http.get<any>(`${'http://localhost:8080/sukien/gettimeofevent/'}${id}`);
   }
 
   // @ts-ignore
@@ -230,7 +230,5 @@ export class SukienService {
   HuyHot(id, data): Observable<any> {
     return this.http.put(`${'http://localhost:8080/sukien/huyhot'}/${id}`, data);
   }
-
-  // @ts-ignore
 
 }
