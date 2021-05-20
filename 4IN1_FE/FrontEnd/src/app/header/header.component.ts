@@ -3,6 +3,7 @@ import {TokenStorageService} from '../_services/token-storage.service';
 import {AccountService} from '../Service/account.service';
 import {Thongtincanhan} from '../Model/thongtincanhan';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 import {Notification} from "../Model/notification";
 
 @Component({
@@ -26,7 +27,12 @@ export class HeaderComponent implements OnInit {
   id:number;
   // @ts-ignore
   notifications: Notification[];
-  constructor(private tokenStorageService: TokenStorageService,private accService:AccountService, private router:Router) { }
+  constructor(private tokenStorageService: TokenStorageService,
+              private accService:AccountService,
+              private router:Router,
+              private toastr:ToastrService) { }
+
+
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
@@ -53,6 +59,15 @@ export class HeaderComponent implements OnInit {
       this.users=data;
     });
   }
+
+  dangKiSuKien(){
+    if(!this.users.is_Update){
+      this.toastr.warning("Bạn phải cập nhật thông tin cá nhân để thực hiện tính năng này!");
+    } else {
+      this.router.navigateByUrl('dangkitochuc');
+    }
+  }
+
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.reload();

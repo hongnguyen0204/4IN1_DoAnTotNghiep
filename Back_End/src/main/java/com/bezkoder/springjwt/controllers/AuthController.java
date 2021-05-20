@@ -74,6 +74,7 @@ public class AuthController {
 												 accRepository.GetFullName(userDetails.getUsername())));
 	}
 
+	@CrossOrigin (origins = "https://sukiendtu.edu.vn")
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
