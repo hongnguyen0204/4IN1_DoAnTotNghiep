@@ -95,6 +95,7 @@ public class SuKienController {
         SuKien sk =suKienRepository.findById(id).get();
         sk.setStatus_of_event("Đồng ý");
         sk.setId_cencor(sukien.getId_cencor());
+        sk.setChecksendmail(false);
         suKienRepository.save(sk);
         Notification notification = new Notification();
         notification.setAccount_id(sukien.getOwner_event_id());
@@ -267,6 +268,11 @@ public class SuKienController {
         return suKienRepository.ThongKeNguoiDuyet();
     }
 
+    @GetMapping("/getchecksendmail/{id}")
+    public boolean thongKeNguoiDuyet(@PathVariable int id){
+        return suKienRepository.getchecksendmail(id);
+    }
+
     @RequestMapping(value = "/NguoiDangKiSuKienTheoEvent/{id}/{ngay}", method = RequestMethod.GET)
     public String[] getemailbyeventid(@PathVariable int id, @PathVariable String ngay) throws UnsupportedEncodingException, MessagingException {
         String[] email;
@@ -279,6 +285,9 @@ public class SuKienController {
         Date d2 = null;
         System.out.println(ngay);
         System.out.println(ngayhen);
+        SuKien sk =suKienRepository.findById(id).get();
+        sk.setChecksendmail(true);
+        suKienRepository.save(sk);
         try {
             d1 = format.parse(ngay);
             d2 = format.parse(ngayhen);

@@ -10,9 +10,16 @@
           <select  (change)="ntg()" [(ngModel)]="idevent" name="tensukien"  style=" width: auto; height: 50px; outline:none;">
             <option value="{{sk.id}}" *ngFor="let sk of sukiens" >{{sk.event_name}}</option>
           </select>
-          <div style="display: flex">
-            <button class="btn-send" style="width: 200px;"  [disabled]="clicked" (click)="get_day();actionMethod(); clicked = true;">Gửi mail nhắc nhở lúc</button>
-            <select [(ngModel)]="outtime1" style=" width: 150px; height: 40px; outline:none;margin-top: 15px">
+          <div *ngIf="!checked"  style="display: flex; margin-left: 30%">
+            <form
+              *ngIf="!checked"
+              name="form"
+              (ngSubmit)="f.form.valid && get_day()"
+              #f="ngForm"
+              novalidate
+            >
+            <button type="submit" class="btn btn-danger" style=" width: 200px; height: 40px;margin-top: -2px;">Gửi mail nhắc nhở lúc</button>
+            <select #time="ngModel" name="time" required [(ngModel)]="form.time" [(ngModel)]="outtime1" style="border-radius: 5px; width: 150px; height: 40px; outline:none;margin-top: 15px; margin-left: 15px;">
               <option selected value="1">
                 {{time_of_event_3}}
               </option>
@@ -23,13 +30,25 @@
                 {{time_of_event_1}}
               </option>
             </select>
-            <select [(ngModel)]="sogio" style=" width: 150px; height: 40px; outline:none;margin-top: 15px">
+            <select #hours="ngModel" name="hours" required [(ngModel)]="form.hours" [(ngModel)]="sogio" style=" width: 150px; height: 40px; outline:none;margin-top: 15px; margin-left: 15px; border-radius: 5px;">
               <option value="{{number}}" *ngFor="let number of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]">
                 {{number}}:00
               </option>
             </select>
+              <div class="alert-danger" *ngIf="f.submitted && time.invalid">
+                <div *ngIf="time.errors.required">Vui lòng chọn ngày</div>
+              </div>
+              <div class="alert-danger" *ngIf="f.submitted && hours.invalid">
+                <div *ngIf="hours.errors.required">Vui lòng chọn giờ</div>
+              </div>
+            </form>
           </div>
-          <button (click)="soatve(idevent)" style="margin:15px 0px 0px 20px;width: 100px" class="btn-xv">Soát vé</button>
+          <div *ngIf="checked" style="display: flex; margin-left: 30%">
+            <div style="margin-left: 10%; margin-top: 15px;"  class="alert alert-success">
+              Bạn đã gửi mail nhắc nhở cho sự kiện này
+            </div>
+          </div>
+          <button (click)="soatve(idevent)" style="width: 100px; margin: 15px 0 0 20px;" class="btn-dark btn ">Soát vé</button>
           <div class="card-body">
             <div class="table-responsive">
               <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">

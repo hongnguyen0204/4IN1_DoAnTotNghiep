@@ -47,44 +47,32 @@ public class SuKien {
 
     private boolean hot;
 
-    public int getId_cencor() {
-        return id_cencor;
+    private boolean checksendmail;
+
+    public SuKien() {
     }
 
-    public void setId_cencor(int id_cencor) {
-        this.id_cencor = id_cencor;
-    }
-
-    public Date getTime_upload() {
-        return time_upload;
-    }
-
-    public void setTime_upload(Date time_upload) {
+    public SuKien(int ID, String event_name, String organizer, LocalDateTime time_of_event, Date time_upload, String place, String faculty, String describe_of_event, String content, String img, String plan_file, int number_of_collaborators, int number_of_peoples, String criteria, LocalDateTime end_day, String status_of_event, int owner_event_id, int id_cencor, boolean hot, boolean checksendmail) {
+        this.ID = ID;
+        this.event_name = event_name;
+        this.organizer = organizer;
+        this.time_of_event = time_of_event;
         this.time_upload = time_upload;
-    }
-
-    public int getNumber_of_peoples() {
-        return number_of_peoples;
-    }
-
-    public void setNumber_of_peoples(int number_of_peoples) {
-        this.number_of_peoples = number_of_peoples;
-    }
-
-    public String getFaculty() {
-        return faculty;
-    }
-
-    public void setFaculty(String faculty) {
+        this.place = place;
         this.faculty = faculty;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
+        this.describe_of_event = describe_of_event;
         this.content = content;
+        this.img = img;
+        this.plan_file = plan_file;
+        this.number_of_collaborators = number_of_collaborators;
+        this.number_of_peoples = number_of_peoples;
+        this.criteria = criteria;
+        this.end_day = end_day;
+        this.status_of_event = status_of_event;
+        this.owner_event_id = owner_event_id;
+        this.id_cencor = id_cencor;
+        this.hot = hot;
+        this.checksendmail = checksendmail;
     }
 
     public int getID() {
@@ -119,6 +107,14 @@ public class SuKien {
         this.time_of_event = time_of_event;
     }
 
+    public Date getTime_upload() {
+        return time_upload;
+    }
+
+    public void setTime_upload(Date time_upload) {
+        this.time_upload = time_upload;
+    }
+
     public String getPlace() {
         return place;
     }
@@ -127,12 +123,28 @@ public class SuKien {
         this.place = place;
     }
 
+    public String getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
+    }
+
     public String getDescribe_of_event() {
         return describe_of_event;
     }
 
     public void setDescribe_of_event(String describe_of_event) {
         this.describe_of_event = describe_of_event;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getImg() {
@@ -157,6 +169,14 @@ public class SuKien {
 
     public void setNumber_of_collaborators(int number_of_collaborators) {
         this.number_of_collaborators = number_of_collaborators;
+    }
+
+    public int getNumber_of_peoples() {
+        return number_of_peoples;
+    }
+
+    public void setNumber_of_peoples(int number_of_peoples) {
+        this.number_of_peoples = number_of_peoples;
     }
 
     public String getCriteria() {
@@ -191,6 +211,14 @@ public class SuKien {
         this.owner_event_id = owner_event_id;
     }
 
+    public int getId_cencor() {
+        return id_cencor;
+    }
+
+    public void setId_cencor(int id_cencor) {
+        this.id_cencor = id_cencor;
+    }
+
     public boolean isHot() {
         return hot;
     }
@@ -199,28 +227,11 @@ public class SuKien {
         this.hot = hot;
     }
 
-    public SuKien() {
+    public boolean isChecksendmail() {
+        return checksendmail;
     }
 
-    public SuKien(int ID, String event_name, String organizer, LocalDateTime time_of_event, Date time_upload, String place, String faculty, String describe_of_event, String content, String img, String plan_file, int number_of_collaborators, int number_of_peoples, String criteria, LocalDateTime end_day, String status_of_event, int owner_event_id, int id_cencor, boolean hot) {
-        this.ID = ID;
-        this.event_name = event_name;
-        this.organizer = organizer;
-        this.time_of_event = time_of_event;
-        this.time_upload = time_upload;
-        this.place = place;
-        this.faculty = faculty;
-        this.describe_of_event = describe_of_event;
-        this.content = content;
-        this.img = img;
-        this.plan_file = plan_file;
-        this.number_of_collaborators = number_of_collaborators;
-        this.number_of_peoples = number_of_peoples;
-        this.criteria = criteria;
-        this.end_day = end_day;
-        this.status_of_event = status_of_event;
-        this.owner_event_id = owner_event_id;
-        this.id_cencor = id_cencor;
-        this.hot = hot;
+    public void setChecksendmail(boolean checksendmail) {
+        this.checksendmail = checksendmail;
     }
 }

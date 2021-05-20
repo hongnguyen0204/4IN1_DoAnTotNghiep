@@ -31,6 +31,7 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
   name;
   // @ts-ignore
   sogio: string;
+  form: any = {};
   // @ts-ignore
   outime;
   // @ts-ignore
@@ -57,7 +58,8 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
   nguoithamgias: any;
   // @ts-ignore
   acc;
-
+  // @ts-ignore
+  checked: boolean;
   // @ts-ignore
   event_name: String;
 
@@ -80,9 +82,9 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
       lengthMenu: [[5, 10, 15, -1], [5, 10, 15, "All"]],
       dom: 'Bfrtip',
       buttons: [
-        'copy',
-        'print',
-        'excel'
+        { extend: 'copy', text: 'Sao chép' },
+        { extend: 'print', text: 'in' },
+        { extend: 'excel', text: 'Excel' }
       ]
     };
     this.currentUser = this.token.getUser();
@@ -119,6 +121,9 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
   time_of_event_1;
 
   ntg() {
+    this.skService.getchecksendmail(this.idevent).subscribe(data=>{
+      this.checked = data;
+    });
     this.skService.gettimeofevent(this.idevent).subscribe(data => {
       console.log(data);
       this.time_of_event = data;
@@ -143,8 +148,6 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
       });
     });
   }
-<<<<<<< HEAD
-
   // @ts-ignore
   reloadData() {
     this.skService.findSKDD().subscribe(data => {
@@ -161,9 +164,6 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
       this.acc = data;
     });
   }
-=======
->>>>>>> 7960c97c2be5b20995ded6644558b4dd42b4860a
-
   soatve(id: number): void {
     if (id == undefined) {
       this.toast.warning("Bạn chưa chọn sự kiện");
@@ -179,6 +179,7 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
   dayev;
 
   get_day() {
+    this.checked = true;
     if (this.outtime1 == 1) {
       this.outime = this.time_of_event_3;
     } else if (this.outtime1 == 2) {
@@ -189,21 +190,15 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
     this.dayev = this.outime + " " + this.sogio + ":00:00";
     this.dayev = this.dayev.toString();
     console.log(this.dayev);
-<<<<<<< HEAD
     this.skService.email(this.idevent, this.dayev).subscribe(data => {
       this.dayev = data;
     })
-=======
     this.skService.email(this.idevent,this.dayev).subscribe(data =>{
       this.dayev= data;
     });
-    this.show();
   }
-  show(){
-    this.toast.success("Bạn đã gửi nhắc nhở thành công.");
-  }
+
   clicked = false;
   actionMethod() {
->>>>>>> 7960c97c2be5b20995ded6644558b4dd42b4860a
   }
 }

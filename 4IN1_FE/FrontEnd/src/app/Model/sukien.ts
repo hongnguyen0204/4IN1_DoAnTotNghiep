@@ -35,4 +35,6 @@ export class Sukien {
   number_of_peoples:number;
   // @ts-ignore
   id_cencor:number;
+// @ts-ignore
+  checksendmail: boolean;
 }

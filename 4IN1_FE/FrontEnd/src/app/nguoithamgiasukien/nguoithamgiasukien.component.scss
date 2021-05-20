@@ -71,3 +71,16 @@ button:disabled{
   background: -o-linear-gradient(left, #102baf 0%, #1664ff 100%);
   background: linear-gradient(to right, #102baf 0%, #1664ff 100%);
 }
+
+.center {
+  display: block;
+  text-align: right;
+  width: 170px;
+}
+
+select {
+  width: 400px;
+  text-align-last:center;
+  text-align-all: center;
+}
+

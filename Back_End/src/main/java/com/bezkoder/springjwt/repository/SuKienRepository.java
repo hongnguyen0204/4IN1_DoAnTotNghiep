@@ -148,4 +148,6 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
     @Query(value = "SELECT * from account_information,join_register where join_register.acc_ID = account_information.ID and join_register.event_ID = ?1 ",nativeQuery = true)
     List<Object> getaccountByeventID(int event_id);
 
+    @Query(value = "SELECT checksendmail from event_information where ID = ?1 ",nativeQuery = true)
+    Boolean getchecksendmail(int id);
 }
