@@ -58,7 +58,9 @@ export class SukienComponent implements OnInit,OnDestroy {
     });
     this.dtOptions = {
       language: {url:'assets/Vietnamese.json'},
-      pagingType: 'full_numbers'
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      lengthMenu: [[5, 10, 15, -1], [5, 10, 15, "All"]],
     };
     this.skService.findAll().subscribe(data=>{
       this.sukien=data;

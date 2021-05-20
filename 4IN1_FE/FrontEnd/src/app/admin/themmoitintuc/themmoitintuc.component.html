@@ -155,13 +155,11 @@
               <ckeditor [(ngModel)]="tintuc.content" name="content" id="content"
               required
               minlength="100"
-              maxlength="10000"
               #content="ngModel"
               ></ckeditor>
               <div class="alert-danger" *ngIf="f.submitted && content.invalid">
                 <div *ngIf="content.errors.required">Vui lòng nhập nội dung</div>
                 <div *ngIf="content.errors.minlength">Vui lòng nhập tối thiểu 100 kí tự</div>
-                <div *ngIf="content.errors.maxlength">Vui lòng nhập ít hơn 10000 kí tự</div>
               </div>
 
               <label class="lb" style="color: #0b0b0b">Hình ảnh</label>

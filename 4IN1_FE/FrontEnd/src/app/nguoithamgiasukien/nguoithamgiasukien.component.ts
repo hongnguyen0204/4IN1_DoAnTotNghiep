@@ -77,6 +77,7 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
       language: {url: 'assets/Vietnamese.json'},
       pagingType: 'full_numbers',
       pageLength: 5,
+      lengthMenu: [[5, 10, 15, -1], [5, 10, 15, "All"]],
       dom: 'Bfrtip',
       buttons: [
         'copy',
@@ -142,6 +143,7 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
       });
     });
   }
+<<<<<<< HEAD
 
   // @ts-ignore
   reloadData() {
@@ -159,6 +161,8 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
       this.acc = data;
     });
   }
+=======
+>>>>>>> 7960c97c2be5b20995ded6644558b4dd42b4860a
 
   soatve(id: number): void {
     if (id == undefined) {
@@ -185,8 +189,21 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
     this.dayev = this.outime + " " + this.sogio + ":00:00";
     this.dayev = this.dayev.toString();
     console.log(this.dayev);
+<<<<<<< HEAD
     this.skService.email(this.idevent, this.dayev).subscribe(data => {
       this.dayev = data;
     })
+=======
+    this.skService.email(this.idevent,this.dayev).subscribe(data =>{
+      this.dayev= data;
+    });
+    this.show();
+  }
+  show(){
+    this.toast.success("Bạn đã gửi nhắc nhở thành công.");
+  }
+  clicked = false;
+  actionMethod() {
+>>>>>>> 7960c97c2be5b20995ded6644558b4dd42b4860a
   }
 }

@@ -25,6 +25,7 @@ export class QuanlysukienComponent implements OnInit,OnDestroy {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
   dtTrigger1: Subject<any> = new Subject<any>();
+  dtTrigger2: Subject<any> = new Subject<any>();
   // @ts-ignore
   dangkithamgia:any;
   congtacviens:any;
@@ -38,6 +39,8 @@ export class QuanlysukienComponent implements OnInit,OnDestroy {
   // @ts-ignore
   infor : Dangkithamgia=new Dangkithamgia();
   ctv:Dangkilamctv=new Dangkilamctv();
+  // @ts-ignore
+  sukiens: Sukien[];
   constructor(private skService: SukienService,
               private route: ActivatedRoute,
               private router: Router,
@@ -51,7 +54,8 @@ export class QuanlysukienComponent implements OnInit,OnDestroy {
     this.dtOptions = {
       language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers',
-      pageLength: 5
+      pageLength: 5,
+      lengthMenu: [[5, 10, 15, -1], [5, 10, 15, "All"]]
     };
     this.currentUser = this.token.getUser();
     this.accountService.findUser(this.currentUser.username).subscribe(data=>{
@@ -65,6 +69,10 @@ export class QuanlysukienComponent implements OnInit,OnDestroy {
         this.congtacviens=data;
         this.dtTrigger1.next();
       });
+      this.skService.getSKbyiduser(this.id).subscribe(data => {
+        this.sukiens = data;
+        this.dtTrigger2.next();
+      });
     });
   }
 
@@ -72,6 +80,7 @@ export class QuanlysukienComponent implements OnInit,OnDestroy {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
     this.dtTrigger1.unsubscribe();
+    this.dtTrigger2.unsubscribe();
   }
 
   delete(id:number) {
@@ -105,5 +114,12 @@ export class QuanlysukienComponent implements OnInit,OnDestroy {
   ktTime(time:Date):boolean{
     // @ts-ignore
     return this.datepipe.transform(time, 'yyyy-MM-dd h:mm a') < this.datepipe.transform(new Date(), 'yyyy-MM-dd h:mm a');
+  }
+
+  detailSK(id: number) {
+    this.router.navigate(['dangkithamgia',id]).then(() => {
+      window.scrollTo(0,0);
+      window.location.reload();
+    })
   }
 }
