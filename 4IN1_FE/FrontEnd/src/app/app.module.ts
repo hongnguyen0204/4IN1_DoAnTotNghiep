@@ -57,7 +57,8 @@ import interactionPlugin from '@fullcalendar/interaction'; // a plugin
 import { LichsukienComponent } from './lichsukien/lichsukien.component';
 import { EventDialogComponent } from './-helpers/event-dialog/event-dialog.component';
 import {GuimailnhacnhoComponent} from './guimailnhacnho/guimailnhacnho.component';
-import { HuysukienComponent } from './-helpers/huysukien/huysukien.component'; // a plugin
+import { HuysukienComponent } from './-helpers/huysukien/huysukien.component';
+import {MomentModule} from "ngx-moment"; // a plugin
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -117,7 +118,12 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
         MatSnackBarModule,
         NgxPaginationModule,
         MatDialogModule,
-        FullCalendarModule
+        FullCalendarModule,
+        MomentModule.forRoot({
+          relativeTimeThresholdOptions: {
+            'm': 59
+          }
+        })
     ],
   providers: [AuthInterceptor,CustomerAuthService,AdminAuthService,ThongbaoService,DatePipe],
   bootstrap: [AppComponent]

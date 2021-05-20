@@ -26,6 +26,8 @@ export class HeaderComponent implements OnInit {
   // @ts-ignore
   id:number;
   // @ts-ignore
+  today= Date.now();
+  // @ts-ignore
   notifications: Notification[];
   constructor(private tokenStorageService: TokenStorageService,
               private accService:AccountService,
@@ -78,5 +80,6 @@ export class HeaderComponent implements OnInit {
     this.accService.seen(id).subscribe();
     console.log(id);
   }
+
 
 }
