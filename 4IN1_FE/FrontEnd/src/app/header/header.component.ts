@@ -28,6 +28,8 @@ export class HeaderComponent implements OnInit {
   // @ts-ignore
   today= Date.now();
   // @ts-ignore
+  count:number;
+  // @ts-ignore
   notifications: Notification[];
   constructor(private tokenStorageService: TokenStorageService,
               private accService:AccountService,
@@ -60,6 +62,10 @@ export class HeaderComponent implements OnInit {
     this.accService.findUser(this.username).subscribe(data=>{
       this.users=data;
     });
+    this.accService.countnofi(this.id).subscribe(data=>{
+      // @ts-ignore
+      this.count=data;
+    })
   }
 
   dangKiSuKien(){

@@ -64,7 +64,6 @@ export class ThongkeComponent implements OnInit {
           }, error => console.log(error));
       }
       else{
-
       }
     });
 

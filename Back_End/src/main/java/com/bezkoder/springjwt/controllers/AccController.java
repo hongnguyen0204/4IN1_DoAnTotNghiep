@@ -256,4 +256,9 @@ public class AccController {
         tb.setStatus(true);
         notificationRepository.save(tb);
     }
+
+    @GetMapping("/countnofi/{id}")
+    public int countnofi(@PathVariable int id){
+        return notificationRepository.countnofi(id);
+    }
 }

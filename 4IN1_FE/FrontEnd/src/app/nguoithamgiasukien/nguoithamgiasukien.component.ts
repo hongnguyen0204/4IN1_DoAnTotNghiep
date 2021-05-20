@@ -53,8 +53,8 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
   // @ts-ignore
   idevent: number;
   // @ts-ignore
-  content :string;
-  nguoithamgias:any;
+  content: string;
+  nguoithamgias: any;
   // @ts-ignore
   acc;
 
@@ -68,12 +68,13 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
               private accountService: AccountService,
               private token: TokenStorageService,
               private ctvService: CongtacvienService,
-              private toast:ToastrService) {}
+              private toast: ToastrService) {
+  }
 
   ngOnInit(): void {
     // @ts-ignore
     this.dtOptions = {
-      language: {url:'assets/Vietnamese.json'},
+      language: {url: 'assets/Vietnamese.json'},
       pagingType: 'full_numbers',
       pageLength: 5,
       dom: 'Bfrtip',
@@ -100,12 +101,11 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
   }
 
   // @ts-ignore
-  duyet(status: boolean, id: number){
+  duyet(status: boolean, id: number) {
     console.log(status);
-    if (status){
+    if (status) {
       this.ctvService.updatenotok(id).subscribe();
-    }
-    else {
+    } else {
       this.ctvService.updateok(id).subscribe();
     }
   }
@@ -113,11 +113,12 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
   ngAfterViewInit(): void {
     this.dtTrigger.next();
   }
+
   // @ts-ignore
   time_of_event_1;
 
-  ntg(){
-    this.skService.gettimeofevent(this.idevent).subscribe(data =>{
+  ntg() {
+    this.skService.gettimeofevent(this.idevent).subscribe(data => {
       console.log(data);
       this.time_of_event = data;
       let dte = new Date(this.time_of_event);
@@ -127,11 +128,11 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
       this.time_of_event_2 = dte.toString();
       dte.setDate(dte.getDate() - 1);
       this.time_of_event_3 = dte.toString();
-      this.time_of_event_1 =this.datepipe.transform(this.time_of_event_1, 'dd-MM-yyyy');
-      this.time_of_event_2 =this.datepipe.transform(this.time_of_event_2, 'dd-MM-yyyy');
-      this.time_of_event_3 =this.datepipe.transform(this.time_of_event_3, 'dd-MM-yyyy');
+      this.time_of_event_1 = this.datepipe.transform(this.time_of_event_1, 'dd-MM-yyyy');
+      this.time_of_event_2 = this.datepipe.transform(this.time_of_event_2, 'dd-MM-yyyy');
+      this.time_of_event_3 = this.datepipe.transform(this.time_of_event_3, 'dd-MM-yyyy');
     });
-    this.skService.getNTGbyid(this.idevent).subscribe(data =>{
+    this.skService.getNTGbyid(this.idevent).subscribe(data => {
       // @ts-ignore
       this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
         // Destroy the table first
@@ -141,47 +142,51 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
       });
     });
   }
+
   // @ts-ignore
   reloadData() {
     this.skService.findSKDD().subscribe(data => {
       this.sukiens = data;
     });
   }
+
   // @ts-ignore
   day_event;
-  getID_Event(){
+
+  getID_Event() {
     // @ts-ignore
-    this.acc = this.skService.email(this.idevent).subscribe(data=>{
-      this.acc=data;
+    this.acc = this.skService.email(this.idevent).subscribe(data => {
+      this.acc = data;
     });
   }
 
-  soatve(id:number):void{
-    if(id==undefined){
+  soatve(id: number): void {
+    if (id == undefined) {
       this.toast.warning("Bạn chưa chọn sự kiện");
     } else {
-      this.router.navigate(['kiemtrave',id]).then(() => {
-        window.scrollTo(0,0);
+      this.router.navigate(['kiemtrave', id]).then(() => {
+        window.scrollTo(0, 0);
         window.location.reload();
       })
     }
   }
+
   // @ts-ignore
   dayev;
-  get_day(){
-    if(this.outtime1 == 1){
+
+  get_day() {
+    if (this.outtime1 == 1) {
       this.outime = this.time_of_event_3;
-    }else if(this.outtime1 == 2){
+    } else if (this.outtime1 == 2) {
       this.outime = this.time_of_event_2;
-    }else{
+    } else {
       this.outime = this.time_of_event_1;
     }
-    this.dayev= this.outime + " " +this.sogio+ ":00:00";
+    this.dayev = this.outime + " " + this.sogio + ":00:00";
     this.dayev = this.dayev.toString();
     console.log(this.dayev);
-    this.skService.email(this.idevent,this.dayev).subscribe(data =>{
-      this.dayev= data;
+    this.skService.email(this.idevent, this.dayev).subscribe(data => {
+      this.dayev = data;
     })
   }
-
 }

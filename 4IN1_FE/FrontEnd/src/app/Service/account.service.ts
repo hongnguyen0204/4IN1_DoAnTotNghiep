@@ -50,4 +50,9 @@ export class AccountService {
   seen(id) {
     return this.http.get(`${'http://localhost:8080/account/seen'}/${id}`);
   }
+
+  // @ts-ignore
+  countnofi(id):Observable<any>{
+    return this.http.get<any>(`${'http://localhost:8080/account/countnofi'}/${id}`)
+  }
 }
