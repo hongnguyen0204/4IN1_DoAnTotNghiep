@@ -43,12 +43,12 @@ export class XacthucemailComponent implements OnInit {
   timtaikhoan(token: string) {
 
     this.accountservice.findUserbyToken(token).subscribe(data => {
-      console.log(data["status_acc"]);
-      if(data["status_acc"]){
+      console.log(data);
+      if(data==true){
         this.trangthai = "Xác thực Email thành công";
       }
       else{
-        window.location.reload();
+        this.trangthai = "Đường dẫn không tồn tại";
       }
     });
   }

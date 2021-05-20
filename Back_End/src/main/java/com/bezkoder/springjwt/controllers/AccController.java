@@ -90,8 +90,13 @@ public class AccController {
     }
 
     @GetMapping("/getAccTokenEmail/{token}")
-    public Account GetAcctokenEmail(@PathVariable String token) {
-        return accRepository.findByToken(token);
+    public Boolean GetAcctokenEmail(@PathVariable String token) {
+        int row = accRepository.findstatusbytoken(token);
+        if(row == 0){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     @PostMapping("/forgot_password/{email}")
@@ -201,7 +206,69 @@ public class AccController {
 
             String subject = "Reset password:";
 
-            String content ="Lưu ý: Đường dẫn chỉ có hiệu lực trong 10 phút. <br>"+ link;
+            String content ="<div class=\"\"><div class=\"aHl\"></div><div id=\":2v\" tabindex=\"-1\"></div><div id=\":2k\" class=\"ii gt\"><div id=\":2j\" class=\"a3s aiL msg6347430949454947394\"><u></u>\n" +
+                    "\n" +
+                    "  \n" +
+                    "    \n" +
+                    "    \n" +
+                    "    \n" +
+                    "\n" +
+                    "  \n" +
+                    "  <div bgcolor=\"#f1f1f1\" style=\"margin:0;padding:0;min-width:100%!important\">\n" +
+                    "    <table width=\"100%\" bgcolor=\"#f1f1f1\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n" +
+                    "      <tbody><tr>\n" +
+                    "        <td>\n" +
+                    "          \n" +
+                    "          <table bgcolor=\"#f1f1f1\" class=\"m_6347430949454947394content\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:90%;max-width:600px\">\n" +
+                    "            <tbody><tr>\n" +
+                    "              <td bgcolor=\"#f1f1f1\" class=\"m_6347430949454947394header\" style=\"padding:20px 30px\">\n" +
+                    "                <table align=\"left\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n" +
+                    "                  <tbody><tr>\n" +
+                    "                    \n" +
+                    "                  </tr>\n" +
+                    "                </tbody></table>\n" +
+                    "                \n" +
+                    "                \n" +
+                    "              </td>\n" +
+                    "            </tr>\n" +
+                    "            <tr>\n" +
+                    "              <td>\n" +
+                    "                <div>\n" +
+                    "                  <img src=\"https://scontent-hkt1-2.xx.fbcdn.net/v/t1.15752-9/s2048x2048/184703038_1241668892941356_1988666661846089266_n.png?_nc_cat=111&ccb=1-3&_nc_sid=ae9488&_nc_ohc=p92KL1Lz-iAAX-7vULl&_nc_ht=scontent-hkt1-2.xx&tp=30&oh=aecdaf9795644d3971d1ab55f4ac406c&oe=60C75E85\" height=\"100%\" width=\"100%\" class=\"m_6347430949454947394emailImage CToWUd a6T\" style=\"height:auto\" tabindex=\"0\"><div class=\"a6S\" dir=\"ltr\" style=\"opacity: 0.01; left: 1004px; top: 349px;\"><div id=\":4t\" class=\"T-I J-J5-Ji aQv T-I-ax7 L3 a5q\" role=\"button\" tabindex=\"0\" aria-label=\"Tải xuống tệp đính kèm \" data-tooltip-class=\"a1V\" data-tooltip=\"Tải xuống\"><div class=\"akn\"><div class=\"aSK J-J5-Ji aYr\"></div></div></div></div>\n" +
+                    "                </div>\n" +
+                    "              </td>\n" +
+                    "            </tr>\n" +
+                    "            <tr>\n" +
+                    "              <td class=\"m_6347430949454947394innerpadding\" bgcolor=\"#ffffff\" style=\"padding-top:20px;padding:30px\">\n" +
+                    "                <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n" +
+                    "                  <tbody><tr>\n" +
+                    "                    <td class=\"m_6347430949454947394bodycopy\" style=\"color:#4a4a4a;font-family:Roboto,sans-serif;font-size:16px;line-height:26px;padding:10px 0\">Vui lòng nhấn vào bên dưới để đổi mật khẩu của bạn.<br>Lưu ý: Đường dẫn chỉ có hiệu lực trong 10 phút</td>\n" +
+                    "                  </tr>\n" +
+                    "                  <tr>\n" +
+                    "                    \n" +
+                    "                    <td class=\"m_6347430949454947394bodycopy\" style=\"color:#4a4a4a;font-family:Roboto,sans-serif;font-size:16px;line-height:26px;padding:10px 0\"><a href="+link+" style=\"font-style: oblique; color:blue;text-decoration:none\"><b>Đổi mật khẩu ngay!<b></a></td>\n" +
+                    "                  </tr>\n" +
+                    "                  <tr>\n" +
+                    "                    <td class=\"m_6347430949454947394bodycopy\" style=\"color:#4a4a4a;font-family:Roboto,sans-serif;font-size:16px;line-height:26px;padding:10px 0\">Trân trọng cảm ơn !</td>\n" +
+                    "                </tbody></table>\n" +
+                    "              </td>\n" +
+                    "            </tr>\n" +
+                    "            <tr>\n" +
+                    "              <td class=\"m_6347430949454947394footer\" bgcolor=\"#f1f1f1\" style=\"padding-top:10px!important;padding:20px 30px 15px\">\n" +
+                    "                <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n" +
+                    "                  <tbody><tr>\n" +
+                    "                    \n" +
+                    "                  </tr>\n" +
+                    "                </tbody></table>\n" +
+                    "              </td>\n" +
+                    "            </tr>\n" +
+                    "          </tbody></table>\n" +
+                    "          \n" +
+                    "        </td>\n" +
+                    "      </tr>\n" +
+                    "    </tbody></table>\n" +
+                    "              <img src=\"https://ci6.googleusercontent.com/proxy/vYXiJujKubAFNJwdRBDULUzz-HAY-DCGNwQUrTgfep-mChZEz1ItQGuslUPUOGSBuHn1l_tqT7v9OGBEzQfCMd9ZO6AC-wUjEGtUE-sfVUGNOEdhhsQqU0QfKlZH1sHuQ1b5lYNkBjZTnSY1B9CAX-mRxrVyLuwgZD4sVy1bLr00ZYQ9=s0-d-e1-ft#https://kms-technology.us11.list-manage.com/track/open.php?u=03d948e74144eb877961fe02c&amp;id=e679a73992&amp;e=8cf5f209f6\" height=\"1\" width=\"1\" class=\"CToWUd\"></div><div class=\"yj6qo\"></div><div class=\"adL\">\n" +
+                    "</div></div></div><div id=\":2z\" class=\"ii gt\" style=\"display:none\"><div id=\":30\" class=\"a3s aiL \"></div></div><div class=\"hi\"></div></div>";
 
             helper.setSubject(subject);
 
@@ -221,7 +288,69 @@ public class AccController {
 
         String subject = "Xác thực tài khoản";
 
-        String content ="Lưu ý: Đường dẫn chỉ có hiệu lực trong 10 phút. <br>" + link;
+        String content ="<div class=\"\"><div class=\"aHl\"></div><div id=\":2v\" tabindex=\"-1\"></div><div id=\":2k\" class=\"ii gt\"><div id=\":2j\" class=\"a3s aiL msg6347430949454947394\"><u></u>\n" +
+                "\n" +
+                "  \n" +
+                "    \n" +
+                "    \n" +
+                "    \n" +
+                "\n" +
+                "  \n" +
+                "  <div bgcolor=\"#f1f1f1\" style=\"margin:0;padding:0;min-width:100%!important\">\n" +
+                "    <table width=\"100%\" bgcolor=\"#f1f1f1\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n" +
+                "      <tbody><tr>\n" +
+                "        <td>\n" +
+                "          \n" +
+                "          <table bgcolor=\"#f1f1f1\" class=\"m_6347430949454947394content\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:90%;max-width:600px\">\n" +
+                "            <tbody><tr>\n" +
+                "              <td bgcolor=\"#f1f1f1\" class=\"m_6347430949454947394header\" style=\"padding:20px 30px\">\n" +
+                "                <table align=\"left\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n" +
+                "                  <tbody><tr>\n" +
+                "                    \n" +
+                "                  </tr>\n" +
+                "                </tbody></table>\n" +
+                "                \n" +
+                "                \n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "              <td>\n" +
+                "                <div>\n" +
+                "                  <img src=\"https://scontent-hkt1-2.xx.fbcdn.net/v/t1.15752-9/s2048x2048/184703038_1241668892941356_1988666661846089266_n.png?_nc_cat=111&ccb=1-3&_nc_sid=ae9488&_nc_ohc=p92KL1Lz-iAAX-7vULl&_nc_ht=scontent-hkt1-2.xx&tp=30&oh=aecdaf9795644d3971d1ab55f4ac406c&oe=60C75E85\" height=\"100%\" width=\"100%\" class=\"m_6347430949454947394emailImage CToWUd a6T\" style=\"height:auto\" tabindex=\"0\"><div class=\"a6S\" dir=\"ltr\" style=\"opacity: 0.01; left: 1004px; top: 349px;\"><div id=\":4t\" class=\"T-I J-J5-Ji aQv T-I-ax7 L3 a5q\" role=\"button\" tabindex=\"0\" aria-label=\"Tải xuống tệp đính kèm \" data-tooltip-class=\"a1V\" data-tooltip=\"Tải xuống\"><div class=\"akn\"><div class=\"aSK J-J5-Ji aYr\"></div></div></div></div>\n" +
+                "                </div>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "              <td class=\"m_6347430949454947394innerpadding\" bgcolor=\"#ffffff\" style=\"padding-top:20px;padding:30px\">\n" +
+                "                <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n" +
+                "                  <tbody><tr>\n" +
+                "                    <td class=\"m_6347430949454947394bodycopy\" style=\"color:#4a4a4a;font-family:Roboto,sans-serif;font-size:16px;line-height:26px;padding:10px 0\">Vui lòng nhấn vào bên dưới để xác nhận email của bạn.<br>Lưu ý: Đường dẫn chỉ có hiệu lực trong 10 phút</td>\n" +
+                "                  </tr>\n" +
+                "                  <tr>\n" +
+                "                    \n" +
+                "                    <td class=\"m_6347430949454947394bodycopy\" style=\"color:#4a4a4a;font-family:Roboto,sans-serif;font-size:16px;line-height:26px;padding:10px 0\"><a href="+link+" style=\"font-style: oblique; color:blue;text-decoration:none\"><b>Xác thực ngay!<b></a></td>\n" +
+                "                  </tr>\n" +
+                "                  <tr>\n" +
+                "                    <td class=\"m_6347430949454947394bodycopy\" style=\"color:#4a4a4a;font-family:Roboto,sans-serif;font-size:16px;line-height:26px;padding:10px 0\">Trân trọng cảm ơn !</td>\n" +
+                "                </tbody></table>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "              <td class=\"m_6347430949454947394footer\" bgcolor=\"#f1f1f1\" style=\"padding-top:10px!important;padding:20px 30px 15px\">\n" +
+                "                <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n" +
+                "                  <tbody><tr>\n" +
+                "                    \n" +
+                "                  </tr>\n" +
+                "                </tbody></table>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "          </tbody></table>\n" +
+                "          \n" +
+                "        </td>\n" +
+                "      </tr>\n" +
+                "    </tbody></table>\n" +
+                "              <img src=\"https://ci6.googleusercontent.com/proxy/vYXiJujKubAFNJwdRBDULUzz-HAY-DCGNwQUrTgfep-mChZEz1ItQGuslUPUOGSBuHn1l_tqT7v9OGBEzQfCMd9ZO6AC-wUjEGtUE-sfVUGNOEdhhsQqU0QfKlZH1sHuQ1b5lYNkBjZTnSY1B9CAX-mRxrVyLuwgZD4sVy1bLr00ZYQ9=s0-d-e1-ft#https://kms-technology.us11.list-manage.com/track/open.php?u=03d948e74144eb877961fe02c&amp;id=e679a73992&amp;e=8cf5f209f6\" height=\"1\" width=\"1\" class=\"CToWUd\"></div><div class=\"yj6qo\"></div><div class=\"adL\">\n" +
+                "</div></div></div><div id=\":2z\" class=\"ii gt\" style=\"display:none\"><div id=\":30\" class=\"a3s aiL \"></div></div><div class=\"hi\"></div></div>";
 
         helper.setSubject(subject);
 
