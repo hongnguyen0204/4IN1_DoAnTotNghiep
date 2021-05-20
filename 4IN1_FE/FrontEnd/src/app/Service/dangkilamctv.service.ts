@@ -17,7 +17,7 @@ export class DangkilamctvService {
 
   // @ts-ignore
   list(id):Observable<any>{
-    return this.http.get<any>(`${'http://localhost:8080/dangkilamctv'}/${id}`)
+    return this.http.get<any>(`${'http://localhost:8080/dangkilamctv'}/${id}`);
   }
 
   // @ts-ignore

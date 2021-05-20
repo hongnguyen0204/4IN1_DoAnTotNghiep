@@ -1,9 +1,10 @@
 package com.bezkoder.springjwt.controllers;
 
 import com.bezkoder.springjwt.models.Account;
-import com.bezkoder.springjwt.models.DangKiLamCTV;
 import com.bezkoder.springjwt.models.Message;
+import com.bezkoder.springjwt.models.Notification;
 import com.bezkoder.springjwt.repository.AccRepository;
+import com.bezkoder.springjwt.repository.NotificationRepository;
 import com.bezkoder.springjwt.repository.SuKienRepository;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
@@ -20,6 +22,9 @@ import java.util.List;
 @CrossOrigin(origins = "https://sukiendtu.edu.vn")
 @RequestMapping(value = "/account")
 public class AccController {
+    @Autowired
+    NotificationRepository notificationRepository;
+
     @Autowired
     PasswordEncoder encoder;
 
@@ -35,6 +40,11 @@ public class AccController {
     @GetMapping("/getFullAcc")
     public List<Account> GetFullAcc() {
         return accRepository.findAll();
+    }
+
+    @GetMapping("/getnotification/{id}")
+    public List<Notification> GetNotification(@PathVariable int id) {
+        return notificationRepository.GetNotification(id);
     }
 
     @PutMapping("/ban/{id}")
@@ -240,5 +250,10 @@ public class AccController {
         accRepository.save(account);
     }
 
-
+    @GetMapping("/seen/{id}")
+    public void seen(@PathVariable int id){
+        Notification tb = notificationRepository.findById(id).get();
+        tb.setStatus(true);
+        notificationRepository.save(tb);
+    }
 }
