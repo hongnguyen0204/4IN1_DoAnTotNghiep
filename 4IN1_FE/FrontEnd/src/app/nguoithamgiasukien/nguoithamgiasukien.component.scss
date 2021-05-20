@@ -46,14 +46,28 @@
   height: 40px;
   border: none;
   margin: 15px 0px 0px 20px;
-  background-color: #1863ff;
+  background-color: 	#FF0000;
   border-radius: 3px;
 }
 
 .btn-send:hover {
-  background: -webkit-linear-gradient(left, #102baf 0%, #1664ff 100%);
-  background: -o-linear-gradient(left, #102baf 0%, #1664ff 100%);
-  background: linear-gradient(to right, #102baf 0%, #1664ff 100%);}
+
+  background: -webkit-linear-gradient(left, #FF0000 0%, #ff3547 100%);
+  background: -o-linear-gradient(left, #FF0000 0%, #ff3547 100%);
+  background: linear-gradient(to right, #FF0000 0%, #ff3547 100%);
+  }
 button:disabled{
   opacity: 1;
+}
+.btn-xv{
+  background: #102baf;
+  border-radius: 3px;
+  width: 100px;
+  height: 40px;
+  border: none;
+}
+.btn-xv:hover{
+  background: -webkit-linear-gradient(left, #102baf 0%, #1664ff 100%);
+  background: -o-linear-gradient(left, #102baf 0%, #1664ff 100%);
+  background: linear-gradient(to right, #102baf 0%, #1664ff 100%);
 }

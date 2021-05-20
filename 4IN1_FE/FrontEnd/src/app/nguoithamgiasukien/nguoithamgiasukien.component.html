@@ -11,7 +11,7 @@
             <option value="{{sk.id}}"  *ngFor="let sk of sukiens" >{{sk.event_name}}</option>
           </select>
           <div style="display: flex">
-            <button class="btn-send" style="width: 200px;" (click)="get_day()">Gửi mail nhắc nhở lúc</button>
+            <button class="btn-send" style="width: 200px;"  (click)="get_day()">Gửi mail nhắc nhở lúc</button>
             <select [(ngModel)]="outtime1" style=" width: 150px; height: 40px; outline:none;margin-top: 15px">
               <option selected value="1">
                 {{time_of_event_3}}
@@ -29,7 +29,7 @@
               </option>
             </select>
           </div>
-          <button (click)="soatve(idevent)" style="margin:10px 0px 0px 10px;width: 100px" class="btn btn-primary">Soát vé</button>
+          <button (click)="soatve(idevent)" style="margin:15px 0px 0px 20px;width: 100px" class="btn-xv">Soát vé</button>
           <div class="card-body">
             <div class="table-responsive">
               <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="table-layout:fixed" class="row-border hover" style="width:100%">
