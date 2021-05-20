@@ -250,5 +250,10 @@ public class AccController {
         accRepository.save(account);
     }
 
-
+    @GetMapping("/seen/{id}")
+    public void seen(@PathVariable int id){
+        Notification tb = notificationRepository.findById(id).get();
+        tb.setStatus(true);
+        notificationRepository.save(tb);
+    }
 }

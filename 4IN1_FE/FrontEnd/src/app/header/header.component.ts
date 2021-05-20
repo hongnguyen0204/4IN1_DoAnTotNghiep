@@ -57,4 +57,11 @@ export class HeaderComponent implements OnInit {
     this.tokenStorageService.signOut();
     window.location.reload();
   }
+
+  // @ts-ignore
+  seen(id){
+    this.accService.seen(id).subscribe();
+    console.log(id);
+  }
+
 }

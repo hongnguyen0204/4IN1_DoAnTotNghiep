@@ -48,6 +48,15 @@ public class NguoiThamGiaController {
     @PostMapping("/delete")
     public void delete(@RequestBody NguoiThamGia nguoiThamGia) {
         nguoiThamGiaRepository.HuySK(nguoiThamGia.getAcc_ID(),nguoiThamGia.getEvent_ID());
+        Notification notification = new Notification();
+        notification.setAccount_id(nguoiThamGia.getAcc_ID());
+        String name = suKienRepository.findByIDjoinname(nguoiThamGia.getEvent_ID());
+        notification.setContent("Bạn đã hủy tham gia sự kiện: "+ name);
+        notification.setStatus(false);
+        Date date=java.util.Calendar.getInstance().getTime();
+        notification.setTime_notification(date);
+        notification.setHref("https://sukiendtu.edu.vn/quanlysukien");
+        notificationRepository.save(notification);
     }
 
     @PostMapping("/dangki")

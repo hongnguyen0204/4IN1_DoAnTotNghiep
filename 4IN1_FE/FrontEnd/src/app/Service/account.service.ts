@@ -45,4 +45,9 @@ export class AccountService {
   findnotification(id): Observable<Notification[]>{
     return this.http.get<Notification[]>(`${'http://localhost:8080/account/getnotification'}/${id}`);
   }
+
+  // @ts-ignore
+  seen(id) {
+    return this.http.get(`${'http://localhost:8080/account/seen'}/${id}`);
+  }
 }

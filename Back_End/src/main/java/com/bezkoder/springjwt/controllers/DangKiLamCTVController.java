@@ -28,15 +28,6 @@ public class DangKiLamCTVController {
 
     @RequestMapping(value = "/dangki", method = RequestMethod.POST)
     public void add(@RequestBody DangKiLamCTV dangKiLamCTV){
-        Notification notification = new Notification();
-        notification.setAccount_id(dangKiLamCTV.getUser_ID());
-        String name = suKienRepository.findByIDjoinname(dangKiLamCTV.getEvent_ID());
-        notification.setContent("Bạn đã đăng kí làm cộng tác viên cho sự kiên: "+ name +" thành công");
-        notification.setStatus(false);
-        Date date=java.util.Calendar.getInstance().getTime();
-        notification.setTime_notification(date);
-        notification.setHref("https://sukiendtu.edu.vn/quanlysukien");
-        notificationRepository.save(notification);
     }
 
     @GetMapping("/{id}")
@@ -52,6 +43,15 @@ public class DangKiLamCTVController {
     @PostMapping("/delete")
     public void delete(@RequestBody Congtacvien ctv) {
         dangKiLamCTVRepository.HuyDK(ctv.getUser_ID(),ctv.getEvent_ID());
+        Notification notification = new Notification();
+        notification.setAccount_id(ctv.getUser_ID());
+        String name = suKienRepository.findByIDjoinname(ctv.getEvent_ID());
+        notification.setContent("Bạn đã hủy làm cộng tác viên sự kiện: "+ name);
+        notification.setStatus(false);
+        Date date=java.util.Calendar.getInstance().getTime();
+        notification.setTime_notification(date);
+        notification.setHref("https://sukiendtu.edu.vn/quanlysukien");
+        notificationRepository.save(notification);
     }
 
     @PostMapping("/checkSoLuong")
