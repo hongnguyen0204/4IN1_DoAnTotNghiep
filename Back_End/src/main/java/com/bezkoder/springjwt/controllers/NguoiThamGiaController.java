@@ -1,7 +1,9 @@
 package com.bezkoder.springjwt.controllers;
 
 import com.bezkoder.springjwt.models.NguoiThamGia;
+import com.bezkoder.springjwt.models.Notification;
 import com.bezkoder.springjwt.repository.NguoiThamGiaRepository;
+import com.bezkoder.springjwt.repository.NotificationRepository;
 import com.bezkoder.springjwt.repository.SuKienRepository;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +16,15 @@ import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "https://sukiendtu.edu.vn")
 @RequestMapping(value = "/nguoithamgia")
 public class NguoiThamGiaController {
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @Autowired
     private NguoiThamGiaRepository nguoiThamGiaRepository;
@@ -47,6 +52,14 @@ public class NguoiThamGiaController {
 
     @PostMapping("/dangki")
     public void dangKi(@RequestBody NguoiThamGia nguoiThamGia) throws UnsupportedEncodingException, MessagingException {
+        Notification notification = new Notification();
+        notification.setAccount_id(nguoiThamGia.getAcc_ID());
+        String name = suKienRepository.findByIDjoinname(nguoiThamGia.getEvent_ID());
+        notification.setContent("Bạn đã đăng kí tham gia thành công sự kiện: "+ name);
+        notification.setStatus(false);
+        Date date=java.util.Calendar.getInstance().getTime();
+        notification.setTime_Notification(date);
+        notificationRepository.save(notification);
         String tiket = RandomString.make(15);
         nguoiThamGia.setTicket(tiket);
         nguoiThamGiaRepository.save(nguoiThamGia);
@@ -58,7 +71,6 @@ public class NguoiThamGiaController {
         String formatDate = time.format(formatter);
         String formatTime = time.format(formatter1);
         String diadiem = suKienRepository.findByIDjoinplace(nguoiThamGia.getEvent_ID());
-        String name = suKienRepository.findByIDjoinname(nguoiThamGia.getEvent_ID());
         String content =  "<div class=\"\"><div class=\"aHl\"></div><div id=\":2v\" tabindex=\"-1\"></div><div id=\":2k\" class=\"ii gt\"><div id=\":2j\" class=\"a3s aiL msg6347430949454947394\"><u></u>\n" +
                 "\n" +
                 "  \n" +

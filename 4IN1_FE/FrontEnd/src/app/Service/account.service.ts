@@ -40,4 +40,9 @@ export class AccountService {
   findAll(): Observable<Thongtincanhan[]>{
     return this.http.get<Thongtincanhan[]>('http://localhost:8080/account/getFullAcc');
   }
+
+  // @ts-ignore
+  findnotification(id): Observable<Notification[]>{
+    return this.http.get<Notification[]>(`${'http://localhost:8080/account/getnotification'}/${id}`);
+  }
 }

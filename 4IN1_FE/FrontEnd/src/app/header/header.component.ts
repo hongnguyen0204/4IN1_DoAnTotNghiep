@@ -3,6 +3,7 @@ import {TokenStorageService} from '../_services/token-storage.service';
 import {AccountService} from '../Service/account.service';
 import {Thongtincanhan} from '../Model/thongtincanhan';
 import {Router} from '@angular/router';
+import {Notification} from "../Model/notification";
 
 @Component({
   selector: 'app-header',
@@ -21,7 +22,10 @@ export class HeaderComponent implements OnInit {
   fullname:string;
   // @ts-ignore
   users:Thongtincanhan;
-
+  // @ts-ignore
+  id:number;
+  // @ts-ignore
+  notifications: Notification[];
   constructor(private tokenStorageService: TokenStorageService,private accService:AccountService, private router:Router) { }
 
   // tslint:disable-next-line:use-lifecycle-interface
@@ -32,6 +36,12 @@ export class HeaderComponent implements OnInit {
       this.fullname=this.tokenStorageService.getUser().fullName;
       this.roles = user.roles;
       this.username = user.username;
+      this.id = user.id;
+      this.accService.findnotification(this.id).subscribe(data=>{
+        // @ts-ignore
+        this.notifications = data;
+        console.log(this.notifications);
+      });
     }
     let currentUrl = window.location.href;
     if(currentUrl.includes("admin")){

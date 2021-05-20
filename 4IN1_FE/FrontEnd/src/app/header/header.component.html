@@ -64,9 +64,10 @@
                       <span class="badge badge-danger">3</span>
                     </a>
                     <div class="dropdown-content1 scrollbar scrollbar-primary">
-                      <p style="color: black;" >Chúc mừng bạn đã đăng kí tham gia thành công sự kiện Chào đón tân sinh viên K23</p>
-                      <p style="color: black;" >Chúc mừng bạn đã đăng kí tham gia thành công sự kiện Chào đón tân sinh viên K23</p>
-                      <p style="color: black;" >Chúc mừng bạn đã đăng kí tham gia thành công sự kiện Chào đón tân sinh viên K23</p>
+                      <div *ngFor="let tb of notifications">
+<!--                        <a style="color: black;" >{{tb.content}}</a>-->
+                        <a id="daxem" style="color: black;" >{{tb.content}}</a>
+                      </div>
                     </div>
                   </div>
                 </div>
