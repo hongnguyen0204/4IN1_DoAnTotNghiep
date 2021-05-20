@@ -55,7 +55,7 @@
       </div>
       <div class="item">
         <p>Ngày tổ chức <span class="required">*</span></p>
-        <input [(ngModel)]="sukien.time_of_event"  [min]="localCompleteDate" type="datetime-local" name="date_start"
+        <input [(ngModel)]="sukien.time_of_event"  [min]="localCompleteDate" onkeydown="return false" type="datetime-local" name="date_start"
                required
                #date_start="ngModel"/>
         <div class="alert-danger" *ngIf="f.submitted && date_start.invalid">
