@@ -41,6 +41,19 @@
   opacity: 1;
   left: 0;
 }
+.btn-send {
+  width: 300px;
+  height: 40px;
+  border: none;
+  margin: 15px 0px 0px 20px;
+  background-color: #1863ff;
+  border-radius: 3px;
+}
+
+.btn-send:hover {
+  background: -webkit-linear-gradient(left, #102baf 0%, #1664ff 100%);
+  background: -o-linear-gradient(left, #102baf 0%, #1664ff 100%);
+  background: linear-gradient(to right, #102baf 0%, #1664ff 100%);}
 button:disabled{
   opacity: 1;
 }
