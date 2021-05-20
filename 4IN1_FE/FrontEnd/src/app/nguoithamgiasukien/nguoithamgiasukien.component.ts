@@ -181,7 +181,13 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
     console.log(this.dayev);
     this.skService.email(this.idevent,this.dayev).subscribe(data =>{
       this.dayev= data;
-    })
+    });
+    this.show();
   }
-
+  show(){
+    this.toast.success("Bạn đã gửi nhắc nhở thành công.");
+  }
+  clicked = false;
+  actionMethod() {
+  }
 }
