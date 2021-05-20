@@ -51,6 +51,7 @@ export class SukiencuatoiComponent implements AfterViewInit,OnInit,OnDestroy {
       language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers',
       pageLength: 5,
+      lengthMenu: [[5, 10, 15, -1], [5, 10, 15, "All"]],
       dom: 'Bfrtip',
       // @ts-ignore
       buttons: [

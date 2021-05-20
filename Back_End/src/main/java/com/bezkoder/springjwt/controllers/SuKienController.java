@@ -97,9 +97,9 @@ public class SuKienController {
         sk.setId_cencor(sukien.getId_cencor());
         suKienRepository.save(sk);
         Notification notification = new Notification();
-        notification.setAccount_id(sukien.getId_cencor());
+        notification.setAccount_id(sukien.getOwner_event_id());
         String name = suKienRepository.findByIDjoinname(sukien.getID());
-        notification.setContent("Sự kiện:"+ name+ "của bạn đã được xét duyệt.");
+        notification.setContent("Sự kiện: "+ name+ " của bạn đã được xét duyệt.");
         notification.setStatus(false);
         Date date=java.util.Calendar.getInstance().getTime();
         notification.setTime_notification(date);

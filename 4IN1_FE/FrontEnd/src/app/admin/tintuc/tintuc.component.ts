@@ -41,6 +41,8 @@ export class TintucComponent implements OnInit,OnDestroy {
     this.dtOptions = {
       language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers',
+      pageLength: 5,
+      lengthMenu: [[5, 10, 15, -1], [5, 10, 15, "All"]],
       retrieve: true,
       destroy: true,
     };

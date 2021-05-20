@@ -111,11 +111,10 @@ export class DangkitochucsukienComponent implements OnInit {
         });
         confirmDialog.afterClosed().subscribe(result => {
           if (result === true) {
+            this.toastr.success("Đăng kí thành công");
             this.sukienService.create(this.sukien).subscribe(data=>{
               this.sukien = data;
-              this.toastr.success("Đăng kí thành công");
               this.sukien = new Sukien();
-              this.router.navigate(['/dangkitochuc']);
             });
           }
         });

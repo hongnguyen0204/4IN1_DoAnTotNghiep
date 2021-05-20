@@ -49,7 +49,9 @@ export class DashboardComponent implements OnInit,OnDestroy {
     this.nam=this.date.getFullYear();
     this.dtOptions = {
       language: {url:'assets/Vietnamese.json'},
-      pagingType: 'full_numbers'
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      lengthMenu: [[5, 10, 15, -1], [5, 10, 15, "All"]],
     };
     this.dashboardService.SKDTC().subscribe(data=>{
       this.skdtc=data;

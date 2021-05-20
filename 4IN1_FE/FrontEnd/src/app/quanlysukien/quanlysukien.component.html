@@ -1,12 +1,56 @@
 <!--Bảng 1-->
 <title>Quản lý sự kiện</title>
+
 <div class="content" style="margin-top: 160px">
   <div class="container-fluid" style="position: relative;max-width: 80%;margin: 0px auto 40px auto;">
     <div class="row">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title ">Sự kiện đã đăng kí</h4>
+            <h4 class="card-title ">Sự kiện của tôi</h4>
+            <p class="card-category"></p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger2" style="table-layout:fixed" class="row-border hover" style="width:100%">
+                <thead>
+                <tr>
+                  <th>STT</th>
+                  <th>Tên sự kiện</th>
+                  <th style="width: 150px;">Thời gian</th>
+                  <th style="width: 155px;">Địa điểm tổ chức</th>
+                  <th style="width: 90px;">Trạng thái</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let sk of sukiens ; let i=index">
+                  <td>{{i+1}}</td>
+                  <td><a style="cursor: pointer" (click)="detailSK(sk.id)">{{sk.event_name}}</a></td>
+                  <td>{{sk.time_of_event | date:'dd/MM/yyyy h:mm a'}}</td>
+                  <td>{{sk.place}}</td>
+                  <td >
+                    <button *ngIf="sk.status_of_event=='Từ chối'" style="width: 104.2px" class="btn btn-danger">Từ chối</button>
+                    <button *ngIf="sk.status_of_event=='Đồng ý'" style="width: 104.2px" class="btn btn-success">Đồng ý</button>
+                    <button *ngIf="sk.status_of_event=='Đang chờ'" class="btn btn-primary">Đang chờ</button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content" >
+  <div class="container-fluid" style="position: relative;max-width: 80%;margin: 0px auto 40px auto;">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title ">Sự kiện đã đăng kí tham gia</h4>
             <p class="card-category"></p>
           </div>
           <div class="card-body">
@@ -24,7 +68,7 @@
                 <tbody>
                 <tr *ngFor="let ng of dangkithamgia ; let i=index">
                   <td>{{i+1}}</td>
-                  <td>{{ng[0]}}</td>
+                  <td><a style="cursor: pointer" (click)="detailSK(ng[3])">{{ng[0]}}</a></td>
                   <td>{{ng[1] | date:'dd/MM/yyyy h:mm a'}}</td>
                   <td>{{ng[2]}}</td>
                   <td>
@@ -40,7 +84,6 @@
     </div>
   </div>
 </div>
-
 <!--Bảng 2-->
 <div class="content" >
   <div class="container-fluid" style="position: relative;max-width: 80%;margin: 40px auto;">
@@ -66,7 +109,7 @@
                 <tbody>
                 <tr *ngFor="let ctv of congtacviens ;let i=index">
                   <td>{{i+1}}</td>
-                  <td>{{ctv[0]}}</td>
+                  <td><a style="cursor: pointer" (click)="detailSK(ctv[3])">{{ctv[0]}}</a></td>
                   <td>{{ctv[1]| date:'dd/MM/yyyy h:mm a'}}</td>
                   <td>{{ctv[2]}}</td>
                   <td *ngIf="!ktTime(ctv[1]);else out">

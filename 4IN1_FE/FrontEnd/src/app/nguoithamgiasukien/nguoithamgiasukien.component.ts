@@ -76,6 +76,7 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
       language: {url:'assets/Vietnamese.json'},
       pagingType: 'full_numbers',
       pageLength: 5,
+      lengthMenu: [[5, 10, 15, -1], [5, 10, 15, "All"]],
       dom: 'Bfrtip',
       buttons: [
         'copy',
@@ -139,20 +140,6 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
         this.nguoithamgias = data;
         this.dtTrigger.next();
       });
-    });
-  }
-  // @ts-ignore
-  reloadData() {
-    this.skService.findSKDD().subscribe(data => {
-      this.sukiens = data;
-    });
-  }
-  // @ts-ignore
-  day_event;
-  getID_Event(){
-    // @ts-ignore
-    this.acc = this.skService.email(this.idevent).subscribe(data=>{
-      this.acc=data;
     });
   }
 

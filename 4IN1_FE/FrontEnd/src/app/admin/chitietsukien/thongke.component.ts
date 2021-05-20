@@ -57,17 +57,15 @@ export class ThongkeComponent implements OnInit {
       if(result!=false) {
         this.sukien.id_cencor = this.id_admin;
         this.skService.cancel(this.id, result).subscribe(data => {
-            this.router.navigate(['admin/sukien']).then(() => {
-              this.toastr.warning("Từ chối thành công");
-              window.location.reload();
-            });
-          }, error => console.log(error));
+          this.router.navigate(['admin/sukien']).then(() => {
+            this.toastr.warning("Từ chối thành công");
+            window.location.reload();
+          });
+        }, error => console.log(error));
       }
       else{
-
       }
     });
-
   }
   logout(): void {
     this.tokenStorageService.signOut();
