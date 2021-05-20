@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -132,24 +133,19 @@ public interface SuKienRepository extends JpaRepository<SuKien,Integer> {
             "WHERE ac.ID=ev.id_cencor and month(ev.time_of_event)=month(DATE(NOW())) ", nativeQuery = true)
     List<Object> ThongKeNguoiDuyet();
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
     @Query(value = "SELECT account_information.fullname,account_information.email from account_information,join_register where join_register.acc_ID = account_information.ID and join_register.event_ID =?1",nativeQuery = true)
     List<Object> getaccountByeventID1(int id);
 
     @Query(value = "SELECT account_information.email from account_information,join_register where join_register.acc_ID = account_information.ID and join_register.event_ID =?1",nativeQuery = true)
     String[] getemailbyidevent(int id);
 
-<<<<<<< HEAD
+
     @Query(value = "SELECT Date(time_of_event) FROM event_information WHERE ID = ?1", nativeQuery = true)
     Date findByDayEvent(int id);
 
     @Query(value = "SELECT time_of_event FROM event_information WHERE ID = ?1", nativeQuery = true)
     String findByDayEvent1(int id);
-=======
     @Query(value = "SELECT * from account_information,join_register where join_register.acc_ID = account_information.ID and join_register.event_ID = ?1 ",nativeQuery = true)
     List<Object> getaccountByeventID(int event_id);
->>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
+
 }

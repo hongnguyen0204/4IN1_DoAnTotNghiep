@@ -8,11 +8,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AccountService} from '../Service/account.service';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {CongtacvienService} from '../Service/congtacvien.service';
-<<<<<<< HEAD
 import {DatePipe} from '@angular/common';
-=======
 import {ToastrService} from 'ngx-toastr';
->>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
 
 // @ts-ignore
 @Component({
@@ -157,8 +154,6 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
     this.acc = this.skService.email(this.idevent).subscribe(data=>{
       this.acc=data;
     });
-<<<<<<< HEAD
-=======
   }
 
   soatve(id:number):void{
@@ -170,7 +165,6 @@ export class NguoithamgiasukienComponent implements OnInit,OnDestroy,AfterViewIn
         window.location.reload();
       })
     }
->>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
   }
   // @ts-ignore
   dayev;

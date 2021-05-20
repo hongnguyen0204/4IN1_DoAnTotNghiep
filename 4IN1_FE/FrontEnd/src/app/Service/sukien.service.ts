@@ -208,12 +208,10 @@ export class SukienService {
     CheckSoLuongNTG(data){
     return this.http.post('http://localhost:8080/nguoithamgia/checkSoLuong',data);
   }
-
   // @ts-ignore
   CheckVe(mave, id): Observable<any>{
     return this.http.post(`${'http://localhost:8080/nguoithamgia/checkve'}/${id}`,mave);
   }
-<<<<<<< HEAD
   // @ts-ignore
   email(id,ngay): Observable<any>{
     return this.http.get<any>(`${'http://localhost:8080/sukien/NguoiDangKiSuKienTheoEvent'}/${id}/${ngay}`);
@@ -222,8 +220,6 @@ export class SukienService {
   gettimeofevent(id): Observable<any>{
     return this.http.get<any>(`${'http://localhost:8080/sukien/gettimeofevent/'}${id}`);
   }
- 
-=======
 
   // @ts-ignore
   setHot(id, data): Observable<any> {
@@ -235,7 +231,4 @@ export class SukienService {
     return this.http.put(`${'http://localhost:8080/sukien/huyhot'}/${id}`, data);
   }
 
-  // @ts-ignore
-
->>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
 }

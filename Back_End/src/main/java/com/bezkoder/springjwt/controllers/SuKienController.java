@@ -1,11 +1,8 @@
 package com.bezkoder.springjwt.controllers;
-<<<<<<< HEAD
 import com.bezkoder.springjwt.models.NguoiThamGia;
 import com.bezkoder.springjwt.models.SuKien;
 import com.bezkoder.springjwt.repository.NguoiThamGiaRepository;
-=======
 import com.bezkoder.springjwt.models.SuKien;
->>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
 import com.bezkoder.springjwt.repository.SuKienRepository;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
-<<<<<<< HEAD
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
-=======
->>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
 import java.util.List;
 
 
@@ -245,14 +239,8 @@ public class SuKienController {
         return suKienRepository.ThongKeNguoiDuyet();
     }
 
-<<<<<<< HEAD
-
     @RequestMapping(value = "/NguoiDangKiSuKienTheoEvent/{id}/{ngay}", method = RequestMethod.GET)
     public String[] getemailbyeventid(@PathVariable int id, @PathVariable String ngay) throws UnsupportedEncodingException, MessagingException {
-=======
-    @RequestMapping(value = "/guimailnhacnho/{id}", method = RequestMethod.POST)
-    public String[] getemailbyeventid(@RequestBody String content,@PathVariable int id) throws UnsupportedEncodingException, MessagingException {
->>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
         String[] email;
         email = suKienRepository.getemailbyidevent(id);
         String name = suKienRepository.findByIDjoinname(id);
@@ -371,22 +359,17 @@ public class SuKienController {
 
         return "gửi thành công";
     }
-<<<<<<< HEAD
     @GetMapping("/gettimeofevent/{id}")
-    public Date getday(@PathVariable int id){
+    public Date getday(@PathVariable int id) {
         return suKienRepository.findByDayEvent(id);
-=======
-
+    }
     @GetMapping("/NguoiDangKiSuKientheoevent/{id}")
     public List<Object> laytaikhoantuid(@PathVariable int id){
         return suKienRepository.getaccountByeventID1(id);
->>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
     }
 
     @PostMapping("/kiemtrave")
     public void KiemTra(@RequestBody String qrcode){
-<<<<<<< HEAD
-=======
     }
 
     @PutMapping("/sethot/{id}")
@@ -401,7 +384,6 @@ public class SuKienController {
         SuKien sk =suKienRepository.findById(id).get();
         sk.setHot(false);
         suKienRepository.save(sk);
->>>>>>> 8b05be8d79d110eaa098ad8de61a7351abefcdf5
     }
 
 }
