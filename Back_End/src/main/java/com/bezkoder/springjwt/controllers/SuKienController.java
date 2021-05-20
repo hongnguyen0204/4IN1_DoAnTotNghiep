@@ -2,6 +2,7 @@ package com.bezkoder.springjwt.controllers;
 import com.bezkoder.springjwt.models.NguoiThamGia;
 import com.bezkoder.springjwt.models.Notification;
 import com.bezkoder.springjwt.models.SuKien;
+import com.bezkoder.springjwt.repository.NotificationRepository;
 import com.bezkoder.springjwt.repository.SuKienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -27,6 +28,9 @@ public class SuKienController {
 
     @Autowired
     private JavaMailSender mailSender;
+
+    @Autowired
+    private NotificationRepository notificationRepository;
 
 
     @GetMapping("/NguoiDangKiSuKien/{id}")
@@ -78,10 +82,9 @@ public class SuKienController {
        suKienRepository.save(suKien);
         Notification notification = new Notification();
         notification.setAccount_id(suKien.getOwner_event_id());
-        String name = suKienRepository.findByIDjoinname(suKien.g);
-        notification.setContent("Bạn đã hủy tham gia sự kiện: "+ name);
+        String name = suKienRepository.findByIDjoinname(suKien.getID());
+        notification.setContent("Sự kiện:" +name+" của bạn đang chờ xét duyệt");
         notification.setStatus(false);
-        Date date=java.util.Calendar.getInstance().getTime();
         notification.setTime_notification(date);
         notification.setHref("https://sukiendtu.edu.vn/quanlysukien");
         notificationRepository.save(notification);
@@ -93,13 +96,32 @@ public class SuKienController {
         sk.setStatus_of_event("Đồng ý");
         sk.setId_cencor(sukien.getId_cencor());
         suKienRepository.save(sk);
+        Notification notification = new Notification();
+        notification.setAccount_id(sukien.getId_cencor());
+        String name = suKienRepository.findByIDjoinname(sukien.getID());
+        notification.setContent("Sự kiện:"+ name+ "của bạn đã được xét duyệt.");
+        notification.setStatus(false);
+        Date date=java.util.Calendar.getInstance().getTime();
+        notification.setTime_notification(date);
+        notification.setHref("https://sukiendtu.edu.vn/quanlysukien");
+        notificationRepository.save(notification);
     }
 
-    @PutMapping("/tuchoiduyet/{id}")
-    public void tuChoiDuyetSuKien(@PathVariable Integer id){
+    @RequestMapping(value = "/tuchoiduyet/{id}", method = RequestMethod.POST)
+    public void tuChoiDuyetSuKien(@PathVariable Integer id, @RequestBody String message){
         SuKien sk =suKienRepository.findById(id).get();
         sk.setStatus_of_event("Từ chối");
         suKienRepository.save(sk);
+        Notification notification = new Notification();
+        notification.setAccount_id(sk.getOwner_event_id());
+        System.out.println(sk.getOwner_event_id());
+        String name = sk.getEvent_name();
+        notification.setContent("Sự kiện: "+ name+" đã bị từ chối vì lí do "+message);
+        notification.setStatus(false);
+        Date date=java.util.Calendar.getInstance().getTime();
+        notification.setTime_notification(date);
+        notification.setHref("https://sukiendtu.edu.vn/nguoithamgiasukien");
+        notificationRepository.save(notification);
     }
 
     @GetMapping("/{id}")
