@@ -5,6 +5,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {TokenStorageService} from '../../_services/token-storage.service';
 import {ThongbaoService} from '../../_services/thongbao.service';
 import {ToastrService} from 'ngx-toastr';
+import {ConfirmDialogComponent} from "../../-helpers/confirm-dialog/confirm-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
+import {HuysukienComponent} from "../../-helpers/huysukien/huysukien.component";
 
 @Component({
   selector: 'app-thongke',
@@ -23,7 +26,8 @@ export class ThongkeComponent implements OnInit {
   constructor(private skService: SukienService,private route: ActivatedRoute,
               private router: Router,
               private tokenStorageService: TokenStorageService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.id_admin=this.tokenStorageService.getUser().id;
@@ -41,14 +45,29 @@ export class ThongkeComponent implements OnInit {
       });
     },error => console.log(error));
   }
+
   cancelStudent(){
-    this.sukien.id_cencor=this.id_admin;
-    this.skService.cancel(this.id,this.sukien).subscribe(data=>{
-      this.router.navigate(['admin/sukien']) .then(() => {
-        this.toastr.warning("Đã hủy sự kiện!");
-        window.location.reload();
-      });
-    },error => console.log(error));
+    const huysukien = this.dialog.open(HuysukienComponent, {
+      data: {
+        title: 'Lý do từ chối duyệt',
+        message: 'Bạn chắc chắn muốn sửa hay không?'
+      }
+    });
+    huysukien.afterClosed().subscribe(result => {
+      if(result!=false) {
+        this.sukien.id_cencor = this.id_admin;
+        this.skService.cancel(this.id, result).subscribe(data => {
+            this.router.navigate(['admin/sukien']).then(() => {
+              this.toastr.warning("Từ chối thành công");
+              window.location.reload();
+            });
+          }, error => console.log(error));
+      }
+      else{
+
+      }
+    });
+
   }
   logout(): void {
     this.tokenStorageService.signOut();

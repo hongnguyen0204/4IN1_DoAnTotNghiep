@@ -155,7 +155,7 @@ export class SukienService {
 
   // @ts-ignore
   cancel(id, data): Observable<any> {
-    return this.http.put(`${'http://localhost:8080/sukien/tuchoiduyet'}/${id}`, data);
+    return this.http.post(`${'http://localhost:8080/sukien/tuchoiduyet'}/${id}`, data);
   }
 
   // @ts-ignore
