@@ -65,8 +65,12 @@
                     </a>
                     <div class="dropdown-content1 scrollbar scrollbar-primary">
                       <div *ngFor="let tb of notifications">
-<!--                        <a style="color: black;" >{{tb.content}}</a>-->
-                        <a id="daxem" style="color: black;" >{{tb.content}}</a>
+                        <div *ngIf="tb.status">
+                          <a href="{{tb.href}}" style="color: black;" >{{tb.content}}</a>
+                        </div>
+                        <div *ngIf="!tb.status">
+                          <a id="daxem" href="{{tb.href}}" style="color: black;" >{{tb.content}}</a>
+                        </div>
                       </div>
                     </div>
                   </div>

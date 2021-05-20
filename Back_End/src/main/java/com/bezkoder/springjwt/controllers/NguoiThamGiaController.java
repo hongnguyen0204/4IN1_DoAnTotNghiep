@@ -58,10 +58,12 @@ public class NguoiThamGiaController {
         notification.setContent("Bạn đã đăng kí tham gia thành công sự kiện: "+ name);
         notification.setStatus(false);
         Date date=java.util.Calendar.getInstance().getTime();
-        notification.setTime_Notification(date);
+        notification.setTime_notification(date);
+        notification.setHref("https://sukiendtu.edu.vn/quanlysukien");
         notificationRepository.save(notification);
         String tiket = RandomString.make(15);
         nguoiThamGia.setTicket(tiket);
+        nguoiThamGia.setCheckticket(false);
         nguoiThamGiaRepository.save(nguoiThamGia);
         String DATE_FORMATTER= "dd-MM-yyyy";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMATTER);

@@ -9,4 +9,6 @@ export class Notification {
   status:boolean;
   // @ts-ignore
   time_notification: Date;
+  // @ts-ignore
+  href: string;
 }
