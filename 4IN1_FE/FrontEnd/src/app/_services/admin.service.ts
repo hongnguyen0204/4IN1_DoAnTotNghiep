@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router} from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
 import {TokenStorageService} from './token-storage.service';
 
 @Injectable({
@@ -9,12 +8,10 @@ import {TokenStorageService} from './token-storage.service';
 export class AdminAuthService implements CanActivate{
 
   constructor(private tokenStorageService: TokenStorageService,
-              private router: Router,
-              private matSnackBar: MatSnackBar) { }
+              private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const token = this.tokenStorageService.getToken();
-
     if (token == null) {
       this.router.navigateByUrl('/admin/login');
       return false;

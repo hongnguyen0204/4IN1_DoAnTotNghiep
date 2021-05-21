@@ -11,13 +11,7 @@ export class ActiveService implements CanActivate{
   }
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const token = this.tokenStorageService.getToken();
-    const currentUser =  this.tokenStorageService.getUser();
-    if (token !== null && this.isRole()){
-      this.router.navigateByUrl('/admin/dashboard').then(() => {
-        window.location.reload();
-      });
-      return false;
-    } else if (token !== null) {
+    if (token !== null) {
         this.router.navigateByUrl('').then(() => {
           window.location.reload();
         });
@@ -26,15 +20,5 @@ export class ActiveService implements CanActivate{
      else {
       return true;
     }
-  }
-
-  isRole() {
-    const tokenPayload = this.tokenStorageService.getUser().roles;
-    for (const role of tokenPayload) {
-      if (role === 'ROLE_ADMIN') {
-        return true;
-      }
-    }
-    return false;
   }
 }

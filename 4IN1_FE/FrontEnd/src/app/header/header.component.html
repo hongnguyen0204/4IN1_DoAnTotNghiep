@@ -70,6 +70,10 @@
                         </div>
                         <div *ngIf="tb.status">
                           <a id="daxem" href="{{tb.href}}" style="color: black; font-size: 14px;" >{{tb.content}}<p class="timeago">{{tb.time_notification | amLocale: 'vi' | amTimeAgo}}</p></a>
+                          <a href="{{tb.href}}" (click)="seen(tb.id)" style="color: black; font-size: 14px;" >{{tb.content}}<p style="float:right;font-style: italic;font-size: small;color: blue;">{{tb.time_notification | amLocale: 'vi' | amTimeAgo}}</p></a>
+                        </div>
+                        <div *ngIf="tb.status">
+                          <a id="daxem" href="{{tb.href}}" style="color: black; font-size: 14px;" >{{tb.content}}<p style="float:right;font-style: italic;font-size: small;color: blue;">{{tb.time_notification | amLocale: 'vi' | amTimeAgo}}</p></a>
                         </div>
                       </div>
                     </div>
