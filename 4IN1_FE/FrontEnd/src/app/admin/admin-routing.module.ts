@@ -14,7 +14,7 @@ import {QuanlytaikhoanComponent} from './quanlytaikhoan/quanlytaikhoan.component
 
 const routes: Routes = [
   {path: 'admin/dashboard', component: DashboardComponent, canActivate:[AdminAuthService] },
-  {path: 'admin/login', component: LoginComponent,canActivate: [ActiveService]},
+  {path: 'admin/login', component: LoginComponent},
   {path: 'admin/chitietsukien/:id', component: ThongkeComponent, canActivate:[AdminAuthService]  },
   {path: 'admin/sukien', component: SukienComponent, canActivate:[AdminAuthService]  },
   {path: 'admin/tintuc', component: TintucComponent, canActivate:[AdminAuthService]  },
