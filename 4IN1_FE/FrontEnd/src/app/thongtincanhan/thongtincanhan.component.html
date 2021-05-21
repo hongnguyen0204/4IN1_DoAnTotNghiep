@@ -39,12 +39,11 @@
         <div class="row mt-3 ">
           <div class="col-md-12">
             <label class="labels">Ngày sinh:</label>
-            <input value="{{users.day_of_birth | date: 'yyyy-MM-dd'}}" [(ngModel)]="users.day_of_birth" id="date" type="date" name="dayofbirth" class="form-control"
+            <input value="{{users.day_of_birth | date: 'yyyy-MM-dd'}}" id="date" type="date" name="dayofbirth" class="form-control"
                    required
-                   #dayofbirth="ngModel"
             />
-            <div class="alert-danger" *ngIf="f.submitted && dayofbirth.invalid">
-              <div *ngIf="dayofbirth.errors.required">Vui lòng nhập ngày sinh</div>
+            <div class="alert-danger" *ngIf="f.submitted && users.day_of_birth==null">
+             Vui lòng nhập ngày sinh
             </div>
             <div class="alert-danger" *ngIf="f.submitted && !this.checkDateOfBirth(this.users.day_of_birth)">
               Phải lớn hơn hoặc bằng 17 tuổi!

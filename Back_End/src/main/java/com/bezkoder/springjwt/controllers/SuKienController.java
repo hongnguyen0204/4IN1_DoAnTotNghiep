@@ -83,7 +83,7 @@ public class SuKienController {
         Notification notification = new Notification();
         notification.setAccount_id(suKien.getOwner_event_id());
         String name = suKienRepository.findByIDjoinname(suKien.getID());
-        notification.setContent("Sự kiện:" +name+" của bạn đang chờ xét duyệt");
+        notification.setContent("Sự kiện: " +name+" của bạn đang chờ xét duyệt");
         notification.setStatus(false);
         notification.setTime_notification(date);
         notification.setHref("https://sukiendtu.edu.vn/quanlysukien");
